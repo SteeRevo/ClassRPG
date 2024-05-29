@@ -1,0 +1,277 @@
+[gd_scene load_steps=19 format=3 uid="uid://bu3mr741gkvrq"]
+
+[ext_resource type="Script" path="res://Unit.gd" id="1_0jtwd"]
+[ext_resource type="Script" path="res://Battleground.gd" id="2_4fejy"]
+[ext_resource type="PackedScene" uid="uid://bbtxybi7piyml" path="res://sam_inherited.tscn" id="2_mtwt7"]
+[ext_resource type="Script" path="res://BattleManager.gd" id="4_p4ijo"]
+[ext_resource type="Script" path="res://EnemySelector.gd" id="5_5hphj"]
+[ext_resource type="Script" path="res://Skillpoints.gd" id="6_yf3we"]
+[ext_resource type="Script" path="res://Skillname.gd" id="8_bwj3e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4g27"]
+sky_top_color = Color(0.603922, 0.403922, 0, 1)
+sky_horizon_color = Color(0.700981, 0.64323, 0.53325, 1)
+sky_energy_multiplier = 1.05
+ground_horizon_color = Color(0.700981, 0.64323, 0.53325, 1)
+
+[sub_resource type="Sky" id="Sky_spwgl"]
+sky_material = SubResource("ProceduralSkyMaterial_r4g27")
+
+[sub_resource type="Environment" id="Environment_ccmnm"]
+background_mode = 1
+background_color = Color(0.92549, 0.615686, 0.843137, 1)
+sky = SubResource("Sky_spwgl")
+ambient_light_source = 2
+ambient_light_color = Color(0.784314, 0.717647, 0.694118, 1)
+ambient_light_energy = 2.04
+tonemap_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_4ybu1"]
+script/source = "extends \"res://Unit.gd\"
+
+var skillList = []
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var skill = Skill.new()
+	skill.skillname = \"Wind: Zephyr\"
+	skill.damage = 10
+	skill.cost = 1
+	
+	var skill2 = Skill.new()
+	skill2.skillname = \"Dragon: Rend\"
+	skill.damage = \"30\"
+	skill.cost = 5
+	
+	var skill3 = Skill.new()
+	skill3.skillname = \"Water: Lull\"
+	skill3.damage = 0
+	skill.cost = 3 
+	
+	skillList.append(skill)
+	skillList.append(skill2)
+	skillList.append(skill3)
+	
+
+func get_skill_list():
+	return skillList
+
+func play_idle():
+	$Sam/AnimationPlayer.play(\"idle\")
+	
+func play_attack():
+	$Sam/AnimationPlayer.play(\"attack\")
+	
+
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j888f"]
+albedo_color = Color(0.454902, 0.803922, 0.972549, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ci8q5"]
+material = SubResource("StandardMaterial3D_j888f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ae5g0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bggr"]
+albedo_color = Color(0.721377, 0.274627, 0.34483, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dyvs1"]
+material = SubResource("StandardMaterial3D_3bggr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyqfs"]
+albedo_color = Color(0.258824, 0.796078, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsc3p"]
+material = SubResource("StandardMaterial3D_lyqfs")
+
+[node name="BattleScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ccmnm")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("4_p4ijo")
+
+[node name="PlayerUnits" type="Node" parent="BattleManager"]
+
+[node name="Sam" type="Node3D" parent="BattleManager/PlayerUnits"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.28731, 1.68893, 0)
+script = SubResource("GDScript_4ybu1")
+max_health = 10
+current_health = 10
+attack = 5
+defense = 5
+speed = 10
+
+[node name="Sam" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("2_mtwt7")]
+
+[node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53338, 0.936478, -5.54726)
+script = ExtResource("1_0jtwd")
+max_health = 15
+current_health = 15
+attack = 10
+defense = 5
+speed = 3
+startingBG = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/PlayerUnits/BB"]
+mesh = SubResource("CapsuleMesh_ci8q5")
+
+[node name="Battlegrounds" type="Node" parent="BattleManager"]
+
+[node name="Battleground" type="Node3D" parent="BattleManager/Battlegrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36123, 0, 0)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.103124, 0, 0.111186)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground2" type="Node3D" parent="BattleManager/Battlegrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, -5.44311)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground2"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground3" type="Node3D" parent="BattleManager/Battlegrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, -5.95517)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground3"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground4" type="Node3D" parent="BattleManager/Battlegrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, -12.5466)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground4"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="EnemyUnits" type="Node" parent="BattleManager"]
+
+[node name="Enemy1" type="Node3D" parent="BattleManager/EnemyUnits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28731, 0, 7.38815)
+script = ExtResource("1_0jtwd")
+speed = 5
+enemy_unit = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
+mesh = SubResource("BoxMesh_dyvs1")
+
+[node name="Enemy2" type="Node3D" parent="BattleManager/EnemyUnits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1778, 0, 14.9895)
+script = ExtResource("1_0jtwd")
+speed = 3
+enemy_unit = true
+startingBG = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761204, 0.543812, -0.674129)
+mesh = SubResource("BoxMesh_dyvs1")
+
+[node name="Enemy3" type="Node3D" parent="BattleManager/EnemyUnits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17886, 0, 14.1841)
+script = ExtResource("1_0jtwd")
+speed = 4
+enemy_unit = true
+startingBG = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761204, 0.543812, -0.465992)
+mesh = SubResource("BoxMesh_dyvs1")
+
+[node name="Enemy4" type="Node3D" parent="BattleManager/EnemyUnits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14065, 0, 21.8315)
+script = ExtResource("1_0jtwd")
+speed = 5
+enemy_unit = true
+startingBG = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
+mesh = SubResource("BoxMesh_dyvs1")
+
+[node name="EnemyBGs" type="Node" parent="BattleManager"]
+
+[node name="Battleground" type="Node3D" parent="BattleManager/EnemyBGs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.30487)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyBGs/Battleground"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 1.28731, 0, 0.111186)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground2" type="Node3D" parent="BattleManager/EnemyBGs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, 14.0928)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyBGs/Battleground2"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground3" type="Node3D" parent="BattleManager/EnemyBGs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, 13.5808)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyBGs/Battleground3"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="Battleground4" type="Node3D" parent="BattleManager/EnemyBGs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, 21.5305)
+script = ExtResource("2_4fejy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyBGs/Battleground4"]
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ae5g0")
+skeleton = NodePath("")
+
+[node name="UI3d" type="Node3D" parent="BattleManager"]
+
+[node name="EnemySelector" type="MeshInstance3D" parent="BattleManager/UI3d"]
+transform = Transform3D(0.0774062, -0.99346, -0.0839406, 0.693788, 0.114138, -0.711077, 0.716007, -0.00319518, 0.698086, 1.48829, 2.59487, 16.5285)
+mesh = SubResource("PlaneMesh_qsc3p")
+script = ExtResource("5_5hphj")
+
+[node name="Control" type="Control" parent="BattleManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 651.0
+
+[node name="Skillpoints" type="TextEdit" parent="BattleManager/Control"]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 41.0
+text = "Skill points: 5"
+script = ExtResource("6_yf3we")
+
+[node name="Skillname" type="TextEdit" parent="BattleManager/Control"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 250.0
+offset_bottom = 83.0
+text = "Skill Name: "
+script = ExtResource("8_bwj3e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0779808, 0.471685, -0.878312, -0.0285338, 0.88169, 0.470966, 0.996546, -0.0116647, 0.0822139, -9.944, 8.72888, 5.78227)
+current = true
+fov = 78.4452
+
+[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
