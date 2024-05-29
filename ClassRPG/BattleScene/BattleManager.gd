@@ -17,13 +17,17 @@ signal end_enemy_turn
 signal selected
 signal rotate_finished
 signal skill_confirmed
+@onready var player_units_path = $PlayerUnits
+@onready var enemy_units_path = $EnemyUnits
 
 @onready var current_unit = $PlayerUnits/Sam
+@onready var battleGrounds = $Battlegrounds
 @onready var BGF = $Battlegrounds/Battleground
 @onready var BGT = $Battlegrounds/Battleground2
 @onready var BGB = $Battlegrounds/Battleground3
 @onready var BGR = $Battlegrounds/Battleground4
 
+@onready var enemybattleGrounds = $EnemyBGs
 @onready var EBGF = $EnemyBGs/Battleground
 @onready var EBGT = $EnemyBGs/Battleground2
 @onready var EBGB = $EnemyBGs/Battleground3
@@ -33,30 +37,40 @@ signal skill_confirmed
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
 
+@onready var states_map = {
+	'playerturn': $States/PlayerTurn,
+	'chooseturn': $States/ChooseTurn,
+	'enemyturn': $States/EnemyTurn,
+}
 
+var states_stack = []
+var current_state = null
+var current_turn = null
+
+var start_of_battle = true
 
 func _ready():
-	$PlayerUnits/Sam.play_idle()
-	
-	#BGF._set_current_unit($PlayerUnits/Unit)
-	set_all_units_position()
-	print(BGF._get_current_unit())
-	#$PlayerUnits/Unit._set_BG(BGF)
-	#print(current_unit._get_BG())
-	
-	#BGT._set_current_unit($PlayerUnits/Unit2)
-	#$PlayerUnits/Unit._set_BG(BGT)
-	
-	current_selected_enemy = $EnemyUnits/Enemy1
+	states_stack.push_front($States/ChooseTurn)
+	current_state = states_stack[0]
+	_change_state('chooseturn')
+	_change_state(current_turn)
 	
 	
+func _change_state(state_name):
+	current_state.exit(self)
+	if state_name == 'previous':
+		states_stack.pop_front()
+	else:
+		var new_state = states_map[state_name]
+		states_stack[0] = new_state
+		
+	current_state = states_stack[0]
 	
-	get_all_units()
-	
-	print(player_units)
-	print(enemy_units)
-	
-	choose_turn()
+	var enter_state = null
+	if state_name != 'previous':
+		current_state.enter(self)
+
+	emit_signal('state_changed', states_stack)
 	
 func insert_sort(lst, unit, action_weight):
 	unit.calc_turn_order(action_weight)
@@ -66,69 +80,14 @@ func insert_sort(lst, unit, action_weight):
 			return lst
 	lst.append(unit)
 	return lst
-		
 
-func set_all_units_position():
-	for bg in $Battlegrounds.get_children():
-		bgs.append(bg)
-	for bg in $EnemyBGs.get_children():
-		enemy_bgs.append(bg)
-	for unit in $PlayerUnits.get_children():
-		bgs[unit.startingBG]._set_current_unit(unit)
-		unit._set_BG(bgs[unit.startingBG])
-	for unit in $EnemyUnits.get_children():
-		enemy_bgs[unit.startingBG]._set_current_unit(unit)
-		unit._set_BG(enemy_bgs[unit.startingBG])
-		
-	print(enemy_bgs)	
-	pass
-	
-	
-func get_all_units():
-	for unit in $PlayerUnits.get_children():
-		insert_sort(player_units, unit, 100)
-		unit_list.append(unit)
-	for unit in $EnemyUnits.get_children():
-		insert_sort(enemy_units, unit, 100)
-		unit_list.append(unit)
-
-func choose_turn():
-	set_current_unit()
-	
-	
-func set_current_unit():
-	if player_units[0]._get_turn_order() <= enemy_units[0]._get_turn_order():
-		current_unit = player_units[0]
-		calc_turn_advance()
-		battleState = BATTLESTATE.PLAYER_TURN_START
-		on_player_turn_started()
-	else:
-		current_unit = enemy_units[0]
-		calc_turn_advance()
-		battleState = BATTLESTATE.ENEMY_TURN
-		start_enemy_turn()
-
-func on_player_turn_started():
-	print("=====player turn=========")
-	for unit in player_units:
-		print(unit.name + ": current turn_order = " + str(unit._get_turn_order()))
-	for unit in enemy_units:
-		print(unit.name + ": current turn_order = " + str(unit._get_turn_order()))
-	print("Current Unit is: " + current_unit.name)
-	print("Press D to attack, A to Guard, W for Skill, S for Rotate.")
-
-func calc_turn_advance():
-	var turn_advance = current_unit._get_turn_order()
-	current_unit._set_turn_order(0)
-	for unit in player_units:
-		unit._set_turn_order(unit._get_turn_order() - turn_advance)
-		print()
-	for unit in enemy_units:
-		unit._set_turn_order(unit._get_turn_order() - turn_advance)
-		
 		
 func _input(event):
 	
+	var new_state = current_state.handle_input(self, event)
+	if new_state:
+		_change_state(new_state)
+	'''
 	if battleState == BATTLESTATE.PLAYER_TURN_START:
 		if event.is_action_pressed("Attack") :
 			print("Attack")
@@ -152,6 +111,8 @@ func _input(event):
 		
 	elif battleState == BATTLESTATE.ENEMY_SELECTED:
 		confirm_enemy(event)
+	'''
+	
 		
 
 		
@@ -276,7 +237,7 @@ func start_enemy_turn():
 	enemy_units.erase(current_unit)
 	insert_sort(enemy_units, current_unit, 30)
 	battleState = BATTLESTATE.CHOOSE_TURN
-	choose_turn()
+	#choose_turn()
 
 func set_BG_unit_position(unit, bg):
 	if unit != null:
@@ -320,4 +281,4 @@ func _on_unit_turn_finished(action_weight):
 	player_units.erase(current_unit)
 	insert_sort(player_units, current_unit, action_weight)
 	battleState = BATTLESTATE.CHOOSE_TURN
-	choose_turn()
+	#choose_turn()

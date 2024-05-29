@@ -1,8 +1,8 @@
 [gd_scene load_steps=61 format=3 uid="uid://bbtxybi7piyml"]
 
-[ext_resource type="Texture2D" uid="uid://bm6ix6p7m6846" path="res://Sam_0.png" id="1_kqyw6"]
-[ext_resource type="Texture2D" uid="uid://dqln5kjbdnofi" path="res://Sam_1.png" id="2_43xyo"]
-[ext_resource type="Texture2D" uid="uid://d0w4hen80p81g" path="res://Sam_2.png" id="3_ctrf1"]
+[ext_resource type="Texture2D" uid="uid://bm6ix6p7m6846" path="res://Unit/Sam/Sam_0.png" id="1_kqyw6"]
+[ext_resource type="Texture2D" uid="uid://dqln5kjbdnofi" path="res://Unit/Sam/Sam_1.png" id="2_43xyo"]
+[ext_resource type="Texture2D" uid="uid://d0w4hen80p81g" path="res://Unit/Sam/Sam_2.png" id="3_ctrf1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoctk"]
 resource_name = "material_0"

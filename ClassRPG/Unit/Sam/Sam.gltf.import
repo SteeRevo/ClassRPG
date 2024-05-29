@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cn1k025c2utvy"
-path="res://.godot/imported/Sam.gltf-ebcca1e2718b27760f91e2e9696742e3.scn"
+path="res://.godot/imported/Sam.gltf-570961b687345fbbede4428a34061ecb.scn"
 
 [deps]
 
-source_file="res://Sam.gltf"
-dest_files=["res://.godot/imported/Sam.gltf-ebcca1e2718b27760f91e2e9696742e3.scn"]
+source_file="res://Unit/Sam/Sam.gltf"
+dest_files=["res://.godot/imported/Sam.gltf-570961b687345fbbede4428a34061ecb.scn"]
 
 [params]
 

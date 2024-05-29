@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0w4hen80p81g"
-path.s3tc="res://.godot/imported/Sam_2.png-6e72a125527bbc0b03b65c36211b2fa1.s3tc.ctex"
+path.s3tc="res://.godot/imported/Sam_2.png-5f944af80da8fa5a13de9d898da14211.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Sam_2.png"
-dest_files=["res://.godot/imported/Sam_2.png-6e72a125527bbc0b03b65c36211b2fa1.s3tc.ctex"]
+source_file="res://Unit/Sam/Sam_2.png"
+dest_files=["res://.godot/imported/Sam_2.png-5f944af80da8fa5a13de9d898da14211.s3tc.ctex"]
 
 [params]
 

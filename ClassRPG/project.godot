@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="ClassRPG"
-run/main_scene="res://BattleScene.tscn"
+run/main_scene="res://BattleScene/BattleScene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+States="*res://BattleScene/States/States.gd"
 
 [input]
 
