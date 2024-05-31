@@ -1,6 +1,6 @@
 extends States
 
-var last_action = 'Attack'
+var last_action = null
 
 func enter(host):
 	print("=====player turn=========")
@@ -18,6 +18,7 @@ func handle_input(host, event):
 		print("Attack")
 		if last_action == "Attack":
 			print("confirm attack") #_on_attack_pressed()
+			return 'selectEBG'
 		else:
 			last_action = "Attack"
 	elif event.is_action_pressed("Rotate"):

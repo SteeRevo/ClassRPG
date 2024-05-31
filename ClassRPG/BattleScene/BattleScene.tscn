@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=22 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
 [ext_resource type="PackedScene" uid="uid://bbtxybi7piyml" path="res://Unit/Sam/sam_inherited.tscn" id="2_mtwt7"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://Unit/Unit.gd" id="3_kjm3n"]
+[ext_resource type="Script" path="res://BattleScene/SelectEnemyBG.gd" id="4_kpmye"]
 [ext_resource type="Script" path="res://BattleScene/BattleManager.gd" id="4_p4ijo"]
 [ext_resource type="Script" path="res://BattleScene/EnemySelector.gd" id="5_5hphj"]
 [ext_resource type="Script" path="res://UI/Skillpoints.gd" id="6_f81yq"]
@@ -105,9 +106,10 @@ script = ExtResource("3_cretm")
 
 [node name="EnemyTurn" type="Node" parent="BattleManager/States"]
 
-[node name="SelectEnemy" type="Node" parent="BattleManager/States"]
+[node name="SelectEnemyBG" type="Node" parent="BattleManager/States"]
+script = ExtResource("4_kpmye")
 
-[node name="SelectBG" type="Node" parent="BattleManager/States"]
+[node name="SelectAllyBG" type="Node" parent="BattleManager/States"]
 
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 

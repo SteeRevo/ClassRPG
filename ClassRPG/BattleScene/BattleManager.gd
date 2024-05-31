@@ -41,6 +41,8 @@ signal skill_confirmed
 	'playerturn': $States/PlayerTurn,
 	'chooseturn': $States/ChooseTurn,
 	'enemyturn': $States/EnemyTurn,
+	'selectEBG': $States/SelectEnemyBG,
+	'selectABG': $States/SelectAllyBG
 }
 
 var states_stack = []
@@ -60,15 +62,14 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
+	elif state_name in ['selectEBG', 'selectABG']:
+		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]
 		states_stack[0] = new_state
 		
 	current_state = states_stack[0]
-	
-	var enter_state = null
-	if state_name != 'previous':
-		current_state.enter(self)
+	current_state.enter(self)
 
 	emit_signal('state_changed', states_stack)
 	
