@@ -2,7 +2,7 @@ extends Node3D
 var player_
 var currentBattleGround : set = _set_BG, get = _get_BG
 
-enum battleGrounds {PF, PTW, PBW, PB, EF, ETW, EBW, EB}
+enum battleGrounds {F, TW, BW, B}
 
 @export var max_health = 1 : set = _set_health, get = _get_health
 @export var current_health = 1
@@ -20,7 +20,7 @@ var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
 signal attack_finished
 signal rotate_finished
 
-@export var startingBG : int = battleGrounds.PF
+@export var startingBG : int = battleGrounds.F
 
 
 func move_towards(target_pos):

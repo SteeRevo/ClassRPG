@@ -9,6 +9,7 @@ func enter(host):
 	host.current_turn = choose_turn(host)
 
 func start_battle(host):
+	host.start_of_battle = false
 	print(host.name)
 	set_all_units_position(host)
 	print(host.BGF._get_current_unit())

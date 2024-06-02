@@ -1,12 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=24 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
 [ext_resource type="PackedScene" uid="uid://bbtxybi7piyml" path="res://Unit/Sam/sam_inherited.tscn" id="2_mtwt7"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://Unit/Unit.gd" id="3_kjm3n"]
+[ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
 [ext_resource type="Script" path="res://BattleScene/SelectEnemyBG.gd" id="4_kpmye"]
 [ext_resource type="Script" path="res://BattleScene/BattleManager.gd" id="4_p4ijo"]
 [ext_resource type="Script" path="res://BattleScene/EnemySelector.gd" id="5_5hphj"]
+[ext_resource type="Script" path="res://BattleScene/CompleteAction.gd" id="5_qtrjn"]
 [ext_resource type="Script" path="res://UI/Skillpoints.gd" id="6_f81yq"]
 [ext_resource type="Script" path="res://UI/Skillname.gd" id="7_cwe3h"]
 [ext_resource type="Script" path="res://BattleScene/States/TurnDecide/ChooseTurn.gd" id="8_02rmb"]
@@ -33,6 +35,10 @@ tonemap_mode = 2
 script/source = "extends \"../Unit/Unit.gd\"
 
 var skillList = []
+
+@onready var ap = $Sam/AnimationPlayer
+
+signal anim_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,8 +70,10 @@ func play_idle():
 	
 func play_attack():
 	$Sam/AnimationPlayer.play(\"attack\")
-	
 
+func _on_animation_player_animation_finished(anim_name):
+	print(\"anim signal emitted\")
+	anim_finished.emit(anim_name)
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j888f"]
@@ -105,11 +113,15 @@ script = ExtResource("8_02rmb")
 script = ExtResource("3_cretm")
 
 [node name="EnemyTurn" type="Node" parent="BattleManager/States"]
+script = ExtResource("4_dhb6o")
 
 [node name="SelectEnemyBG" type="Node" parent="BattleManager/States"]
 script = ExtResource("4_kpmye")
 
 [node name="SelectAllyBG" type="Node" parent="BattleManager/States"]
+
+[node name="CompleteAction" type="Node" parent="BattleManager/States"]
+script = ExtResource("5_qtrjn")
 
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
@@ -123,6 +135,48 @@ defense = 5
 speed = 10
 
 [node name="Sam" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("2_mtwt7")]
+
+[node name="root" parent="BattleManager/PlayerUnits/Sam/Sam/Node2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Head" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.953717, -0.300705, 0, 0.300705, 0.953717, 0.0625, 3.76442, 0.375)
+
+[node name="Body" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.991445, -0.130526, 0, 0.130526, 0.991445, 0, 0, 0)
+
+[node name="LeftArm" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="2"]
+transform = Transform3D(0.896236, 0.391676, -0.208209, -0.287015, 0.869936, 0.401039, 0.338206, -0.299666, 0.892086, 0, 2.82692, 0)
+
+[node name="forearm2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/LeftArm" index="2"]
+transform = Transform3D(0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, 1.625, -1.625, 0)
+
+[node name="RightArm" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="3"]
+transform = Transform3D(0.98509, 0.012888, -0.171559, -0.0563536, 0.966349, -0.250987, 0.162551, 0.256913, 0.952667, 0.1875, 2.82692, 0)
+
+[node name="forearm22" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/RightArm" index="2"]
+transform = Transform3D(0.946429, -0.181113, 0.267337, -0.161448, 0.451588, 0.877498, -0.279652, -0.873651, 0.398156, -1.3125, -1.76442, 0)
+
+[node name="RightLeg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="4"]
+transform = Transform3D(0.999048, 0.0436194, -8.61473e-09, -0.0429568, 0.983871, -0.173648, -0.00757442, 0.173483, 0.984808, -0.4375, 0.139423, 0)
+
+[node name="lowerleg2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/RightLeg" index="1"]
+transform = Transform3D(0.851651, -0.397131, -0.342021, 0.21101, 0.857158, -0.469846, 0.479756, 0.327975, 0.813798, -0.0598214, -2.33161, -0.677745)
+
+[node name="LeftLeg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0.375, 0.139423, 0)
+
+[node name="upperleg2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/LeftLeg" index="0"]
+transform = Transform3D(0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 0, 0, 1, -0.00267857, -0.221033, -0.261078)
+
+[node name="lowerleg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/LeftLeg" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0.122321, -2.58161, -0.302745)
+
+[node name="Weapon" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="6"]
+transform = Transform3D(1, 0, 0, 0, -0.887011, -0.461749, 0, 0.461749, -0.887011, -1.1875, -0.125, 1.5)
+
+[node name="cape2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9375, 3.75, 0)
 
 [node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53338, 0.936478, -5.54726)
@@ -180,7 +234,11 @@ skeleton = NodePath("")
 [node name="Enemy1" type="Node3D" parent="BattleManager/EnemyUnits"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28731, 0, 7.38815)
 script = ExtResource("3_kjm3n")
-speed = 5
+max_health = 10
+current_health = 10
+attack = 4
+defense = 2
+speed = 7
 enemy_unit = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy1"]
@@ -190,7 +248,11 @@ mesh = SubResource("BoxMesh_dyvs1")
 [node name="Enemy2" type="Node3D" parent="BattleManager/EnemyUnits"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1778, 0, 14.9895)
 script = ExtResource("3_kjm3n")
-speed = 3
+max_health = 13
+current_health = 13
+attack = 3
+defense = 1
+speed = 6
 enemy_unit = true
 startingBG = 1
 
@@ -201,7 +263,11 @@ mesh = SubResource("BoxMesh_dyvs1")
 [node name="Enemy3" type="Node3D" parent="BattleManager/EnemyUnits"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17886, 0, 14.1841)
 script = ExtResource("3_kjm3n")
-speed = 4
+max_health = 10
+current_health = 10
+attack = 4
+defense = 2
+speed = 7
 enemy_unit = true
 startingBG = 2
 
@@ -212,7 +278,11 @@ mesh = SubResource("BoxMesh_dyvs1")
 [node name="Enemy4" type="Node3D" parent="BattleManager/EnemyUnits"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14065, 0, 21.8315)
 script = ExtResource("3_kjm3n")
-speed = 5
+max_health = 5
+current_health = 5
+attack = 2
+defense = 1
+speed = 3
 enemy_unit = true
 startingBG = 3
 
@@ -287,9 +357,11 @@ text = "Skill Name: "
 script = ExtResource("7_cwe3h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.677375, 0.363537, -0.639534, -0.0285338, 0.88169, 0.470966, 0.735084, -0.300772, 0.607608, -0.237465, 2.46933, 2.9757)
+transform = Transform3D(0.0644775, 0.4718, -0.879345, -0.0285338, 0.88169, 0.470966, 0.997511, -0.00527562, 0.0703114, -14.1125, 8.24391, 5.72678)
 current = true
-fov = 78.4452
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
+
+[editable path="BattleManager/PlayerUnits/Sam/Sam"]

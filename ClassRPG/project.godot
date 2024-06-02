@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 
 States="*res://BattleScene/States/States.gd"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 Skill={

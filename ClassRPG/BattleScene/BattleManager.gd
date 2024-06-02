@@ -42,7 +42,8 @@ signal skill_confirmed
 	'chooseturn': $States/ChooseTurn,
 	'enemyturn': $States/EnemyTurn,
 	'selectEBG': $States/SelectEnemyBG,
-	'selectABG': $States/SelectAllyBG
+	'selectABG': $States/SelectAllyBG,
+	'completeAction': $States/CompleteAction
 }
 
 var states_stack = []
@@ -50,6 +51,8 @@ var current_state = null
 var current_turn = null
 
 var start_of_battle = true
+
+var current_action = null
 
 func _ready():
 	states_stack.push_front($States/ChooseTurn)
@@ -114,7 +117,10 @@ func _input(event):
 		confirm_enemy(event)
 	'''
 	
-		
+func end_turn():
+	print("changing turn")
+	_change_state('chooseturn')
+	_change_state(current_turn)
 
 		
 func select_enemy_unit(event):

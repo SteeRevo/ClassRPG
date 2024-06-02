@@ -17,6 +17,7 @@ func handle_input(host, event):
 	if event.is_action_pressed("Attack"):
 		print("Attack")
 		if last_action == "Attack":
+			host.current_action = "Attack"
 			print("confirm attack") #_on_attack_pressed()
 			return 'selectEBG'
 		else:
@@ -24,6 +25,7 @@ func handle_input(host, event):
 	elif event.is_action_pressed("Rotate"):
 		print("Rotate")
 		if last_action == "Rotate":
+			host.current_action = "Rotate"
 			print("confirm rotate")
 		else:
 			last_action = "Rotate"
@@ -31,12 +33,14 @@ func handle_input(host, event):
 	elif event.is_action_pressed("Guard"):
 		print("Guard")
 		if last_action == "Guard":
+			host.current_action = "Guard"
 			print("confirm guard") #_on_attack_pressed()
 		else:
 			last_action = "Guard"
 	elif event.is_action_pressed("Skill"):
 		print("Skill")
 		if last_action == "Skill":
+			host.current_action = "Skill"
 			print("confirm skill") #_on_attack_pressed()
 		else:
 			last_action = "Skill"
