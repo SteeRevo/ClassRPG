@@ -1,6 +1,6 @@
 extends Node3D
 var player_
-var currentBattleGround : set = _set_BG, get = _get_BG
+var currentBattleGround : set = _set_BG, get = get_BG
 
 enum battleGrounds {F, TW, BW, B}
 
@@ -12,7 +12,7 @@ enum battleGrounds {F, TW, BW, B}
 @export var is_dead = false
 @export var enemy_unit = false
 
-@onready var unitTween
+var unitTween
 
 
 var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
@@ -25,7 +25,6 @@ signal rotate_finished
 
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween().tween_property(self, "position", target_pos, 1)
-	
 
 func attack_unit(target_unit):
 	pass
@@ -55,7 +54,7 @@ func _get_turn_order():
 func _set_BG(BG):
 	currentBattleGround = BG
 	
-func _get_BG():
+func get_BG():
 	return currentBattleGround
 
 func calc_turn_order(action_weight):

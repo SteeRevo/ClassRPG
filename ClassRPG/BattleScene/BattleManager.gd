@@ -36,6 +36,9 @@ signal skill_confirmed
 
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
+@onready var mainBattleCamera = $MainBattleCamera
+@onready var battleSliderCamera = $BattleSliderCamera
+@onready var BGFCamera = $Battlegrounds/Battleground/CameraRotater/Camera3D
 
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
@@ -53,14 +56,16 @@ var current_turn = null
 var start_of_battle = true
 
 var current_action = null
+var camera_list = []
 
 func _ready():
+	add_cameras()
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
 	_change_state('chooseturn')
 	_change_state(current_turn)
 	
-	
+
 func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
@@ -118,10 +123,15 @@ func _input(event):
 	'''
 	
 func end_turn():
+	
 	print("changing turn")
 	_change_state('chooseturn')
 	_change_state(current_turn)
 
+func add_cameras():
+	camera_list.append(mainBattleCamera)
+	camera_list.append(battleSliderCamera)
+	camera_list.append(BGFCamera)
 		
 func select_enemy_unit(event):
 	if event.is_action_pressed("Attack") :
@@ -269,7 +279,7 @@ func _on_rotate_pressed():
 	print("Player select ally to rotate")
 	battleState = BATTLESTATE.SELECT_BG
 	await selected
-	rotate_units(current_unit, current_selected_BG._get_current_unit(), current_unit._get_BG(), current_selected_BG)
+	rotate_units(current_unit, current_selected_BG._get_current_unit(), current_unit.get_BG(), current_selected_BG)
 	await current_unit.unitTween.finished
 	_on_unit_turn_finished(30)
 	

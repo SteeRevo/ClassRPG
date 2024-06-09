@@ -27,6 +27,7 @@ func handle_input(host, event):
 		if last_action == "Rotate":
 			host.current_action = "Rotate"
 			print("confirm rotate")
+			return 'selectABG'
 		else:
 			last_action = "Rotate"
 	#	_on_rotate_pressed()
@@ -45,3 +46,6 @@ func handle_input(host, event):
 		else:
 			last_action = "Skill"
 	#	_on_skill_pressed()
+
+func exit(host):
+	last_action = null

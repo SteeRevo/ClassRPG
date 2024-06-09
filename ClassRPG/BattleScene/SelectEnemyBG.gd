@@ -9,6 +9,7 @@ func enter(host):
 
 func handle_input(host, event):
 	if event.is_action_pressed("Cancel"):
+		host.current_action = null
 		return 'previous'
 	
 	elif event.is_action_pressed("Attack"):
@@ -18,7 +19,7 @@ func handle_input(host, event):
 				return "completeAction"
 			else:
 				host.current_selected_enemy = host.EBGR._get_current_unit()
-				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy._get_BG().name)
+				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
 				host.enemySelector.set_BG_position(host.EBGR)
 				print("double tap to select")
 				last_action = "Attack"
@@ -31,7 +32,7 @@ func handle_input(host, event):
 				return "completeAction"
 			else:
 				host.current_selected_enemy = host.EBGB._get_current_unit()
-				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy._get_BG().name)
+				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
 				host.enemySelector.set_BG_position(host.EBGB)
 				print("double tap to select")
 				last_action = "Rotate"
@@ -44,7 +45,7 @@ func handle_input(host, event):
 				return "completeAction"
 			else:
 				host.current_selected_enemy = host.EBGF._get_current_unit()
-				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy._get_BG().name)
+				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
 				host.enemySelector.set_BG_position(host.EBGF)
 				print("double tap to select")
 				last_action = "Guard"
@@ -57,9 +58,13 @@ func handle_input(host, event):
 				return "completeAction"
 			else:
 				host.current_selected_enemy = host.EBGT._get_current_unit()
-				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy._get_BG().name)
+				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
 				host.enemySelector.set_BG_position(host.EBGT)
 				print("double tap to select")
 				last_action = "Skill"
 		else:
 			print("no enemy here")
+			
+
+func exit(host):
+	last_action = null

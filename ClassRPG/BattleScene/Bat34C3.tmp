@@ -43,7 +43,6 @@ signal anim_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	var skill = Skill.new()
 	skill.skillname = \"Wind: Zephyr\"
 	skill.damage = 10
@@ -62,18 +61,6 @@ func _ready():
 	skillList.append(skill)
 	skillList.append(skill2)
 	skillList.append(skill3)
-	
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	unitTween.tween_property(self, \"position\", target_pos, 1)
-	$Sam/AnimationPlayer.play(\"walk\")
-	unitTween.connect(\"finished\", on_tween_finished)
-
-func on_tween_finished():
-	$Sam/AnimationPlayer.stop()
-	anim_finished.emit(\"walk\")
-	
-	
 	
 
 func get_skill_list():
