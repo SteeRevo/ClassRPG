@@ -10,6 +10,8 @@ func enter(host):
 		complete_attack(host)
 	elif host.current_action == "Rotate":
 		complete_rotation(host)
+	elif host.current_action == "Skill":
+		print(host.skill_stack)
 
 func complete_attack(host):
 	host.skillPoints._add_skill_points(1)

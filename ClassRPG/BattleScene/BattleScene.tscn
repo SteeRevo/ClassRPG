@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=26 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://BattleScene/SelectAllyBG.gd" id="7_rayo2"]
 [ext_resource type="Script" path="res://BattleScene/States/TurnDecide/ChooseTurn.gd" id="8_02rmb"]
 [ext_resource type="Script" path="res://BattleScene/CameraRotater.gd" id="8_ot1hr"]
+[ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
+[ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
 panorama = ExtResource("1_ybyfs")
@@ -31,64 +33,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0.784314, 0.717647, 0.694118, 1)
 ambient_light_energy = 2.2
 tonemap_mode = 2
-
-[sub_resource type="GDScript" id="GDScript_4ybu1"]
-script/source = "extends \"../Unit/Unit.gd\"
-
-var skillList = []
-
-@onready var ap = $Sam/AnimationPlayer
-
-signal anim_finished
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-
-	var skill = Skill.new()
-	skill.skillname = \"Wind: Zephyr\"
-	skill.damage = 10
-	skill.cost = 1
-	
-	var skill2 = Skill.new()
-	skill2.skillname = \"Dragon: Rend\"
-	skill.damage = \"30\"
-	skill.cost = 5
-	
-	var skill3 = Skill.new()
-	skill3.skillname = \"Water: Lull\"
-	skill3.damage = 0
-	skill.cost = 3 
-	
-	skillList.append(skill)
-	skillList.append(skill2)
-	skillList.append(skill3)
-	
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	unitTween.tween_property(self, \"position\", target_pos, 1)
-	$Sam/AnimationPlayer.play(\"walk\")
-	unitTween.connect(\"finished\", on_tween_finished)
-
-func on_tween_finished():
-	$Sam/AnimationPlayer.stop()
-	anim_finished.emit(\"walk\")
-	
-	
-	
-
-func get_skill_list():
-	return skillList
-
-func play_idle():
-	$Sam/AnimationPlayer.play(\"idle\")
-	
-func play_attack():
-	$Sam/AnimationPlayer.play(\"attack\")
-
-func _on_animation_player_animation_finished(anim_name):
-	print(\"anim signal emitted\")
-	anim_finished.emit(anim_name)
-"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ae5g0"]
 
@@ -132,11 +76,14 @@ script = ExtResource("7_rayo2")
 [node name="CompleteAction" type="Node" parent="BattleManager/States"]
 script = ExtResource("5_qtrjn")
 
+[node name="SkillInputs" type="Node" parent="BattleManager/States"]
+script = ExtResource("9_icg8r")
+
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.28731, 1.68893, 0)
-script = SubResource("GDScript_4ybu1")
+script = ExtResource("10_rubd4")
 max_health = 10
 current_health = 10
 attack = 5

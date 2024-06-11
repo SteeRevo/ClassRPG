@@ -46,7 +46,8 @@ signal skill_confirmed
 	'enemyturn': $States/EnemyTurn,
 	'selectEBG': $States/SelectEnemyBG,
 	'selectABG': $States/SelectAllyBG,
-	'completeAction': $States/CompleteAction
+	'completeAction': $States/CompleteAction,
+	'skillInputs': $States/SkillInputs
 }
 
 var states_stack = []
@@ -57,6 +58,8 @@ var start_of_battle = true
 
 var current_action = null
 var camera_list = []
+
+var skill_stack = []
 
 func _ready():
 	add_cameras()
@@ -70,7 +73,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['selectEBG', 'selectABG']:
+	elif state_name in ['selectEBG', 'selectABG', 'skillInputs']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]
@@ -96,31 +99,6 @@ func _input(event):
 	var new_state = current_state.handle_input(self, event)
 	if new_state:
 		_change_state(new_state)
-	'''
-	if battleState == BATTLESTATE.PLAYER_TURN_START:
-		if event.is_action_pressed("Attack") :
-			print("Attack")
-			_on_attack_pressed()
-		if event.is_action_pressed("Rotate"):
-			print("Rotate")
-			_on_rotate_pressed()
-		if event.is_action_pressed("Guard"):
-			print("Guard")
-		if event.is_action_pressed("Skill"):
-			print("Skill")
-			_on_skill_pressed()
-	elif battleState == BATTLESTATE.SELECT_BG:
-		select_ally_BG(event)
-		
-	elif battleState == BATTLESTATE.SELECT_ENEMY:
-		select_enemy_unit(event)
-		
-	elif battleState == BATTLESTATE.BG_SELECTED:
-		confirm_BG(event)
-		
-	elif battleState == BATTLESTATE.ENEMY_SELECTED:
-		confirm_enemy(event)
-	'''
 	
 func end_turn():
 	
@@ -133,163 +111,7 @@ func add_cameras():
 	camera_list.append(battleSliderCamera)
 	camera_list.append(BGFCamera)
 		
-func select_enemy_unit(event):
-	if event.is_action_pressed("Attack") :
-			if EBGR._get_current_unit():
-				current_selected_enemy = EBGR._get_current_unit()
-				print("selected " + current_selected_enemy.name + current_selected_enemy._get_BG().name)
-				enemySelector.set_BG_position(EBGR)
-				battleState = BATTLESTATE.ENEMY_SELECTED
-				print("double tap to select")
-			else:
-				print("no enemy here")
-	elif event.is_action_pressed("Rotate"):
-		if EBGB._get_current_unit():
-			current_selected_enemy = EBGB._get_current_unit()
-			print("selected " + current_selected_enemy.name + current_selected_enemy._get_BG().name)
-			enemySelector.set_BG_position(EBGB)
-			battleState = BATTLESTATE.ENEMY_SELECTED
-			print("double tap to select")
-		else:
-			print("no enemy here")
-	elif event.is_action_pressed("Guard"):
-		if EBGF._get_current_unit():
-			current_selected_enemy = EBGF._get_current_unit()
-			print("selected " + current_selected_enemy.name + current_selected_enemy._get_BG().name)
-			enemySelector.set_BG_position(EBGF)
-			battleState = BATTLESTATE.ENEMY_SELECTED
-			print("double tap to select")
-		else:
-			print("no enemy here")
-	elif event.is_action_pressed("Skill"):
-		if EBGT._get_current_unit():
-			current_selected_enemy = EBGT._get_current_unit()
-			print("selected " + current_selected_enemy.name + current_selected_enemy._get_BG().name)
-			enemySelector.set_BG_position(EBGT)
-			battleState = BATTLESTATE.ENEMY_SELECTED
-			print("double tap to select")
-		else:
-			print("no enemy here")
-			
-func select_ally_BG(event):
-	if event.is_action_pressed("Attack") and BGF != current_unit._get_BG():
-		current_selected_BG = BGF
-		#print("selected " + current_selected_ally.name + current_selected_ally._get_BG().name)
-		enemySelector.set_BG_position(BGF)
-		battleState = BATTLESTATE.BG_SELECTED
-		print("double tap to select")
 
-	elif event.is_action_pressed("Rotate") and BGB != current_unit._get_BG():
-		current_selected_BG = BGB
-		#print("selected " + current_selected_ally.name + current_selected_ally._get_BG().name)
-		enemySelector.set_BG_position(BGB)
-		battleState = BATTLESTATE.BG_SELECTED
-		print("double tap to select")
-
-	elif event.is_action_pressed("Guard") and BGR != current_unit._get_BG():
-		current_selected_BG = BGR
-		#print("selected " + current_selected_ally.name + current_selected_ally._get_BG().name)
-		enemySelector.set_BG_position(BGR)
-		battleState = BATTLESTATE.BG_SELECTED
-		print("double tap to select")
-		
-	elif event.is_action_pressed("Skill") and BGT != current_unit._get_BG():
-		current_selected_BG = BGT
-		#print("selected " + current_selected_ally.name + current_selected_ally._get_BG().name)
-		enemySelector.set_BG_position(BGT)
-		battleState = BATTLESTATE.BG_SELECTED
-		print("double tap to select")
-			
-func confirm_enemy(event):
-	#if double clicked selects enemy
-	if event.is_action_pressed("Attack") && current_selected_enemy._get_BG() == EBGR:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Guard") && current_selected_enemy._get_BG() == EBGF:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Rotate") && current_selected_enemy._get_BG() == EBGB:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Skill") && current_selected_enemy._get_BG() == EBGT:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Attack") or event.is_action_pressed("Rotate") or event.is_action_pressed("Skill") or event.is_action_pressed("Guard"):
-		battleState = BATTLESTATE.SELECT_ENEMY
-		select_enemy_unit(event)
-
-func confirm_BG(event):
-	#if double clicked selects enemy
-	if event.is_action_pressed("Attack") && current_selected_BG == BGF:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Guard") && current_selected_BG == BGR:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Rotate") && current_selected_BG == BGB:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Skill") && current_selected_BG == BGT:
-		emit_signal("selected")
-		
-	elif event.is_action_pressed("Attack") or event.is_action_pressed("Rotate") or event.is_action_pressed("Skill") or event.is_action_pressed("Guard"):
-		battleState = BATTLESTATE.SELECT_BG
-		select_ally_BG(event)
-		
-func rotate_units(unit1, unit2, BG1, BG2):
-	print("rotating")
-	print(unit1.name)
-	print(unit2.name)
-	print(BG1.name)
-	print(BG2.name)
-	unit1.move_towards(BG2.global_position)
-	set_BG_unit_position(unit1, BG2)
-	if(unit2 != null):
-		unit2.move_towards(BG1.global_position)
-		print("moved")
-	set_BG_unit_position(unit2, BG1)
-	
-func start_enemy_turn():
-	print("============Enemy turn=============")
-	enemy_units.erase(current_unit)
-	insert_sort(enemy_units, current_unit, 30)
-	battleState = BATTLESTATE.CHOOSE_TURN
-	#choose_turn()
-
-func set_BG_unit_position(unit, bg):
-	if unit != null:
-		unit._set_BG(bg)
-	bg._set_current_unit(unit)
-	
-func _on_attack_pressed():
-	print("Player selects unit to attack")
-	for unit in enemy_units:
-		print(unit.name)
-	battleState = BATTLESTATE.SELECT_ENEMY
-	await selected
-	print("signal received")
-	battleState = BATTLESTATE.ENEMY_TURN
-	skillPoints._add_skill_points(1)
-	print("do attack")
-	if current_unit.name == "Sam":
-		current_unit.play_attack()
-	_on_unit_turn_finished(40)
-	
-func _on_rotate_pressed():
-	print("Player select ally to rotate")
-	battleState = BATTLESTATE.SELECT_BG
-	await selected
-	rotate_units(current_unit, current_selected_BG._get_current_unit(), current_unit.get_BG(), current_selected_BG)
-	await current_unit.unitTween.finished
-	_on_unit_turn_finished(30)
-	
-func _on_skill_pressed():
-	var current_skills = current_unit.get_skill_list()
-	for skills in current_skills:
-		print(skills.skillname)
-	var selected_skill = current_skills[0]
-	update_skill_name(selected_skill)
-	await skill_confirmed
 
 func update_skill_name(skill):
 	skillNameDisplay.set_skill_name(skill.skillname) 

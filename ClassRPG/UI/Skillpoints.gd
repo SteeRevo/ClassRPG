@@ -18,7 +18,7 @@ func _subtract_skill_points(points):
 	if skillPoints < 0:
 		skillPoints = 0
 		
-func _get_skill_points():
+func get_skill_points():
 	return skillPoints;
 	
 func _update_text():

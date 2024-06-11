@@ -43,6 +43,7 @@ func handle_input(host, event):
 		if last_action == "Skill":
 			host.current_action = "Skill"
 			print("confirm skill") #_on_attack_pressed()
+			return 'skillInputs'
 		else:
 			last_action = "Skill"
 	#	_on_skill_pressed()
