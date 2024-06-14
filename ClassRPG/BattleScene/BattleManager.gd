@@ -53,6 +53,7 @@ signal skill_confirmed
 var states_stack = []
 var current_state = null
 var current_turn = null
+var active_camera
 
 var start_of_battle = true
 
@@ -110,6 +111,7 @@ func add_cameras():
 	camera_list.append(mainBattleCamera)
 	camera_list.append(battleSliderCamera)
 	camera_list.append(BGFCamera)
+	active_camera = mainBattleCamera
 		
 
 
@@ -121,3 +123,4 @@ func _on_unit_turn_finished(action_weight):
 	insert_sort(player_units, current_unit, action_weight)
 	battleState = BATTLESTATE.CHOOSE_TURN
 	#choose_turn()
+	

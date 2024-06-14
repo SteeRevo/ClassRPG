@@ -14,6 +14,7 @@ func enter(host):
 		print(host.skill_stack)
 
 func complete_attack(host):
+	set_active_camera(host, host.BGFCamera)
 	host.skillPoints._add_skill_points(1)
 	print("do attack")
 	if host.current_unit.name == "Sam":
@@ -37,6 +38,7 @@ func _on_tween_finished():
 	_on_unit_turn_finished(host_ref, 20)
 	
 func exit(host):
+	set_active_camera(host, host.mainBattleCamera)
 	host.current_action = null
 	return
 
@@ -53,3 +55,9 @@ func set_BG_unit_position(unit, bg):
 	if unit != null:
 		unit._set_BG(bg)
 	bg._set_current_unit(unit)
+	
+func set_active_camera(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera
+	
