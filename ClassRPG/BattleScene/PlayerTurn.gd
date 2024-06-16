@@ -12,6 +12,7 @@ func enter(host):
 		print(unit.name + ": current turn_order = " + str(unit._get_turn_order()))
 	print("Current Unit is: " + host.current_unit.name)
 	print("Press D to attack, A to Guard, W for Skill, S for Rotate.")
+	set_active_camera(host, host.mainBattleCamera)
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Attack"):

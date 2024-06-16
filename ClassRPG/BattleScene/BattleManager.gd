@@ -37,8 +37,6 @@ signal skill_confirmed
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
 @onready var mainBattleCamera = $MainBattleCamera
-@onready var battleSliderCamera = $BattleSliderCamera
-@onready var BGFCamera = $Battlegrounds/Battleground/CameraRotater/Camera3D
 
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
@@ -109,8 +107,6 @@ func end_turn():
 
 func add_cameras():
 	camera_list.append(mainBattleCamera)
-	camera_list.append(battleSliderCamera)
-	camera_list.append(BGFCamera)
 	active_camera = mainBattleCamera
 		
 
@@ -123,4 +119,4 @@ func _on_unit_turn_finished(action_weight):
 	insert_sort(player_units, current_unit, action_weight)
 	battleState = BATTLESTATE.CHOOSE_TURN
 	#choose_turn()
-	
+

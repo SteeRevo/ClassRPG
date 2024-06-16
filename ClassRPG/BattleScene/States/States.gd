@@ -18,3 +18,9 @@ func update(host, delta):
 
 func _on_animation_finished(anim_name):
 	return
+
+func set_active_camera(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera
+	host.active_camera.start_anim()
