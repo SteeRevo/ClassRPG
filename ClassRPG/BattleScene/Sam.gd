@@ -1,6 +1,7 @@
 extends "../Unit/Unit.gd"
 
 var skillList = []
+var active_skills = []
 
 @onready var ap = $Sam/AnimationPlayer
 
@@ -11,18 +12,21 @@ func _ready():
 
 	var skill = Skill.new()
 	skill.skillname = "Wind: Zephyr"
-	skill.damage = 10
+	skill.damage = 5
 	skill.cost = 1
+	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
 	
 	var skill2 = Skill.new()
 	skill2.skillname = "Dragon: Rend"
-	skill.damage = "30"
+	skill.damage = "10"
 	skill.cost = 5
+	skill.inputs = PackedStringArray(["Left", "Left", "Right"])
 	
 	var skill3 = Skill.new()
 	skill3.skillname = "Water: Lull"
 	skill3.damage = 0
 	skill.cost = 3 
+	skill.inputs = PackedStringArray(["Down", "Down", "Up"])
 	
 	skillList.append(skill)
 	skillList.append(skill2)
@@ -49,6 +53,13 @@ func play_idle():
 	
 func play_attack():
 	$Sam/AnimationPlayer.play("attack")
+	
+func set_skill_active(name):
+	for skill in skillList:
+		if skill.name == name:
+			skill.is_active = true
+			active_skills.push_back(skill)
+			return
 
 func _on_animation_player_animation_finished(anim_name):
 	print("anim signal emitted")

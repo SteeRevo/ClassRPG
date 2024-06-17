@@ -1,6 +1,51 @@
 extends States
 
 var host_ref
+'''
+def find_and_remove_largest_subarray_from_single_array(arr, subarrays):
+	largest_subarray = []
+	largest_length = 0
+	subarray_to_remove = []
+
+	# Iterate through each subarray
+	for subarray in subarrays:
+		n = len(arr)
+		m = len(subarray)
+
+		# Iterate over all possible lengths of subarrays
+		for length in range(1, m + 1):  # from length 1 to length of subarray
+			# Check all subarrays of current length
+			for i in range(n - length + 1):
+				if arr[i:i+length] == subarray and length > largest_length:
+					largest_subarray = subarray
+					largest_length = length
+					subarray_to_remove = arr[i:i+length]
+
+	if largest_length > 0:
+		# Remove largest subarray from the original array
+		arr[:] = [x for x in arr if x not in subarray_to_remove]
+		return True
+	else:
+		return False
+
+# Example usage
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+subarrays = [
+	[3, 4, 5],
+	[6, 7, 8],
+	[8, 9, 10],
+]
+
+# Find and remove the largest matching subarray
+result = find_and_remove_largest_subarray_from_single_array(arr, subarrays)
+
+if result:
+	print("Modified array:")
+	print(arr)
+else:
+	print("No matching subarray found.")
+'''
+
 
 func enter(host):
 	host_ref = host
@@ -12,6 +57,11 @@ func enter(host):
 		complete_rotation(host)
 	elif host.current_action == "Skill":
 		print(host.skill_stack)
+		var counter = 0
+		while counter < len(host.skill_stack) - 2:
+			for i in range(2, len(host.skill_stack)):
+				var sub_skill = host.skill_stack.slice(counter, i)
+				
 
 func complete_attack(host):
 	host.skillPoints._add_skill_points(1)

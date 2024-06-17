@@ -6,6 +6,7 @@ func enter(host):
 	print("=====player turn=========")
 	if host.current_unit.name == "Sam":
 		host.current_unit.play_idle()
+		host.current_unit.set_skill_active("Wind: Zephyr")
 	for unit in host.player_units:
 		print(unit.name + ": current turn_order = " + str(unit._get_turn_order()))
 	for unit in host.enemy_units:
