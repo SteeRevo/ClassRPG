@@ -1,51 +1,6 @@
 extends States
 
 var host_ref
-'''
-def find_and_remove_largest_subarray_from_single_array(arr, subarrays):
-	largest_subarray = []
-	largest_length = 0
-	subarray_to_remove = []
-
-	# Iterate through each subarray
-	for subarray in subarrays:
-		n = len(arr)
-		m = len(subarray)
-
-		# Iterate over all possible lengths of subarrays
-		for length in range(1, m + 1):  # from length 1 to length of subarray
-			# Check all subarrays of current length
-			for i in range(n - length + 1):
-				if arr[i:i+length] == subarray and length > largest_length:
-					largest_subarray = subarray
-					largest_length = length
-					subarray_to_remove = arr[i:i+length]
-
-	if largest_length > 0:
-		# Remove largest subarray from the original array
-		arr[:] = [x for x in arr if x not in subarray_to_remove]
-		return True
-	else:
-		return False
-
-# Example usage
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-subarrays = [
-	[3, 4, 5],
-	[6, 7, 8],
-	[8, 9, 10],
-]
-
-# Find and remove the largest matching subarray
-result = find_and_remove_largest_subarray_from_single_array(arr, subarrays)
-
-if result:
-	print("Modified array:")
-	print(arr)
-else:
-	print("No matching subarray found.")
-'''
-
 
 func enter(host):
 	host_ref = host
@@ -58,9 +13,7 @@ func enter(host):
 	elif host.current_action == "Skill":
 		print(host.skill_stack)
 		var counter = 0
-		while counter < len(host.skill_stack) - 2:
-			for i in range(2, len(host.skill_stack)):
-				var sub_skill = host.skill_stack.slice(counter, i)
+		check_skill_inputs(host)
 				
 
 func complete_attack(host):
@@ -105,5 +58,31 @@ func set_BG_unit_position(unit, bg):
 		unit._set_BG(bg)
 	bg._set_current_unit(unit)
 	
-
+func check_skill_inputs(host):
+	var input_arr = []
+	var possible_skills = []
+	var final_skill = []
+	for input in host.skill_stack:
+		input_arr.push_back(input)
+		var not_found = 0
+		for skill in host.current_unit.skillList:
+			#print(skill.skillname)
+			#print(skill.inputs)
+			if skill.compare_inputs(input_arr):
+				possible_skills.push_back(skill)
+				
+			else:
+				not_found+=1
+				if not_found == len(host.current_unit.skillList):
+					#print(possible_skills)
+					if len(possible_skills) > 1:
+						final_skill.push_back(possible_skills[-1].skillname)
+					possible_skills = []
+					#print(final_skill[0].skillname)
+					input_arr = []
+					break
+					
+	final_skill.push_back(input_arr)
+	print(final_skill)
 	
+

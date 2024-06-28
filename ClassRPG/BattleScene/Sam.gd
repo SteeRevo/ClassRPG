@@ -18,19 +18,26 @@ func _ready():
 	
 	var skill2 = Skill.new()
 	skill2.skillname = "Dragon: Rend"
-	skill.damage = "10"
-	skill.cost = 5
-	skill.inputs = PackedStringArray(["Left", "Left", "Right"])
+	skill2.damage = "10"
+	skill2.cost = 5
+	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
 	
 	var skill3 = Skill.new()
 	skill3.skillname = "Water: Lull"
 	skill3.damage = 0
-	skill.cost = 3 
-	skill.inputs = PackedStringArray(["Down", "Down", "Up"])
+	skill3.cost = 3 
+	skill3.inputs = PackedStringArray(["Down", "Down", "Up"])
+	
+	var skill4 = Skill.new()
+	skill4.skillname = "Dragon: Sunder"
+	skill4.damage = "10"
+	skill4.cost = 5
+	skill4.inputs = PackedStringArray(["Left", "Left", "Right", "Right"])
 	
 	skillList.append(skill)
 	skillList.append(skill2)
 	skillList.append(skill3)
+	skillList.append(skill4)
 	
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween()
