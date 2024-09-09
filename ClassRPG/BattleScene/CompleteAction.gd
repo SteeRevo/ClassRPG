@@ -64,25 +64,37 @@ func check_skill_inputs(host):
 	var final_skill = []
 	for input in host.skill_stack:
 		input_arr.push_back(input)
-		var not_found = 0
+		
+		print(input_arr)
 		for skill in host.current_unit.skillList:
+			var not_found = 0
 			#print(skill.skillname)
 			#print(skill.inputs)
-			if skill.compare_inputs(input_arr):
+			if skill.compare_inputs(input_arr) and !(possible_skills.has(skill)):
+				print(!(possible_skills.has(skill)))
+				print("adding " + skill.skillname)
 				possible_skills.push_back(skill)
-				
+				print(possible_skills)
+				not_found = 0
 			else:
-				not_found+=1
+				print("skill not found")
+				not_found += 1
 				if not_found == len(host.current_unit.skillList):
-					#print(possible_skills)
-					if len(possible_skills) > 1:
-						final_skill.push_back(possible_skills[-1].skillname)
-					possible_skills = []
-					#print(final_skill[0].skillname)
+					final_skill = final_skill + input_arr
+				#print(possible_skills)
+				elif len(possible_skills) >= 1 and not_found > 0:
+					var remove = len(possible_skills[-1].inputs)
+					for i in range(remove):
+						input_arr.pop_back()
+					print(input_arr)
+					if len(input_arr) > 0:
+						final_skill = final_skill + input_arr
+					final_skill.push_back(possible_skills[-1].skillname)
 					input_arr = []
-					break
+					possible_skills = []
+				continue
 					
-	final_skill.push_back(input_arr)
+	print(possible_skills)
+	final_skill = final_skill + input_arr
 	print(final_skill)
-	
 

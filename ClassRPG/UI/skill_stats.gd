@@ -17,22 +17,19 @@ func _init(name = "skill", _cost = 0, _damage = 0, _inputs = []):
 	
 func compare_inputs(arr):
 	var i = 0; var j = 0;
-	var l1 = len(inputs)
-	var l2 = len(arr)
+	var l1 = len(arr)
+	var l2 = len(inputs)
 	
 	if l1 < l2:
 		return false
-		
-	var startpoint
+
 	while i < l1 and j < l2:
-		if inputs[i] == arr[j]:
-			if j == 0:
-				return true
+		if arr[i] == inputs[j]:
 			i+=1
 			j+=1
 			
 			if j == l2:
-				return startpoint
+				return true
 	
 		else:
 			i = i - j + 1
