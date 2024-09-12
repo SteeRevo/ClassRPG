@@ -32,7 +32,25 @@ func compare_inputs(arr):
 				return true
 	
 		else:
-			i = i - j + 1
-			j = 0
+			return false
 	return false
 	
+func substring_exists(arr):
+	var i = 0; var j = 0;
+	var l1 = len(inputs)
+	var l2 = len(arr)
+	
+	if l1 < l2:
+		return false
+
+	while i < l1 and j < l2:
+		if inputs[i] == arr[j]:
+			i+=1
+			j+=1
+			
+			if j == l2:
+				return true
+	
+		else:
+			return false
+	return false

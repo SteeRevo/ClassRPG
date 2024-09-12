@@ -62,39 +62,58 @@ func check_skill_inputs(host):
 	var input_arr = []
 	var possible_skills = []
 	var final_skill = []
+	var sub_found = false
 	for input in host.skill_stack:
 		input_arr.push_back(input)
-		
 		print(input_arr)
+		var none_found = 0
 		for skill in host.current_unit.skillList:
-			var not_found = 0
-			#print(skill.skillname)
+			print(skill.skillname)
 			#print(skill.inputs)
-			if skill.compare_inputs(input_arr) and !(possible_skills.has(skill)):
-				print(!(possible_skills.has(skill)))
-				print("adding " + skill.skillname)
-				possible_skills.push_back(skill)
-				print(possible_skills)
-				not_found = 0
+			if skill.substring_exists(input_arr):
+				print("sub found")
+				sub_found = true
+				if skill.compare_inputs(input_arr) and !(possible_skills.has(skill)):
+					print(!(possible_skills.has(skill)))
+					print("adding " + skill.skillname)
+					possible_skills.push_back(skill)
+					#print(possible_skills)
+				else:
+					print("skill not found")
+					#if not_found == len(host.current_unit.skillList):
+					#	final_skill = final_skill + input_arr
+					#print(possible_skills)
 			else:
-				print("skill not found")
-				not_found += 1
-				if not_found == len(host.current_unit.skillList):
-					final_skill = final_skill + input_arr
-				#print(possible_skills)
-				elif len(possible_skills) >= 1 and not_found > 0:
-					var remove = len(possible_skills[-1].inputs)
-					for i in range(remove):
-						input_arr.pop_back()
-					print(input_arr)
-					if len(input_arr) > 0:
-						final_skill = final_skill + input_arr
-					final_skill.push_back(possible_skills[-1].skillname)
-					input_arr = []
-					possible_skills = []
-				continue
-					
-	print(possible_skills)
-	final_skill = final_skill + input_arr
+				print("sub not found")
+				none_found += 1
+		print("none found:" + str(none_found))
+		if none_found == len(host.current_unit.skillList):
+			print("no matches")
+			print(input_arr)
+			final_skill += input_arr
+			input_arr = []
+			none_found = 0
+		elif len(possible_skills) >= 1 and none_found <= len(host.current_unit.skillList) - 1:
+			print("reseting skills")
+			var remove = len(possible_skills[-1].inputs)
+			for i in range(remove):
+				input_arr.pop_front()
+			#print(input_arr)
+			final_skill.push_back(possible_skills[-1].skillname)
+			possible_skills = []
+			sub_found = false
+			
+		
+	"""for skill in host.current_unit.skillList:
+		var skill_found = false
+		for i in range(len(host.skill_stack)):
+			input_arr.push_back(host.skill_stack[i])
+			if skill.substring_exists(input_arr):
+				if skill.compare_inputs(input_arr) and !(possible_skills.has(skill)):
+					final_skill.push_back(skill)
+			else:
+				break"""
+	if len(input_arr) > 0:
+		final_skill = final_skill + input_arr
 	print(final_skill)
 
