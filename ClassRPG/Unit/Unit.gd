@@ -13,6 +13,7 @@ enum battleGrounds {F, TW, BW, B}
 @export var enemy_unit = false
 
 var unitTween
+var skill_tree
 
 
 var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
@@ -56,6 +57,8 @@ func _set_BG(BG):
 	
 func get_BG():
 	return currentBattleGround
+	
+
 
 func calc_turn_order(action_weight):
 	_set_turn_order(action_weight - speed)
