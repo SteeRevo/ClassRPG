@@ -7,13 +7,15 @@ class_name Skill
 @export var damage: int
 @export var inputs: PackedStringArray
 @export var is_active: bool
+@export var active_position: bool
 
-func _init(name = "skill", _cost = 0, _damage = 0, _inputs = []):
+func _init(name = "skill", _cost = 0, _damage = 0, _inputs = [], active_position = ''):
 	skillname = name;
 	cost = _cost
 	damage = _damage
 	inputs = _inputs
 	is_active = false
+	active_position = active_position
 	
 func compare_inputs(arr):
 	var i = 0; var j = 0;

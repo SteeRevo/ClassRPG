@@ -62,11 +62,12 @@ func check_skill_inputs(host):
 	var input_arr = []
 	var possible_skills = []
 	var final_skill = []
+	
 	for input in host.skill_stack:
 		input_arr.push_back(input)
 		print(input_arr)
 		var sub_found = 0
-		for skill in host.current_unit.skillList:
+		'''for skill in host.current_unit.skillList:
 			print(skill.skillname)
 			#print(skill.inputs)
 			if skill.substring_exists(input_arr):
@@ -79,9 +80,6 @@ func check_skill_inputs(host):
 					#print(possible_skills)
 				else:
 					print("skill not found")
-					#if not_found == len(host.current_unit.skillList):
-					#	final_skill = final_skill + input_arr
-					#print(possible_skills)
 			else:
 				print("sub not found")
 		print("sub found:" + str(sub_found))
@@ -90,7 +88,6 @@ func check_skill_inputs(host):
 			var remove = len(possible_skills[-1].inputs)
 			for i in range(remove):
 				input_arr.pop_front()
-			#print(input_arr)
 			final_skill.push_back(possible_skills[-1].skillname)
 			possible_skills = []
 		elif sub_found == 0:
@@ -98,7 +95,8 @@ func check_skill_inputs(host):
 			print(input_arr)
 			final_skill += input_arr
 			input_arr = []
-			sub_found = 0
+			sub_found = 0'''
+		print(host.current_unit.check_skill(input_arr, host.current_unit.skill_tree))
 		
 			
 	if len(input_arr) > 0:

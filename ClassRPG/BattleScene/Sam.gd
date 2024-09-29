@@ -39,6 +39,7 @@ func _ready():
 	skillList.append(skill3)
 	skillList.append(skill4)
 	
+#skill tree fixed later
 	skill_tree = TreeSkill.new()
 	skill_tree.move_name = "Root"
 	
@@ -60,16 +61,10 @@ func _ready():
 	skill_tree.down.down.up = TreeSkill.new()
 	skill_tree.down.down.up.move_name = "Rooster: Flame"
 	
-	'''var skill_tree_2 = TreeSkill.new()
-	skill_tree_2.left = TreeSkill.new()
-	skill_tree_2.left.move_name = "Hello"
-	skill_tree_2.right = TreeSkill.new()
-	skill_tree_2.right.move_name = "World"
-	skill_tree_2.right.left = TreeSkill.new()
-	skill_tree_2.right.left.move_name = "There"'''
+	var arr = ["Left", "Left", "Right", "Right", "Down"]
+	print(check_skill(arr, skill_tree))
+
 	
-	var arr = ["Left", "Left", "Left", "Right"]
-	check_skill(arr, skill_tree)
 	
 	
 	
@@ -88,23 +83,22 @@ func get_skill_list():
 	return skillList
 	
 func check_skill(skill_arr, root):
-	var input = skill_arr[0]
-	skill_arr.pop_front()
 	if root == null:
 		print("No move found")
 		return
 	elif len(skill_arr) == 0:
-		print(root.move_name)
-		return
+		return root.move_name
+	
+	var input = skill_arr[0]
 		
-	if root.left != null:
-		check_skill(skill_arr, root.left)
-	if root.right != null:
-		check_skill(skill_arr, root.right)
-	if root.down != null:
-		check_skill(skill_arr, root.down)
-	if root.up != null:
-		check_skill(skill_arr, root.up) 
+	if root.left != null and input == "Left":
+		return check_skill(skill_arr.slice(1), root.left)
+	if root.right != null and input == "Right":
+		return check_skill(skill_arr.slice(1), root.right)
+	if root.down != null and input == "Down":
+		return check_skill(skill_arr.slice(1), root.down)
+	if root.up != null and input == "Up":
+		return check_skill(skill_arr.slice(1), root.up)
 	
 
 func play_idle():
