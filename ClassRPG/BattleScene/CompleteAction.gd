@@ -7,13 +7,12 @@ func enter(host):
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
-		complete_attack(host)
+		check_skill_inputs(host)
 	elif host.current_action == "Rotate":
 		complete_rotation(host)
-	elif host.current_action == "Skill":
-		print(host.skill_stack)
-		var counter = 0
-		check_skill_inputs(host)
+	elif host.current_action == "Item":
+		pass
+		
 				
 
 func complete_attack(host):
@@ -62,11 +61,11 @@ func check_skill_inputs(host):
 	var input_arr = []
 	var possible_skills = []
 	var final_skill = []
-	
+	var latest_skill
 	for input in host.skill_stack:
 		input_arr.push_back(input)
 		print(input_arr)
-		var sub_found = 0
+		
 		'''for skill in host.current_unit.skillList:
 			print(skill.skillname)
 			#print(skill.inputs)
@@ -96,10 +95,37 @@ func check_skill_inputs(host):
 			final_skill += input_arr
 			input_arr = []
 			sub_found = 0'''
-		print(host.current_unit.check_skill(input_arr, host.current_unit.skill_tree))
+		var skill_name
+		if len(input_arr) > 3:
+			var sub_arr = input_arr
+			while len(sub_arr) >= 3:
+				skill_name = host.current_unit.check_skill(sub_arr, host.current_unit.skill_tree)
+				if skill_name != null or skill_name != "":
+					break
+				sub_arr = sub_arr.slice(1)
+		else:
+			skill_name = host.current_unit.check_skill(input_arr, host.current_unit.skill_tree)
+		print(skill_name)
 		
-			
-	if len(input_arr) > 0:
-		final_skill = final_skill + input_arr
-	print(final_skill)
+		if skill_name != null and skill_name != "":
+			latest_skill = skill_name
+			print("latest_skill set")
+		
+		if len(input_arr) == len(host.skill_stack) and latest_skill != null:
+			var skill_inputs = host.current_unit.get_skill(latest_skill).inputs
+			var remove = len(skill_inputs)
+			for i in range(remove):
+				input_arr.pop_back()
+			input_arr.append(skill_name)
+		elif (skill_name == null or skill_name == "") and latest_skill != null:
+			var skill_inputs = host.current_unit.get_skill(latest_skill).inputs
+			input_arr.insert(len(input_arr) - 1, latest_skill)
+			print(input_arr)
+			var remove = len(skill_inputs)
+			for i in range(remove):
+				input_arr.remove_at(len(input_arr) - 3)
+			print(input_arr)
+			latest_skill = null
+		
+	print(input_arr)
 

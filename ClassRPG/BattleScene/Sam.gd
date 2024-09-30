@@ -51,7 +51,7 @@ func _ready():
 	
 	skill_tree.left.left = TreeSkill.new()
 	skill_tree.left.left.right = TreeSkill.new()
-	skill_tree.left.left.right.move_name = "Snake: Whip"
+	#skill_tree.left.left.right.move_name = "Snake: Whip"
 	skill_tree.left.left.right.right = TreeSkill.new()
 	skill_tree.left.left.right.right.move_name = "Ox: Crush" 
 	
@@ -61,9 +61,13 @@ func _ready():
 	skill_tree.down.down.up = TreeSkill.new()
 	skill_tree.down.down.up.move_name = "Rooster: Flame"
 	
-	var arr = ["Left", "Left", "Right", "Right", "Down"]
+	set_skill_active("Rooster: Flame")
+	set_skill_active("Rabbit: Bounce")
+	#set_skill_active("Snake: Whip")
+	set_skill_active("Ox: Crush")
+	
+	var arr = ["Left", "Left", "Right", "Right"]
 	print(check_skill(arr, skill_tree))
-
 	
 	
 	
@@ -109,10 +113,16 @@ func play_attack():
 	
 func set_skill_active(name):
 	for skill in skillList:
-		if skill.name == name:
+		if skill.skillname == name:
 			skill.is_active = true
 			active_skills.push_back(skill)
 			return
+
+func get_skill(skill_name):
+	for skill in active_skills:
+		if skill.skillname == skill_name:
+			return skill
+	return "No move found"
 
 func _on_animation_player_animation_finished(anim_name):
 	print("anim signal emitted")

@@ -35,7 +35,7 @@ func handle_input(host, event):
 			host.skill_stack.append("Left")
 			print(host.skill_stack)
 			
-		elif event.is_action_pressed("Skill"):
+		elif event.is_action_pressed("Item"):
 			host.skill_stack.append("Up")
 			print(host.skill_stack)
 		

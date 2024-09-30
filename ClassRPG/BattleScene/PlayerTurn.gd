@@ -12,7 +12,7 @@ func enter(host):
 	for unit in host.enemy_units:
 		print(unit.name + ": current turn_order = " + str(unit._get_turn_order()))
 	print("Current Unit is: " + host.current_unit.name)
-	print("Press D to attack, A to Guard, W for Skill, S for Rotate.")
+	print("Press D to attack, A to Guard, W for Item, S for Rotate.")
 	set_active_camera(host, host.mainBattleCamera)
 	
 func handle_input(host, event):
@@ -21,7 +21,7 @@ func handle_input(host, event):
 		if last_action == "Attack":
 			host.current_action = "Attack"
 			print("confirm attack") #_on_attack_pressed()
-			return 'selectEBG'
+			return 'skillInputs'
 		else:
 			last_action = "Attack"
 	elif event.is_action_pressed("Rotate"):
@@ -40,14 +40,13 @@ func handle_input(host, event):
 			print("confirm guard") #_on_attack_pressed()
 		else:
 			last_action = "Guard"
-	elif event.is_action_pressed("Skill"):
-		print("Skill")
-		if last_action == "Skill":
-			host.current_action = "Skill"
-			print("confirm skill") #_on_attack_pressed()
-			return 'skillInputs'
+	elif event.is_action_pressed("Item"):
+		print("Item")
+		if last_action == "Item":
+			host.current_action = "Item"
+			print("confirm Item") #_on_attack_pressed()
 		else:
-			last_action = "Skill"
+			last_action = "Item"
 	#	_on_skill_pressed()
 
 func exit(host):
