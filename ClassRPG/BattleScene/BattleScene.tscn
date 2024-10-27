@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
-[ext_resource type="PackedScene" uid="uid://bbtxybi7piyml" path="res://Unit/Sam/sam_inherited.tscn" id="2_mtwt7"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://Unit/Unit.gd" id="3_kjm3n"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" path="res://BattleScene/States/TurnDecide/ChooseTurn.gd" id="8_02rmb"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
+[ext_resource type="PackedScene" uid="uid://0y6oqe54mv1b" path="res://Sam2.glb" id="11_oesrx"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="18_bhi3k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
@@ -191,46 +191,14 @@ attack = 5
 defense = 5
 speed = 10
 
-[node name="Sam" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("2_mtwt7")]
+[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("11_oesrx")]
+transform = Transform3D(0.827607, 0, 0, 0, 0.827607, 0, 0, 0, 0.827607, 0.23997, -6.91514, -0.344543)
 
-[node name="root" parent="BattleManager/PlayerUnits/Sam/Sam/Node2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="metarig" parent="BattleManager/PlayerUnits/Sam/Sam2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38745, 2.58223, -0.530669)
 
-[node name="Head" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.953717, -0.300705, 0, 0.300705, 0.953717, 0.0625, 3.76442, 0.375)
-
-[node name="Body" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.991445, -0.130526, 0, 0.130526, 0.991445, 0, 0, 0)
-
-[node name="LeftArm" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="2"]
-transform = Transform3D(0.896236, 0.391676, -0.208209, -0.287015, 0.869936, 0.401039, 0.338206, -0.299666, 0.892086, 0, 2.82692, 0)
-
-[node name="forearm2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/LeftArm" index="2"]
-transform = Transform3D(0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, 1.625, -1.625, 0)
-
-[node name="RightArm" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="3"]
-transform = Transform3D(0.98509, 0.012888, -0.171559, -0.0563536, 0.966349, -0.250988, 0.162551, 0.256913, 0.952667, 0.1875, 2.82692, 0)
-
-[node name="forearm22" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/RightArm" index="2"]
-transform = Transform3D(0.946429, -0.181113, 0.267337, -0.161448, 0.451588, 0.877498, -0.279652, -0.873651, 0.398156, -1.3125, -1.76442, 0)
-
-[node name="RightLeg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="4"]
-transform = Transform3D(0.999048, 0.0436195, -8.61474e-09, -0.0429567, 0.983871, -0.173648, -0.00757442, 0.173483, 0.984808, -0.4375, 0.139423, 0)
-
-[node name="lowerleg2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/RightLeg" index="1"]
-transform = Transform3D(0.851651, -0.397131, -0.342021, 0.21101, 0.857158, -0.469846, 0.479756, 0.327975, 0.813798, -0.0598214, -2.33161, -0.677745)
-
-[node name="LeftLeg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0.375, 0.139423, 0)
-
-[node name="lowerleg" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root/LeftLeg" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0.122321, -2.58161, -0.302745)
-
-[node name="Weapon" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="6"]
-transform = Transform3D(1, 0, 0, 0, -0.887011, -0.461749, 0, 0.461749, -0.887011, -1.1875, -0.125, 1.5)
-
-[node name="cape2" parent="BattleManager/PlayerUnits/Sam/Sam/Node2/root" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9375, 3.75, 0)
+[node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig" index="0"]
+bones/0/position = Vector3(6.54959, 3.66088, -0.338561)
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -414,9 +382,8 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_usonh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPaths/Path3D"]
-transform = Transform3D(0.755399, -0.000426635, 0.655257, 1.45518e-11, 0.999998, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
+transform = Transform3D(0.755399, -0.000426634, 0.655257, 1.45518e-11, 0.999998, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
 
-[editable path="BattleManager/PlayerUnits/Sam/Sam"]
+[editable path="BattleManager/PlayerUnits/Sam/Sam2"]

@@ -3,12 +3,17 @@ extends "../Unit/Unit.gd"
 var skillList = []
 var active_skills = []
 
+
+@onready var starting
 @onready var ap = $Sam/AnimationPlayer
 
 signal anim_finished
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	startingBG = 1
 
 	var skill = Skill.new()
 	skill.skillname = "Rabbit: Bounce"
@@ -106,10 +111,10 @@ func check_skill(skill_arr, root):
 	
 
 func play_idle():
-	$Sam/AnimationPlayer.play("idle")
+	pass#$Sam/AnimationPlayer.play("idle")
 	
 func play_attack():
-	$Sam/AnimationPlayer.play("attack")
+	pass#$Sam/AnimationPlayer.play("attack")
 	
 func set_skill_active(name):
 	for skill in skillList:
