@@ -20,7 +20,7 @@ signal skill_confirmed
 @onready var player_units_path = $PlayerUnits
 @onready var enemy_units_path = $EnemyUnits
 
-@onready var current_unit = $PlayerUnits/Sam
+var current_unit
 @onready var battleGrounds = $Battlegrounds
 @onready var BGF = $Battlegrounds/Battleground
 @onready var BGT = $Battlegrounds/Battleground2
@@ -44,6 +44,7 @@ signal skill_confirmed
 	'enemyturn': $States/EnemyTurn,
 	'selectEBG': $States/SelectEnemyBG,
 	'selectABG': $States/SelectAllyBG,
+	'selectAlly': $States/SelectAlly,
 	'completeAction': $States/CompleteAction,
 	'skillInputs': $States/SkillInputs
 }
@@ -72,7 +73,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['selectEBG', 'selectABG', 'skillInputs']:
+	elif state_name in ['selectEBG', 'selectABG', 'skillInputs', 'selectAlly']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]

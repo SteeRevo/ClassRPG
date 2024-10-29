@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dxm0r0fwalssu"
-path="res://.godot/imported/Sophia.glb-c486112edcd2c79fc27b4c65657a33a9.scn"
+uid="uid://b0jv327lro85l"
+path="res://.godot/imported/Sophia.glb-3478c58986e32855e6c8905104c14075.scn"
 
 [deps]
 
-source_file="res://Sophia.glb"
-dest_files=["res://.godot/imported/Sophia.glb-c486112edcd2c79fc27b4c65657a33a9.scn"]
+source_file="res://Unit/Sophie/Sophia.glb"
+dest_files=["res://.godot/imported/Sophia.glb-3478c58986e32855e6c8905104c14075.scn"]
 
 [params]
 

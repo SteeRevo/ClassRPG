@@ -20,10 +20,10 @@ func start_battle(host):
 	
 func get_all_units(host):
 	for unit in host.player_units_path.get_children():
-		host.insert_sort(host.player_units, unit, 100)
+		host.player_units.append(unit)
 		host.unit_list.append(unit)
 	for unit in host.enemy_units_path.get_children():
-		host.insert_sort(host.enemy_units, unit, 100)
+		host.enemy_units.append(unit)
 		host.unit_list.append(unit)
 
 func set_all_units_position(host):
@@ -41,13 +41,11 @@ func set_all_units_position(host):
 	print(host.enemy_bgs)
 
 func choose_turn(host):
-	if host.player_units[0]._get_turn_order() <= host.enemy_units[0]._get_turn_order():
-		host.current_unit = host.player_units[0]
-		calc_turn_advance(host)
-		return 'playerturn'
-	else:
+	if len(host.player_units) > 0:
+		host.current_unit = null
+		return 'selectAlly'
+	elif len(host.enemy_units) > 0:
 		host.current_unit = host.enemy_units[0]
-		calc_turn_advance(host)
 		return 'enemyturn'
 
 func calc_turn_advance(host):

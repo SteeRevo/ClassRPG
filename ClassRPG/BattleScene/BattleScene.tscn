@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=37 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
@@ -13,9 +13,14 @@
 [ext_resource type="Script" path="res://UI/Skillname.gd" id="7_cwe3h"]
 [ext_resource type="Script" path="res://BattleScene/SelectAllyBG.gd" id="7_rayo2"]
 [ext_resource type="Script" path="res://BattleScene/States/TurnDecide/ChooseTurn.gd" id="8_02rmb"]
+[ext_resource type="Script" path="res://BattleScene/SelectAlly.gd" id="8_ejyrp"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
-[ext_resource type="PackedScene" uid="uid://0y6oqe54mv1b" path="res://Sam2.glb" id="11_oesrx"]
+[ext_resource type="PackedScene" uid="uid://cxfeiole33f4w" path="res://Unit/Sam/Sam2.glb" id="11_s2632"]
+[ext_resource type="Script" path="res://BattleScene/Sophie.gd" id="12_qqmey"]
+[ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="13_gk8um"]
+[ext_resource type="Script" path="res://BattleScene/BB.gd" id="14_2yvau"]
+[ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="14_o008x"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="18_bhi3k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
@@ -174,6 +179,9 @@ script = ExtResource("4_kpmye")
 [node name="SelectAllyBG" type="Node" parent="BattleManager/States"]
 script = ExtResource("7_rayo2")
 
+[node name="SelectAlly" type="Node" parent="BattleManager/States"]
+script = ExtResource("8_ejyrp")
+
 [node name="CompleteAction" type="Node" parent="BattleManager/States"]
 script = ExtResource("5_qtrjn")
 
@@ -183,7 +191,7 @@ script = ExtResource("9_icg8r")
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.28731, 1.68893, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.58088, -0.64188, 0)
 script = ExtResource("10_rubd4")
 max_health = 10
 current_health = 10
@@ -191,14 +199,60 @@ attack = 5
 defense = 5
 speed = 10
 
-[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("11_oesrx")]
-transform = Transform3D(0.827607, 0, 0, 0, 0.827607, 0, 0, 0, 0.827607, 0.23997, -6.91514, -0.344543)
+[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("11_s2632")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.127, 0)
 
-[node name="metarig" parent="BattleManager/PlayerUnits/Sam/Sam2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38745, 2.58223, -0.530669)
+[node name="Empty" parent="BattleManager/PlayerUnits/Sam/Sam2" index="0"]
+transform = Transform3D(-0.893644, -0.438739, -0.0943891, -0.0134349, 0.236385, -0.971567, 0.448576, -0.866966, -0.217138, -7.78788, 7.34126, 0)
 
 [node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig" index="0"]
-bones/0/position = Vector3(6.54959, 3.66088, -0.338561)
+bones/0/position = Vector3(-0.233449, 2.12964, -0.338561)
+bones/1/rotation = Quaternion(0.179137, 0.0813073, 0.00523291, 0.980445)
+bones/8/rotation = Quaternion(-0.245264, 0.818718, -0.507379, 0.110059)
+bones/9/rotation = Quaternion(0.549059, -0.105267, 0.117165, 0.820807)
+bones/11/rotation = Quaternion(-0.622068, 0.361928, 0.533937, 0.443793)
+bones/12/rotation = Quaternion(-0.548081, -0.493042, 0.565734, 0.369409)
+bones/13/rotation = Quaternion(0.110081, 0.148898, 0.147232, 0.971614)
+bones/19/rotation = Quaternion(-0.972854, -0.0675733, 0.017153, 0.220669)
+bones/24/rotation = Quaternion(0.793118, -0.0393257, 0.0948711, 0.600347)
+bones/25/rotation = Quaternion(0.677507, -0.128135, -0.0555663, 0.722135)
+
+[node name="Sophie" type="Node3D" parent="BattleManager/PlayerUnits"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 12.1639, -0.641881, -6.13227)
+script = ExtResource("12_qqmey")
+max_health = 13
+current_health = 13
+attack = 7
+defense = 7
+speed = 7
+startingBG = 1
+
+[node name="Sophie" parent="BattleManager/PlayerUnits/Sophie" instance=ExtResource("13_gk8um")]
+transform = Transform3D(-0.887782, 0, 0.0287372, 0, 0.888247, 0, -0.0287372, 0, -0.887782, -11.6893, 2.62128, 3.3256)
+
+[node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sophie/Sophie/metarig" index="0"]
+bones/8/rotation = Quaternion(-0.165044, 0.803169, -0.387251, 0.421564)
+bones/9/rotation = Quaternion(0.573881, -0.132537, -0.527481, 0.612257)
+bones/12/rotation = Quaternion(-0.0488768, -0.47841, 0.843797, 0.238206)
+bones/13/rotation = Quaternion(0.291069, -0.00592526, 0.396966, 0.870438)
+
+[node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.23558, -0.64188, -7.92178)
+script = ExtResource("14_2yvau")
+max_health = 20
+current_health = 20
+attack = 5
+defense = 10
+speed = 5
+startingBG = 2
+
+[node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("14_o008x")]
+transform = Transform3D(-0.931941, 0, -0.044797, 0, 0.933017, 0, 0.044797, 0, -0.931941, -0.607168, 3.0983, 9.0512)
+
+[node name="Skeleton3D" parent="BattleManager/PlayerUnits/BB/BB/metarig" index="0"]
+bones/0/rotation = Quaternion(-2.67855e-10, 0.992053, -0.12582, -8.46649e-08)
+bones/8/position = Vector3(0.0143974, 1.70123, -0.0321897)
+bones/12/position = Vector3(-0.0143975, 1.70123, -0.03219)
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -382,8 +436,12 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_usonh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPaths/Path3D"]
-transform = Transform3D(0.755399, -0.000426634, 0.655257, 1.45518e-11, 0.999998, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
+transform = Transform3D(0.755399, -0.000426635, 0.655257, 1.45518e-11, 0.999998, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sophie" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
 
 [editable path="BattleManager/PlayerUnits/Sam/Sam2"]
+[editable path="BattleManager/PlayerUnits/Sophie/Sophie"]
+[editable path="BattleManager/PlayerUnits/BB/BB"]

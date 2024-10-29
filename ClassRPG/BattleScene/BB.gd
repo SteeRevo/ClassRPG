@@ -1,7 +1,7 @@
 extends "../Unit/Unit.gd"
 
 
-@onready var ap = $Sam2/AnimationPlayer
+@onready var ap = $BB/AnimationPlayer
 
 signal anim_finished
 
@@ -11,63 +11,25 @@ func _ready():
 	
 
 	var skill = Skill.new()
-	skill.skillname = "Rabbit: Bounce"
+	skill.skillname = "Pitch"
 	skill.damage = 5
 	skill.cost = 1
-	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
-
-	var skill2 = Skill.new()
-	skill2.skillname = "Snake: Whip"
-	skill2.damage = "10"
-	skill2.cost = 5
-	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
-	
-	var skill3 = Skill.new()
-	skill3.skillname = "Rooster: Flame"
-	skill3.damage = 0
-	skill3.cost = 3 
-	skill3.inputs = PackedStringArray(["Down", "Down", "Up"])
-	
-	var skill4 = Skill.new()
-	skill4.skillname = "Ox: Crush"
-	skill4.damage = "10"
-	skill4.cost = 5
-	skill4.inputs = PackedStringArray(["Left", "Left", "Right", "Right"])
+	skill.inputs = PackedStringArray(["Up", "Up", "Left"])
 	
 	skillList.append(skill)
-	skillList.append(skill2)
-	skillList.append(skill3)
-	skillList.append(skill4)
-	
+
 #skill tree fixed later
 	skill_tree = TreeSkill.new()
 	skill_tree.move_name = "Root"
 	
 	#Left start
-	skill_tree.left = TreeSkill.new()
-	skill_tree.left.down = TreeSkill.new()
-	skill_tree.left.down.right = TreeSkill.new()
-	skill_tree.left.down.right.move_name = "Rabbit: Bounce"
+	skill_tree.up = TreeSkill.new()
+	skill_tree.up.up = TreeSkill.new()
+	skill_tree.up.up.left = TreeSkill.new()
+	skill_tree.up.up.left.move_name = "Pitch"
+
 	
-	skill_tree.left.left = TreeSkill.new()
-	skill_tree.left.left.right = TreeSkill.new()
-	#skill_tree.left.left.right.move_name = "Snake: Whip"
-	skill_tree.left.left.right.right = TreeSkill.new()
-	skill_tree.left.left.right.right.move_name = "Ox: Crush" 
-	
-	#Down Start
-	skill_tree.down = TreeSkill.new()
-	skill_tree.down.down = TreeSkill.new()
-	skill_tree.down.down.up = TreeSkill.new()
-	skill_tree.down.down.up.move_name = "Rooster: Flame"
-	
-	set_skill_active("Rooster: Flame")
-	set_skill_active("Rabbit: Bounce")
-	#set_skill_active("Snake: Whip")
-	set_skill_active("Ox: Crush")
-	
-	var arr = ["Left", "Left", "Right", "Right"]
-	print(check_skill(arr, skill_tree))
+	set_skill_active("Pitch")
 	
 	
 	

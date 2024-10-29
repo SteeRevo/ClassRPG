@@ -14,6 +14,8 @@ enum battleGrounds {F, TW, BW, B}
 
 var unitTween
 var skill_tree
+var skillList = []
+var active_skills = []
 
 
 var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
