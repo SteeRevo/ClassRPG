@@ -41,12 +41,14 @@ func set_all_units_position(host):
 	print(host.enemy_bgs)
 
 func choose_turn(host):
-	if len(host.player_units) > 0:
-		host.current_unit = null
-		return 'selectAlly'
-	elif len(host.enemy_units) > 0:
-		host.current_unit = host.enemy_units[0]
-		return 'enemyturn'
+	for unit in host.player_units:
+		if unit.available == true:
+			host.current_unit = null
+			return 'selectAlly'
+	for unit in host.enemy_units:
+		if unit.available == true:
+			host.current_unit = unit
+			return 'enemyturn'
 
 func calc_turn_advance(host):
 	var turn_advance = host.current_unit._get_turn_order()

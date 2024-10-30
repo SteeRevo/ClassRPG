@@ -16,7 +16,11 @@ func enter(host):
 	set_active_camera(host, host.mainBattleCamera)
 	
 func handle_input(host, event):
-	if event.is_action_pressed("Attack"):
+	if event.is_action_pressed("Cancel"):
+		host.current_action = null
+		return 'previous'
+		
+	elif event.is_action_pressed("Attack"):
 		print("Attack")
 		if last_action == "Attack":
 			host.current_action = "Attack"

@@ -106,6 +106,7 @@ func check_skill(skill_arr, root):
 	
 
 func play_idle():
+	print("playing idle for Sam")
 	pass#$Sam/AnimationPlayer.play("idle")
 	
 func play_attack():

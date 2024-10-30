@@ -11,6 +11,7 @@ enum battleGrounds {F, TW, BW, B}
 @export var speed = 0
 @export var is_dead = false
 @export var enemy_unit = false
+@export var available = true
 
 var unitTween
 var skill_tree

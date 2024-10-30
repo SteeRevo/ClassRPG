@@ -11,6 +11,7 @@ var bgs = []
 var enemy_bgs = []
 var current_selected_enemy 
 var current_selected_BG
+var current_selected_ally
 
 signal end_player_turn
 signal end_enemy_turn
@@ -73,7 +74,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['selectEBG', 'selectABG', 'skillInputs', 'selectAlly']:
+	elif state_name in ['selectEBG', 'selectABG', 'skillInputs', 'selectAlly', 'playerturn']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]
@@ -103,6 +104,13 @@ func _input(event):
 func end_turn():
 	
 	print("changing turn")
+	for unit in unit_list:
+		if unit.available == true:
+			_change_state('chooseturn')
+			_change_state(current_turn)
+			return
+	for unit in unit_list:
+		unit.available = true
 	_change_state('chooseturn')
 	_change_state(current_turn)
 

@@ -200,7 +200,7 @@ defense = 5
 speed = 10
 
 [node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("11_s2632")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.127, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77243, 0)
 
 [node name="Empty" parent="BattleManager/PlayerUnits/Sam/Sam2" index="0"]
 transform = Transform3D(-0.893644, -0.438739, -0.0943891, -0.0134349, 0.236385, -0.971567, 0.448576, -0.866966, -0.217138, -7.78788, 7.34126, 0)
@@ -218,7 +218,7 @@ bones/24/rotation = Quaternion(0.793118, -0.0393257, 0.0948711, 0.600347)
 bones/25/rotation = Quaternion(0.677507, -0.128135, -0.0555663, 0.722135)
 
 [node name="Sophie" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 12.1639, -0.641881, -6.13227)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
 script = ExtResource("12_qqmey")
 max_health = 13
 current_health = 13
@@ -228,7 +228,7 @@ speed = 7
 startingBG = 1
 
 [node name="Sophie" parent="BattleManager/PlayerUnits/Sophie" instance=ExtResource("13_gk8um")]
-transform = Transform3D(-0.887782, 0, 0.0287372, 0, 0.888247, 0, -0.0287372, 0, -0.887782, -11.6893, 2.62128, 3.3256)
+transform = Transform3D(-0.887782, 0, 0.0287372, 0, 0.888247, 0, -0.0287372, 0, -0.887782, 0.149387, -0.00470543, 1.62648)
 
 [node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sophie/Sophie/metarig" index="0"]
 bones/8/rotation = Quaternion(-0.165044, 0.803169, -0.387251, 0.421564)
@@ -237,7 +237,7 @@ bones/12/rotation = Quaternion(-0.0488768, -0.47841, 0.843797, 0.238206)
 bones/13/rotation = Quaternion(0.291069, -0.00592526, 0.396966, 0.870438)
 
 [node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.23558, -0.64188, -7.92178)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.85246, -0.64188, -7.92178)
 script = ExtResource("14_2yvau")
 max_health = 20
 current_health = 20
@@ -247,7 +247,7 @@ speed = 5
 startingBG = 2
 
 [node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("14_o008x")]
-transform = Transform3D(-0.931941, 0, -0.044797, 0, 0.933017, 0, 0.044797, 0, -0.931941, -0.607168, 3.0983, 9.0512)
+transform = Transform3D(-0.931941, 0, -0.044797, 0, 0.933017, 0, 0.044797, 0, -0.931941, 1.12734, 3.0983, 9.0512)
 
 [node name="Skeleton3D" parent="BattleManager/PlayerUnits/BB/BB/metarig" index="0"]
 bones/0/rotation = Quaternion(-2.67855e-10, 0.992053, -0.12582, -8.46649e-08)
