@@ -108,6 +108,8 @@ func check_skill_inputs(host):
 			latest_skill = null"""
 		
 	print(input_arr)
+	
+	#calc attack damage here/go to attack animation
 	host.end_turn()
 
 

@@ -25,7 +25,7 @@ func handle_input(host, event):
 		if last_action == "Attack":
 			host.current_action = "Attack"
 			print("confirm attack") #_on_attack_pressed()
-			return 'skillInputs'
+			return 'selectEBG'
 		else:
 			last_action = "Attack"
 	elif event.is_action_pressed("Rotate"):

@@ -15,22 +15,25 @@ func handle_input(host, event):
 	
 	elif event.is_action_pressed("Attack"):
 		if host.EBGR._get_current_unit():
-			if last_action == "Attack":
-				print("attacking")
-				return "completeAction"
+			if host.EBGB._get_current_unit() or host.EBGT._get_current_unit():
+				if last_action == "Attack":
+					print("attacking")
+					return "skillInputs"
+				else:
+					host.current_selected_enemy = host.EBGR._get_current_unit()
+					print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
+					host.enemySelector.set_BG_position(host.EBGR)
+					print("double tap to select")
+					last_action = "Attack"
 			else:
-				host.current_selected_enemy = host.EBGR._get_current_unit()
-				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
-				host.enemySelector.set_BG_position(host.EBGR)
-				print("double tap to select")
-				last_action = "Attack"
+				print("enemy found at bottom or top")
 		else:
 			print("no enemy here")
 	elif event.is_action_pressed("Rotate"):
 		if host.EBGB._get_current_unit():
 			if last_action == "Rotate":
 				print("attacking")
-				return "completeAction"
+				return "skillInputs"
 			else:
 				host.current_selected_enemy = host.EBGB._get_current_unit()
 				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
@@ -43,7 +46,7 @@ func handle_input(host, event):
 		if host.EBGF._get_current_unit():
 			if last_action == "Guard":
 				print("attacking")
-				return "completeAction"
+				return "skillInputs"
 			else:
 				host.current_selected_enemy = host.EBGF._get_current_unit()
 				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
@@ -52,17 +55,17 @@ func handle_input(host, event):
 				last_action = "Guard"
 		else:
 			print("no enemy here")
-	elif event.is_action_pressed("Skill"):
+	elif event.is_action_pressed("Item"):
 		if host.EBGT._get_current_unit():
-			if last_action == "Skill":
+			if last_action == "Item":
 				print("attacking")
-				return "completeAction"
+				return "skillInputs"
 			else:
 				host.current_selected_enemy = host.EBGT._get_current_unit()
 				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
 				host.enemySelector.set_BG_position(host.EBGT)
 				print("double tap to select")
-				last_action = "Skill"
+				last_action = "Item"
 		else:
 			print("no enemy here")
 			

@@ -6,6 +6,7 @@ func enter(host):
 		print(unit.name)
 
 func handle_input(host, event):
+	
 	if host.skill_stack.size() == host.skillPoints.get_skill_points():
 		if event.is_action_pressed("Attack"):
 			print("moving to skills attacks")
