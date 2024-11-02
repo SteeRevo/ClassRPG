@@ -29,8 +29,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func play_idle():
-	$Sam/AnimationPlayer.play("idle")
+	pass#$Sam/AnimationPlayer.play("idle")
 
 func play_walk():
-	$Sam/AnimationPlayer.play("walk")
+	pass#$Sam/AnimationPlayer.play("walk")
 

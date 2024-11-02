@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjimufcei1xir"]
+[gd_scene load_steps=15 format=3 uid="uid://cjimufcei1xir"]
 
-[ext_resource type="Script" path="res://SamOverworld.gd" id="1_1541l"]
-[ext_resource type="PackedScene" uid="uid://cn1k025c2utvy" path="res://Unit/Sam/Sam.gltf" id="1_lroxo"]
+[ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
+[ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="2_o1wcq"]
+[ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="3_lexyy"]
+[ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_51m1x"]
 sky_top_color = Color(0.0823529, 0.309804, 0.964706, 1)
@@ -26,6 +28,15 @@ tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sj7c5"]
 size = Vector3(0.111673, 0.329715, 0.0996212)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0urq"]
+size = Vector3(1, 1.43574, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wv2i"]
+size = Vector3(0.608474, 2.62692, 0.334648)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d2jo"]
+size = Vector3(1, 1.05026, 0.549205)
 
 [node name="Visual Novel Scene" type="Node3D"]
 
@@ -82,16 +93,51 @@ skeleton = NodePath("")
 shape = SubResource("WorldBoundaryShape3D_eusn1")
 
 [node name="SamOverworld" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228969, -2.0416)
-script = ExtResource("1_1541l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0127517, -2.0416)
+script = ExtResource("1_bakx2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SamOverworld"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0599054, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
 shape = SubResource("BoxShape3D_sj7c5")
 
-[node name="Sam" parent="SamOverworld" instance=ExtResource("1_lroxo")]
-transform = Transform3D(0.025339, 0, 0, 0, 0.025339, 0, 0, 0, 0.025339, 0, -0.0596365, 0)
-
 [node name="Camera3D" type="Camera3D" parent="SamOverworld"]
-transform = Transform3D(-0.99929, 0, -0.0376902, 0, 1, 0, 0.0376902, 0, -0.99929, -0.00286308, -0.0106887, -0.645494)
+transform = Transform3D(-0.99929, 0, -0.0376902, 0, 1, 0, 0.0376902, 0, -0.99929, -0.00286308, 0.320973, -0.645494)
 current = true
+
+[node name="Sophia" parent="SamOverworld" instance=ExtResource("2_o1wcq")]
+transform = Transform3D(-0.0189731, 0, -0.000165243, 0, 0.0189738, 0, 0.000165243, 0, -0.0189731, 0, -0.0148075, 0)
+
+[node name="Skeleton3D" parent="SamOverworld/Sophia/metarig" index="0"]
+bones/8/rotation = Quaternion(-0.165044, 0.803169, -0.387251, 0.421564)
+bones/9/rotation = Quaternion(0.573881, -0.132537, -0.527481, 0.612257)
+bones/12/rotation = Quaternion(-0.0488768, -0.47841, 0.843797, 0.238206)
+bones/13/rotation = Quaternion(0.291069, -0.00592526, 0.396966, 0.870438)
+
+[node name="DialogueInteractionArea" type="Area3D" parent="SamOverworld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0127517, 2.0416)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SamOverworld/DialogueInteractionArea"]
+transform = Transform3D(0.222032, 0, 0, 0, 0.222032, 0, 0, 0, 0.222032, 0, 0.158348, -2.04664)
+shape = SubResource("BoxShape3D_k0urq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.677221, 0, 0, 0, 0.677221, 0, 0, 0, 0.677221, 0, 0, 1.13386)
+
+[node name="BB" parent="StaticBody3D" instance=ExtResource("3_lexyy")]
+transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.391628, 0, 0, 0, 0.391628, 0, 0, 0, 0.391628, 0, 0, 0)
+shape = SubResource("BoxShape3D_5wv2i")
+
+[node name="DialogueArea" parent="StaticBody3D" instance=ExtResource("4_ljxkv")]
+dialogue_key = "BB_1"
+
+[node name="CollisionShape3D" parent="StaticBody3D/DialogueArea" index="0"]
+transform = Transform3D(0.50382, 0, 0, 0, 0.50382, 0, 0, 0, 0.50382, 0, 0.261831, 0)
+shape = SubResource("BoxShape3D_4d2jo")
+
+[editable path="SamOverworld/Sophia"]
+[editable path="StaticBody3D/DialogueArea"]

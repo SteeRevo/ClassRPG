@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh3ys30axca1e"]
+
+[ext_resource type="Script" path="res://Visual_novel_scene/dialogue_area.gd" id="1_5phy5"]
+
+[node name="DialogueArea" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_5phy5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

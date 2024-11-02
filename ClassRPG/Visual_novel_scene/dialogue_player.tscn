@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcxru1sbmv1lu"]
+
+[ext_resource type="Script" path="res://DialoguePlayer.gd" id="1_xeats"]
+
+[sub_resource type="Gradient" id="Gradient_ouvbh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ygb86"]
+gradient = SubResource("Gradient_ouvbh")
+fill_from = Vector2(1, 0)
+
+[node name="DialoguePlayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xeats")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 337.0
+offset_top = 241.0
+offset_right = 865.0
+offset_bottom = 389.0
+texture = SubResource("GradientTexture2D_ygb86")
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 356.0
+offset_top = 256.0
+offset_right = 847.0
+offset_bottom = 370.0
+autowrap_mode = 1
