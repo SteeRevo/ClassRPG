@@ -335,7 +335,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_usonh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPaths/Path3D"]
-transform = Transform3D(0.755399, -0.000426635, 0.655257, 1.45518e-11, 0.999998, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
+transform = Transform3D(0.755399, -0.000426634, 0.655257, 1.45518e-11, 0.999997, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sophie" to="BattleManager" method="_on_unit_rotate_finished"]

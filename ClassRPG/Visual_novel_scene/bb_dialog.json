@@ -1,5 +1,9 @@
 {
-    "BB": [
-        "Hey."
-    ]
+	"bb_1": [
+		["BB", "normal", "Hey."],
+		["Sophie", "normal", "H-hello."],
+		["BB","normal", "Anything you wanna say?"],
+		["BB", "joking", "Otherwise, I'm gonna leave."],
+		["Sophie", "down", "N-no..."]
+	]
 }
