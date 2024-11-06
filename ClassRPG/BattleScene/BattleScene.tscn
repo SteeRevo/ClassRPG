@@ -325,7 +325,7 @@ text = "Skill Name: "
 script = ExtResource("7_cwe3h")
 
 [node name="MainBattleCamera" type="Camera3D" parent="BattleManager"]
-transform = Transform3D(-0.00389167, 0.326926, -0.945042, -0.0102017, 0.944987, 0.326949, 0.99994, 0.0109134, -0.000342366, -16.0197, 11.6704, 4.6089)
+transform = Transform3D(-0.0755113, 0.387049, -0.918962, 0.0292985, 0.922056, 0.385945, 0.996714, 0.002219, -0.0809657, -19.2701, 9.94786, 3.5505)
 current = true
 
 [node name="CameraPaths" type="Node" parent="."]
@@ -338,8 +338,11 @@ curve = SubResource("Curve3D_usonh")
 transform = Transform3D(0.755399, -0.000426634, 0.655257, 1.45518e-11, 0.999997, 0.000651092, -0.655254, -0.000491838, 0.755401, 1.82761, -1.14619, -7.71914)
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam2/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sophie" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sophie/Sophie/AnimationPlayer" to="BattleManager/PlayerUnits/Sophie" method="_on_animation_player_animation_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="animation_finished" from="BattleManager/PlayerUnits/BB/BB/AnimationPlayer" to="BattleManager/PlayerUnits/BB" method="_on_animation_player_animation_finished"]
 
 [editable path="BattleManager/PlayerUnits/Sam/Sam2"]
 [editable path="BattleManager/PlayerUnits/Sophie/Sophie"]

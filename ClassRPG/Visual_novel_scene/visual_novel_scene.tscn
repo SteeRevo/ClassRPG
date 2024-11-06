@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
 shape = SubResource("BoxShape3D_sj7c5")
 
 [node name="Camera3D" type="Camera3D" parent="SamOverworld"]
-transform = Transform3D(-0.99929, 0, -0.0376902, 0, 1, 0, 0.0376902, 0, -0.99929, -0.00286308, 0.320973, -0.645494)
+transform = Transform3D(-0.99929, 0, -0.0376902, 0, 1, 0, 0.0376902, 0, -0.99929, -0.00286308, 0.320973, -0.344124)
 current = true
 
 [node name="Sophia" parent="SamOverworld" instance=ExtResource("2_o1wcq")]

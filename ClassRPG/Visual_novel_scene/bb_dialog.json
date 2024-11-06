@@ -4,6 +4,7 @@
 		["Sophie", "normal", "H-hello."],
 		["BB","normal", "Anything you wanna say?"],
 		["BB", "joking", "Otherwise, I'm gonna leave."],
-		["Sophie", "down", "N-no..."]
+		["Sophie", "down", "N-no..."],
+		["Sam", "smug", "Don't worry, he's just messing with you!"]
 	]
 }

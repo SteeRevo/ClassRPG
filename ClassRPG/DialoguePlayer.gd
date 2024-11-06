@@ -13,6 +13,7 @@ var text_size = 0
 @onready var portaitBG = $PortraitBG
 var bb_portrait = preload("res://Visual_novel_scene/bb_portrait.png")
 var sophie_portrait = preload("res://Visual_novel_scene/sophie_portraits.png")
+var sam_portrait = preload("res://Visual_novel_scene/sam_portraits.png")
 
 
 
@@ -50,6 +51,8 @@ func finish():
 	portrait.visible = false
 	portaitBG.visible = false
 	in_progress = false
+	text_index = 0
+	text_size = 0
 	get_tree().paused = false
 	
 func on_display_dialogue(text_key):
@@ -71,6 +74,8 @@ func on_display_dialogue(text_key):
 "SQUINT, SHADOW, SMILE, UPSET, CHILL, DISAPPOINTED, JOKING, SURPRISED, SIGH"
 
 "NORMAL, GRRR, HAPPY, SCOLD, DEVIOUS, DOWN, SCREAM, WORRIED, DREAMING, SAD"
+
+"NORMAL, SAD, COCKY, THINKING, MAD, SMUG, CONCERN, EXCITED, SLEEPY, SERIOUS"
 
 func change_portrait(speaker, emote):
 	match speaker:
@@ -120,4 +125,26 @@ func change_portrait(speaker, emote):
 					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.DREAMING
 				"sad":
 					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.SAD
-				
+		"Sam":
+			portrait.texture = sam_portrait
+			match emote:
+				"normal":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.NORMAL
+				"sad":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.SAD
+				"cocky":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.COCKY
+				"thinking":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.THINKING
+				"mad":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.MAD
+				"smug":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.SMUG
+				"concern":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.CONCERN
+				"excited":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.EXCITED
+				"sleepy":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.SLEEPY
+				"serious":
+					portrait.frame = PortraitEnums.PORTRAITS_SAM.SERIOUS

@@ -112,6 +112,18 @@ func play_idle():
 func play_attack():
 	pass#$Sam/AnimationPlayer.play("attack")
 	
+func play_left():
+	ap.play("Left")
+
+func play_right():
+	ap.play("Right")
+	
+func play_up():
+	ap.play("Up")
+	
+func play_down():
+	ap.play("Down")
+	
 func set_skill_active(name):
 	for skill in skillList:
 		if skill.skillname == name:

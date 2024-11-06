@@ -1,6 +1,7 @@
 extends States
 
 var host_ref
+var input_arr = []
 
 func enter(host):
 	host_ref = host
@@ -25,11 +26,10 @@ func _on_unit_turn_finished(host):
 	host.end_turn()
 	
 func _on_animation_finished(anim_name):
-	if anim_name == 'attack' or anim_name == 'walk':
-		host_ref.current_unit.play_idle()
-		if host_ref.current_selected_ally:
-			host_ref.current_selected_ally.play_idle()
-		_on_unit_turn_finished(host_ref)
+	if input_arr.size() > 0:
+		play_animation(host_ref)
+	else:
+		host_ref.end_turn()
 
 func _on_tween_finished():
 	host_ref.current_unit.play_idle()
@@ -59,7 +59,7 @@ func set_BG_unit_position(unit, bg):
 	bg._set_current_unit(unit)
 	
 func check_skill_inputs(host):
-	var input_arr = []
+	input_arr = []
 	var possible_skills = []
 	var final_skill = []
 	var latest_skill
@@ -110,7 +110,21 @@ func check_skill_inputs(host):
 	print(input_arr)
 	
 	#calc attack damage here/go to attack animation
-	host.end_turn()
-
-
+	play_animation(host)
 	
+
+
+
+func play_animation(host):
+	var move = input_arr.pop_front()
+	match move:
+		"Left":
+			host.current_unit.play_left()
+		"Right":
+			host.current_unit.play_right()
+		"Up":
+			host.current_unit.play_up()
+		"Down":
+			host.current_unit.play_down()
+		_:
+			print(move)
