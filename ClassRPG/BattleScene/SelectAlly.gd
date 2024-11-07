@@ -9,11 +9,8 @@ func enter(host):
 		print(unit.name)
 
 func handle_input(host, event):
-	if event.is_action_pressed("Cancel"):
-		host.current_action = null
-		return 'previous'
 	
-	elif event.is_action_pressed("Attack"):
+	if event.is_action_pressed("Attack"):
 		if host.current_unit == null and host.BGF._get_current_unit():
 			if host.BGF._get_current_unit().available == true:
 				if last_action == "Attack":

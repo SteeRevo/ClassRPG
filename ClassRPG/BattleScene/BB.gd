@@ -4,6 +4,7 @@ extends "../Unit/Unit.gd"
 @onready var ap = $BB/AnimationPlayer
 
 signal anim_finished
+signal tween_finished
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,13 +37,14 @@ func _ready():
 	
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween()
-	unitTween.tween_property(self, "position", target_pos, 1)
 	ap.play("Rotate")
 	unitTween.connect("finished", on_tween_finished)
+	unitTween.tween_property(self, "position", target_pos, 1)
+	
 
 func on_tween_finished():
 	ap.stop()
-	anim_finished.emit("walk")
+	tween_finished.emit()
 	
 
 func get_skill_list():

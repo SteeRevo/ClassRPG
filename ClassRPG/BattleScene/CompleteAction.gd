@@ -1,13 +1,17 @@
 extends States
 
-var host_ref
+@onready var host_ref = %BattleManager
 var input_arr = []
+var current_action
+var moved_to_enemy = false
+var current_position
 
 func enter(host):
-	host_ref = host
 	host_ref.current_unit = host.current_unit
 	host_ref.current_selected_ally = host.current_selected_ally
 	host.current_unit.anim_finished.connect(_on_animation_finished)
+	host.current_unit.tween_finished.connect(_on_tween_finished)
+	current_action = host.current_action
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
 		check_skill_inputs(host)
@@ -26,14 +30,23 @@ func _on_unit_turn_finished(host):
 	host.end_turn()
 	
 func _on_animation_finished(anim_name):
-	if input_arr.size() > 0:
-		play_animation(host_ref)
-	else:
-		host_ref.end_turn()
+	if anim_name != "Rotate":
+		if input_arr.size() > 0:
+			play_animation(host_ref)
+			pass
+		else:
+			host_ref.current_unit.move_towards(current_position)
 
 func _on_tween_finished():
-	host_ref.current_unit.play_idle()
-	_on_unit_turn_finished(host_ref)
+	print("tweened")
+	if current_action == "Rotate":
+		host_ref.current_unit.play_idle()
+		host_ref.end_turn()
+	elif current_action == "Attack" and !moved_to_enemy:
+		moved_to_enemy = true
+		play_animation(host_ref)
+	elif current_action == "Attack" and moved_to_enemy:
+		host_ref.end_turn()
 	
 func exit(host):
 	set_active_camera(host, host.mainBattleCamera)
@@ -42,6 +55,8 @@ func exit(host):
 	host.current_action = null
 	host.current_selected_BG = null
 	host.current_selected_ally = null
+	host.skill_stack = []
+	moved_to_enemy = false
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):
@@ -89,36 +104,21 @@ func check_skill_inputs(host):
 			input_arr.insert(len(input_arr) - 1, latest_skill)
 			latest_skill = null
 		
-		"""if len(input_arr) == len(host.skill_stack) and latest_skill != null:
-			var skill_inputs = host.current_unit.get_skill(latest_skill).inputs
-			var remove = len(skill_inputs)
-			for i in range(remove):
-				input_arr.remove_at(latest_skill_position)
-				latest_skill_position -= 1
-			if
-			input_arr.append(latest_skill)
-		elif (skill_name == null or skill_name == "") and latest_skill != null:
-			var skill_inputs = host.current_unit.get_skill(latest_skill).inputs
-			input_arr.insert(len(input_arr) - 1, latest_skill)
-			print(input_arr)
-			var remove = len(skill_inputs)
-			for i in range(remove):
-				input_arr.remove_at(len(input_arr) - 3)
-			print(input_arr)
-			latest_skill = null"""
-		
 	print(input_arr)
 	
 	#calc attack damage here/go to attack animation
-	play_animation(host)
+	current_position = host.current_unit.global_position
+	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
 	
 
 
 
 func play_animation(host):
 	var move = input_arr.pop_front()
+	calc_damage(host, move)
 	match move:
 		"Left":
+			calc_damage(host, move)
 			host.current_unit.play_left()
 		"Right":
 			host.current_unit.play_right()
@@ -128,3 +128,6 @@ func play_animation(host):
 			host.current_unit.play_down()
 		_:
 			print(move)
+
+func calc_damage(host, skill):
+	host.current_unit.attack_unit(host.current_selected_enemy, skill)

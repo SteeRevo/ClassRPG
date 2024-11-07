@@ -17,6 +17,7 @@ var unitTween
 var skill_tree
 var skillList = []
 var active_skills = []
+var base_skills = []
 
 
 var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
@@ -26,12 +27,29 @@ signal rotate_finished
 
 @export var startingBG : int = battleGrounds.F
 
+func _set_base_skills():
+	active_skills.append(Skill.new("Left", 0, 1, ["Left"]))
+	active_skills.append(Skill.new("Right", 0, 1, ["Right"]))
+	active_skills.append(Skill.new("Up", 0, 1, ["Up"]))
+	active_skills.append(Skill.new("Down", 0, 1, ["Down"]))
 
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween().tween_property(self, "position", target_pos, 1)
 
-func attack_unit(target_unit):
-	pass
+#func move_towards(target_pos):
+#	unitTween = get_tree().create_tween().tween_property(self, "position", target_pos, 1)
+
+func attack_unit(target_unit, skill):
+	var skill_stats = null
+	for _skill in active_skills:
+		if _skill.skillname == skill:
+			skill_stats = _skill
+	if skill_stats == null:
+		printerr("skill not found")
+		return
+	var total_attack = attack + skill_stats.damage
+	target_unit._set_health(target_unit._get_health() - total_attack)
+	print("used ", skill_stats.skillname)
+	print("did ", total_attack, " to ", target_unit.name)
+	print(target_unit.name, " current health is ", target_unit._get_health())
 	
 func _set_health(_health):
 	if(_health <= max_health):
@@ -60,6 +78,11 @@ func _set_BG(BG):
 	
 func get_BG():
 	return currentBattleGround
+	
+func get_BG_attacker_pos():
+	var attacker_pos = Vector3(currentBattleGround.get_attacker_pos().global_position.x, self.global_position.y, currentBattleGround.get_attacker_pos().global_position.z)
+	return attacker_pos
+	
 	
 
 

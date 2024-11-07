@@ -4,6 +4,7 @@ extends "../Unit/Unit.gd"
 @onready var ap = $Sam2/AnimationPlayer
 
 signal anim_finished
+signal tween_finished
 
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +52,7 @@ func _ready():
 	
 	skill_tree.left.left = TreeSkill.new()
 	skill_tree.left.left.right = TreeSkill.new()
-	#skill_tree.left.left.right.move_name = "Snake: Whip"
+	skill_tree.left.left.right.move_name = "Snake: Whip"
 	skill_tree.left.left.right.right = TreeSkill.new()
 	skill_tree.left.left.right.right.move_name = "Ox: Crush" 
 	
@@ -63,8 +64,10 @@ func _ready():
 	
 	set_skill_active("Rooster: Flame")
 	set_skill_active("Rabbit: Bounce")
-	#set_skill_active("Snake: Whip")
+	set_skill_active("Snake: Whip")
 	set_skill_active("Ox: Crush")
+	
+	_set_base_skills()
 	
 	var arr = ["Left", "Left", "Right", "Right"]
 	print(check_skill(arr, skill_tree))
@@ -74,13 +77,14 @@ func _ready():
 	
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween()
-	unitTween.tween_property(self, "position", target_pos, 1)
 	ap.play("Rotate")
 	unitTween.connect("finished", on_tween_finished)
+	unitTween.tween_property(self, "position", target_pos, 1)
+	
 
 func on_tween_finished():
 	ap.stop()
-	anim_finished.emit("walk")
+	tween_finished.emit()
 	
 
 func get_skill_list():

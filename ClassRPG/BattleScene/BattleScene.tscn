@@ -65,6 +65,7 @@ point_count = 6
 environment = SubResource("Environment_ccmnm")
 
 [node name="BattleManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_p4ijo")
 
 [node name="States" type="Node" parent="BattleManager"]
@@ -111,16 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77243, 0)
 transform = Transform3D(-0.893644, -0.438739, -0.0943891, -0.0134349, 0.236385, -0.971567, 0.448576, -0.866966, -0.217138, -7.78788, 7.34126, 0)
 
 [node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig" index="0"]
-bones/0/position = Vector3(-0.233449, 2.12964, -0.338561)
-bones/1/rotation = Quaternion(0.179137, 0.0813073, 0.00523291, 0.980445)
-bones/8/rotation = Quaternion(-0.245264, 0.818718, -0.507379, 0.110059)
-bones/9/rotation = Quaternion(0.549059, -0.105267, 0.117165, 0.820807)
-bones/11/rotation = Quaternion(-0.622068, 0.361928, 0.533937, 0.443793)
-bones/12/rotation = Quaternion(-0.548081, -0.493042, 0.565734, 0.369409)
-bones/13/rotation = Quaternion(0.110081, 0.148898, 0.147232, 0.971614)
-bones/19/rotation = Quaternion(-0.972854, -0.0675733, 0.017153, 0.220669)
-bones/24/rotation = Quaternion(0.793118, -0.0393257, 0.0948711, 0.600347)
-bones/25/rotation = Quaternion(0.677507, -0.128135, -0.0555663, 0.722135)
+bones/0/position = Vector3(-0.00756502, 3.66088, -0.338561)
 
 [node name="Sophie" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
@@ -269,6 +261,9 @@ transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 1.28731, 0, 0.111
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
+[node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+
 [node name="Battleground2" type="Node3D" parent="BattleManager/EnemyBGs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, 14.0928)
 script = ExtResource("2_4fejy")
@@ -277,6 +272,9 @@ script = ExtResource("2_4fejy")
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+
+[node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634101, 0, -1.70611)
 
 [node name="Battleground3" type="Node3D" parent="BattleManager/EnemyBGs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, 13.5808)
@@ -287,6 +285,9 @@ transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
+[node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130697, 0, -1.70611)
+
 [node name="Battleground4" type="Node3D" parent="BattleManager/EnemyBGs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, 21.5305)
 script = ExtResource("2_4fejy")
@@ -295,6 +296,9 @@ script = ExtResource("2_4fejy")
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+
+[node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366076, 0, -1.70611)
 
 [node name="UI3d" type="Node3D" parent="BattleManager"]
 

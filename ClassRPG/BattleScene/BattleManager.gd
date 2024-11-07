@@ -33,6 +33,8 @@ var current_unit
 @onready var EBGT = $EnemyBGs/Battleground2
 @onready var EBGB = $EnemyBGs/Battleground3
 @onready var EBGR = $EnemyBGs/Battleground4
+
+
 @onready var skillPoints = $Control/Skillpoints
 
 @onready var enemySelector = $UI3d/EnemySelector
@@ -74,7 +76,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['selectEBG', 'selectABG', 'skillInputs', 'selectAlly', 'playerturn']:
+	elif state_name in ['selectEBG', 'selectABG', 'skillInputs', 'playerturn']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]

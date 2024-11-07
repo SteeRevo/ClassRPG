@@ -2,8 +2,6 @@ extends States
 
 func enter(host):
 	print("Player inputs skills")
-	for unit in host.player_units:
-		print(unit.name)
 
 func handle_input(host, event):
 	
