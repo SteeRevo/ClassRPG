@@ -36,6 +36,7 @@ var current_unit
 
 
 @onready var skillPoints = $Control/Skillpoints
+@onready var skillDamage = $Control/SkillDamage
 
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
@@ -124,6 +125,9 @@ func add_cameras():
 
 func update_skill_name(skill):
 	skillNameDisplay.set_skill_name(skill.skillname) 
+	
+func update_skill_damage(damage):
+	pass
 
 func _on_unit_turn_finished(action_weight):
 	player_units.erase(current_unit)

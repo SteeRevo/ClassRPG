@@ -50,6 +50,7 @@ func attack_unit(target_unit, skill):
 	print("used ", skill_stats.skillname)
 	print("did ", total_attack, " to ", target_unit.name)
 	print(target_unit.name, " current health is ", target_unit._get_health())
+	return total_attack
 	
 func _set_health(_health):
 	if(_health <= max_health):
@@ -83,7 +84,11 @@ func get_BG_attacker_pos():
 	var attacker_pos = Vector3(currentBattleGround.get_attacker_pos().global_position.x, self.global_position.y, currentBattleGround.get_attacker_pos().global_position.z)
 	return attacker_pos
 	
+func get_death():
+	return is_dead
 	
+func kill_self():
+	queue_free()
 
 
 func calc_turn_order(action_weight):

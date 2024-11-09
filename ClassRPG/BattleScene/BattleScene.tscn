@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=32 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="13_gk8um"]
 [ext_resource type="Script" path="res://BattleScene/BB.gd" id="14_2yvau"]
 [ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="14_o008x"]
+[ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
 panorama = ExtResource("1_ybyfs")
@@ -94,6 +95,8 @@ script = ExtResource("5_qtrjn")
 [node name="SkillInputs" type="Node" parent="BattleManager/States"]
 script = ExtResource("9_icg8r")
 
+[node name="Node" type="Node" parent="BattleManager/States"]
+
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" type="Node3D" parent="BattleManager/PlayerUnits"]
@@ -162,6 +165,9 @@ transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.103124, 0, 0.11
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+
 [node name="Battleground2" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, -5.44311)
 script = ExtResource("2_4fejy")
@@ -170,6 +176,9 @@ script = ExtResource("2_4fejy")
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
 
 [node name="Battleground3" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, -5.95517)
@@ -180,6 +189,9 @@ transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+
 [node name="Battleground4" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, -12.5466)
 script = ExtResource("2_4fejy")
@@ -188,6 +200,9 @@ script = ExtResource("2_4fejy")
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
 
@@ -314,17 +329,28 @@ offset_right = 1150.0
 offset_bottom = 651.0
 
 [node name="Skillpoints" type="TextEdit" parent="BattleManager/Control"]
+visible = false
 layout_mode = 0
 offset_right = 129.0
 offset_bottom = 41.0
 text = "Skill points: 5"
 script = ExtResource("6_f81yq")
 
+[node name="SkillDamage" type="TextEdit" parent="BattleManager/Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 48.0
+offset_right = 132.0
+offset_bottom = 89.0
+text = "Damage: "
+script = ExtResource("21_2hxki")
+
 [node name="Skillname" type="TextEdit" parent="BattleManager/Control"]
 layout_mode = 0
-offset_top = 42.0
-offset_right = 250.0
-offset_bottom = 83.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 44.0
 text = "Skill Name: "
 script = ExtResource("7_cwe3h")
 

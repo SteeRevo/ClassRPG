@@ -5,13 +5,17 @@ var input_arr = []
 var current_action
 var moved_to_enemy = false
 var current_position
+var current_enemy = null
+var current_unit = null
 
 func enter(host):
 	host_ref.current_unit = host.current_unit
+	current_unit = host.current_unit
 	host_ref.current_selected_ally = host.current_selected_ally
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
 	current_action = host.current_action
+	current_enemy = host.current_selected_enemy
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
 		check_skill_inputs(host)
@@ -35,12 +39,13 @@ func _on_animation_finished(anim_name):
 			play_animation(host_ref)
 			pass
 		else:
+			check_enemy_death(current_enemy)
 			host_ref.current_unit.move_towards(current_position)
 
 func _on_tween_finished():
 	print("tweened")
 	if current_action == "Rotate":
-		host_ref.current_unit.play_idle()
+		current_unit.play_idle()
 		host_ref.end_turn()
 	elif current_action == "Attack" and !moved_to_enemy:
 		moved_to_enemy = true
@@ -57,6 +62,7 @@ func exit(host):
 	host.current_selected_ally = null
 	host.skill_stack = []
 	moved_to_enemy = false
+	current_unit = null
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):
@@ -111,7 +117,15 @@ func check_skill_inputs(host):
 	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
 	
 
-
+func check_enemy_death(enemy):
+	if enemy:
+		if enemy.get_death():
+			enemy.get_BG()._set_current_unit(null)
+			host_ref.enemy_units.erase(enemy)
+			host_ref.unit_list.erase(enemy)
+			enemy.kill_self()
+	if len(host_ref.enemy_units) == 0:
+		host_ref.end_turn()
 
 func play_animation(host):
 	var move = input_arr.pop_front()
@@ -130,4 +144,4 @@ func play_animation(host):
 			print(move)
 
 func calc_damage(host, skill):
-	host.current_unit.attack_unit(host.current_selected_enemy, skill)
+	var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)

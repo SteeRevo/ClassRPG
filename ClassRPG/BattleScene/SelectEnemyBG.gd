@@ -15,18 +15,15 @@ func handle_input(host, event):
 	
 	elif event.is_action_pressed("Attack"):
 		if host.EBGR._get_current_unit():
-			if host.EBGB._get_current_unit() or host.EBGT._get_current_unit():
-				if last_action == "Attack":
-					print("attacking")
-					return "skillInputs"
-				else:
-					host.current_selected_enemy = host.EBGR._get_current_unit()
-					print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
-					host.enemySelector.set_BG_position(host.EBGR)
-					print("double tap to select")
-					last_action = "Attack"
+			if last_action == "Attack":
+				print("attacking")
+				return "skillInputs"
 			else:
-				print("enemy found at bottom or top")
+				host.current_selected_enemy = host.EBGR._get_current_unit()
+				print("selected " + host.current_selected_enemy.name + host.current_selected_enemy.get_BG().name)
+				host.enemySelector.set_BG_position(host.EBGR)
+				print("double tap to select")
+				last_action = "Attack"
 		else:
 			print("no enemy here")
 	elif event.is_action_pressed("Rotate"):

@@ -9,8 +9,7 @@ signal tween_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-
+	_set_base_skills()
 	var skill = Skill.new()
 	skill.skillname = "Absorb"
 	skill.damage = 5
