@@ -6,12 +6,13 @@ var current_action
 var moved_to_enemy = false
 var current_position
 var current_enemy = null
+var current_ally = null
 var current_unit = null
+var tweened = 0
+var not_attack = ["Rotate", "0tpose"]
 
 func enter(host):
-	host_ref.current_unit = host.current_unit
 	current_unit = host.current_unit
-	host_ref.current_selected_ally = host.current_selected_ally
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
 	current_action = host.current_action
@@ -21,6 +22,8 @@ func enter(host):
 		check_skill_inputs(host)
 	elif host.current_action == "Rotate":
 		host.current_selected_ally = host.current_selected_BG._get_current_unit()
+		host.current_selected_ally.tween_finished.connect(_on_tween_finished)
+		current_ally = host.current_selected_ally
 		complete_rotation(host)
 	elif host.current_action == "Item":
 		pass
@@ -34,7 +37,8 @@ func _on_unit_turn_finished(host):
 	host.end_turn()
 	
 func _on_animation_finished(anim_name):
-	if anim_name != "Rotate":
+	print(anim_name)
+	if !not_attack.has(anim_name):
 		if input_arr.size() > 0:
 			play_animation(host_ref)
 			pass
@@ -46,14 +50,25 @@ func _on_tween_finished():
 	print("tweened")
 	if current_action == "Rotate":
 		current_unit.play_idle()
+		current_ally.play_idle()
 		host_ref.end_turn()
 	elif current_action == "Attack" and !moved_to_enemy:
 		moved_to_enemy = true
 		play_animation(host_ref)
 	elif current_action == "Attack" and moved_to_enemy:
+		current_unit.play_idle()
 		host_ref.end_turn()
 	
 func exit(host):
+	if host.current_unit.tween_finished.is_connected(_on_tween_finished):
+		host.current_unit.tween_finished.disconnect(_on_tween_finished)
+	if host.current_unit.anim_finished.is_connected(_on_animation_finished):
+		host.current_unit.anim_finished.disconnect(_on_animation_finished)
+	if host.current_selected_ally != null:
+		if host.current_selected_ally.tween_finished.is_connected(_on_tween_finished):
+			host.current_selected_ally.tween_finished.disconnect(_on_tween_finished)
+		if host.current_selected_ally.anim_finished.is_connected(_on_animation_finished):
+			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
 	host.current_unit.available = false
 	host.current_unit = null
@@ -61,8 +76,10 @@ func exit(host):
 	host.current_selected_BG = null
 	host.current_selected_ally = null
 	host.skill_stack = []
+	host.skillDamage._reset_damage()
 	moved_to_enemy = false
 	current_unit = null
+	tweened = 0
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):
@@ -129,10 +146,8 @@ func check_enemy_death(enemy):
 
 func play_animation(host):
 	var move = input_arr.pop_front()
-	calc_damage(host, move)
 	match move:
 		"Left":
-			calc_damage(host, move)
 			host.current_unit.play_left()
 		"Right":
 			host.current_unit.play_right()
@@ -142,6 +157,9 @@ func play_animation(host):
 			host.current_unit.play_down()
 		_:
 			print(move)
+	calc_damage(host, move)
 
 func calc_damage(host, skill):
 	var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+	host.skillDamage._add_skill_damage(damage)
+	

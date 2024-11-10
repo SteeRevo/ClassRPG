@@ -69,8 +69,7 @@ func check_skill(skill_arr, root):
 	
 
 func play_idle():
-	print("playing idle for BB")
-	pass#$Sam/AnimationPlayer.play("idle")
+	ap.play("0tpose")
 	
 func play_attack():
 	pass#$Sam/AnimationPlayer.play("attack")
