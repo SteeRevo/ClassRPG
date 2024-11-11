@@ -37,10 +37,13 @@ var current_unit
 
 @onready var skillPoints = $Control/Skillpoints
 @onready var skillDamage = $Control/SkillDamage
+@onready var stateName = $Control/CurrentState
 
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
-@onready var mainBattleCamera = $MainBattleCamera
+@onready var mainBattleCamera = $Cameras/MainBattleCamera
+@onready var cameraPointBG1 = $CameraPoints/BG1Cam
+
 
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
@@ -50,7 +53,8 @@ var current_unit
 	'selectABG': $States/SelectAllyBG,
 	'selectAlly': $States/SelectAlly,
 	'completeAction': $States/CompleteAction,
-	'skillInputs': $States/SkillInputs
+	'skillInputs': $States/SkillInputs,
+	'end_fight': $States/EndFight
 }
 
 var states_stack = []

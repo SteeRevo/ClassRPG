@@ -3,6 +3,7 @@ extends States
 var last_action = null
 
 func enter(host):
+	host.stateName.set_state_name("Player Turn")
 	print("=====player turn=========")
 	if host.current_unit.name == "Sam":
 		host.current_unit.play_idle()
@@ -55,3 +56,6 @@ func handle_input(host, event):
 
 func exit(host):
 	last_action = null
+	
+func set_active_camera(host, camera):
+	camera.move_to(host.cameraPointBG1.global_position)

@@ -12,6 +12,7 @@ var tweened = 0
 var not_attack = ["Rotate", "0tpose"]
 
 func enter(host):
+	host.stateName.set_state_name("completing action")
 	current_unit = host.current_unit
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
@@ -44,7 +45,8 @@ func _on_animation_finished(anim_name):
 			pass
 		else:
 			check_enemy_death(current_enemy)
-			host_ref.current_unit.move_towards(current_position)
+			if len(host_ref.enemy_units) != 0:
+				host_ref.current_unit.move_towards(current_position)
 
 func _on_tween_finished():
 	print("tweened")

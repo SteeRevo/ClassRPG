@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=35 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/Battleground.gd" id="2_4fejy"]
@@ -16,12 +16,15 @@
 [ext_resource type="Script" path="res://BattleScene/SelectAlly.gd" id="8_ejyrp"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
+[ext_resource type="Script" path="res://BattleScene/EndFight.gd" id="11_f76x8"]
 [ext_resource type="PackedScene" uid="uid://cxfeiole33f4w" path="res://Unit/Sam/Sam2.glb" id="11_s2632"]
 [ext_resource type="Script" path="res://BattleScene/Sophie.gd" id="12_qqmey"]
 [ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="13_gk8um"]
 [ext_resource type="Script" path="res://BattleScene/BB.gd" id="14_2yvau"]
 [ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="14_o008x"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
+[ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
+[ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
 panorama = ExtResource("1_ybyfs")
@@ -95,7 +98,8 @@ script = ExtResource("5_qtrjn")
 [node name="SkillInputs" type="Node" parent="BattleManager/States"]
 script = ExtResource("9_icg8r")
 
-[node name="Node" type="Node" parent="BattleManager/States"]
+[node name="EndFight" type="Node" parent="BattleManager/States"]
+script = ExtResource("11_f76x8")
 
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
@@ -325,8 +329,8 @@ script = ExtResource("5_5hphj")
 [node name="Control" type="Control" parent="BattleManager"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1150.0
-offset_bottom = 651.0
+offset_right = 1002.0
+offset_bottom = 564.0
 
 [node name="Skillpoints" type="TextEdit" parent="BattleManager/Control"]
 visible = false
@@ -346,6 +350,7 @@ text = "Damage: "
 script = ExtResource("21_2hxki")
 
 [node name="Skillname" type="TextEdit" parent="BattleManager/Control"]
+visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 3.0
@@ -354,9 +359,39 @@ offset_bottom = 44.0
 text = "Skill Name: "
 script = ExtResource("7_cwe3h")
 
-[node name="MainBattleCamera" type="Camera3D" parent="BattleManager"]
-transform = Transform3D(-0.0755113, 0.387049, -0.918962, 0.0292985, 0.922056, 0.385945, 0.996714, 0.002219, -0.0809657, -19.2701, 9.94786, 3.5505)
+[node name="CurrentState" type="TextEdit" parent="BattleManager/Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 44.0
+text = "State Name: "
+script = ExtResource("24_x633m")
+
+[node name="Cameras" type="Node" parent="BattleManager"]
+
+[node name="MainBattleCamera" type="Camera3D" parent="BattleManager/Cameras"]
+transform = Transform3D(-0.0755113, 0.387049, -0.918962, 0.0292985, 0.922056, 0.385945, 0.996714, 0.00221901, -0.0809657, -19.2701, 9.94786, 3.5505)
 current = true
+script = ExtResource("25_ofn88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cameras/MainBattleCamera"]
+
+[node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
+
+[node name="CameraPoints" type="Node" parent="BattleManager"]
+
+[node name="BG1Cam" type="Node3D" parent="BattleManager/CameraPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49847, 2.66584, 1.48165)
+
+[node name="BG2Cam" type="Node3D" parent="BattleManager/CameraPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77798, 3.19882, -3.35179)
+
+[node name="BG3Cam" type="Node3D" parent="BattleManager/CameraPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07274, 3.07316, -3.13666)
+
+[node name="BG4Cam" type="Node3D" parent="BattleManager/CameraPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29736, 3.07316, -8.04473)
 
 [node name="CameraPaths" type="Node" parent="."]
 

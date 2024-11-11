@@ -3,6 +3,7 @@ extends States
 var last_action = null
 
 func enter(host):
+	host.stateName.set_state_name("Select Ally BG")
 	print("Player selects unit to rotate")
 	for unit in host.player_units:
 		print(unit.name)

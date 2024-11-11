@@ -2,6 +2,7 @@ extends States
 
 func enter(host):
 	print("Player inputs skills")
+	host.stateName.set_state_name("Inputting Skills")
 
 func handle_input(host, event):
 	

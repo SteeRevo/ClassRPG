@@ -4,6 +4,7 @@ var current_selected_enemy
 
 
 func enter(host):
+	host.stateName.set_state_name("Choose turn")
 	if host.start_of_battle:
 		start_battle(host)
 	host.current_turn = choose_turn(host)
