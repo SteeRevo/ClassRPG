@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk2u8s6mre8l4"]
+
+[ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="1_ti6hr"]
+
+[node name="BB" instance=ExtResource("1_ti6hr")]
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/rotation = Quaternion(-2.67855e-10, 0.992053, -0.12582, -8.46649e-08)
+bones/0/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(0.0143974, 1.70123, -0.0321897)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-0.0143975, 1.70123, -0.03219)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/scale = Vector3(1, 1, 1)
+bones/19/scale = Vector3(1, 0.999999, 0.999999)
+bones/20/scale = Vector3(1, 1, 1)
+bones/24/scale = Vector3(1, 1, 0.999996)
+bones/25/scale = Vector3(1, 1, 0.999999)

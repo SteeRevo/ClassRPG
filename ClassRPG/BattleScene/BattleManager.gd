@@ -42,7 +42,7 @@ var current_unit
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
 @onready var mainBattleCamera = $Cameras/MainBattleCamera
-@onready var cameraPointBG1 = $CameraPoints/BG1Cam
+@onready var cameraPointBG1 = $CameraPaths/Path3D/PathFollow3D
 
 
 @onready var states_map = {
@@ -107,7 +107,10 @@ func _input(event):
 	var new_state = current_state.handle_input(self, event)
 	if new_state:
 		_change_state(new_state)
-	
+		
+func _process(delta):
+	current_state.update(self, delta)
+
 func end_turn():
 	
 	print("changing turn")

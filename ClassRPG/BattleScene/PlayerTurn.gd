@@ -2,6 +2,8 @@ extends States
 
 var last_action = null
 
+var current_cam
+
 func enter(host):
 	host.stateName.set_state_name("Player Turn")
 	print("=====player turn=========")
@@ -15,6 +17,10 @@ func enter(host):
 	print("Current Unit is: " + host.current_unit.name)
 	print("Press D to attack, A to Guard, W for Item, S for Rotate.")
 	set_active_camera(host, host.mainBattleCamera)
+	
+func update(host, delta):
+	current_cam.move_to(host.cameraPointBG1.global_position)
+	current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Cancel"):
@@ -59,3 +65,6 @@ func exit(host):
 	
 func set_active_camera(host, camera):
 	camera.move_to(host.cameraPointBG1.global_position)
+	current_cam = camera
+	host.cameraPointBG1.start()
+	

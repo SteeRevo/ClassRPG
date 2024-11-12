@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6oh1smyml84j"]
+
+[ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="1_xttpu"]
+
+[node name="Sophia" instance=ExtResource("1_xttpu")]
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/1/rotation = Quaternion(-0.131196, -0.00698912, -0.0642211, 0.989249)
+bones/2/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.165044, 0.803169, -0.387251, 0.421564)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.573881, -0.132537, -0.527481, 0.612257)
+bones/12/rotation = Quaternion(-0.0488768, -0.47841, 0.843797, 0.238206)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.291069, -0.00592526, 0.396966, 0.870438)
+bones/19/rotation = Quaternion(0.950038, -0.0559577, -0.0461165, 0.303596)
+bones/19/scale = Vector3(1, 1, 0.999998)
+bones/20/rotation = Quaternion(0.523037, -0.0443147, -0.223968, 0.821162)
