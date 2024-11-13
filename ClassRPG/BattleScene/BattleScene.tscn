@@ -17,8 +17,8 @@
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
 [ext_resource type="Script" path="res://BattleScene/EndFight.gd" id="11_f76x8"]
-[ext_resource type="PackedScene" uid="uid://cxfeiole33f4w" path="res://Unit/Sam/Sam2.glb" id="11_s2632"]
 [ext_resource type="Script" path="res://BattleScene/Sophie.gd" id="12_qqmey"]
+[ext_resource type="PackedScene" uid="uid://cxcxmi4qbfg2e" path="res://Unit/Sam/sam_model.tscn" id="13_4wfho"]
 [ext_resource type="Script" path="res://BattleScene/BB.gd" id="14_2yvau"]
 [ext_resource type="PackedScene" uid="uid://b6oh1smyml84j" path="res://Unit/Sophie/sophia_model.tscn" id="15_766op"]
 [ext_resource type="PackedScene" uid="uid://dk2u8s6mre8l4" path="res://Unit/BB/bb_model.tscn" id="17_mwipc"]
@@ -113,14 +113,28 @@ attack = 5
 defense = 5
 speed = 10
 
-[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("11_s2632")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77243, 0)
+[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("13_4wfho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7142, 0)
 
-[node name="Empty" parent="BattleManager/PlayerUnits/Sam/Sam2" index="0"]
-transform = Transform3D(-0.893644, -0.438739, -0.0943891, -0.0134349, 0.236385, -0.971567, 0.448576, -0.866966, -0.217138, -7.78788, 7.34126, 0)
+[node name="metarig" parent="BattleManager/PlayerUnits/Sam/Sam2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0173855, 2.58223, -0.530669)
 
 [node name="Skeleton3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig" index="0"]
 bones/0/position = Vector3(-0.00756502, 3.66088, -0.338561)
+bones/1/rotation = Quaternion(-0.0644764, 0, 0, 0.997919)
+bones/6/rotation = Quaternion(-0.0937118, 0, 0, 0.995599)
+bones/8/rotation = Quaternion(0.17287, 0.72206, -0.158139, 0.650951)
+bones/9/rotation = Quaternion(0.110825, -0.103018, 0.0321413, 0.987964)
+bones/11/rotation = Quaternion(-0.605155, 0.345863, 0.356134, 0.622363)
+bones/12/rotation = Quaternion(0.17287, -0.72206, 0.158139, 0.650951)
+bones/13/rotation = Quaternion(0.110825, 0.103018, -0.0321414, 0.987964)
+bones/19/rotation = Quaternion(0.983811, 0.0172146, -0.00364121, 0.178346)
+bones/20/rotation = Quaternion(0.0948054, 0.000536576, 0.0300864, 0.995041)
+bones/24/rotation = Quaternion(0.983811, -0.0172146, 0.00364121, 0.178346)
+bones/25/rotation = Quaternion(0.0948054, -0.000536576, -0.0300864, 0.995041)
+
+[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig/Skeleton3D" index="7"]
+transform = Transform3D(-0.0499818, -0.99807, 0.0368474, 0.998368, -0.0489072, 0.0295103, -0.0276513, 0.0382623, 0.998885, -4.7212, 7.26744, -0.0437416)
 
 [node name="Sophie" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
@@ -395,11 +409,10 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/Path3D"]
-transform = Transform3D(0.966417, -0.00953859, -0.25669, 9.31295e-10, 0.999284, -0.0371337, 0.256865, 0.0358875, 0.965758, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441828, -0.012604, 0, 0.99936, -0.0350324, 0.0126117, 0.0350295, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam2/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sophie" to="BattleManager" method="_on_unit_rotate_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
 
