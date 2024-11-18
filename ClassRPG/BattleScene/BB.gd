@@ -2,6 +2,8 @@ extends "../Unit/Unit.gd"
 
 
 @onready var ap = $BB/AnimationPlayer
+@onready var unit_cam = $UnitCam
+@onready var attack_cam = $AttackCam
 
 signal anim_finished
 signal tween_finished
@@ -31,9 +33,7 @@ func _ready():
 	
 	set_skill_active("Pitch")
 	
-	
-	
-	
+
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween()
 	ap.play("Rotate")
@@ -42,7 +42,6 @@ func move_towards(target_pos):
 	
 
 func on_tween_finished():
-	ap.stop()
 	tween_finished.emit()
 	
 
@@ -69,10 +68,10 @@ func check_skill(skill_arr, root):
 	
 
 func play_idle():
-	ap.play("0tpose")
-	
-func play_attack():
-	pass#$Sam/AnimationPlayer.play("attack")
+	ap.play("BattleIdle")
+
+func play_skill(skillname):
+	ap.play("Skill")
 
 func play_left():
 	ap.play("Left")
@@ -85,6 +84,12 @@ func play_up():
 	
 func play_down():
 	ap.play("Down")
+
+func get_unit_cam():
+	return unit_cam
+
+func get_attack_cam():
+	return attack_cam
 	
 func set_skill_active(name):
 	for skill in skillList:

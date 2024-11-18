@@ -2,6 +2,8 @@ extends "../Unit/Unit.gd"
 
 
 @onready var ap = $Sophie/AnimationPlayer
+@onready var unit_cam = $UnitCam
+@onready var attack_cam = $AttackCam
 
 signal anim_finished
 signal tween_finished
@@ -12,7 +14,7 @@ func _ready():
 	_set_base_skills()
 	var skill = Skill.new()
 	skill.skillname = "Absorb"
-	skill.damage = 5
+	skill.damage = 3
 	skill.cost = 1
 	skill.inputs = PackedStringArray(["Down", "Down", "Right"])
 	
@@ -42,7 +44,6 @@ func move_towards(target_pos):
 	
 
 func on_tween_finished():
-	ap.stop()
 	tween_finished.emit()
 	
 
@@ -69,10 +70,10 @@ func check_skill(skill_arr, root):
 	
 
 func play_idle():
-	ap.play("AttackIdle")
-	
-func play_attack():
-	pass#$Sam/AnimationPlayer.play("attack")
+	ap.play("BattleIdle")
+
+func play_skill(skillname):
+	ap.play("Skill")
 
 func play_left():
 	ap.play("Left")
@@ -85,6 +86,12 @@ func play_up():
 	
 func play_down():
 	ap.play("Down")
+	
+func get_unit_cam():
+	return unit_cam
+	
+func get_attack_cam():
+	return attack_cam
 	
 func set_skill_active(name):
 	for skill in skillList:

@@ -12,12 +12,14 @@ var enemy_bgs = []
 var current_selected_enemy 
 var current_selected_BG
 var current_selected_ally
+var current_unit_bg
 
 signal end_player_turn
 signal end_enemy_turn
 signal selected
 signal rotate_finished
 signal skill_confirmed
+signal state_changed
 @onready var player_units_path = $PlayerUnits
 @onready var enemy_units_path = $EnemyUnits
 
@@ -34,15 +36,19 @@ var current_unit
 @onready var EBGB = $EnemyBGs/Battleground3
 @onready var EBGR = $EnemyBGs/Battleground4
 
-
-@onready var skillPoints = $Control/Skillpoints
 @onready var skillDamage = $Control/SkillDamage
 @onready var stateName = $Control/CurrentState
 
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
 @onready var mainBattleCamera = $Cameras/MainBattleCamera
-@onready var cameraPointBG1 = $CameraPaths/Path3D/PathFollow3D
+@onready var cameraPointBG1 = $CameraPaths/BG1Path/PathFollow3D
+@onready var cameraPointBG2 = $CameraPaths/BG2Path/PathFollow3D
+@onready var cameraPointBG3 = $CameraPaths/BG3Path/PathFollow3D
+@onready var cameraPointBG4 = $CameraPaths/BG4Path/PathFollow3D
+@onready var selectEBGcam = $CameraPoints/SelectEBGcam
+@onready var mainOverviewCam = $CameraPoints/MainOverview
+@onready var selectBGcam = $CameraPoints/SelectBGcam
 
 
 @onready var states_map = {

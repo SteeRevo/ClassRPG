@@ -117,9 +117,6 @@ technique = 10
 [node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("13_4wfho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)
 
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig/Skeleton3D" index="7"]
-transform = Transform3D(-0.0499808, -0.998079, 0.0368463, 0.998354, -0.0489065, 0.029509, -0.0276503, 0.0382628, 0.998877, -4.66792, 9.80064, -0.0437425)
-
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sam"]
 transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, -5.66829, 10.2501, 7.42947)
 
@@ -141,9 +138,6 @@ startingBG = 1
 [node name="Sophie" parent="BattleManager/PlayerUnits/Sophie" instance=ExtResource("15_766op")]
 transform = Transform3D(-0.993337, 0, 0.115249, 0, 1, 0, -0.115249, 0, -0.993337, 0, 0, 0)
 
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sophie/Sophie/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.154088, 0.98702, 0.0456149, 0.988006, -0.154371, 0.00281057, 0.00981458, 0.0446317, -0.998939, 5.8048, 13.7445, 0.656042)
-
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sophie"]
 transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
 
@@ -163,9 +157,6 @@ technique = 6
 startingBG = 2
 
 [node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("17_mwipc")]
-
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/BB/BB/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.117224, -0.993098, 0.00295596, -0.992673, -0.117085, 0.029797, -0.0292453, -0.00642716, -0.999552, -6.28225, 12.2726, 0.909785)
 
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/BB"]
 transform = Transform3D(0.944782, 0, -0.327696, 0, 1, 0, 0.327696, 0, 0.944782, 6.65664, 10.0157, -11.134)

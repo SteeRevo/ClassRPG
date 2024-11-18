@@ -19,13 +19,15 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 States="*res://BattleScene/States/States.gd"
 SignalBus="*res://Visual_novel_scene/singletons/SignalBus.gd"
 PortraitEnums="*res://Visual_novel_scene/singletons/PortraitEnums.gd"
+SkillEnums="*res://UI/SkillEnums.gd"
+Databases="*res://Spirits/Databases.gd"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=563
-window/size/window_width_override=1152
-window/size/window_height_override=648
+window/size/viewport_width=850
+window/size/viewport_height=478
+window/size/window_width_override=1480
+window/size/window_height_override=833
 window/stretch/mode="viewport"
 
 [input]

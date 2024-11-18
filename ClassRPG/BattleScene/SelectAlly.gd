@@ -3,11 +3,15 @@ extends States
 var last_action = null
 
 func enter(host):
+	set_active_camera(host, host.mainBattleCamera)
 	host.stateName.set_state_name("Select Ally to control")
 	host.current_unit = null
 	print("Player selects Unit to control")
 	for unit in host.player_units:
 		print(unit.name)
+		unit.play_idle()
+	host.enemySelector.visible = false
+	
 
 func handle_input(host, event):
 	
@@ -19,6 +23,7 @@ func handle_input(host, event):
 					print(host.current_unit)
 					return 'playerturn'
 				else:
+					host.enemySelector.visible = true
 					print("selected " + host.BGF._get_current_unit().name)
 					host.enemySelector.set_BG_position(host.BGF)
 					print("double tap to select")
@@ -35,6 +40,7 @@ func handle_input(host, event):
 					print(host.current_unit)
 					return 'playerturn'
 				else:
+					host.enemySelector.visible = true
 					print("selected " + host.BGB._get_current_unit().name)
 					host.enemySelector.set_BG_position(host.BGB)
 					print("double tap to select")
@@ -51,6 +57,7 @@ func handle_input(host, event):
 					print(host.current_unit)
 					return 'playerturn'
 				else:
+					host.enemySelector.visible = true
 					print("selected " + host.BGR._get_current_unit().name)
 					host.enemySelector.set_BG_position(host.BGR)
 					print("double tap to select")
@@ -67,6 +74,7 @@ func handle_input(host, event):
 					print(host.current_unit)
 					return 'playerturn'
 				else:
+					host.enemySelector.visible = true
 					print("selected " + host.BGT._get_current_unit().name)
 					host.enemySelector.set_BG_position(host.BGT)
 					print("double tap to select")
@@ -75,6 +83,16 @@ func handle_input(host, event):
 				print("ally already gone")
 		else:
 			print("no ally here")
+
+func update(host, delta):
+	return
+	
+func set_active_camera(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera
+	camera.move_to(host.mainOverviewCam.global_position)
+	camera.rotate_to(host.mainOverviewCam.rotation)
 			
 
 func exit(host):

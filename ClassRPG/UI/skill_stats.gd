@@ -17,6 +17,7 @@ func _init(name = "skill", _cost = 0, _damage = 0, _inputs = [], active_position
 	is_active = false
 	active_position = active_position
 	
+	
 func compare_inputs(arr):
 	var i = 0; var j = 0;
 	var l1 = len(arr)

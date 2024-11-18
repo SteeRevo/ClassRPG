@@ -9,9 +9,11 @@ var current_enemy = null
 var current_ally = null
 var current_unit = null
 var tweened = 0
+var uses_mana = false
 var not_attack = ["Rotate", "0tpose"]
 
 func enter(host):
+	host.enemySelector.visible = false
 	host.stateName.set_state_name("completing action")
 	current_unit = host.current_unit
 	host.current_unit.anim_finished.connect(_on_animation_finished)
@@ -21,9 +23,9 @@ func enter(host):
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
 		check_skill_inputs(host)
+		set_active_camera(host, host.current_unit.get_attack_cam())
 	elif host.current_action == "Rotate":
 		host.current_selected_ally = host.current_selected_BG._get_current_unit()
-		host.current_selected_ally.tween_finished.connect(_on_tween_finished)
 		current_ally = host.current_selected_ally
 		complete_rotation(host)
 	elif host.current_action == "Item":
@@ -51,8 +53,6 @@ func _on_animation_finished(anim_name):
 func _on_tween_finished():
 	print("tweened")
 	if current_action == "Rotate":
-		current_unit.play_idle()
-		current_ally.play_idle()
 		host_ref.end_turn()
 	elif current_action == "Attack" and !moved_to_enemy:
 		moved_to_enemy = true
@@ -148,20 +148,37 @@ func check_enemy_death(enemy):
 
 func play_animation(host):
 	var move = input_arr.pop_front()
+	host.skillNameDisplay.set_skill_name(move)
 	match move:
 		"Left":
 			host.current_unit.play_left()
+			uses_mana = false
 		"Right":
 			host.current_unit.play_right()
+			uses_mana = false
 		"Up":
 			host.current_unit.play_up()
+			uses_mana = false
 		"Down":
 			host.current_unit.play_down()
+			uses_mana = false
 		_:
-			print(move)
+			uses_mana = true
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
-	var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
-	host.skillDamage._add_skill_damage(damage)
+	if uses_mana == false:
+		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+		host.skillDamage._add_skill_damage(damage)
+	else:
+		var current_skill = host.current_unit.get_skill(skill)
+		var useable = host.current_unit.use_mana(current_skill.cost)
+		if useable:
+			host.current_unit.play_skill(current_skill.skillname)
+			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+			host.skillDamage._add_skill_damage(damage)
 	
+func set_active_camera(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera

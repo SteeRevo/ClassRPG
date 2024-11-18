@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cjimufcei1xir"]
 
 [ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
-[ext_resource type="PackedScene" uid="uid://b0jv327lro85l" path="res://Unit/Sophie/Sophia.glb" id="2_o1wcq"]
-[ext_resource type="PackedScene" uid="uid://db20amosyw7pq" path="res://Unit/BB/BB.glb" id="3_lexyy"]
+[ext_resource type="PackedScene" uid="uid://btcnxyip2albh" path="res://Unit/Sophie/Sophia.glb" id="2_o1wcq"]
+[ext_resource type="PackedScene" uid="uid://c3c8vggnyxldq" path="res://Unit/BB/BB.glb" id="3_lexyy"]
 [ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
 [ext_resource type="PackedScene" uid="uid://bcxru1sbmv1lu" path="res://Visual_novel_scene/dialogue_player.tscn" id="5_t2bf6"]
 
@@ -101,10 +101,6 @@ script = ExtResource("1_bakx2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
 shape = SubResource("BoxShape3D_sj7c5")
 
-[node name="Camera3D" type="Camera3D" parent="SamOverworld"]
-transform = Transform3D(-0.99929, 0, -0.0376902, 0, 1, 0, 0.0376902, 0, -0.99929, -0.00286308, 0.320973, -0.344124)
-current = true
-
 [node name="Sophia" parent="SamOverworld" instance=ExtResource("2_o1wcq")]
 transform = Transform3D(-0.0189731, 0, -0.000165243, 0, 0.0189738, 0, 0.000165243, 0, -0.0189731, 0, -0.0148075, 0)
 
@@ -143,6 +139,10 @@ shape = SubResource("BoxShape3D_4d2jo")
 
 [node name="DialoguePlayer" parent="." instance=ExtResource("5_t2bf6")]
 scene_text_file = "res://Visual_novel_scene/bb_dialog.json"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.699133, 0.215602, -0.681711, -0.050392, 0.936223, 0.347776, 0.713214, 0.277494, -0.643679, -1.60499, 2.18861, -2.79583)
+current = true
 
 [editable path="SamOverworld/Sophia"]
 [editable path="StaticBody3D/DialogueArea"]

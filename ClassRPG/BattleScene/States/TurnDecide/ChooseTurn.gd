@@ -8,6 +8,8 @@ func enter(host):
 	if host.start_of_battle:
 		start_battle(host)
 	host.current_turn = choose_turn(host)
+	for unit in host.player_units:
+		unit.play_idle()
 
 func start_battle(host):
 	host.start_of_battle = false
@@ -23,6 +25,7 @@ func get_all_units(host):
 	for unit in host.player_units_path.get_children():
 		host.player_units.append(unit)
 		host.unit_list.append(unit)
+		unit.play_idle()
 	for unit in host.enemy_units_path.get_children():
 		host.enemy_units.append(unit)
 		host.unit_list.append(unit)
