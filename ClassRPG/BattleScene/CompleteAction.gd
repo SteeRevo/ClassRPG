@@ -10,7 +10,7 @@ var current_ally = null
 var current_unit = null
 var tweened = 0
 var uses_mana = false
-var not_attack = ["Rotate", "0tpose"]
+var not_attack = ["Rotate", "0tpose", "Guard"]
 
 func enter(host):
 	host.enemySelector.visible = false
@@ -30,6 +30,8 @@ func enter(host):
 		complete_rotation(host)
 	elif host.current_action == "Item":
 		pass
+	elif host.current_action == "Guard":
+		guard(host)
 		
 
 func complete_rotation(host):
@@ -41,6 +43,8 @@ func _on_unit_turn_finished(host):
 	
 func _on_animation_finished(anim_name):
 	print(anim_name)
+	if anim_name == "Guard":
+		host_ref.end_turn()
 	if !not_attack.has(anim_name):
 		if input_arr.size() > 0:
 			play_animation(host_ref)
@@ -53,12 +57,13 @@ func _on_animation_finished(anim_name):
 func _on_tween_finished():
 	print("tweened")
 	if current_action == "Rotate":
+		if current_ally.is_guarding:
+			current_ally.set_guard()
 		host_ref.end_turn()
 	elif current_action == "Attack" and !moved_to_enemy:
 		moved_to_enemy = true
 		play_animation(host_ref)
 	elif current_action == "Attack" and moved_to_enemy:
-		current_unit.play_idle()
 		host_ref.end_turn()
 	
 func exit(host):
@@ -182,3 +187,6 @@ func set_active_camera(host, camera):
 	host.active_camera.current = false
 	camera.current = true
 	host.active_camera = camera
+	
+func guard(host):
+	host.current_unit.set_guard()

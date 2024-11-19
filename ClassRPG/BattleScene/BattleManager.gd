@@ -127,6 +127,7 @@ func end_turn():
 			return
 	for unit in unit_list:
 		unit.available = true
+		unit.is_guarding = false
 	_change_state('chooseturn')
 	_change_state(current_turn)
 

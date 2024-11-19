@@ -9,7 +9,6 @@ func enter(host):
 	print("Player selects Unit to control")
 	for unit in host.player_units:
 		print(unit.name)
-		unit.play_idle()
 	host.enemySelector.visible = false
 	
 

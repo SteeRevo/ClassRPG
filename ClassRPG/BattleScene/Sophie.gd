@@ -93,6 +93,10 @@ func get_unit_cam():
 func get_attack_cam():
 	return attack_cam
 	
+func set_guard():
+	is_guarding = true
+	ap.play("Guard")
+	
 func set_skill_active(name):
 	for skill in skillList:
 		if skill.skillname == name:

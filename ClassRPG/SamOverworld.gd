@@ -2,8 +2,11 @@ extends CharacterBody3D
 
 
 const SPEED = 2.5
-@onready var camera = $Camera3D
+@onready var camera = %MainCamera
 
+
+func _ready():
+	self.rotation.y = camera.rotation.y
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -18,6 +21,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		$Sophia.look_at(global_position + direction, Vector3.UP)
 		play_walk()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)

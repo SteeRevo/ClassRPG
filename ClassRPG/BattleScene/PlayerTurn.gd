@@ -58,7 +58,7 @@ func handle_input(host, event):
 		print("Guard")
 		if last_action == "Guard":
 			host.current_action = "Guard"
-			print("confirm guard") #_on_attack_pressed()
+			return 'completeAction' #_on_attack_pressed()
 		else:
 			last_action = "Guard"
 	elif event.is_action_pressed("Item"):

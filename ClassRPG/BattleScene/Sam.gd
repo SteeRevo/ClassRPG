@@ -127,6 +127,10 @@ func play_up():
 func play_down():
 	ap.play("Down")
 	
+func set_guard():
+	is_guarding = true
+	ap.play("Guard")
+	
 func get_unit_cam():
 	return unit_cam
 	

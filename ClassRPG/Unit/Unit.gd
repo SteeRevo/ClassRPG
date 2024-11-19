@@ -15,6 +15,7 @@ enum battleGrounds {F, TW, BW, B}
 @export var enemy_unit = false
 @export var available = true
 
+var is_guarding = false
 var attack_bonus = 0
 var defense_bonus = 0
 var tech_bonus = 0
@@ -166,6 +167,12 @@ func get_death():
 	
 func kill_self():
 	queue_free()
+	
+func set_guard():
+	is_guarding = true
+	
+func end_guard():
+	is_guarding = false
 	
 func attach_spirit(spirit_name):
 	var new_spirit = Spirit.new(spirit_name)
