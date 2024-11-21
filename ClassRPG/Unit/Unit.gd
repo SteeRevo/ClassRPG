@@ -6,8 +6,8 @@ enum battleGrounds {F, TW, BW, B}
 
 @export var max_health = 1
 @export var current_health = 1
-@export var current_mana = 1
-@export var max_mana = 1
+@export var current_sp = 1
+@export var max_sp = 1
 @export var attack = 0
 @export var defense = 0
 @export var technique = 0
@@ -80,25 +80,31 @@ func _set_health(_health):
 		print("Unit is dead")
 		is_dead = true
 		
-func use_mana(cost):
-	if current_mana < cost:
+func use_sp(cost):
+	if current_sp < cost:
 		return false
 	else:
-		current_mana -= cost
-		print("current mana: ", current_mana)
+		current_sp -= cost
+		print("current sp: ", current_sp)
 		return true
 		
-func set_mana(_mana):
-	if(_mana <= max_mana):
-		current_mana = _mana
+func set_sp(_sp):
+	if(_sp <= max_sp):
+		current_sp = _sp
 	else:
-		current_mana = max_mana
+		current_sp = max_sp
 		
-func get_mana():
-	return current_mana
+func get_sp():
+	return current_sp
+
+func get_max_sp():
+	return max_sp
 
 func _get_health():
 	return current_health
+	
+func get_max_health():
+	return max_health
 
 func get_technique():
 	return technique + bg_tech_bonus 
@@ -130,8 +136,8 @@ func set_bg_attack_buff(boost):
 func add_health(boost):
 	_set_health(current_health + boost)
 
-func add_mana(boost):
-	set_mana(current_mana + boost)
+func add_sp(boost):
+	set_sp(current_sp + boost)
 	
 func reset_attack():
 	attack_bonus = 0

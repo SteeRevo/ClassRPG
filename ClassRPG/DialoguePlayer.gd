@@ -12,7 +12,7 @@ var text_size = 0
 @onready var portrait = $Portrait
 @onready var portaitBG = $PortraitBG
 var bb_portrait = preload("res://Visual_novel_scene/bb_portrait.png")
-var sophie_portrait = preload("res://Visual_novel_scene/sophie_portraits.png")
+var phyllis_portrait = preload("res://Visual_novel_scene/sophie_portraits.png")
 var sam_portrait = preload("res://Visual_novel_scene/sam_portraits.png")
 
 
@@ -102,29 +102,29 @@ func change_portrait(speaker, emote):
 					portrait.frame = PortraitEnums.PORTRAITS_BB.SURPRISED
 				"sigh":
 					portrait.frame = PortraitEnums.PORTRAITS_BB.SIGH
-		"Sophie":
-			portrait.texture = sophie_portrait
+		"Phyllis":
+			portrait.texture = phyllis_portrait
 			match emote:
 				"normal":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.NORMAL
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.NORMAL
 				"grrr":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.GRRR
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.GRRR
 				"happy":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.HAPPY
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.HAPPY
 				"scold":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.SCOLD
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.SCOLD
 				"devious":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.DEVIOUS
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.DEVIOUS
 				"down":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.DOWN
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.DOWN
 				"scream":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.SCREAM
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.SCREAM
 				"worried":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.WORRIED
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.WORRIED
 				"dreaming":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.DREAMING
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.DREAMING
 				"sad":
-					portrait.frame = PortraitEnums.PORTRAITS_SOPHIE.SAD
+					portrait.frame = PortraitEnums.PORTRAITS_PHYLLIS.SAD
 		"Sam":
 			portrait.texture = sam_portrait
 			match emote:

@@ -1,7 +1,7 @@
 extends "../Unit/Unit.gd"
 
 
-@onready var ap = $Sophie/AnimationPlayer
+@onready var ap = $Phyllis/AnimationPlayer
 @onready var unit_cam = $UnitCam
 @onready var attack_cam = $AttackCam
 

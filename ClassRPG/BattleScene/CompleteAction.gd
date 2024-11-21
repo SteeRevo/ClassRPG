@@ -9,7 +9,7 @@ var current_enemy = null
 var current_ally = null
 var current_unit = null
 var tweened = 0
-var uses_mana = false
+var uses_sp = false
 var not_attack = ["Rotate", "0tpose", "Guard"]
 
 func enter(host):
@@ -157,27 +157,27 @@ func play_animation(host):
 	match move:
 		"Left":
 			host.current_unit.play_left()
-			uses_mana = false
+			uses_sp = false
 		"Right":
 			host.current_unit.play_right()
-			uses_mana = false
+			uses_sp = false
 		"Up":
 			host.current_unit.play_up()
-			uses_mana = false
+			uses_sp = false
 		"Down":
 			host.current_unit.play_down()
-			uses_mana = false
+			uses_sp = false
 		_:
-			uses_mana = true
+			uses_sp = true
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
-	if uses_mana == false:
+	if uses_sp == false:
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 		host.skillDamage._add_skill_damage(damage)
 	else:
 		var current_skill = host.current_unit.get_skill(skill)
-		var useable = host.current_unit.use_mana(current_skill.cost)
+		var useable = host.current_unit.use_sp(current_skill.cost)
 		if useable:
 			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)

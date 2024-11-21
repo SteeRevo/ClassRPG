@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=46 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -22,9 +22,19 @@
 [ext_resource type="PackedScene" uid="uid://dvu25xggogueq" path="res://Unit/BB/bb_model.tscn" id="17_mwipc"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
+[ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/AudioNugget.ttf" id="21_bgcos"]
 [ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
+[ext_resource type="Texture2D" uid="uid://ya0ievwryf4o" path="res://UI/PlayerTurn/Guard Arrow.png" id="25_tm7xu"]
+[ext_resource type="Script" path="res://BattleScene/PlayerTurnUI.gd" id="25_xyimm"]
+[ext_resource type="Texture2D" uid="uid://dmrk1w8i8kscv" path="res://UI/PlayerTurn/Guard Arrow Outline.png" id="26_2ww3c"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="26_2xwa2"]
+[ext_resource type="Texture2D" uid="uid://c8g43rdjg4h26" path="res://UI/PlayerTurn/Guard Arrow Outline(1).png" id="27_tr71w"]
+[ext_resource type="Texture2D" uid="uid://g4jmmsbs73mc" path="res://UI/PlayerTurn/Guard Arrow Outline(2).png" id="28_3psm6"]
+[ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
+[ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
+[ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
+[ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
 panorama = ExtResource("1_ybyfs")
@@ -55,6 +65,8 @@ albedo_color = Color(0.258824, 0.796078, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qsc3p"]
 material = SubResource("StandardMaterial3D_lyqfs")
+
+[sub_resource type="Theme" id="Theme_1ep3o"]
 
 [sub_resource type="Curve3D" id="Curve3D_gvxab"]
 _data = {
@@ -107,9 +119,9 @@ script = ExtResource("11_f76x8")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.58088, -0.0559146, 0)
 script = ExtResource("10_rubd4")
 max_health = 10
-current_health = 10
-current_mana = 10
-max_mana = 10
+current_health = 7
+current_sp = 7
+max_sp = 10
 attack = 10
 defense = 3
 technique = 10
@@ -118,7 +130,7 @@ technique = 10
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)
 
 [node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig/Skeleton3D" index="7"]
-transform = Transform3D(-0.0499807, -0.99808, 0.0368463, 0.998353, -0.0489065, 0.0295091, -0.0276502, 0.0382628, 0.998877, -4.66792, 9.80064, -0.0437425)
+transform = Transform3D(-0.0499807, -0.998079, 0.0368463, 0.998353, -0.0489065, 0.029509, -0.0276502, 0.0382628, 0.998877, -4.66792, 9.80064, -0.0437425)
 
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sam"]
 transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, -5.66829, 10.2501, 7.42947)
@@ -126,38 +138,38 @@ transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, 
 [node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/Sam"]
 transform = Transform3D(-0.586404, 0, -3.95678, 0, 4, 0, 3.95678, 0, -0.586404, -12.7933, 10.2501, 0.304489)
 
-[node name="Sophie" type="Node3D" parent="BattleManager/PlayerUnits"]
+[node name="Phyllis" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
 script = ExtResource("12_qqmey")
-max_health = 13
-current_health = 13
-current_mana = 15
-max_mana = 15
+max_health = 8
+current_health = 7
+current_sp = 9
+max_sp = 13
 attack = 3
 defense = 4
 technique = 4
 startingBG = 1
 
-[node name="Sophie" parent="BattleManager/PlayerUnits/Sophie" instance=ExtResource("15_766op")]
+[node name="Phyllis" parent="BattleManager/PlayerUnits/Phyllis" instance=ExtResource("15_766op")]
 transform = Transform3D(-0.993337, 0, 0.115249, 0, 1, 0, -0.115249, 0, -0.993337, 0, 0, 0)
 
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sophie/Sophie/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.154089, 0.987024, 0.0456146, 0.988009, -0.154372, 0.00281049, 0.00981466, 0.0446318, -0.998932, 5.8048, 13.7445, 0.656042)
+[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Phyllis/Phyllis/metarig/Skeleton3D" index="9"]
+transform = Transform3D(0.154088, 0.98702, 0.0456145, 0.988006, -0.154371, 0.00281055, 0.00981458, 0.0446317, -0.998931, 5.8048, 13.7445, 0.656042)
 
-[node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sophie"]
+[node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Phyllis"]
 transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
 
-[node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/Sophie"]
+[node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/Phyllis"]
 transform = Transform3D(-0.133528, 0, -3.99777, 0, 4, 0, 3.99777, 0, -0.133528, -12.7933, 10.2501, -0.817165)
 
 [node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
 transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.85246, 0.136662, -5.95148)
 script = ExtResource("14_2yvau")
 max_health = 20
-current_health = 20
-current_mana = 6
-max_mana = 6
-attack = 5
+current_health = 18
+current_sp = 4
+max_sp = 6
+attack = 7
 defense = 10
 technique = 6
 startingBG = 2
@@ -165,7 +177,7 @@ startingBG = 2
 [node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("17_mwipc")]
 
 [node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/BB/BB/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.117224, -0.993099, 0.00295595, -0.992672, -0.117086, 0.029797, -0.0292452, -0.00642722, -0.999553, -6.28225, 12.2726, 0.909785)
+transform = Transform3D(0.117224, -0.9931, 0.00295593, -0.992672, -0.117086, 0.029797, -0.0292452, -0.00642718, -0.999552, -6.28225, 12.2726, 0.909785)
 
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/BB"]
 transform = Transform3D(0.944782, 0, -0.327696, 0, 1, 0, 0.327696, 0, 0.944782, 6.65664, 10.0157, -11.134)
@@ -221,7 +233,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, -12.5466)
 script = ExtResource("18_aducu")
 bgType = 3
 health_regen = 2
-mana_regen = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground4"]
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
@@ -351,19 +362,23 @@ script = ExtResource("5_5hphj")
 [node name="Control" type="Control" parent="BattleManager"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1002.0
-offset_bottom = 564.0
+offset_top = 1.0
+offset_right = 851.0
+offset_bottom = 480.0
 
 [node name="SkillDamage" type="TextEdit" parent="BattleManager/Control"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 47.0
 offset_right = 137.0
 offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("21_bgcos")
 text = "Damage: "
 script = ExtResource("21_2hxki")
 
 [node name="Skillname" type="TextEdit" parent="BattleManager/Control"]
+visible = false
 layout_mode = 0
 offset_left = 5.0
 offset_top = 91.0
@@ -373,13 +388,266 @@ text = "Skill Name: "
 script = ExtResource("7_cwe3h")
 
 [node name="CurrentState" type="TextEdit" parent="BattleManager/Control"]
+visible = false
 layout_mode = 0
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 256.0
-offset_bottom = 45.0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 258.0
+offset_bottom = 43.0
 text = "State Name: "
 script = ExtResource("24_x633m")
+
+[node name="PlayerTurnUI" type="Control" parent="BattleManager/Control"]
+visible = false
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 859.0
+offset_bottom = 478.0
+theme = SubResource("Theme_1ep3o")
+script = ExtResource("25_xyimm")
+
+[node name="LeftArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(83, 225)
+scale = Vector2(0.517019, 0.517019)
+texture = ExtResource("25_tm7xu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+offset_left = -43.3221
+offset_top = -24.0678
+offset_right = 264.678
+offset_bottom = 47.9322
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 28
+text = "guard"
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("26_2ww3c")
+
+[node name="LeftArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("27_tr71w")
+
+[node name="LeftArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("28_3psm6")
+
+[node name="RightArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(772, 215)
+scale = Vector2(0.517019, 0.517019)
+texture = ExtResource("25_tm7xu")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
+anchors_preset = -1
+anchor_left = -0.192227
+anchor_top = -0.10861
+anchor_right = 0.00026119
+anchor_bottom = -0.000851072
+offset_left = -65.4347
+offset_top = -25.0909
+offset_right = 242.565
+offset_bottom = 46.9091
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 28
+text = " 
+ attack"
+metadata/_edit_use_anchors_ = true
+
+[node name="RightArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("26_2ww3c")
+flip_h = true
+
+[node name="RightArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("27_tr71w")
+flip_h = true
+
+[node name="RightArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("28_3psm6")
+flip_h = true
+
+[node name="UpArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(419, 63)
+rotation = 1.5708
+scale = Vector2(0.517019, 0.517019)
+texture = ExtResource("25_tm7xu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
+anchors_preset = -1
+anchor_left = -0.192227
+anchor_top = -0.10861
+anchor_right = 0.00026119
+anchor_bottom = -0.000851072
+offset_left = 8.06348
+offset_top = 73.5515
+offset_right = 316.064
+offset_bottom = 145.552
+rotation = -1.5708
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 28
+text = "
+ item"
+metadata/_edit_use_anchors_ = true
+
+[node name="UpArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("26_2ww3c")
+
+[node name="UpArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("27_tr71w")
+
+[node name="UpArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("28_3psm6")
+
+[node name="DownArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(423, 407)
+rotation = -1.5708
+scale = Vector2(0.517019, 0.517019)
+texture = ExtResource("25_tm7xu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
+anchors_preset = -1
+anchor_left = -0.192227
+anchor_top = -0.10861
+anchor_right = 0.00026119
+anchor_bottom = -0.000851072
+offset_left = 95.1011
+offset_top = -50.235
+offset_right = 403.101
+offset_bottom = 21.765
+rotation = 1.5708
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 28
+text = "
+ shift"
+metadata/_edit_use_anchors_ = true
+
+[node name="DownArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("26_2ww3c")
+
+[node name="DownArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("27_tr71w")
+
+[node name="DownArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
+visible = false
+z_index = -1
+texture = ExtResource("28_3psm6")
+
+[node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(697, 385)
+rotation = -0.785397
+scale = Vector2(0.6, 0.6)
+
+[node name="HealthBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -194.0
+offset_top = -264.0
+offset_right = 217.0
+offset_bottom = 147.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("30_b4gh5")
+texture_progress = ExtResource("31_qdvtd")
+texture_progress_offset = Vector2(61.505, 189.025)
+
+[node name="SpBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -169.706
+offset_top = -167.348
+offset_right = 229.294
+offset_bottom = 232.652
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("32_wf06l")
+texture_progress = ExtResource("33_uef4v")
+texture_progress_offset = Vector2(35.46, 168.21)
+
+[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -113.137
+offset_top = -103.709
+offset_right = -32.1373
+offset_bottom = -63.7087
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 40
+text = "10"
+
+[node name="SpNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = 9.42801
+offset_top = 44.7834
+offset_right = 90.428
+offset_bottom = 84.7834
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 40
+text = "10"
+
+[node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
+visible = false
+offset_left = -100.174
+offset_top = -50.6758
+offset_right = 177.826
+offset_bottom = 32.3242
+theme_override_colors/default_color = Color(0.84375, 0.996094, 0.0976563, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 80
+text = "sam"
+
+[node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
+visible = false
+offset_left = -51.8546
+offset_top = -44.7833
+offset_right = 226.145
+offset_bottom = 38.2167
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 80
+text = "BB
+"
+
+[node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
+visible = false
+offset_left = -111.959
+offset_top = -36.5337
+offset_right = 407.041
+offset_bottom = 46.4663
+theme_override_colors/default_color = Color(0.605469, 0.0898438, 0.996094, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_font_sizes/normal_font_size = 50
+text = "phyliss
+"
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 
@@ -395,7 +663,7 @@ script = ExtResource("25_ofn88")
 [node name="CameraPaths" type="Node" parent="BattleManager"]
 
 [node name="BG1Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -2.97166, 1.62799, 0.968839)
+transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -2.97166, 1.48067, 0.968839)
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG1Path"]
@@ -403,7 +671,7 @@ transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.03503
 script = ExtResource("26_2xwa2")
 
 [node name="BG2Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, 4.97615, 1.62799, -5.64854)
+transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, 4.97615, 2.13415, -5.64854)
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG2Path"]
@@ -411,7 +679,7 @@ transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.03503
 script = ExtResource("26_2xwa2")
 
 [node name="BG3Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -10.3035, 1.62799, -5.48455)
+transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -10.3035, 2.41821, -5.48455)
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG3Path"]
@@ -439,11 +707,11 @@ transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0
 
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
 [connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam2/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
-[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sophie" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sophie/Sophie/AnimationPlayer" to="BattleManager/PlayerUnits/Sophie" method="_on_animation_player_animation_finished"]
+[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Phyllis" to="BattleManager" method="_on_unit_rotate_finished"]
+[connection signal="animation_finished" from="BattleManager/PlayerUnits/Phyllis/Phyllis/AnimationPlayer" to="BattleManager/PlayerUnits/Phyllis" method="_on_animation_player_animation_finished"]
 [connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
 [connection signal="animation_finished" from="BattleManager/PlayerUnits/BB/BB/AnimationPlayer" to="BattleManager/PlayerUnits/BB" method="_on_animation_player_animation_finished"]
 
 [editable path="BattleManager/PlayerUnits/Sam/Sam2"]
-[editable path="BattleManager/PlayerUnits/Sophie/Sophie"]
+[editable path="BattleManager/PlayerUnits/Phyllis/Phyllis"]
 [editable path="BattleManager/PlayerUnits/BB/BB"]

@@ -8,7 +8,7 @@ var current_unit = null : set = _set_current_unit, get = _get_current_unit
 @onready var attackerPos = $AttackerPos
 @export var attack_boost = 0
 @export var health_regen = 0
-@export var mana_regen = 0
+@export var sp_regen = 0
 @export var defense_boost = 0
 @export var tech_boost = 0
 
@@ -40,15 +40,15 @@ func add_tech_boost():
 func regen_health():
 	current_unit.add_health(health_regen)
 
-func regen_mana():
-	current_unit.add_mana(mana_regen)
+func regen_sp():
+	current_unit.add_sp(sp_regen)
 	
 func add_buffs():
 	add_attack_boost()
 	add_defense_boost()
 	add_tech_boost()
 	regen_health()
-	regen_mana()
+	regen_sp()
 
 func reset_buffs():
 	current_unit.reset_attack()
