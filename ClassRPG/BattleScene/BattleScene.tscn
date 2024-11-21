@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dvu25xggogueq" path="res://Unit/BB/bb_model.tscn" id="17_mwipc"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="21_8a34x"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/AudioNugget.ttf" id="21_bgcos"]
 [ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
@@ -67,6 +68,18 @@ albedo_color = Color(0.258824, 0.796078, 0, 1)
 material = SubResource("StandardMaterial3D_lyqfs")
 
 [sub_resource type="Theme" id="Theme_1ep3o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oi1g"]
+render_priority = 0
+shader = ExtResource("21_8a34x")
+shader_parameter/color_depth = 5
+shader_parameter/dithering = false
+shader_parameter/resolution_scale = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
+material = SubResource("ShaderMaterial_4oi1g")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="Curve3D" id="Curve3D_gvxab"]
 _data = {
@@ -129,9 +142,6 @@ technique = 10
 [node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("13_4wfho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)
 
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Sam/Sam2/metarig/Skeleton3D" index="7"]
-transform = Transform3D(-0.0499807, -0.998079, 0.0368463, 0.998353, -0.0489065, 0.029509, -0.0276502, 0.0382628, 0.998877, -4.66792, 9.80064, -0.0437425)
-
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sam"]
 transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, -5.66829, 10.2501, 7.42947)
 
@@ -153,9 +163,6 @@ startingBG = 1
 [node name="Phyllis" parent="BattleManager/PlayerUnits/Phyllis" instance=ExtResource("15_766op")]
 transform = Transform3D(-0.993337, 0, 0.115249, 0, 1, 0, -0.115249, 0, -0.993337, 0, 0, 0)
 
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Phyllis/Phyllis/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.154088, 0.98702, 0.0456145, 0.988006, -0.154371, 0.00281055, 0.00981458, 0.0446317, -0.998931, 5.8048, 13.7445, 0.656042)
-
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Phyllis"]
 transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
 
@@ -175,9 +182,6 @@ technique = 6
 startingBG = 2
 
 [node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("17_mwipc")]
-
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/BB/BB/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.117224, -0.9931, 0.00295593, -0.992672, -0.117086, 0.029797, -0.0292452, -0.00642718, -0.999552, -6.28225, 12.2726, 0.909785)
 
 [node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/BB"]
 transform = Transform3D(0.944782, 0, -0.327696, 0, 1, 0, 0.327696, 0, 0.944782, 6.65664, 10.0157, -11.134)
@@ -363,8 +367,8 @@ script = ExtResource("5_5hphj")
 layout_mode = 3
 anchors_preset = 0
 offset_top = 1.0
-offset_right = 851.0
-offset_bottom = 480.0
+offset_right = 913.0
+offset_bottom = 512.0
 
 [node name="SkillDamage" type="TextEdit" parent="BattleManager/Control"]
 visible = false
@@ -398,18 +402,17 @@ text = "State Name: "
 script = ExtResource("24_x633m")
 
 [node name="PlayerTurnUI" type="Control" parent="BattleManager/Control"]
-visible = false
 anchors_preset = 0
 offset_left = 7.0
 offset_top = 1.0
-offset_right = 859.0
-offset_bottom = 478.0
+offset_right = 901.0
+offset_bottom = 507.0
 theme = SubResource("Theme_1ep3o")
 script = ExtResource("25_xyimm")
 
 [node name="LeftArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(83, 225)
-scale = Vector2(0.517019, 0.517019)
+position = Vector2(63, 259)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
@@ -440,8 +443,8 @@ z_index = -1
 texture = ExtResource("28_3psm6")
 
 [node name="RightArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(772, 215)
-scale = Vector2(0.517019, 0.517019)
+position = Vector2(819, 239)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("25_tm7xu")
 flip_h = true
 
@@ -482,9 +485,9 @@ texture = ExtResource("28_3psm6")
 flip_h = true
 
 [node name="UpArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(419, 63)
+position = Vector2(448, 59)
 rotation = 1.5708
-scale = Vector2(0.517019, 0.517019)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
@@ -522,9 +525,9 @@ z_index = -1
 texture = ExtResource("28_3psm6")
 
 [node name="DownArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(423, 407)
+position = Vector2(455, 441)
 rotation = -1.5708
-scale = Vector2(0.517019, 0.517019)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
@@ -562,9 +565,9 @@ z_index = -1
 texture = ExtResource("28_3psm6")
 
 [node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(697, 385)
+position = Vector2(774, 420)
 rotation = -0.785397
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 
 [node name="HealthBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
 offset_left = -194.0
@@ -658,6 +661,12 @@ script = ExtResource("25_ofn88")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cameras/MainBattleCamera"]
 
+[node name="Filter" type="MeshInstance3D" parent="BattleManager/Cameras/MainBattleCamera"]
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 7.04575, -18.3115)
+visible = false
+mesh = SubResource("QuadMesh_2cp44")
+skeleton = NodePath("")
+
 [node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
 
 [node name="CameraPaths" type="Node" parent="BattleManager"]
@@ -667,7 +676,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG1Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG2Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -675,7 +684,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG2Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG3Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -683,7 +692,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG3Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG4Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -691,7 +700,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG4Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999358, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="CameraPoints" type="Node" parent="BattleManager"]

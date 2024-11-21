@@ -24,8 +24,8 @@ Databases="*res://Spirits/Databases.gd"
 
 [display]
 
-window/size/viewport_width=850
-window/size/viewport_height=478
+window/size/viewport_width=900
+window/size/viewport_height=506
 window/size/window_width_override=1480
 window/size/window_height_override=833
 window/stretch/mode="viewport"
