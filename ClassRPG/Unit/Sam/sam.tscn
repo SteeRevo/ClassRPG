@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5k6qoafi2xk0"]
+
+[ext_resource type="Script" path="res://BattleScene/Sam.gd" id="1_x5loh"]
+[ext_resource type="PackedScene" uid="uid://ngqqjj8gq5qa" path="res://Unit/Sam/sam_model.tscn" id="2_ergie"]
+
+[node name="Sam" type="Node3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.58088, -0.0559146, 0)
+script = ExtResource("1_x5loh")
+max_health = 10
+current_health = 7
+current_sp = 7
+max_sp = 10
+attack = 10
+defense = 3
+technique = 10
+
+[node name="Sam2" parent="." instance=ExtResource("2_ergie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)
+
+[node name="UnitCam" type="Node3D" parent="."]
+transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, -5.66829, 10.2501, 7.42947)
+
+[node name="AttackCam" type="Camera3D" parent="."]
+transform = Transform3D(-0.586404, 0, -3.95678, 0, 4, 0, 3.95678, 0, -0.586404, -12.7933, 10.2501, 0.304489)
+
+[connection signal="animation_finished" from="Sam2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Sam2"]

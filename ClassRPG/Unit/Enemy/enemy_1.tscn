@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd41j8l1kes3p"]
+
+[ext_resource type="Script" path="res://Unit/Unit.gd" id="1_lb1cb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bggr"]
+albedo_color = Color(0.721377, 0.274627, 0.34483, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dyvs1"]
+material = SubResource("StandardMaterial3D_3bggr")
+
+[node name="Enemy1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28731, 0, 7.38815)
+script = ExtResource("1_lb1cb")
+max_health = 10
+current_health = 10
+attack = 4
+defense = 4
+enemy_unit = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
+mesh = SubResource("BoxMesh_dyvs1")

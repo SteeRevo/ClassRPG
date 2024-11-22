@@ -1,8 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=43 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
-[ext_resource type="Script" path="res://Unit/Unit.gd" id="3_kjm3n"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
 [ext_resource type="Script" path="res://BattleScene/SelectEnemyBG.gd" id="4_kpmye"]
 [ext_resource type="Script" path="res://BattleScene/BattleManager.gd" id="4_p4ijo"]
@@ -13,13 +12,10 @@
 [ext_resource type="Script" path="res://BattleScene/States/TurnDecide/ChooseTurn.gd" id="8_02rmb"]
 [ext_resource type="Script" path="res://BattleScene/SelectAlly.gd" id="8_ejyrp"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
-[ext_resource type="Script" path="res://BattleScene/Sam.gd" id="10_rubd4"]
 [ext_resource type="Script" path="res://BattleScene/EndFight.gd" id="11_f76x8"]
-[ext_resource type="Script" path="res://BattleScene/Sophie.gd" id="12_qqmey"]
-[ext_resource type="PackedScene" uid="uid://ngqqjj8gq5qa" path="res://Unit/Sam/sam_model.tscn" id="13_4wfho"]
-[ext_resource type="Script" path="res://BattleScene/BB.gd" id="14_2yvau"]
-[ext_resource type="PackedScene" uid="uid://c032nfxtxpcbi" path="res://Unit/Sophie/sophia_model.tscn" id="15_766op"]
-[ext_resource type="PackedScene" uid="uid://dvu25xggogueq" path="res://Unit/BB/bb_model.tscn" id="17_mwipc"]
+[ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
+[ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
+[ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
 [ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="21_8a34x"]
@@ -55,12 +51,6 @@ tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ae5g0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bggr"]
-albedo_color = Color(0.721377, 0.274627, 0.34483, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dyvs1"]
-material = SubResource("StandardMaterial3D_3bggr")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyqfs"]
 albedo_color = Color(0.258824, 0.796078, 0, 1)
 
@@ -73,8 +63,8 @@ material = SubResource("StandardMaterial3D_lyqfs")
 render_priority = 0
 shader = ExtResource("21_8a34x")
 shader_parameter/color_depth = 5
-shader_parameter/dithering = false
-shader_parameter/resolution_scale = 2
+shader_parameter/dithering = true
+shader_parameter/resolution_scale = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
 material = SubResource("ShaderMaterial_4oi1g")
@@ -128,66 +118,11 @@ script = ExtResource("11_f76x8")
 
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
-[node name="Sam" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.58088, -0.0559146, 0)
-script = ExtResource("10_rubd4")
-max_health = 10
-current_health = 7
-current_sp = 7
-max_sp = 10
-attack = 10
-defense = 3
-technique = 10
+[node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
 
-[node name="Sam2" parent="BattleManager/PlayerUnits/Sam" instance=ExtResource("13_4wfho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)
+[node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 
-[node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Sam"]
-transform = Transform3D(0.795643, 0, -0.605766, 0, 1, 0, 0.605766, 0, 0.795643, -5.66829, 10.2501, 7.42947)
-
-[node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/Sam"]
-transform = Transform3D(-0.586404, 0, -3.95678, 0, 4, 0, 3.95678, 0, -0.586404, -12.7933, 10.2501, 0.304489)
-
-[node name="Phyllis" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
-script = ExtResource("12_qqmey")
-max_health = 8
-current_health = 7
-current_sp = 9
-max_sp = 13
-attack = 3
-defense = 4
-technique = 4
-startingBG = 1
-
-[node name="Phyllis" parent="BattleManager/PlayerUnits/Phyllis" instance=ExtResource("15_766op")]
-transform = Transform3D(-0.993337, 0, 0.115249, 0, 1, 0, -0.115249, 0, -0.993337, 0, 0, 0)
-
-[node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/Phyllis"]
-transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
-
-[node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/Phyllis"]
-transform = Transform3D(-0.133528, 0, -3.99777, 0, 4, 0, 3.99777, 0, -0.133528, -12.7933, 10.2501, -0.817165)
-
-[node name="BB" type="Node3D" parent="BattleManager/PlayerUnits"]
-transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.85246, 0.136662, -5.95148)
-script = ExtResource("14_2yvau")
-max_health = 20
-current_health = 18
-current_sp = 4
-max_sp = 6
-attack = 7
-defense = 10
-technique = 6
-startingBG = 2
-
-[node name="BB" parent="BattleManager/PlayerUnits/BB" instance=ExtResource("17_mwipc")]
-
-[node name="UnitCam" type="Node3D" parent="BattleManager/PlayerUnits/BB"]
-transform = Transform3D(0.944782, 0, -0.327696, 0, 1, 0, 0.327696, 0, 0.944782, 6.65664, 10.0157, -11.134)
-
-[node name="AttackCam" type="Camera3D" parent="BattleManager/PlayerUnits/BB"]
-transform = Transform3D(0.559319, 0, 3.9607, 0, 4, 0, -3.9607, 0, 0.559319, 15.0607, 12.4646, 0.402027)
+[node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -247,61 +182,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
-
-[node name="Enemy1" type="Node3D" parent="BattleManager/EnemyUnits"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28731, 0, 7.38815)
-script = ExtResource("3_kjm3n")
-max_health = 10
-current_health = 10
-attack = 4
-defense = 4
-enemy_unit = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
-mesh = SubResource("BoxMesh_dyvs1")
-
-[node name="Enemy2" type="Node3D" parent="BattleManager/EnemyUnits"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1778, 0, 14.9895)
-script = ExtResource("3_kjm3n")
-max_health = 13
-current_health = 13
-attack = 3
-defense = 3
-enemy_unit = true
-startingBG = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761204, 0.543812, -0.674129)
-mesh = SubResource("BoxMesh_dyvs1")
-
-[node name="Enemy3" type="Node3D" parent="BattleManager/EnemyUnits"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17886, 0, 14.1841)
-script = ExtResource("3_kjm3n")
-max_health = 10
-current_health = 10
-attack = 4
-defense = 4
-enemy_unit = true
-startingBG = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761204, 0.543812, -0.465992)
-mesh = SubResource("BoxMesh_dyvs1")
-
-[node name="Enemy4" type="Node3D" parent="BattleManager/EnemyUnits"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14065, 0, 21.8315)
-script = ExtResource("3_kjm3n")
-max_health = 5
-current_health = 5
-attack = 2
-defense = 4
-enemy_unit = true
-startingBG = 3
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/EnemyUnits/Enemy4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
-mesh = SubResource("BoxMesh_dyvs1")
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 
@@ -402,6 +282,7 @@ text = "State Name: "
 script = ExtResource("24_x633m")
 
 [node name="PlayerTurnUI" type="Control" parent="BattleManager/Control"]
+visible = false
 anchors_preset = 0
 offset_left = 7.0
 offset_top = 1.0
@@ -663,7 +544,6 @@ script = ExtResource("25_ofn88")
 
 [node name="Filter" type="MeshInstance3D" parent="BattleManager/Cameras/MainBattleCamera"]
 transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 7.04575, -18.3115)
-visible = false
 mesh = SubResource("QuadMesh_2cp44")
 skeleton = NodePath("")
 
@@ -676,7 +556,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG1Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999356, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG2Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -684,7 +564,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG2Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999356, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG3Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -692,7 +572,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG3Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999356, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG4Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -700,7 +580,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG4Path"]
-transform = Transform3D(0.999891, -0.000441827, -0.012604, 0, 0.999357, -0.0350324, 0.0126117, 0.0350294, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999356, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="CameraPoints" type="Node" parent="BattleManager"]
@@ -713,14 +593,3 @@ transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 
 
 [node name="MainOverview" type="Node3D" parent="BattleManager/CameraPoints"]
 transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0.366294, 0.999634, 0.00139376, -0.0270238, -19.1747, 10.4416, 3.98326)
-
-[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Sam" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/Sam/Sam2/AnimationPlayer" to="BattleManager/PlayerUnits/Sam" method="_on_animation_player_animation_finished"]
-[connection signal="rotate_finished" from="BattleManager/PlayerUnits/Phyllis" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/Phyllis/Phyllis/AnimationPlayer" to="BattleManager/PlayerUnits/Phyllis" method="_on_animation_player_animation_finished"]
-[connection signal="rotate_finished" from="BattleManager/PlayerUnits/BB" to="BattleManager" method="_on_unit_rotate_finished"]
-[connection signal="animation_finished" from="BattleManager/PlayerUnits/BB/BB/AnimationPlayer" to="BattleManager/PlayerUnits/BB" method="_on_animation_player_animation_finished"]
-
-[editable path="BattleManager/PlayerUnits/Sam/Sam2"]
-[editable path="BattleManager/PlayerUnits/Phyllis/Phyllis"]
-[editable path="BattleManager/PlayerUnits/BB/BB"]

@@ -22,3 +22,7 @@ var SpiritDatabase = {
 	}
 }
 
+var EnemyDatabase = {
+	"Enemy" : "res://Unit/Enemy/enemy_1.tscn"
+}
+

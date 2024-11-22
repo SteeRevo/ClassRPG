@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://c032nfxtxpcbi"]
 
-[ext_resource type="Texture2D" uid="uid://drltfoosqwb13" path="res://Unit/Sophie/Sophia_tex_char.png" id="1_dqbhx"]
+[ext_resource type="Texture2D" uid="uid://drltfoosqwb13" path="res://Unit/Phyllis/Sophia_tex_char.png" id="1_utoss"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbfti"]
 resource_name = "m_char"
@@ -9,7 +9,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("1_dqbhx")
+emission_texture = ExtResource("1_utoss")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gbh28"]
 resource_name = "Sophia_Cube_005"

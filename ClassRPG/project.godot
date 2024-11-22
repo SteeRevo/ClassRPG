@@ -21,6 +21,8 @@ SignalBus="*res://Visual_novel_scene/singletons/SignalBus.gd"
 PortraitEnums="*res://Visual_novel_scene/singletons/PortraitEnums.gd"
 SkillEnums="*res://UI/SkillEnums.gd"
 Databases="*res://Spirits/Databases.gd"
+SceneManager="*res://SceneManager/SceneManager.gd"
+BattleSettings="*res://SceneManager/BattleSettings.gd"
 
 [display]
 

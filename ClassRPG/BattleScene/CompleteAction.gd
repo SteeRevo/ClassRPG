@@ -57,8 +57,9 @@ func _on_animation_finished(anim_name):
 func _on_tween_finished():
 	print("tweened")
 	if current_action == "Rotate":
-		if current_ally.is_guarding:
-			current_ally.set_guard()
+		if current_ally:
+			if current_ally.is_guarding:
+				current_ally.set_guard()
 		host_ref.end_turn()
 	elif current_action == "Attack" and !moved_to_enemy:
 		moved_to_enemy = true

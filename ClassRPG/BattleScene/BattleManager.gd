@@ -78,6 +78,7 @@ var skill_stack = []
 
 func _ready():
 	add_cameras()
+	get_battle_data()
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
 	_change_state('chooseturn')
@@ -150,3 +151,12 @@ func _on_unit_turn_finished(action_weight):
 	battleState = BATTLESTATE.CHOOSE_TURN
 	#choose_turn()
 
+func get_battle_data():
+	var counter = 0
+	for enemy in BattleSettings.enemy_units:
+		var enemy_unit = load(enemy).instantiate()
+		enemy_units_path.add_child(enemy_unit)
+		enemy_unit.startingBG = counter
+		print(counter)
+		counter += 1
+		

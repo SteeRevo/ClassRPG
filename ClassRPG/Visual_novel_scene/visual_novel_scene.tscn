@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjimufcei1xir"]
+[gd_scene load_steps=18 format=3 uid="uid://cjimufcei1xir"]
 
 [ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
-[ext_resource type="PackedScene" uid="uid://btcnxyip2albh" path="res://Unit/Sophie/Sophia.glb" id="2_o1wcq"]
+[ext_resource type="PackedScene" uid="uid://btcnxyip2albh" path="res://Unit/Phyllis/Sophia.glb" id="2_o1wcq"]
 [ext_resource type="PackedScene" uid="uid://c3c8vggnyxldq" path="res://Unit/BB/BB.glb" id="3_lexyy"]
 [ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
 [ext_resource type="PackedScene" uid="uid://bcxru1sbmv1lu" path="res://Visual_novel_scene/dialogue_player.tscn" id="5_t2bf6"]
+[ext_resource type="Script" path="res://Visual_novel_scene/BattleChanger.gd" id="6_pm3n5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_51m1x"]
 sky_top_color = Color(0.0823529, 0.309804, 0.964706, 1)
@@ -38,6 +39,8 @@ size = Vector3(0.608474, 2.62692, 0.334648)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d2jo"]
 size = Vector3(1, 1.05026, 0.549205)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28qnt"]
 
 [node name="Visual Novel Scene" type="Node3D"]
 
@@ -144,6 +147,15 @@ scene_text_file = "res://Visual_novel_scene/bb_dialog.json"
 unique_name_in_owner = true
 transform = Transform3D(-0.975491, 0.028542, -0.218183, -0.050392, 0.936223, 0.347775, 0.214194, 0.350246, -0.911838, -0.31181, 2.18861, -3.98541)
 current = true
+
+[node name="BattleChanger" type="Area3D" parent="."]
+script = ExtResource("6_pm3n5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleChanger"]
+transform = Transform3D(0.424978, 0, 0, 0, 0.424978, 0, 0, 0, 0.424978, 0, 0.227166, 0)
+shape = SubResource("BoxShape3D_28qnt")
+
+[connection signal="body_entered" from="BattleChanger" to="BattleChanger" method="_on_body_entered"]
 
 [editable path="SamOverworld/Sophia"]
 [editable path="StaticBody3D/DialogueArea"]

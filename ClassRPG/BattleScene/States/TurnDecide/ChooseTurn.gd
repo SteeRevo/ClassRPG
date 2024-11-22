@@ -41,6 +41,7 @@ func set_all_units_position(host):
 		unit._set_BG(host.bgs[unit.startingBG])
 	for unit in host.enemy_units_path.get_children():
 		host.enemy_bgs[unit.startingBG]._set_current_unit(unit)
+		host.enemy_bgs[unit.startingBG].set_current_unit_position()
 		unit._set_BG(host.enemy_bgs[unit.startingBG])
 		
 	print(host.enemy_bgs)
