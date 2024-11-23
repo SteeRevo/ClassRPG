@@ -1,12 +1,12 @@
 extends "../Unit/Unit.gd"
 
 
-@onready var ap = $BB/AnimationPlayer
 @onready var unit_cam = $UnitCam
 @onready var attack_cam = $AttackCam
 
 signal anim_finished
 signal tween_finished
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -111,3 +111,6 @@ func get_skill(skill_name):
 func _on_animation_player_animation_finished(anim_name):
 	print("anim signal emitted")
 	anim_finished.emit(anim_name)
+	
+
+	

@@ -153,6 +153,9 @@ func _on_unit_turn_finished(action_weight):
 
 func get_battle_data():
 	var counter = 0
+	for unit in player_units_path.get_children():
+		if BattleSettings.current_player_units.find(unit.name) == -1:
+			player_units_path.remove_child(unit)
 	for enemy in BattleSettings.enemy_units:
 		var enemy_unit = load(enemy).instantiate()
 		enemy_units_path.add_child(enemy_unit)

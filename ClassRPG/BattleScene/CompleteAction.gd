@@ -18,6 +18,7 @@ func enter(host):
 	current_unit = host.current_unit
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
+	host.current_unit.attack_hit.connect(_on_attack_hit)
 	current_action = host.current_action
 	current_enemy = host.current_selected_enemy
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
@@ -66,12 +67,17 @@ func _on_tween_finished():
 		play_animation(host_ref)
 	elif current_action == "Attack" and moved_to_enemy:
 		host_ref.end_turn()
+		
+func _on_attack_hit():
+	current_enemy.play_getting_hit()
 	
 func exit(host):
 	if host.current_unit.tween_finished.is_connected(_on_tween_finished):
 		host.current_unit.tween_finished.disconnect(_on_tween_finished)
 	if host.current_unit.anim_finished.is_connected(_on_animation_finished):
 		host.current_unit.anim_finished.disconnect(_on_animation_finished)
+	if host.current_unit.attack_hit.is_connected(_on_attack_hit):
+		host.current_unit.attack_hit.disconnect(_on_attack_hit)
 	if host.current_selected_ally != null:
 		if host.current_selected_ally.tween_finished.is_connected(_on_tween_finished):
 			host.current_selected_ally.tween_finished.disconnect(_on_tween_finished)

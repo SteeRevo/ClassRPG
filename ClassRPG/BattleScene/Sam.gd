@@ -1,7 +1,6 @@
 extends "../Unit/Unit.gd"
 
 
-@onready var ap = $Sam2/AnimationPlayer
 @onready var unit_cam = $UnitCam
 @onready var attack_cam = $AttackCam
 

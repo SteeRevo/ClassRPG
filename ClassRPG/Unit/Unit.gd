@@ -1,6 +1,7 @@
 extends Node3D
 var player_
 var currentBattleGround : set = _set_BG, get = get_BG
+@onready var ap = $AnimationPlayer
 
 enum battleGrounds {F, TW, BW, B}
 
@@ -40,6 +41,7 @@ var turn_order = 100 : set = _set_turn_order, get = _get_turn_order
 
 signal attack_finished
 signal rotate_finished
+signal attack_hit
 
 @export var startingBG : int = battleGrounds.F
 
@@ -179,6 +181,12 @@ func set_guard():
 	
 func end_guard():
 	is_guarding = false
+	
+func play_getting_hit():
+	ap.play("getting_hit")
+	
+func attack_hits():
+	attack_hit.emit()
 	
 func attach_spirit(spirit_name):
 	var new_spirit = Spirit.new(spirit_name)
