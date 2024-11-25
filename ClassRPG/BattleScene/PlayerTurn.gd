@@ -24,16 +24,11 @@ func enter(host):
 	
 	
 func update(host, delta):
-	match(host.current_unit_bg):
-		"Battleground":
-			current_cam.move_to(host.cameraPointBG1.global_position)
-		"Battleground2":
-			current_cam.move_to(host.cameraPointBG2.global_position)
-		"Battleground3":
-			current_cam.move_to(host.cameraPointBG3.global_position)
-		"Battleground4":
-			current_cam.move_to(host.cameraPointBG4.global_position)
-	current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
+	current_cam.move_to(host.current_unit.get_camera_path().global_position)
+	if host.current_unit.name == "Sam":
+		current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
+	else:
+		current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Cancel"):
@@ -88,19 +83,7 @@ func exit(host):
 func set_active_camera(host, camera):
 	
 	current_cam = camera
-	host.current_unit_bg = host.current_unit.get_BG().name
-	match(host.current_unit_bg):
-		"Battleground":
-			camera.move_to(host.cameraPointBG1.global_position)
-			host.cameraPointBG1.start()
-		"Battleground2":
-			camera.move_to(host.cameraPointBG2.global_position)
-			host.cameraPointBG2.start()
-		"Battleground3":
-			camera.move_to(host.cameraPointBG3.global_position)
-			host.cameraPointBG3.start()
-		"Battleground4":
-			camera.move_to(host.cameraPointBG4.global_position)
-			host.cameraPointBG4.start()
+	camera.move_to(host.current_unit.get_camera_path().global_position)
+	host.current_unit.get_camera_path().start()
 	
 	

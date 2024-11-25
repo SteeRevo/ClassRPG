@@ -2,7 +2,6 @@ extends "../Unit/Unit.gd"
 
 
 @onready var unit_cam = $UnitCam
-@onready var attack_cam = $AttackCam
 
 signal anim_finished
 signal tween_finished
@@ -133,8 +132,6 @@ func set_guard():
 func get_unit_cam():
 	return unit_cam
 	
-func get_attack_cam():
-	return attack_cam
 	
 func set_skill_active(name):
 	for skill in skillList:

@@ -16,6 +16,7 @@ func enter(host):
 	host.enemySelector.visible = false
 	host.stateName.set_state_name("completing action")
 	current_unit = host.current_unit
+	host.current_unit.available = false
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
 	host.current_unit.attack_hit.connect(_on_attack_hit)
@@ -23,7 +24,10 @@ func enter(host):
 	current_enemy = host.current_selected_enemy
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
-		check_skill_inputs(host)
+		if host.current_unit.enemy_unit:
+			play_enemy_attack(host)
+		else:
+			check_skill_inputs(host)
 		set_active_camera(host, host.current_unit.get_attack_cam())
 	elif host.current_action == "Rotate":
 		host.current_selected_ally = host.current_selected_BG._get_current_unit()
@@ -70,6 +74,7 @@ func _on_tween_finished():
 		
 func _on_attack_hit():
 	current_enemy.play_getting_hit()
+	print(current_enemy.name)
 	
 func exit(host):
 	if host.current_unit.tween_finished.is_connected(_on_tween_finished):
@@ -84,7 +89,6 @@ func exit(host):
 		if host.current_selected_ally.anim_finished.is_connected(_on_animation_finished):
 			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
-	host.current_unit.available = false
 	host.current_unit = null
 	host.current_action = null
 	host.current_selected_BG = null
@@ -175,20 +179,25 @@ func play_animation(host):
 			host.current_unit.play_down()
 			uses_sp = false
 		_:
+			host.current_unit.play_attack(move)
 			uses_sp = true
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
-	if uses_sp == false:
-		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
-		host.skillDamage._add_skill_damage(damage)
-	else:
-		var current_skill = host.current_unit.get_skill(skill)
-		var useable = host.current_unit.use_sp(current_skill.cost)
-		if useable:
-			host.current_unit.play_skill(current_skill.skillname)
+	if host.current_unit.enemy_unit == false:
+		if uses_sp == false:
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 			host.skillDamage._add_skill_damage(damage)
+		else:
+			var current_skill = host.current_unit.get_skill(skill)
+			var useable = host.current_unit.use_sp(current_skill.cost)
+			if useable:
+				host.current_unit.play_skill(current_skill.skillname)
+				var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+				host.skillDamage._add_skill_damage(damage)
+	else:
+		print(skill)
+		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 	
 func set_active_camera(host, camera):
 	host.active_camera.current = false
@@ -197,3 +206,8 @@ func set_active_camera(host, camera):
 	
 func guard(host):
 	host.current_unit.set_guard()
+
+func play_enemy_attack(host):
+	current_position = host.current_unit.global_position
+	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
+	input_arr = host.skill_stack

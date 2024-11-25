@@ -1,28 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd41j8l1kes3p"]
+[gd_scene load_steps=10 format=3 uid="uid://cd41j8l1kes3p"]
 
 [ext_resource type="Script" path="res://Unit/Enemy/basic_enemy.gd" id="1_kutfv"]
+[ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="2_for2q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bggr"]
+resource_local_to_scene = true
 albedo_color = Color(0.721569, 0.27451, 0.345098, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dyvs1"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_3bggr")
 
-[sub_resource type="Animation" id="Animation_kifph"]
-resource_name = "getting_hit"
-length = 0.3
-step = 0.01
+[sub_resource type="Animation" id="Animation_a1go5"]
+resource_name = "Attack"
+length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/0/path = NodePath("MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.12, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(0.721569, 0.27451, 0.345098, 1), Color(1, 1, 1, 1), Color(0.721569, 0.27451, 0.345098, 1), Color(1, 1, 1, 1), Color(0.721569, 0.27451, 0.345098, 1)]
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0761206, 0.543812, 0), Vector3(-0.0761206, 0.543812, -2.64959), Vector3(-0.0761206, 0.543812, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7migt"]
@@ -42,31 +45,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("MeshInstance3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.161744, 0, 0.0393367)]
+"values": [Vector3(-0.0761206, 0.543812, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_a1go5"]
-resource_name = "Attack"
-length = 0.5
-step = 0.05
+[sub_resource type="Animation" id="Animation_kifph"]
+resource_name = "getting_hit"
+length = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
+"times": PackedFloat32Array(0, 0.02, 0.04),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.161744, 0, 0.0393367), Vector3(0.161744, 0, -3.1958), Vector3(0.161744, 0, 0.0393367)]
+"update": 1,
+"values": [Color(0.721569, 0.27451, 0.345098, 1), Color(1, 1, 1, 1), Color(0.721569, 0.27451, 0.345098, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydpis"]
@@ -76,9 +79,17 @@ _data = {
 "getting_hit": SubResource("Animation_kifph")
 }
 
+[sub_resource type="Curve3D" id="Curve3D_8n30l"]
+_data = {
+"points": PackedVector3Array(-0.0186071, -0.0517178, 1.47523, 0.0186071, 0.0517178, -1.47523, -3.91275, 0.563349, -4.64343, -2.70158, -0.101928, -0.0665646, 2.70158, 0.101928, 0.0665646, -0.672681, 0.585304, -8.18843, -0.06373, 0.0721154, -2.57156, 0.06373, -0.0721154, 2.57156, 2.68772, 0.456866, -4.22576, 2.118, 0.0104213, -0.0698686, -2.118, -0.0104213, 0.0698686, -0.853764, 0.449827, -0.90738, -0.0372264, -4.43459e-05, 1.28048, 0.0372264, 4.43459e-05, -1.28048, -3.91196, 0.544594, -4.62301),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Enemy1" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.161744, 0, 0.0393367)
 script = ExtResource("1_kutfv")
+height = 1
 max_health = 10
 current_health = 10
 attack = 4
@@ -89,11 +100,22 @@ enemy_unit = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
 mesh = SubResource("BoxMesh_dyvs1")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0761206, 0.543812, 0)
-mesh = SubResource("BoxMesh_dyvs1")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ydpis")
 }
+
+[node name="CameraPath" type="Path3D" parent="."]
+transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -3.89377, 0.14376, 0.968839)
+curve = SubResource("Curve3D_8n30l")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+transform = Transform3D(-0.767031, -0.640469, -0.0374257, -0.641498, 0.766476, 0.0305251, 0.00913578, 0.0474233, -0.998809, 2.68134, 0.462913, -4.43212)
+progress = 11.2998
+script = ExtResource("2_for2q")
+
+[node name="AttackCam" type="Camera3D" parent="."]
+transform = Transform3D(0.0287625, -0.100524, 0.994519, 0.0519653, 0.993735, 0.0989415, -0.998235, 0.0488347, 0.033806, 7.4549, 3.38571, -0.0374283)
+fov = 58.9409
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -2,7 +2,6 @@ extends "../Unit/Unit.gd"
 
 
 @onready var unit_cam = $UnitCam
-@onready var attack_cam = $AttackCam
 
 signal anim_finished
 signal tween_finished
@@ -89,8 +88,6 @@ func play_down():
 func get_unit_cam():
 	return unit_cam
 	
-func get_attack_cam():
-	return attack_cam
 	
 func set_guard():
 	is_guarding = true

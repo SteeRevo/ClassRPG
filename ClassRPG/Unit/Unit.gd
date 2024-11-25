@@ -15,6 +15,8 @@ enum battleGrounds {F, TW, BW, B}
 @export var is_dead = false
 @export var enemy_unit = false
 @export var available = true
+@onready var camera_path = $CameraPath/PathFollow3D
+@onready var attack_cam = $AttackCam
 
 var is_guarding = false
 var attack_bonus = 0
@@ -64,8 +66,12 @@ func attack_unit(target_unit, skill):
 	if skill_stats == null:
 		printerr("skill not found")
 		return
-	if attached_spirits[skill_stats.skillname]:
+	if attached_spirits.find_key(skill_stats.skillname):
 		spirit_bonus = attached_spirits[skill_stats.skillname].get_input_atk_bonus()
+	print(attack)
+	print(skill_stats.damage)
+	print(spirit_bonus)
+	print(target_unit.get_defense())
 	var total_attack = (attack + skill_stats.damage + spirit_bonus) - target_unit.get_defense()
 	target_unit._set_health(target_unit._get_health() - total_attack)
 	print("used ", skill_stats.skillname)
@@ -187,6 +193,12 @@ func play_getting_hit():
 	
 func attack_hits():
 	attack_hit.emit()
+	
+func get_camera_path():
+	return camera_path
+	
+func get_attack_cam():
+	return attack_cam
 	
 func attach_spirit(spirit_name):
 	var new_spirit = Spirit.new(spirit_name)

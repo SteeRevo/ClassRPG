@@ -43,14 +43,11 @@ var current_unit
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname
 @onready var mainBattleCamera = $Cameras/MainBattleCamera
-@onready var cameraPointBG1 = $CameraPaths/BG1Path/PathFollow3D
-@onready var cameraPointBG2 = $CameraPaths/BG2Path/PathFollow3D
-@onready var cameraPointBG3 = $CameraPaths/BG3Path/PathFollow3D
-@onready var cameraPointBG4 = $CameraPaths/BG4Path/PathFollow3D
+
 @onready var selectEBGcam = $CameraPoints/SelectEBGcam
 @onready var mainOverviewCam = $CameraPoints/MainOverview
 @onready var selectBGcam = $CameraPoints/SelectBGcam
-
+@onready var enemy_timer = $EnemyTimer
 
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
@@ -119,8 +116,7 @@ func _input(event):
 func _process(delta):
 	current_state.update(self, delta)
 
-func end_turn():
-	
+func end_turn():	
 	print("changing turn")
 	for unit in unit_list:
 		if unit.available == true:
@@ -132,6 +128,9 @@ func end_turn():
 		unit.is_guarding = false
 	_change_state('chooseturn')
 	_change_state(current_turn)
+
+func complete_enemy_action():
+	_change_state('completeAction')
 
 func add_cameras():
 	camera_list.append(mainBattleCamera)

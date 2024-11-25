@@ -46,7 +46,7 @@ background_color = Color(0.92549, 0.615686, 0.843137, 1)
 sky = SubResource("Sky_glpqg")
 sky_custom_fov = 51.1
 ambient_light_source = 2
-ambient_light_color = Color(0.784314, 0.717647, 0.694118, 1)
+ambient_light_color = Color(0.733333, 0.654902, 0.631373, 1)
 ambient_light_energy = 2.2
 tonemap_mode = 2
 
@@ -120,11 +120,17 @@ script = ExtResource("11_f76x8")
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
+current_health = 10
+current_sp = 10
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
+current_health = 8
+current_sp = 13
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.22915)
+current_health = 20
+current_sp = 6
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -139,7 +145,7 @@ mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215351, 0, 1.91326)
 
 [node name="Battleground2" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, -5.44311)
@@ -153,7 +159,7 @@ mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.455935, 0, 1.14638)
 
 [node name="Battleground3" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, -5.95517)
@@ -167,7 +173,7 @@ mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266016, 0, 3.36389)
 
 [node name="Battleground4" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, -12.5466)
@@ -181,19 +187,19 @@ mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12662, 0, -1.70611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
 
 [node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39695, 0, 7.45687)
+attack = 6
 
 [node name="Enemy2" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39695, 0, 7.45687)
+attack = 6
 startingBG = 1
 
 [node name="Enemy3" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39695, 0, 7.45687)
+attack = 6
 startingBG = 3
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
@@ -569,7 +575,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG1Path"]
-transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999355, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.999351, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG2Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -577,7 +583,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG2Path"]
-transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999355, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.999351, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG3Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -585,7 +591,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG3Path"]
-transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999355, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.999351, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="BG4Path" type="Path3D" parent="BattleManager/CameraPaths"]
@@ -593,7 +599,7 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_gvxab")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG4Path"]
-transform = Transform3D(0.999891, -0.000441826, -0.012604, 0, 0.999355, -0.0350324, 0.0126117, 0.0350293, 0.999285, -3.91275, 0.563349, -4.64343)
+transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.999351, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
 script = ExtResource("26_2xwa2")
 
 [node name="CameraPoints" type="Node" parent="BattleManager"]
@@ -606,3 +612,8 @@ transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 
 
 [node name="MainOverview" type="Node3D" parent="BattleManager/CameraPoints"]
 transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0.366294, 0.999634, 0.00139376, -0.0270238, -19.1747, 10.4416, 3.98326)
+
+[node name="EnemyTimer" type="Timer" parent="BattleManager"]
+wait_time = 2.0
+
+[connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]
