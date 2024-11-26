@@ -6,6 +6,7 @@ signal tween_finished
 
 func _ready():
 	_set_base_skills()
+	$CameraPath/PathFollow3D.is_enemy = true
 
 func get_enemy_action():
 	"""var decision = randi() % 2

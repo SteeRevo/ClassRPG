@@ -77,6 +77,7 @@ func exit(host):
 	host.playerTurnUI.reset_names()
 	host.playerTurnUI.visible = false
 	host.playerTurnUI.clear_all_arrows()
+	host.current_unit.camera_path.reset_progress()
 	last_action = null
 	
 	

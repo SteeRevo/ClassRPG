@@ -11,6 +11,8 @@ var current_unit = null : set = _set_current_unit, get = _get_current_unit
 @export var sp_regen = 0
 @export var defense_boost = 0
 @export var tech_boost = 0
+var added_health = false
+var added_sp = false
 
 
 func _set_current_unit(unit):
@@ -38,10 +40,14 @@ func add_tech_boost():
 	current_unit.set_bg_tech_buff(tech_boost)
 	
 func regen_health():
-	current_unit.add_health(health_regen)
+	if !added_health:
+		current_unit.add_health(health_regen)
+		added_health = true
 
 func regen_sp():
-	current_unit.add_sp(sp_regen)
+	if !added_sp:
+		current_unit.add_sp(sp_regen)
+		added_sp = true
 	
 func add_buffs():
 	add_attack_boost()
@@ -54,3 +60,8 @@ func reset_buffs():
 	current_unit.reset_attack()
 	current_unit.reset_defense()
 	current_unit.reset_tech()
+	
+func reset_health_sp():
+	added_health = false
+	added_sp = false
+	

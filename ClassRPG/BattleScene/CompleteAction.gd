@@ -89,6 +89,7 @@ func exit(host):
 		if host.current_selected_ally.anim_finished.is_connected(_on_animation_finished):
 			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
+	host.BGR.reset_health_sp()
 	host.current_unit = null
 	host.current_action = null
 	host.current_selected_BG = null

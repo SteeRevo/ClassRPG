@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd41j8l1kes3p"]
+[gd_scene load_steps=11 format=3 uid="uid://cd41j8l1kes3p"]
 
 [ext_resource type="Script" path="res://Unit/Enemy/basic_enemy.gd" id="1_kutfv"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="2_for2q"]
@@ -26,6 +26,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.0761206, 0.543812, 0), Vector3(-0.0761206, 0.543812, -2.64959), Vector3(-0.0761206, 0.543812, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_hits"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_7migt"]
@@ -72,9 +86,25 @@ tracks/0/keys = {
 "values": [Color(0.721569, 0.27451, 0.345098, 1), Color(1, 1, 1, 1), Color(0.721569, 0.27451, 0.345098, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_b686l"]
+resource_name = "BattleIdle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0761206, 0.543812, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydpis"]
 _data = {
 "Attack": SubResource("Animation_a1go5"),
+"BattleIdle": SubResource("Animation_b686l"),
 "RESET": SubResource("Animation_7migt"),
 "getting_hit": SubResource("Animation_kifph")
 }
@@ -110,12 +140,12 @@ transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798
 curve = SubResource("Curve3D_8n30l")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(-0.767031, -0.640469, -0.0374257, -0.641498, 0.766476, 0.0305251, 0.00913578, 0.0474233, -0.998809, 2.68134, 0.462913, -4.43212)
+transform = Transform3D(-0.767031, -0.640469, -0.0374257, -0.641498, 0.766476, 0.0305251, 0.00913578, 0.0474233, -0.998808, 2.68134, 0.462913, -4.43212)
 progress = 11.2998
 script = ExtResource("2_for2q")
 
 [node name="AttackCam" type="Camera3D" parent="."]
-transform = Transform3D(0.0287625, -0.100524, 0.994519, 0.0519653, 0.993735, 0.0989415, -0.998235, 0.0488347, 0.033806, 7.4549, 3.38571, -0.0374283)
+transform = Transform3D(-4.37114e-08, 0.0871557, -0.996195, 0, 0.996195, 0.0871557, 1, 3.8097e-09, -4.35451e-08, -7.31831, 3.38571, -0.0374283)
 fov = 58.9409
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

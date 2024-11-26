@@ -190,6 +190,7 @@ func end_guard():
 	
 func play_getting_hit():
 	ap.play("getting_hit")
+	ap.queue("BattleIdle")
 	
 func attack_hits():
 	attack_hit.emit()
