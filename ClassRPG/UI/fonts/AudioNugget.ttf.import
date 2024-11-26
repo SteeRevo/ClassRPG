@@ -3,17 +3,17 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cmt2y2ujfu4h2"
-path="res://.godot/imported/AudioNugget.ttf-ea7dcafd2abde9b16e20425187334d43.fontdata"
+path="res://.godot/imported/AudioNugget.ttf-bf49cd4190d01082850faaec43cb9a45.fontdata"
 
 [deps]
 
-source_file="res://UI/AudioNugget.ttf"
-dest_files=["res://.godot/imported/AudioNugget.ttf-ea7dcafd2abde9b16e20425187334d43.fontdata"]
+source_file="res://UI/fonts/AudioNugget.ttf"
+dest_files=["res://.godot/imported/AudioNugget.ttf-bf49cd4190d01082850faaec43cb9a45.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -21,7 +21,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

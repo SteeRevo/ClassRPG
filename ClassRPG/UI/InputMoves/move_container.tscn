@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://3xfjhssi5ss4"]
+
+[ext_resource type="Script" path="res://BattleScene/MoveContainer.gd" id="1_k1ovl"]
+[ext_resource type="FontFile" uid="uid://curie8sftie88" path="res://UI/fonts/Orbitron-Regular.ttf" id="2_ggkta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u67ll"]
+
+[sub_resource type="Theme" id="Theme_ikj14"]
+Panel/styles/panel = SubResource("StyleBoxEmpty_u67ll")
+
+[node name="MoveContainer" type="Panel"]
+custom_minimum_size = Vector2(100, 80)
+theme = SubResource("Theme_ikj14")
+script = ExtResource("1_k1ovl")
+
+[node name="MoveName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -4.0
+offset_right = 319.0
+offset_bottom = 36.0
+theme_override_fonts/normal_font = ExtResource("2_ggkta")
+theme_override_font_sizes/normal_font_size = 28
+text = "move name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 361.0
+offset_bottom = 74.0

@@ -113,6 +113,10 @@ func play_enter_anim():
 	
 func play_exit_anim():
 	$AnimationPlayer.play("Exit")
+	
+	
+func play_exit_health():
+	$AnimationPlayer.play_backwards("Health_enter")
 
 
 func _on_animation_player_animation_finished(anim_name):

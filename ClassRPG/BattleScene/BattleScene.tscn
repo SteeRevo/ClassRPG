@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=48 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -18,9 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
 [ext_resource type="PackedScene" uid="uid://cd41j8l1kes3p" path="res://Unit/Enemy/enemy_1.tscn" id="16_hetvf"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
+[ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
 [ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="21_8a34x"]
-[ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/AudioNugget.ttf" id="21_bgcos"]
 [ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
 [ext_resource type="Texture2D" uid="uid://ya0ievwryf4o" path="res://UI/PlayerTurn/Guard Arrow.png" id="25_tm7xu"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c8g43rdjg4h26" path="res://UI/PlayerTurn/Guard Arrow Outline(1).png" id="27_tr71w"]
 [ext_resource type="Texture2D" uid="uid://g4jmmsbs73mc" path="res://UI/PlayerTurn/Guard Arrow Outline(2).png" id="28_3psm6"]
 [ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
+[ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
 [ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
 [ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
@@ -59,8 +60,8 @@ material = SubResource("StandardMaterial3D_lyqfs")
 
 [sub_resource type="Theme" id="Theme_1ep3o"]
 
-[sub_resource type="Animation" id="Animation_a7gd2"]
-resource_name = "Exit"
+[sub_resource type="Animation" id="Animation_6hyxk"]
+resource_name = "Enter"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -72,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(63, 259), Vector2(-85, 259)]
+"values": [Vector2(-132, 324), Vector2(100, 323)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +85,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(448, 59), Vector2(453, -63)]
+"values": [Vector2(572, -95), Vector2(572, 91)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -96,7 +97,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(819, 239), Vector2(1004, 247)]
+"values": [Vector2(1254, 283), Vector2(1035, 298)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -108,7 +109,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(455, 441), Vector2(455, 573)]
+"values": [Vector2(564, 730), Vector2(577, 555)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -120,7 +121,88 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(774, 420), Vector2(964, 554)]
+"values": [Vector2(1235, 706), Vector2(988, 537)]
+}
+
+[sub_resource type="Animation" id="Animation_f48nl"]
+resource_name = "Exit"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 323), Vector2(-132, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(572, 91), Vector2(572, -95)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightArrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1035, 298), Vector2(1254, 283)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DownArrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(577, 555), Vector2(564, 730)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(988, 537), Vector2(1235, 706)]
+}
+
+[sub_resource type="Animation" id="Animation_52chm"]
+resource_name = "Health_enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1225, 707), Vector2(991, 531)]
 }
 
 [sub_resource type="Animation" id="Animation_orlei"]
@@ -183,77 +265,14 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(774, 420)]
-}
-
-[sub_resource type="Animation" id="Animation_6hyxk"]
-resource_name = "Enter"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftArrow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-85, 259), Vector2(63, 259)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UpArrow:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(453, -63), Vector2(448, 59)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightArrow:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1004, 247), Vector2(819, 239)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DownArrow:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(455, 573), Vector2(455, 441)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(964, 554), Vector2(774, 420)]
+"values": [Vector2(1225, 707)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7deb"]
 _data = {
 "Enter": SubResource("Animation_6hyxk"),
-"Exit": SubResource("Animation_a7gd2"),
+"Exit": SubResource("Animation_f48nl"),
+"Health_enter": SubResource("Animation_52chm"),
 "RESET": SubResource("Animation_orlei")
 }
 
@@ -262,7 +281,7 @@ render_priority = 0
 shader = ExtResource("21_8a34x")
 shader_parameter/color_depth = 5
 shader_parameter/dithering = true
-shader_parameter/resolution_scale = 1
+shader_parameter/resolution_scale = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
 material = SubResource("ShaderMaterial_4oi1g")
@@ -468,7 +487,7 @@ offset_left = 8.0
 offset_top = 47.0
 offset_right = 137.0
 offset_bottom = 88.0
-theme_override_fonts/font = ExtResource("21_bgcos")
+theme_override_fonts/font = ExtResource("18_ytc6m")
 text = "Damage: "
 script = ExtResource("21_2hxki")
 
@@ -493,18 +512,17 @@ text = "State Name: "
 script = ExtResource("24_x633m")
 
 [node name="PlayerTurnUI" type="Control" parent="BattleManager/Control"]
-visible = false
 anchors_preset = 0
 offset_left = 7.0
 offset_top = 1.0
-offset_right = 901.0
-offset_bottom = 507.0
+offset_right = 1155.0
+offset_bottom = 646.0
 theme = SubResource("Theme_1ep3o")
 script = ExtResource("25_xyimm")
 
 [node name="LeftArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(63, 259)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
@@ -514,7 +532,7 @@ offset_right = 264.678
 offset_bottom = 47.9322
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 28
 text = "guard"
 metadata/_edit_use_anchors_ = true
@@ -536,7 +554,7 @@ texture = ExtResource("28_3psm6")
 
 [node name="RightArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(819, 239)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("25_tm7xu")
 flip_h = true
 
@@ -552,7 +570,7 @@ offset_right = 242.565
 offset_bottom = 46.9091
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 28
 text = " 
  attack"
@@ -579,7 +597,7 @@ flip_h = true
 [node name="UpArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(448, 59)
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
@@ -595,7 +613,7 @@ offset_bottom = 145.552
 rotation = -1.5708
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 28
 text = "
  item"
@@ -619,7 +637,7 @@ texture = ExtResource("28_3psm6")
 [node name="DownArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(455, 441)
 rotation = -1.5708
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("25_tm7xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
@@ -635,7 +653,7 @@ offset_bottom = 21.765
 rotation = 1.5708
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 28
 text = "
  shift"
@@ -657,9 +675,9 @@ z_index = -1
 texture = ExtResource("28_3psm6")
 
 [node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(774, 420)
+position = Vector2(1225, 707)
 rotation = -0.785397
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 
 [node name="HealthBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
 offset_left = -194.0
@@ -689,7 +707,7 @@ offset_top = -103.709
 offset_right = -32.1373
 offset_bottom = -63.7087
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 40
 text = "10"
 
@@ -699,7 +717,7 @@ offset_top = 44.7834
 offset_right = 90.428
 offset_bottom = 84.7834
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 40
 text = "10"
 
@@ -712,7 +730,7 @@ offset_bottom = 32.3242
 theme_override_colors/default_color = Color(0.84375, 0.996094, 0.0976563, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 80
 text = "sam"
 
@@ -725,7 +743,7 @@ offset_bottom = 38.2167
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 80
 text = "BB
 "
@@ -739,7 +757,7 @@ offset_bottom = 46.4663
 theme_override_colors/default_color = Color(0.605469, 0.0898438, 0.996094, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("21_bgcos")
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 50
 text = "phyliss
 "
@@ -748,6 +766,52 @@ text = "phyliss
 libraries = {
 "": SubResource("AnimationLibrary_p7deb")
 }
+
+[node name="InputMoves" type="Control" parent="BattleManager/Control"]
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Menu" type="Sprite2D" parent="BattleManager/Control/InputMoves"]
+position = Vector2(204.938, 262.518)
+scale = Vector2(0.848626, 0.848626)
+texture = ExtResource("31_egs4q")
+
+[node name="MoveListContainerSam" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 100.0
+offset_right = 387.0
+offset_bottom = 491.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerSam"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MoveListContainerBB" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 100.0
+offset_right = 387.0
+offset_bottom = 491.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerBB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MoveListContainerPhyllis" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 100.0
+offset_right = 387.0
+offset_bottom = 491.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerPhyllis"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 
@@ -760,7 +824,6 @@ script = ExtResource("25_ofn88")
 
 [node name="Filter" type="MeshInstance3D" parent="BattleManager/Cameras/MainBattleCamera"]
 transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 7.04575, -18.3115)
-visible = false
 mesh = SubResource("QuadMesh_2cp44")
 skeleton = NodePath("")
 

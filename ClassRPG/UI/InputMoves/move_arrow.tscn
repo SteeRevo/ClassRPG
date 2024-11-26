@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://clt4t785olj2k"]
+
+[ext_resource type="Script" path="res://BattleScene/MoveArrow.gd" id="1_i6xh7"]
+[ext_resource type="Texture2D" uid="uid://u4trdhwfdhvc" path="res://UI/InputMoves/Arrow(1).png" id="2_nvd1s"]
+
+[node name="MoveArrow" type="Panel"]
+custom_minimum_size = Vector2(40, 30)
+script = ExtResource("1_i6xh7")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(20, 30)
+scale = Vector2(0.180172, 0.180172)
+texture = ExtResource("2_nvd1s")
