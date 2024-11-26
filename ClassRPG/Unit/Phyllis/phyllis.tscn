@@ -3092,7 +3092,7 @@ mesh = SubResource("ArrayMesh_8dv6y")
 skin = SubResource("Skin_facag")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Phyllis/metarig/Skeleton3D"]
-transform = Transform3D(0.0372579, -0.98417, -0.173364, 0.067839, -0.170595, 0.982981, -0.996997, -0.0483927, 0.0604057, -1.05005, 11.9517, -1.20924)
+transform = Transform3D(0.154088, 0.987021, 0.0456144, 0.988006, -0.154371, 0.00281056, 0.00981459, 0.0446319, -0.998931, 5.80481, 13.7445, 0.656036)
 bone_name = "hand.R"
 bone_idx = 14
 

@@ -31,6 +31,8 @@ func _ready():
 	samArrows = [leftSam, rightSam, upSam, downSam]
 	bbArrows = [leftBB, rightBB, upBB, downBB]
 	philArrows = [leftPhil, rightPhil, upPhil, downPhil]
+	visible = false
+	play_exit_anim()
 	
 func update_health(unit):
 	var current_hp = unit._get_health()
@@ -104,3 +106,15 @@ func clear_all_arrows():
 		arr.visible = false
 	for arr in philArrows:
 		arr.visible = false
+		
+func play_enter_anim():
+	visible = true
+	$AnimationPlayer.play("Enter")
+	
+func play_exit_anim():
+	$AnimationPlayer.play("Exit")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Exit":
+		reset_names()

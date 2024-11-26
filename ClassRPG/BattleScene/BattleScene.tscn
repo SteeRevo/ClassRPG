@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=46 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://ya0ievwryf4o" path="res://UI/PlayerTurn/Guard Arrow.png" id="25_tm7xu"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurnUI.gd" id="25_xyimm"]
 [ext_resource type="Texture2D" uid="uid://dmrk1w8i8kscv" path="res://UI/PlayerTurn/Guard Arrow Outline.png" id="26_2ww3c"]
-[ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="26_2xwa2"]
 [ext_resource type="Texture2D" uid="uid://c8g43rdjg4h26" path="res://UI/PlayerTurn/Guard Arrow Outline(1).png" id="27_tr71w"]
 [ext_resource type="Texture2D" uid="uid://g4jmmsbs73mc" path="res://UI/PlayerTurn/Guard Arrow Outline(2).png" id="28_3psm6"]
 [ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
@@ -60,6 +59,204 @@ material = SubResource("StandardMaterial3D_lyqfs")
 
 [sub_resource type="Theme" id="Theme_1ep3o"]
 
+[sub_resource type="Animation" id="Animation_a7gd2"]
+resource_name = "Exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(63, 259), Vector2(-85, 259)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(448, 59), Vector2(453, -63)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightArrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(819, 239), Vector2(1004, 247)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DownArrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(455, 441), Vector2(455, 573)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(774, 420), Vector2(964, 554)]
+}
+
+[sub_resource type="Animation" id="Animation_orlei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(63, 259)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(448, 59)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightArrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(819, 239)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DownArrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(455, 441)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(774, 420)]
+}
+
+[sub_resource type="Animation" id="Animation_6hyxk"]
+resource_name = "Enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-85, 259), Vector2(63, 259)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(453, -63), Vector2(448, 59)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightArrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1004, 247), Vector2(819, 239)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DownArrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(455, 573), Vector2(455, 441)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(964, 554), Vector2(774, 420)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7deb"]
+_data = {
+"Enter": SubResource("Animation_6hyxk"),
+"Exit": SubResource("Animation_a7gd2"),
+"RESET": SubResource("Animation_orlei")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oi1g"]
 render_priority = 0
 shader = ExtResource("21_8a34x")
@@ -71,13 +268,6 @@ shader_parameter/resolution_scale = 1
 material = SubResource("ShaderMaterial_4oi1g")
 flip_faces = true
 size = Vector2(2, 2)
-
-[sub_resource type="Curve3D" id="Curve3D_gvxab"]
-_data = {
-"points": PackedVector3Array(-0.0186071, -0.0517178, 1.47523, 0.0186071, 0.0517178, -1.47523, -3.91275, 0.563349, -4.64343, -2.70158, -0.101928, -0.0665646, 2.70158, 0.101928, 0.0665646, -0.672681, 0.585304, -8.18843, -0.06373, 0.0721154, -2.57156, 0.06373, -0.0721154, 2.57156, 2.68772, 0.456866, -4.22576, 2.118, 0.0104213, -0.0698686, -2.118, -0.0104213, 0.0698686, -0.853764, 0.449827, -0.90738, -0.0372264, -4.43459e-05, 1.28048, 0.0372264, 4.43459e-05, -1.28048, -3.91196, 0.544594, -4.62301),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [node name="BattleScene" type="Node3D"]
 
@@ -130,7 +320,7 @@ current_sp = 13
 startingBG = 3
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
-transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.22915)
+transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.80816)
 current_health = 20
 current_sp = 6
 
@@ -554,6 +744,11 @@ theme_override_font_sizes/normal_font_size = 50
 text = "phyliss
 "
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Control/PlayerTurnUI"]
+libraries = {
+"": SubResource("AnimationLibrary_p7deb")
+}
+
 [node name="Cameras" type="Node" parent="BattleManager"]
 
 [node name="MainBattleCamera" type="Camera3D" parent="BattleManager/Cameras"]
@@ -571,40 +766,6 @@ skeleton = NodePath("")
 
 [node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
 
-[node name="CameraPaths" type="Node" parent="BattleManager"]
-
-[node name="BG1Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -2.97166, 1.48067, 0.968839)
-curve = SubResource("Curve3D_gvxab")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG1Path"]
-transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.99935, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
-script = ExtResource("26_2xwa2")
-
-[node name="BG2Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, 4.97615, 2.13415, -5.64854)
-curve = SubResource("Curve3D_gvxab")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG2Path"]
-transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.99935, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
-script = ExtResource("26_2xwa2")
-
-[node name="BG3Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -10.3035, 2.41821, -5.48455)
-curve = SubResource("Curve3D_gvxab")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG3Path"]
-transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.99935, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
-script = ExtResource("26_2xwa2")
-
-[node name="BG4Path" type="Path3D" parent="BattleManager/CameraPaths"]
-transform = Transform3D(0.0243798, 0, -0.999703, 0, 1, 0, 0.999703, 0, 0.0243798, -2.68386, 1.62799, -12.2308)
-curve = SubResource("Curve3D_gvxab")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="BattleManager/CameraPaths/BG4Path"]
-transform = Transform3D(0.999891, -0.000441824, -0.012604, 0, 0.99935, -0.0350324, 0.0126117, 0.0350291, 0.999285, -3.91275, 0.563349, -4.64343)
-script = ExtResource("26_2xwa2")
-
 [node name="CameraPoints" type="Node" parent="BattleManager"]
 
 [node name="SelectEBGcam" type="Node3D" parent="BattleManager/CameraPoints"]
@@ -619,4 +780,5 @@ transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0
 [node name="EnemyTimer" type="Timer" parent="BattleManager"]
 wait_time = 2.0
 
+[connection signal="animation_finished" from="BattleManager/Control/PlayerTurnUI/AnimationPlayer" to="BattleManager/Control/PlayerTurnUI" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]

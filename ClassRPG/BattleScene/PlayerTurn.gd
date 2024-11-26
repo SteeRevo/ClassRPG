@@ -21,6 +21,7 @@ func enter(host):
 	host.playerTurnUI.set_name_visible(host.current_unit.name)
 	host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.update_sp(host.current_unit)
+	host.playerTurnUI.play_enter_anim()
 	
 	
 func update(host, delta):
@@ -74,10 +75,9 @@ func handle_input(host, event):
 	#	_on_skill_pressed()
 
 func exit(host):
-	host.playerTurnUI.reset_names()
-	host.playerTurnUI.visible = false
 	host.playerTurnUI.clear_all_arrows()
 	host.current_unit.camera_path.reset_progress()
+	host.playerTurnUI.play_exit_anim()
 	last_action = null
 	
 	
