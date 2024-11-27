@@ -168,7 +168,6 @@ func check_enemy_death(enemy):
 
 func play_animation(host):
 	var move = input_arr.pop_front()
-	host.skillNameDisplay.set_skill_name(move)
 	match move:
 		"Left":
 			host.current_unit.play_left()
@@ -183,7 +182,6 @@ func play_animation(host):
 			host.current_unit.play_down()
 			uses_sp = false
 		_:
-			host.current_unit.play_skill(move)
 			uses_sp = true
 	calc_damage(host, move)
 
@@ -199,6 +197,9 @@ func calc_damage(host, skill):
 				host.current_unit.play_skill(current_skill.skillname)
 				var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 				host.skillDamage._add_skill_damage(damage)
+			else:
+				print("Not enough SP")
+				_on_animation_finished("Fail")
 	else:
 		print(skill)
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)

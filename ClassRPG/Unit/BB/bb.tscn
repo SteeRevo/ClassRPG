@@ -3244,7 +3244,7 @@ mesh = SubResource("ArrayMesh_kesue")
 skin = SubResource("Skin_3ixm6")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="BB/metarig/Skeleton3D"]
-transform = Transform3D(0.117225, -0.993099, 0.00295605, -0.992677, -0.117085, 0.0297966, -0.0292458, -0.00642718, -0.999552, -0.767271, 1.55979, 0.00235242)
+transform = Transform3D(0.117225, -0.993099, 0.00295593, -0.992673, -0.117085, 0.0297968, -0.0292454, -0.00642718, -0.999552, -0.767271, 1.55979, 0.00235215)
 bone_name = "hand.L"
 bone_idx = 10
 
