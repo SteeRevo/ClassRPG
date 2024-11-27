@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjimufcei1xir"]
+[gd_scene load_steps=17 format=3 uid="uid://cjimufcei1xir"]
 
 [ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
 [ext_resource type="PackedScene" uid="uid://btcnxyip2albh" path="res://Unit/Phyllis/Sophia.glb" id="2_o1wcq"]
-[ext_resource type="PackedScene" uid="uid://c3c8vggnyxldq" path="res://Unit/BB/BB.glb" id="3_lexyy"]
 [ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
 [ext_resource type="PackedScene" uid="uid://bcxru1sbmv1lu" path="res://Visual_novel_scene/dialogue_player.tscn" id="5_t2bf6"]
 [ext_resource type="Script" path="res://Visual_novel_scene/BattleChanger.gd" id="6_pm3n5"]
@@ -124,9 +123,6 @@ shape = SubResource("BoxShape3D_k0urq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.677221, 0, 0, 0, 0.677221, 0, 0, 0, 0.677221, 0, 0, 1.13386)
-
-[node name="BB" parent="StaticBody3D" instance=ExtResource("3_lexyy")]
-transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.391628, 0, 0, 0, 0.391628, 0, 0, 0, 0.391628, 0, 0, 0)

@@ -13,7 +13,7 @@ signal tween_finished
 func _ready():
 	_set_base_skills()
 	var skill = Skill.new()
-	skill.skillname = "Pitch"
+	skill.skillname = "Smash"
 	skill.damage = 5
 	skill.cost = 1
 	skill.inputs = PackedStringArray(["Up", "Up", "Left"])
@@ -28,10 +28,10 @@ func _ready():
 	skill_tree.up = TreeSkill.new()
 	skill_tree.up.up = TreeSkill.new()
 	skill_tree.up.up.left = TreeSkill.new()
-	skill_tree.up.up.left.move_name = "Pitch"
+	skill_tree.up.up.left.move_name = "Smash"
 
 	
-	set_skill_active("Pitch")
+	set_skill_active("Smash")
 	
 
 func move_towards(target_pos):
@@ -71,7 +71,7 @@ func play_idle():
 	ap.play("BattleIdle")
 
 func play_skill(skillname):
-	ap.play("Skill")
+	ap.play(skillname)
 
 func play_left():
 	ap.play("Left")

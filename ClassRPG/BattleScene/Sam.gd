@@ -62,10 +62,10 @@ func _ready():
 	skill_tree.down.down.up = TreeSkill.new()
 	skill_tree.down.down.up.move_name = "Rooster: Flame"
 	
-	set_skill_active("Rooster: Flame")
-	set_skill_active("Rabbit: Bounce")
+	#set_skill_active("Rooster: Flame")
+	#set_skill_active("Rabbit: Bounce")
 	set_skill_active("Snake: Whip")
-	set_skill_active("Ox: Crush")
+	#set_skill_active("Ox: Crush")
 	
 	_set_base_skills()
 	
@@ -110,9 +110,6 @@ func check_skill(skill_arr, root):
 func play_idle():
 	ap.play("BattleIdle")
 	
-func play_skill(skillname):
-	ap.play("Skill")
-	
 func play_left():
 	ap.play("Left")
 
@@ -132,6 +129,9 @@ func set_guard():
 func get_unit_cam():
 	return unit_cam
 	
+func play_skill(attack_name):
+	if attack_name == "Snake: Whip":
+		ap.play("SnakeWhip")
 	
 func set_skill_active(name):
 	for skill in skillList:

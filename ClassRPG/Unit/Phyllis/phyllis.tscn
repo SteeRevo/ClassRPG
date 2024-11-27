@@ -3112,7 +3112,7 @@ texture = ExtResource("3_t48aw")
 transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
 
 [node name="AttackCam" type="Camera3D" parent="."]
-transform = Transform3D(1.8902, 0.948, -3.39535, 0, 3.85265, 1.07568, 3.52521, -0.508313, 1.82057, -28.6722, 18.0171, 20.9945)
+transform = Transform3D(-1.21613, -0.378472, 3.7918, 0, 3.98022, 0.397278, -3.81064, 0.120786, -1.21012, 27.7551, 15.6409, -17.8665)
 fov = 58.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

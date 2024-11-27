@@ -5,6 +5,8 @@ func enter(host):
 	host.stateName.set_state_name("Inputting Skills")
 	set_active_camera(host, host.mainBattleCamera)
 	host.enemySelector.visible = false
+	host.inputMoves.visible = true
+	host.inputMoves.set_active_unit_movelist_visible(host.current_unit)
 
 func handle_input(host, event):
 	
@@ -46,3 +48,6 @@ func handle_input(host, event):
 func set_active_camera(host, camera):
 	camera.move_to(host.current_unit.get_unit_cam().global_position)
 	camera.rotate_to(host.current_unit.get_unit_cam().rotation)
+	
+func exit(host):
+	host.inputMoves.visible = false

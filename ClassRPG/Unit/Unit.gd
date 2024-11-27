@@ -17,6 +17,8 @@ enum battleGrounds {F, TW, BW, B}
 @export var available = true
 @onready var camera_path = $CameraPath/PathFollow3D
 @onready var attack_cam = $AttackCam
+@onready var attack_cam_base_position = attack_cam.global_position
+@onready var attack_cam_base_rotation = attack_cam.rotation
 
 var is_guarding = false
 var attack_bonus = 0
@@ -200,6 +202,13 @@ func get_camera_path():
 	
 func get_attack_cam():
 	return attack_cam
+	
+func play_skill(attack_name):
+	ap.play(attack_name)
+	
+func reset_attack_cam():
+	attack_cam.global_position = attack_cam_base_position
+	attack_cam.rotation = attack_cam_base_rotation
 	
 func attach_spirit(spirit_name):
 	var new_spirit = Spirit.new(spirit_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c8g43rdjg4h26" path="res://UI/PlayerTurn/Guard Arrow Outline(1).png" id="27_tr71w"]
 [ext_resource type="Texture2D" uid="uid://g4jmmsbs73mc" path="res://UI/PlayerTurn/Guard Arrow Outline(2).png" id="28_3psm6"]
 [ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
+[ext_resource type="Script" path="res://BattleScene/InputMoves.gd" id="31_brdih"]
 [ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
 [ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
 [ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
@@ -771,6 +772,7 @@ libraries = {
 anchors_preset = 0
 offset_right = 1151.0
 offset_bottom = 646.0
+script = ExtResource("31_brdih")
 
 [node name="Menu" type="Sprite2D" parent="BattleManager/Control/InputMoves"]
 position = Vector2(204.938, 262.518)

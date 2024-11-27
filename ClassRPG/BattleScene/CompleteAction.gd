@@ -125,15 +125,16 @@ func check_skill_inputs(host):
 		counter += 1
 		input_arr.push_back(input)
 		print(input_arr)
-		
+		print(len(input_arr))
 		var skill_name
-		if len(input_arr) > 3:
+		if len(input_arr) >= 3:
 			var sub_arr = input_arr
 			while len(sub_arr) >= 3:
 				skill_name = host.current_unit.check_skill(sub_arr, host.current_unit.skill_tree)
-				if skill_name != null or skill_name != "":
+				if skill_name != null and skill_name != "" and skill_name != latest_skill:
 					break
 				sub_arr = sub_arr.slice(1)
+				print(sub_arr)
 		else:
 			skill_name = host.current_unit.check_skill(input_arr, host.current_unit.skill_tree)
 		print(skill_name)
@@ -145,7 +146,9 @@ func check_skill_inputs(host):
 		if (skill_name == null or skill_name == "") and latest_skill != null:
 			input_arr.insert(len(input_arr) - 1, latest_skill)
 			latest_skill = null
-		
+	if latest_skill != null:
+		input_arr.append(latest_skill)
+		latest_skill = null
 	print(input_arr)
 	
 	#calc attack damage here/go to attack animation
@@ -180,7 +183,7 @@ func play_animation(host):
 			host.current_unit.play_down()
 			uses_sp = false
 		_:
-			host.current_unit.play_attack(move)
+			host.current_unit.play_skill(move)
 			uses_sp = true
 	calc_damage(host, move)
 

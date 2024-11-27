@@ -39,6 +39,7 @@ var current_unit
 @onready var skillDamage = $Control/SkillDamage
 @onready var stateName = $Control/CurrentState
 @onready var playerTurnUI = $Control/PlayerTurnUI
+@onready var inputMoves = $Control/InputMoves
 
 @onready var enemySelector = $UI3d/EnemySelector
 @onready var skillNameDisplay = $Control/Skillname

@@ -27,6 +27,7 @@ func get_all_units(host):
 	for unit in host.player_units_path.get_children():
 		host.player_units.append(unit)
 		host.unit_list.append(unit)
+		host.inputMoves.add_all_active_skills(unit)
 	for unit in host.enemy_units_path.get_children():
 		host.enemy_units.append(unit)
 		host.unit_list.append(unit)

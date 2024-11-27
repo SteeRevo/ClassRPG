@@ -18,8 +18,7 @@ func get_enemy_action():
 func get_attack_stack():
 	return ["Attack"]
 	
-func play_attack(attack_name):
-	ap.play(attack_name)
+
 	
 func move_towards(target_pos):
 	unitTween = get_tree().create_tween()

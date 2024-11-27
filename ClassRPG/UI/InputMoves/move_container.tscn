@@ -10,6 +10,8 @@ Panel/styles/panel = SubResource("StyleBoxEmpty_u67ll")
 
 [node name="MoveContainer" type="Panel"]
 custom_minimum_size = Vector2(100, 80)
+offset_right = 421.0
+offset_bottom = 80.0
 theme = SubResource("Theme_ikj14")
 script = ExtResource("1_k1ovl")
 
@@ -17,11 +19,21 @@ script = ExtResource("1_k1ovl")
 layout_mode = 0
 offset_left = 13.0
 offset_top = -4.0
-offset_right = 319.0
+offset_right = 250.0
 offset_bottom = 36.0
 theme_override_fonts/normal_font = ExtResource("2_ggkta")
 theme_override_font_sizes/normal_font_size = 28
 text = "move name"
+
+[node name="SpCost" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 34.0
+offset_right = 329.0
+offset_bottom = 74.0
+theme_override_fonts/normal_font = ExtResource("2_ggkta")
+theme_override_font_sizes/normal_font_size = 28
+text = "sp:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
