@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=50 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
 [ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
 [ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
+[ext_resource type="Script" path="res://BattleScene/InputtedMoves.gd" id="33_iiblf"]
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
@@ -814,6 +815,16 @@ offset_bottom = 491.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="InputtedMoves" type="HBoxContainer" parent="BattleManager/Control/InputMoves"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 554.0
+offset_right = 925.0
+offset_bottom = 625.0
+theme_override_constants/separation = 39
+alignment = 1
+script = ExtResource("33_iiblf")
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 

@@ -203,6 +203,7 @@ func calc_damage(host, skill):
 	else:
 		print(skill)
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+		host.current_unit.play_skill(skill)
 	
 func set_active_camera(host, camera):
 	host.active_camera.current = false

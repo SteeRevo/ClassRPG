@@ -70,8 +70,6 @@ func check_skill(skill_arr, root):
 func play_idle():
 	ap.play("BattleIdle")
 
-func play_skill(skillname):
-	ap.play("Skill")
 
 func play_left():
 	ap.play("Left")

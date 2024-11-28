@@ -3,6 +3,7 @@ extends Node
 var base_player_units = ["Sam", "Phyllis", "BB"]
 var enemy_units = []
 var current_player_units = base_player_units
+var inputs_allowed = 3
 
 
 func add_enemy(enemy_list):

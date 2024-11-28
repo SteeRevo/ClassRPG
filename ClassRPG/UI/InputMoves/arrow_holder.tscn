@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj4wihid4y755"]
+
+[ext_resource type="Texture2D" uid="uid://cii5woap0b0ht" path="res://UI/InputMoves/arrow_holder.png" id="1_bgpj2"]
+[ext_resource type="Script" path="res://UI/InputMoves/arrow_holder.gd" id="2_8n88w"]
+[ext_resource type="Texture2D" uid="uid://u4trdhwfdhvc" path="res://UI/InputMoves/Arrow(1).png" id="2_pv8t7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aavlr"]
+texture = ExtResource("1_bgpj2")
+
+[sub_resource type="Theme" id="Theme_624sl"]
+Panel/styles/panel = SubResource("StyleBoxTexture_aavlr")
+
+[node name="ArrowHolder" type="Panel"]
+custom_minimum_size = Vector2(100, 50)
+theme = SubResource("Theme_624sl")
+script = ExtResource("2_8n88w")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(52, 33)
+scale = Vector2(0.267606, 0.267606)
+texture = ExtResource("2_pv8t7")

@@ -1,15 +1,18 @@
 extends Control
 
 var move_container = preload("res://UI/InputMoves/move_container.tscn")
+var arrow_holder = preload("res://UI/InputMoves/arrow_holder.tscn")
 
 @onready var mlc_sam = $MoveListContainerSam/VBoxContainer
 @onready var mlc_bb = $MoveListContainerBB/VBoxContainer
 @onready var mlc_phyllis = $MoveListContainerPhyllis/VBoxContainer
+@onready var inputtedMoves = $InputtedMoves
 
 var basic_skills = ["Left", "Right", "Up", "Down"]
 
 func _ready():
 	visible = false
+	add_arrow_holders()
 
 func add_all_active_skills(unit):
 	for skill in unit.active_skills:
@@ -41,3 +44,9 @@ func set_active_unit_movelist_visible(unit):
 			mlc_bb.visible = true
 		"Phyllis":
 			mlc_phyllis.visible = true
+
+func add_arrow_holders():
+	for i in range(BattleSettings.inputs_allowed):
+		var _arrow_holder = arrow_holder.instantiate()
+		inputtedMoves.add_child(_arrow_holder)
+	inputtedMoves.add_arrow_to_holder()
