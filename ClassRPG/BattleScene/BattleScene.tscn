@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=48 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
-[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="21_8a34x"]
 [ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
 [ext_resource type="Texture2D" uid="uid://ya0ievwryf4o" path="res://UI/PlayerTurn/Guard Arrow.png" id="25_tm7xu"]
@@ -35,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
 [ext_resource type="Script" path="res://BattleScene/InputtedMoves.gd" id="33_iiblf"]
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
+[ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
 panorama = ExtResource("1_ybyfs")
@@ -277,18 +277,6 @@ _data = {
 "Health_enter": SubResource("Animation_52chm"),
 "RESET": SubResource("Animation_orlei")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oi1g"]
-render_priority = 0
-shader = ExtResource("21_8a34x")
-shader_parameter/color_depth = 5
-shader_parameter/dithering = true
-shader_parameter/resolution_scale = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
-material = SubResource("ShaderMaterial_4oi1g")
-flip_faces = true
-size = Vector2(2, 2)
 
 [node name="BattleScene" type="Node3D"]
 
@@ -835,10 +823,8 @@ script = ExtResource("25_ofn88")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cameras/MainBattleCamera"]
 
-[node name="Filter" type="MeshInstance3D" parent="BattleManager/Cameras/MainBattleCamera"]
-transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 7.04575, -18.3115)
-mesh = SubResource("QuadMesh_2cp44")
-skeleton = NodePath("")
+[node name="Filter" parent="BattleManager/Cameras/MainBattleCamera" instance=ExtResource("35_crou5")]
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -6.5098, 19.1085, -46.9518)
 
 [node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
 

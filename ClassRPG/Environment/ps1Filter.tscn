@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv25xab3f20tr"]
+
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="1_yjlyy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oi1g"]
+render_priority = 0
+shader = ExtResource("1_yjlyy")
+shader_parameter/color_depth = 5
+shader_parameter/dithering = true
+shader_parameter/resolution_scale = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
+material = SubResource("ShaderMaterial_4oi1g")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="Filter" type="MeshInstance3D"]
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 7.04575, -18.3115)
+mesh = SubResource("QuadMesh_2cp44")
+skeleton = NodePath("")
