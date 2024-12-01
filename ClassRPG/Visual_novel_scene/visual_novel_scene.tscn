@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://cjimufcei1xir"]
 
-[ext_resource type="PackedScene" uid="uid://cm5oeyy2w83l6" path="res://Environment/game_store/game_store.tscn" id="1_47mir"]
 [ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
-[ext_resource type="PackedScene" uid="uid://btcnxyip2albh" path="res://Unit/Phyllis/Sophia.glb" id="2_o1wcq"]
+[ext_resource type="PackedScene" uid="uid://1mvqk5xcen1f" path="res://Environment/game_store/game_store.tscn" id="1_l0btu"]
+[ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="3_u0ftc"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="4_2bc1c"]
 [ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
 [ext_resource type="PackedScene" uid="uid://bcxru1sbmv1lu" path="res://Visual_novel_scene/dialogue_player.tscn" id="5_t2bf6"]
@@ -11,6 +11,7 @@
 
 [sub_resource type="Environment" id="Environment_448sm"]
 background_mode = 2
+ambient_light_color = Color(0.529412, 0.529412, 0.529412, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 2.2
 tonemap_mode = 2
@@ -31,12 +32,13 @@ size = Vector3(1, 1.05026, 0.549205)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.399845, 0.300212, 0, 0.60042, 0.799685, -0.500003, 0.692546, -0.519978, 0, 0, 0)
-light_color = Color(0.894118, 0.956863, 0.87451, 1)
-light_energy = 1.302
-light_indirect_energy = 1.198
-light_bake_mode = 1
+light_color = Color(0.145098, 0.713726, 0.886275, 1)
+light_energy = 1.037
+light_indirect_energy = 1.692
+light_volumetric_fog_energy = 1.12
 directional_shadow_mode = 0
-directional_shadow_max_distance = 40.0
+directional_shadow_fade_start = 0.572
+directional_shadow_max_distance = 62.5
 sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -45,7 +47,7 @@ environment = SubResource("Environment_448sm")
 [node name="Area" type="Node3D" parent="."]
 transform = Transform3D(0.0818625, 0, 0.0219855, 0, 0.0847634, 0, -0.0219855, 0, 0.0818625, 0, 0, -0.905213)
 
-[node name="game_store" parent="Area" instance=ExtResource("1_47mir")]
+[node name="GameStore" parent="Area" instance=ExtResource("1_l0btu")]
 
 [node name="SamOverworld" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.606044, 0, -0.795431, 0, 1, 0, 0.795431, 0, 0.606044, 0.0160357, 0.0127517, -1.51237)
@@ -55,15 +57,6 @@ script = ExtResource("1_bakx2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
 shape = SubResource("BoxShape3D_sj7c5")
 
-[node name="Sophia" parent="SamOverworld" instance=ExtResource("2_o1wcq")]
-transform = Transform3D(-0.000817373, 0, -0.0189562, 0, 0.0189738, 0, 0.0189562, 0, -0.000817373, 0, -0.0148075, 0)
-
-[node name="Skeleton3D" parent="SamOverworld/Sophia/metarig" index="0"]
-bones/8/rotation = Quaternion(-0.165044, 0.803169, -0.387251, 0.421564)
-bones/9/rotation = Quaternion(0.573881, -0.132537, -0.527481, 0.612257)
-bones/12/rotation = Quaternion(-0.0488768, -0.47841, 0.843797, 0.238206)
-bones/13/rotation = Quaternion(0.291069, -0.00592526, 0.396966, 0.870438)
-
 [node name="DialogueInteractionArea" type="Area3D" parent="SamOverworld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0127517, 2.0416)
 collision_layer = 2
@@ -72,6 +65,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SamOverworld/DialogueInteractionArea"]
 transform = Transform3D(0.222032, 0, 0, 0, 0.222032, 0, 0, 0, 0.222032, 0, 0.158348, -2.04664)
 shape = SubResource("BoxShape3D_k0urq")
+
+[node name="Phyllis" parent="SamOverworld" instance=ExtResource("3_u0ftc")]
+transform = Transform3D(-0.0184455, 0, -0.003283, 0, 0.0187354, 0, 0.003283, 0, -0.0184455, -0.0157608, 0.00132309, 0.00116295)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.677221, 0, 0, 0, 0.677221, 0, 0, 0, 0.677221, 0.727538, 0, -0.457322)
@@ -96,13 +92,13 @@ scene_text_file = "res://Visual_novel_scene/bb_dialog.json"
 
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-0.831973, -0.29154, 0.472043, 0, 0.850811, 0.525472, -0.554816, 0.437178, -0.707852, 1.40904, 2.18861, -3.51993)
+transform = Transform3D(-0.831973, -0.29154, 0.472044, 0, 0.850811, 0.525472, -0.554816, 0.437178, -0.707852, 1.45929, 1.81995, -3.20092)
 current = true
-fov = 37.5309
+fov = 34.3507
 
 [node name="Filter" parent="MainCamera" instance=ExtResource("7_ud7lf")]
+transform = Transform3D(0.928112, 0.0387952, 0.370277, 0.10958, 0.922037, -0.371271, -0.355812, 0.385157, 0.851501, -1.22458, 2.7702, -6.68106)
 
 [node name="BattleChanger" parent="." instance=ExtResource("8_lc1n3")]
 
-[editable path="SamOverworld/Sophia"]
 [editable path="StaticBody3D/DialogueArea"]

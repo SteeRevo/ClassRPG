@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmf253qre6qxw"
-path.s3tc="res://.godot/imported/game_store_shelf_texture.png-2ec44c807e8509a5c27f862e14f73d6d.s3tc.ctex"
+uid="uid://dogsg42q5usa6"
+path.s3tc="res://.godot/imported/GameStore_store_counter.png-a52bffe30d9a1f5bb23caa6905fa9123.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Environment/game_store/game_store_shelf_texture.png"
-dest_files=["res://.godot/imported/game_store_shelf_texture.png-2ec44c807e8509a5c27f862e14f73d6d.s3tc.ctex"]
+source_file="res://Environment/game_store/GameStore_store_counter.png"
+dest_files=["res://.godot/imported/GameStore_store_counter.png-a52bffe30d9a1f5bb23caa6905fa9123.s3tc.ctex"]
 
 [params]
 

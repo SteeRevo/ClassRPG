@@ -7,7 +7,7 @@ render_priority = 0
 shader = ExtResource("1_yjlyy")
 shader_parameter/color_depth = 5
 shader_parameter/dithering = true
-shader_parameter/resolution_scale = 1
+shader_parameter/resolution_scale = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_2cp44"]
 material = SubResource("ShaderMaterial_4oi1g")

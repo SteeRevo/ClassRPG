@@ -21,7 +21,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		$Sophia.look_at(global_position + direction, Vector3.UP)
+		$Phyllis.look_at(global_position + direction, Vector3.UP)
 		play_walk()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -31,8 +31,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func play_idle():
-	pass#$Sam/AnimationPlayer.play("idle")
+	$Phyllis/AnimationPlayer.play("OverworldIdle")
 
 func play_walk():
-	pass#$Sam/AnimationPlayer.play("walk")
+	$Phyllis/AnimationPlayer.play("Walk")
 

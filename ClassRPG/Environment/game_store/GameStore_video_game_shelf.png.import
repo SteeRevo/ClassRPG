@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fpmey7fahm7x"
-path.s3tc="res://.godot/imported/game_store_nashua-main-board-game-wall.png-c5a52605fc8bc01e8fce9235312f858d.s3tc.ctex"
+uid="uid://ch6x53d6n3dqg"
+path.s3tc="res://.godot/imported/GameStore_video_game_shelf.png-6fe44cd4fbda543257fb79aaa4d216d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Environment/game_store/game_store_nashua-main-board-game-wall.png"
-dest_files=["res://.godot/imported/game_store_nashua-main-board-game-wall.png-c5a52605fc8bc01e8fce9235312f858d.s3tc.ctex"]
+source_file="res://Environment/game_store/GameStore_video_game_shelf.png"
+dest_files=["res://.godot/imported/GameStore_video_game_shelf.png-6fe44cd4fbda543257fb79aaa4d216d0.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y3wnb7phxfwl"
-path.s3tc="res://.godot/imported/game_store_inside_shelf.png-b988adc7ffc0d37a1e4fab50a61adb08.s3tc.ctex"
+uid="uid://chr6t1ka0ypw7"
+path.s3tc="res://.godot/imported/GameStore_inside_shelf.png-9daacd592d0948687879ba61c5605574.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Environment/game_store/game_store_inside_shelf.png"
-dest_files=["res://.godot/imported/game_store_inside_shelf.png-b988adc7ffc0d37a1e4fab50a61adb08.s3tc.ctex"]
+source_file="res://Environment/game_store/GameStore_inside_shelf.png"
+dest_files=["res://.godot/imported/GameStore_inside_shelf.png-9daacd592d0948687879ba61c5605574.s3tc.ctex"]
 
 [params]
 
