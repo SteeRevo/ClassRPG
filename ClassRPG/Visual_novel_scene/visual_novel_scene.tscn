@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjimufcei1xir"]
+[gd_scene load_steps=16 format=3 uid="uid://cjimufcei1xir"]
 
 [ext_resource type="Script" path="res://SamOverworld.gd" id="1_bakx2"]
 [ext_resource type="PackedScene" uid="uid://1mvqk5xcen1f" path="res://Environment/game_store/game_store.tscn" id="1_l0btu"]
+[ext_resource type="PackedScene" uid="uid://dygby4hxrxt62" path="res://Environment/game_store/Cash_register.glb" id="2_etcj7"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="3_u0ftc"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="4_2bc1c"]
 [ext_resource type="PackedScene" uid="uid://bh3ys30axca1e" path="res://Visual_novel_scene/dialogue_area.tscn" id="4_ljxkv"]
+[ext_resource type="Script" path="res://Visual_novel_scene/NPC.gd" id="4_nbjb0"]
 [ext_resource type="PackedScene" uid="uid://bcxru1sbmv1lu" path="res://Visual_novel_scene/dialogue_player.tscn" id="5_t2bf6"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="7_ud7lf"]
 [ext_resource type="PackedScene" uid="uid://cwfu2uph0jpq5" path="res://SceneManager/battle_changer.tscn" id="8_lc1n3"]
@@ -49,6 +51,9 @@ transform = Transform3D(0.0818625, 0, 0.0219855, 0, 0.0847634, 0, -0.0219855, 0,
 
 [node name="GameStore" parent="Area" instance=ExtResource("1_l0btu")]
 
+[node name="Cash_register" parent="Area" instance=ExtResource("2_etcj7")]
+transform = Transform3D(-0.000947455, 0, -0.0853506, 0, 0.0853559, 0, 0.0853506, 0, -0.000947455, -7.16637, 2.01321, 6.53555)
+
 [node name="SamOverworld" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.606044, 0, -0.795431, 0, 1, 0, 0.795431, 0, 0.606044, 0.0160357, 0.0127517, -1.51237)
 script = ExtResource("1_bakx2")
@@ -69,22 +74,23 @@ shape = SubResource("BoxShape3D_k0urq")
 [node name="Phyllis" parent="SamOverworld" instance=ExtResource("3_u0ftc")]
 transform = Transform3D(-0.0184455, 0, -0.003283, 0, 0.0187354, 0, 0.003283, 0, -0.0184455, -0.0157608, 0.00132309, 0.00116295)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NPC" type="StaticBody3D" parent="."]
 transform = Transform3D(0.677221, 0, 0, 0, 0.677221, 0, 0, 0, 0.677221, 0.727538, 0, -0.457322)
+script = ExtResource("4_nbjb0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC"]
 transform = Transform3D(0.391628, 0, 0, 0, 0.391628, 0, 0, 0, 0.391628, 0, 0, 0)
 shape = SubResource("BoxShape3D_5wv2i")
 
-[node name="DialogueArea" parent="StaticBody3D" instance=ExtResource("4_ljxkv")]
+[node name="DialogueArea" parent="NPC" instance=ExtResource("4_ljxkv")]
 process_mode = 3
 dialogue_key = "bb_1"
 
-[node name="CollisionShape3D" parent="StaticBody3D/DialogueArea" index="0"]
+[node name="CollisionShape3D" parent="NPC/DialogueArea" index="0"]
 transform = Transform3D(0.50382, 0, 0, 0, 0.50382, 0, 0, 0, 0.50382, 0, 0.261831, 0)
 shape = SubResource("BoxShape3D_4d2jo")
 
-[node name="BB" parent="StaticBody3D" instance=ExtResource("4_2bc1c")]
+[node name="BB" parent="NPC" instance=ExtResource("4_2bc1c")]
 transform = Transform3D(0.032166, 0, -0.00344891, 0, 0.0323503, 0, 0.00344891, 0, 0.032166, -0.0627446, 0.00105913, -0.0749547)
 
 [node name="DialoguePlayer" parent="." instance=ExtResource("5_t2bf6")]
@@ -101,4 +107,4 @@ transform = Transform3D(0.928112, 0.0387952, 0.370277, 0.10958, 0.922037, -0.371
 
 [node name="BattleChanger" parent="." instance=ExtResource("8_lc1n3")]
 
-[editable path="StaticBody3D/DialogueArea"]
+[editable path="NPC/DialogueArea"]
