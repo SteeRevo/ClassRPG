@@ -8,6 +8,8 @@ func _input(event):
 		SignalBus.emit_signal("display_dialogue", dialogue_key)
 		
 
+		
+
 
 
 func _on_area_entered(area):

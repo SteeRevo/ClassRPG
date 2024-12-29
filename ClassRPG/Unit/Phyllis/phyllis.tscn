@@ -740,7 +740,7 @@ tracks/29/keys = {
 "times": PackedFloat32Array(0, 0.6, 1, 1.7),
 "transitions": PackedFloat32Array(1, 1, 6.9644, 1),
 "update": 0,
-"values": [Vector3(-0.763172, 17.0737, 10.2296), Vector3(-0.763172, 17.0737, 9.09861), Vector3(-0.763172, 17.0737, 13.149), Vector3(-10.2822, 13.0195, -14.7742)]
+"values": [Vector3(3.23742, 17.0737, -16.3655), Vector3(-0.763172, 17.0737, -13.1006), Vector3(-0.763172, 17.0737, -8.56589), Vector3(-10.2822, 13.0195, 17.5272)]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
@@ -752,7 +752,7 @@ tracks/30/keys = {
 "times": PackedFloat32Array(0, 0.6, 1, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.0994838, -0.0804423, -9.30955e-09), Vector3(-0.0994838, -0.0804423, -9.30955e-09), Vector3(-0.0994838, -0.0804423, -9.30955e-09), Vector3(-0.0994838, -2.73818, -9.30955e-09)]
+"values": [Vector3(-0.0994838, 3.1225, -9.30955e-09), Vector3(-0.0994838, 3.27075, 0), Vector3(-0.0994838, 3.1573, 0), Vector3(-0.0994838, -0.320951, -9.30955e-09)]
 }
 tracks/31/type = "method"
 tracks/31/imported = false
@@ -767,6 +767,18 @@ tracks/31/keys = {
 "args": [],
 "method": &"attack_hits"
 }]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("metarig/Skeleton3D/BoneAttachment3D/Umbrella:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_pnvny"]
@@ -2730,7 +2742,7 @@ tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-21.8428, 17.0737, 19.3386)]
+"values": [Vector3(21.3264, 17.0737, -19.9036)]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
@@ -2742,7 +2754,7 @@ tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.0994838, -0.890136, -1.38655e-08)]
+"values": [Vector3(-0.0994838, 2.23221, -1.7294e-08)]
 }
 
 [sub_resource type="Animation" id="Animation_bvx3d"]
@@ -3700,10 +3712,10 @@ technique = 4
 startingBG = 1
 
 [node name="Phyllis" type="Node3D" parent="."]
-transform = Transform3D(0.999035, 0, 0.0439335, 0, 1, 0, -0.0439335, 0, 0.999035, 0, 0, 0)
+transform = Transform3D(-0.999823, 0, -0.0188662, 0, 1, 0, 0.0188662, 0, -0.999823, 0, 0, 0)
 
 [node name="metarig" type="Node3D" parent="Phyllis"]
-transform = Transform3D(0.999819, 0, -0.0190469, 0, 1, 0, 0.0190469, 0, 0.999819, 0.0776116, -0.359205, 0.164729)
+transform = Transform3D(-0.999493, 0, -0.0318403, 0, 1, 0, 0.0318403, 0, -0.999493, 0.07761, -0.359205, 0.164728)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Phyllis/metarig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.482376, 0)
@@ -3965,7 +3977,7 @@ modulate = Color(0.682353, 0.643137, 0.831373, 1)
 texture = ExtResource("3_t48aw")
 
 [node name="UnitCam" type="Node3D" parent="."]
-transform = Transform3D(0.897212, 0, -0.4416, 0, 1, 0, 0.4416, 0, 0.897212, -9.50122, 9.69407, 9.73473)
+transform = Transform3D(0.810625, 0, -0.585566, 0, 1, 0, 0.585566, 0, 0.810625, 6.22548, 15.5384, -11.0963)
 
 [node name="Filter" parent="UnitCam" instance=ExtResource("4_b7jng")]
 visible = false
@@ -3988,7 +4000,7 @@ transform = Transform3D(0.0869581, -0.0479371, -3.56576, 0.0011687, 3.56682, -0.
 curve = SubResource("Curve3D_fb1y4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(0.99989, -0.000441824, -0.012604, 0, 0.999353, -0.0350323, 0.0126117, 0.0350292, 0.999284, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(0.99989, -0.000441824, -0.012604, 1.45515e-11, 0.999352, -0.0350324, 0.0126117, 0.0350292, 0.999284, -4.24709, 0.569662, -4.6139)
 script = ExtResource("4_x1g17")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

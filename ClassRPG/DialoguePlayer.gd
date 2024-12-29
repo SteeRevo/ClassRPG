@@ -53,13 +53,13 @@ func finish():
 	in_progress = false
 	text_index = 0
 	text_size = 0
-	get_tree().paused = false
+	SignalBus.emit_signal("in_dialogue", false)
 	
 func on_display_dialogue(text_key):
 	if in_progress:
 		next_line(text_key)
 	else:
-		get_tree().paused = true
+		SignalBus.emit_signal("in_dialogue", true)
 		background.visible = true
 		portaitBG.visible = true
 		portrait.visible = true

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhys2r0vdx3q5"]
+
+[ext_resource type="Script" path="res://SamOverworld.gd" id="1_q1ado"]
+[ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="2_83ssp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sj7c5"]
+size = Vector3(0.111673, 0.329715, 0.0996212)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0urq"]
+size = Vector3(1, 1.43574, 1)
+
+[node name="PhyllisOverworld" type="CharacterBody3D"]
+transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, 0.0160357, 0.0127517, -1.51237)
+script = ExtResource("1_q1ado")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
+shape = SubResource("BoxShape3D_sj7c5")
+
+[node name="DialogueInteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0127517, 2.0416)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractionArea"]
+transform = Transform3D(0.222032, 0, 0, 0, 0.222032, 0, 0, 0, 0.222032, 0, 0.158348, -2.04664)
+shape = SubResource("BoxShape3D_k0urq")
+
+[node name="Phyllis" parent="." instance=ExtResource("2_83ssp")]
+transform = Transform3D(0.0177851, 0, -0.00589114, 0, 0.0187354, 0, 0.00589114, 0, 0.0177851, -0.0157605, 0.00132309, 0.00116277)
