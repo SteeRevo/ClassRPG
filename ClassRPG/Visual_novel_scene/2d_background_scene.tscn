@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8svhjpjd2kft"]
+
+[ext_resource type="PackedScene" uid="uid://bhys2r0vdx3q5" path="res://Environment/OverworldUnits/phyllis_overworld.tscn" id="1_w7hu2"]
+[ext_resource type="Texture2D" uid="uid://cfhwsay3bohqt" path="res://Visual_novel_scene/background_test_img.png" id="2_1y4pw"]
+[ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="2_qi3tr"]
+[ext_resource type="Texture2D" uid="uid://dlspxv0a6v340" path="res://Visual_novel_scene/background_test_img_2.png" id="3_6g0hn"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8fr76"]
+
+[node name="2DBackgroundScene" type="Node3D"]
+
+[node name="PhyllisOverworld" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_w7hu2")]
+transform = Transform3D(3.12086, 0, -4.67724, 0, 5.62284, 0, 4.67724, 0, 3.12086, 0.0160357, -1.25508, -4.92866)
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.909209, -2.23378)
+current = true
+fov = 64.0511
+
+[node name="Filter" parent="Camera3D" instance=ExtResource("2_qi3tr")]
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 6.13654, -45.5759)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48836, -5.70958)
+visible = false
+texture = ExtResource("2_1y4pw")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(6.27587, 0, 0, 0, 6.27587, 0, 0, 0, 6.27587, 0, 1.37901, -26.9255)
+texture = ExtResource("3_6g0hn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.813507, -0.581555, 0, 0.581555, 0.813507, 0, 0, -8.20292)
+shape = SubResource("WorldBoundaryShape3D_8fr76")

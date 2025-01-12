@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 2
-@onready var camera = %MainCamera
+@export var camera : Camera3D
 var in_dialogue
 
 func _ready():

@@ -59,7 +59,9 @@ transform = Transform3D(0.0818625, 0, 0.0219855, 0, 0.0847634, 0, -0.0219855, 0,
 [node name="Cash_register" parent="Area" instance=ExtResource("2_etcj7")]
 transform = Transform3D(-0.000947455, 0, -0.0853506, 0, 0.0853559, 0, 0.0853506, 0, -0.000947455, -7.16637, 2.01321, 6.53555)
 
-[node name="PhyllisOverworld" parent="." instance=ExtResource("3_no87j")]
+[node name="PhyllisOverworld" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_no87j")]
+transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, -0.0110936, 0.0127517, -1.51237)
+camera = NodePath("../MainCamera")
 
 [node name="BBNPC" type="StaticBody3D" parent="."]
 transform = Transform3D(0.677221, 0, 0, 0, 0.677221, 0, 0, 0, 0.677221, 0.727538, 0, -0.457322)
