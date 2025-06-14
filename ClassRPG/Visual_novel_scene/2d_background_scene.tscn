@@ -20,6 +20,7 @@ fov = 64.0511
 
 [node name="Filter" parent="Camera3D" instance=ExtResource("2_qi3tr")]
 transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -4.15642, 6.13654, -45.5759)
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48836, -5.70958)

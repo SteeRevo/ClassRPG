@@ -824,7 +824,7 @@ script = ExtResource("25_ofn88")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cameras/MainBattleCamera"]
 
 [node name="Filter" parent="BattleManager/Cameras/MainBattleCamera" instance=ExtResource("35_crou5")]
-transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -6.5098, 19.1085, -46.9518)
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -17.3834, 74.8436, -179.282)
 
 [node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
 
