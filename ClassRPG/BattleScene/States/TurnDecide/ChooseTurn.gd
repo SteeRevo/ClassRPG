@@ -1,13 +1,12 @@
 extends States
 
 var current_selected_enemy
-
+var waiting = true
 
 func enter(host):
 	host.stateName.set_state_name("Choose turn")
 	if host.start_of_battle:
 		start_battle(host)
-	host.current_turn = choose_turn(host)
 	for unit in host.player_units:
 		if unit.is_guarding == false:
 			print(unit.name)
@@ -59,6 +58,12 @@ func choose_turn(host):
 		if unit.available == true:
 			host.current_unit = unit
 			return 'enemyturn'
-
-		
+			
+func update(host, delta):
+	"""if waiting:
+		var unit = host.update_turn()
+		if unit != null:
+			host.current_turn = "playerturn"
+			host.choose_turn()"""
+	pass
 

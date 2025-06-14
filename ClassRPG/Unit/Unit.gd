@@ -1,4 +1,5 @@
 extends Node3D
+class_name Unit
 var player_
 var currentBattleGround : set = _set_BG, get = get_BG
 @onready var ap = $AnimationPlayer

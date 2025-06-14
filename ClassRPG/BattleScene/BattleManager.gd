@@ -50,6 +50,8 @@ var current_unit
 @onready var selectBGcam = $CameraPoints/SelectBGcam
 @onready var enemy_timer = $EnemyTimer
 
+@onready var turnBar = $Control/TurnBar
+
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
 	'chooseturn': $States/ChooseTurn,
@@ -80,7 +82,6 @@ func _ready():
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
 	_change_state('chooseturn')
-	_change_state(current_turn)
 	
 
 func _change_state(state_name):
@@ -122,7 +123,7 @@ func end_turn():
 	for unit in unit_list:
 		if unit.available == true:
 			_change_state('chooseturn')
-			_change_state(current_turn)
+			#_change_state(current_turn)
 			return
 	for unit in unit_list:
 		unit.available = true
@@ -162,4 +163,13 @@ func get_battle_data():
 		enemy_unit.startingBG = counter
 		print(counter)
 		counter += 1
-		
+	
+func update_turn():
+	var unit = turnBar.update_all()
+	if unit != null:
+		return unit
+
+
+func _on_turn_bar_choose_turn(unit):
+	current_unit = unit
+	_change_state("playerturn")
