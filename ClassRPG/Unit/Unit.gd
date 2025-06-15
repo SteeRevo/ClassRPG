@@ -13,6 +13,7 @@ enum battleGrounds {F, TW, BW, B}
 @export var attack = 0
 @export var defense = 0
 @export var technique = 0
+@export var speed = 1
 @export var is_dead = false
 @export var enemy_unit = false
 @export var available = true
@@ -25,9 +26,11 @@ var is_guarding = false
 var attack_bonus = 0
 var defense_bonus = 0
 var tech_bonus = 0
+var speed_bonus = 0
 var bg_attack_bonus = 0
 var bg_defense_bonus = 0
 var bg_tech_bonus = 0
+var bg_speed_bonus  = 0
 var temp_health = 0
 var unitTween
 var skill_tree
@@ -118,7 +121,7 @@ func get_max_health():
 	return max_health
 
 func get_technique():
-	return technique + bg_tech_bonus 
+	return technique + bg_tech_bonus + tech_bonus
 	
 func add_tech_buff(boost):
 	tech_bonus += boost
@@ -126,8 +129,17 @@ func add_tech_buff(boost):
 func set_bg_tech_buff(boost):
 	bg_tech_bonus = boost
 	
+func get_speed():
+	return speed + bg_speed_bonus + speed_bonus
+	
+func add_speed_buff(boost):
+	speed_bonus += boost
+	
+func set_bg_speed_buff(boost):
+	bg_speed_bonus = boost
+		
 func get_defense():
-	return defense + bg_defense_bonus
+	return defense + bg_defense_bonus + defense_bonus
 
 func add_defense_buff(boost):
 	defense_bonus += boost
@@ -136,7 +148,7 @@ func set_bg_defense_buff(boost):
 	bg_defense_bonus = boost
 	
 func get_attack():
-	return attack + bg_attack_bonus
+	return attack + bg_attack_bonus + attack_bonus
 	
 func add_attack_buff(boost):
 	attack += boost

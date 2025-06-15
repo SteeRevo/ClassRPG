@@ -89,6 +89,7 @@ func exit(host):
 		if host.current_selected_ally.anim_finished.is_connected(_on_animation_finished):
 			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
+	host.delay_turn_tracker(len(host.skill_stack))
 	host.BGR.reset_health_sp()
 	host.current_unit = null
 	host.current_action = null
@@ -162,6 +163,7 @@ func check_enemy_death(enemy):
 			enemy.get_BG()._set_current_unit(null)
 			host_ref.enemy_units.erase(enemy)
 			host_ref.unit_list.erase(enemy)
+			host_ref.remove_enemy_tt(enemy)
 			enemy.kill_self()
 	if len(host_ref.enemy_units) == 0:
 		host_ref.end_turn()

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://24nh7jrdv1hh"]
+
+[ext_resource type="Script" path="res://TurnTracker.gd" id="1_bybtf"]
+[ext_resource type="Texture2D" uid="uid://ciqd8r87r3riq" path="res://UI/TurnBar/Sam_turn_tracker.PNG" id="2_3tdl0"]
+
+[node name="TurnTracker" type="Node2D"]
+position = Vector2(39, 41)
+script = ExtResource("1_bybtf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5, -10)
+scale = Vector2(0.252212, 0.252212)
+texture = ExtResource("2_3tdl0")

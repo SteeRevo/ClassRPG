@@ -82,6 +82,7 @@ func _ready():
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
 	_change_state('chooseturn')
+
 	
 
 func _change_state(state_name):
@@ -120,16 +121,16 @@ func _process(delta):
 
 func end_turn():	
 	print("changing turn")
-	for unit in unit_list:
+	"for unit in unit_list:
 		if unit.available == true:
 			_change_state('chooseturn')
 			#_change_state(current_turn)
 			return
 	for unit in unit_list:
 		unit.available = true
-		unit.is_guarding = false
+		unit.is_guarding = false"
+	start_turn_tracker()
 	_change_state('chooseturn')
-	_change_state(current_turn)
 
 func complete_enemy_action():
 	_change_state('completeAction')
@@ -163,13 +164,33 @@ func get_battle_data():
 		enemy_unit.startingBG = counter
 		print(counter)
 		counter += 1
-	
-func update_turn():
-	var unit = turnBar.update_all()
-	if unit != null:
-		return unit
+func set_player_turn_tracker():
+	for tt in turnBar.turnTrackers:
+		tt.set_active()
 
+func set_enemy_turn_tracker(unit):
+	for tt in turnBar.enemyTurnTrackers:
+			if tt.active == false:
+				tt.set_active()
+				tt.unit = unit
+				return
+
+func update_turn():
+	turnBar.update_all()
+	
+func start_turn_tracker():
+	turnBar.waiting = true
+
+func delay_turn_tracker(delay):
+	turnBar.delay_tt(delay)
 
 func _on_turn_bar_choose_turn(unit):
 	current_unit = unit
 	_change_state("playerturn")
+
+func _on_turn_bar_choose_enemy_turn(unit):
+	current_unit = unit
+	_change_state("enemyturn")
+
+func remove_enemy_tt(unit):
+	turnBar.remove_enemy_turn_tracker(unit)

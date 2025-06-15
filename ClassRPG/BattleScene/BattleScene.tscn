@@ -322,17 +322,20 @@ script = ExtResource("11_f76x8")
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
 current_health = 10
 current_sp = 10
+speed = 6
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
 current_health = 8
 current_sp = 13
+speed = 4
 startingBG = 3
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.80816)
 current_health = 20
 current_sp = 6
+speed = 3
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -402,6 +405,7 @@ startingBG = 1
 
 [node name="Enemy3" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
 attack = 6
+speed = 2
 startingBG = 3
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
@@ -816,11 +820,17 @@ alignment = 1
 script = ExtResource("33_iiblf")
 
 [node name="TurnBar" parent="BattleManager/Control" instance=ExtResource("34_g0q51")]
-position = Vector2(555, 77)
-scale = Vector2(0.45082, 0.45082)
+position = Vector2(991, 82)
+scale = Vector2(0.313935, 0.313935)
 
 [node name="SamTurnTracker" parent="BattleManager/Control/TurnBar" index="0" node_paths=PackedStringArray("unit")]
 unit = NodePath("../../../PlayerUnits/Sam")
+
+[node name="BBTurnTracker" parent="BattleManager/Control/TurnBar" index="1" node_paths=PackedStringArray("unit")]
+unit = NodePath("../../../PlayerUnits/BB")
+
+[node name="PhilTurnTracker" parent="BattleManager/Control/TurnBar" index="2" node_paths=PackedStringArray("unit")]
+unit = NodePath("../../../PlayerUnits/Phyllis")
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 
@@ -851,6 +861,7 @@ transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0
 wait_time = 2.0
 
 [connection signal="animation_finished" from="BattleManager/Control/PlayerTurnUI/AnimationPlayer" to="BattleManager/Control/PlayerTurnUI" method="_on_animation_player_animation_finished"]
+[connection signal="choose_enemy_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_enemy_turn"]
 [connection signal="choose_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_turn"]
 [connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]
 

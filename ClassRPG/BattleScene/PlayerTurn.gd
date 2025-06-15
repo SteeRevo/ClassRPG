@@ -32,12 +32,7 @@ func update(host, delta):
 		current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
 	
 func handle_input(host, event):
-	if event.is_action_pressed("Cancel"):
-		host.current_action = null
-		host.current_unit.get_BG().reset_buffs()
-		return 'previous'
-		
-	elif event.is_action_pressed("Attack"):
+	if event.is_action_pressed("Attack"):
 		print("Attack")
 		if last_action == "Attack":
 			host.current_action = "Attack"

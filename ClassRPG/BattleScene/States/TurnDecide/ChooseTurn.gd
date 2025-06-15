@@ -5,12 +5,15 @@ var waiting = true
 
 func enter(host):
 	host.stateName.set_state_name("Choose turn")
+	set_active_camera(host, host.mainBattleCamera)
+	host.current_unit = null
 	if host.start_of_battle:
 		start_battle(host)
 	for unit in host.player_units:
 		if unit.is_guarding == false:
 			print(unit.name)
 			unit.play_idle()
+	host.start_turn_tracker()
 
 func start_battle(host):
 	host.start_of_battle = false
@@ -23,6 +26,7 @@ func start_battle(host):
 	get_all_units(host)
 	
 func get_all_units(host):
+	host.set_player_turn_tracker()
 	for unit in host.player_units_path.get_children():
 		host.player_units.append(unit)
 		host.unit_list.append(unit)
@@ -30,6 +34,7 @@ func get_all_units(host):
 	for unit in host.enemy_units_path.get_children():
 		host.enemy_units.append(unit)
 		host.unit_list.append(unit)
+		host.set_enemy_turn_tracker(unit)
 
 func set_all_units_position(host):
 	for bg in host.battleGrounds.get_children():
@@ -67,3 +72,9 @@ func update(host, delta):
 			host.choose_turn()"""
 	pass
 
+func set_active_camera(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera
+	camera.move_to(host.mainOverviewCam.global_position)
+	camera.rotate_to(host.mainOverviewCam.rotation)

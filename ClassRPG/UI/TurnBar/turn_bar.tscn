@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://owkx60nb2md7"]
+[gd_scene load_steps=8 format=3 uid="uid://owkx60nb2md7"]
 
 [ext_resource type="Texture2D" uid="uid://da1w2a1q7rhk5" path="res://UI/TurnBar/Group 1.png" id="1_q5pby"]
 [ext_resource type="Script" path="res://UI/TurnBar/turn_bar.gd" id="2_cwox8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ciqd8r87r3riq" path="res://UI/TurnBar/Sam_turn_tracker.PNG" id="3_w1d5g"]
 [ext_resource type="Texture2D" uid="uid://tei0u0plftgp" path="res://UI/TurnBar/BB_turn_tracker.PNG" id="5_c2s8t"]
 [ext_resource type="Texture2D" uid="uid://cm02h5xs5in0y" path="res://UI/TurnBar/Phil_turn_tracker.PNG" id="6_e12w8"]
+[ext_resource type="PackedScene" uid="uid://24nh7jrdv1hh" path="res://UI/TurnBar/turn_tracker.tscn" id="7_oo2us"]
 
 [node name="TurnBar" type="Sprite2D"]
 position = Vector2(517, 317)
@@ -42,5 +43,16 @@ texture = ExtResource("6_e12w8")
 [node name="StartPoint" type="Node2D" parent="."]
 position = Vector2(-449, -152)
 
+[node name="EnemyStartPoint" type="Node2D" parent="."]
+position = Vector2(-453, 56)
+
 [node name="Endpoint" type="Node2D" parent="."]
 position = Vector2(456, -150)
+
+[node name="EnemyTurnTracker" parent="." instance=ExtResource("7_oo2us")]
+
+[node name="EnemyTurnTracker2" parent="." instance=ExtResource("7_oo2us")]
+
+[node name="EnemyTurnTracker3" parent="." instance=ExtResource("7_oo2us")]
+
+[node name="EnemyTurnTracker4" parent="." instance=ExtResource("7_oo2us")]

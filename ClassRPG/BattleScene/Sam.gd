@@ -62,7 +62,7 @@ func _ready():
 	skill_tree.down.down.up = TreeSkill.new()
 	skill_tree.down.down.up.move_name = "Rooster: Flame"
 	
-	#set_skill_active("Rooster: Flame")
+	set_skill_active("Rooster: Flame")
 	#set_skill_active("Rabbit: Bounce")
 	set_skill_active("Snake: Whip")
 	#set_skill_active("Ox: Crush")
