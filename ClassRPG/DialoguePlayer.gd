@@ -15,6 +15,8 @@ var bb_portrait = preload("res://Visual_novel_scene/bb_portrait.png")
 var phyllis_portrait = preload("res://Visual_novel_scene/sophie_portraits.png")
 var sam_portrait = preload("res://Visual_novel_scene/sam_portraits.png")
 
+@onready var finished_displaying = false
+
 
 
 func _ready():
@@ -32,7 +34,10 @@ func load_scene_text():
 		return test_json_conv.get_data()
 
 func show_text(text):
-	text_label.text = text
+	text_label.display_text(text)
+	
+func advance_full_text():
+	text_label.advance_full_text()
 
 func next_line(text_key):
 	text_index += 1
@@ -40,6 +45,7 @@ func next_line(text_key):
 		var speaker = scene_text[text_key][text_index][0]
 		var speaker_emote = scene_text[text_key][text_index][1]
 		change_portrait(speaker, speaker_emote)
+		
 		var text = scene_text[text_key][text_index][2]
 		show_text(text)
 	else:
@@ -56,7 +62,11 @@ func finish():
 	SignalBus.emit_signal("in_dialogue", false)
 	
 func on_display_dialogue(text_key):
-	if in_progress:
+	if in_progress and !finished_displaying:
+		finished_displaying = true
+		advance_full_text()
+	elif in_progress and finished_displaying:
+		finished_displaying = false
 		next_line(text_key)
 	else:
 		SignalBus.emit_signal("in_dialogue", true)
@@ -69,6 +79,7 @@ func on_display_dialogue(text_key):
 		var text = scene_text[text_key][text_index][2]
 		text_size = scene_text[text_key].size()
 		change_portrait(speaker, speaker_emote)
+		finished_displaying = false
 		show_text(text)
 
 "SQUINT, SHADOW, SMILE, UPSET, CHILL, DISAPPOINTED, JOKING, SURPRISED, SIGH"
@@ -148,3 +159,7 @@ func change_portrait(speaker, emote):
 					portrait.frame = PortraitEnums.PORTRAITS_SAM.SLEEPY
 				"serious":
 					portrait.frame = PortraitEnums.PORTRAITS_SAM.SERIOUS
+
+
+func _on_text_label_finished_displaying():
+	finished_displaying = true

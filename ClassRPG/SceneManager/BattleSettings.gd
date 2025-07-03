@@ -7,6 +7,7 @@ var inputs_allowed = 3
 
 
 func add_enemy(enemy_list):
+	enemy_units.clear()
 	for enemy in enemy_list:
 		enemy_units.append(enemy)
 	print(enemy_list)

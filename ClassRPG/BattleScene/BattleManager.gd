@@ -129,6 +129,10 @@ func end_turn():
 	for unit in unit_list:
 		unit.available = true
 		unit.is_guarding = false"
+	if len(enemy_units) == 0:
+		print_debug("Battle end")
+		SceneManager.change_to_previous()
+		return
 	start_turn_tracker()
 	_change_state('chooseturn')
 
@@ -159,7 +163,7 @@ func get_battle_data():
 		if BattleSettings.current_player_units.find(unit.name) == -1:
 			player_units_path.remove_child(unit)
 	for enemy in BattleSettings.enemy_units:
-		var enemy_unit = load(enemy).instantiate()
+		var enemy_unit = enemy.instantiate()
 		enemy_units_path.add_child(enemy_unit)
 		enemy_unit.startingBG = counter
 		print(counter)

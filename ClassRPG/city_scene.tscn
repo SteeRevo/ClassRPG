@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnb8s0o51vigq"]
+
+[ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_xxbfh"]
+
+[node name="City_scene" instance=ExtResource("1_xxbfh")]
+
+[node name="Plane_001" parent="." index="4"]
+transform = Transform3D(-520.856, 0, 0, 0, -150.216, 0, 0, 0, -490.138, -30.4444, -6.358, -29.5837)

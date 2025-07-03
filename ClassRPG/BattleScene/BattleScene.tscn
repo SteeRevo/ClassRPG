@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=48 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
-[ext_resource type="PackedScene" uid="uid://cd41j8l1kes3p" path="res://Unit/Enemy/enemy_1.tscn" id="16_hetvf"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
@@ -395,18 +394,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
-
-[node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-attack = 6
-
-[node name="Enemy2" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-attack = 6
-startingBG = 1
-
-[node name="Enemy3" parent="BattleManager/EnemyUnits" instance=ExtResource("16_hetvf")]
-attack = 6
-speed = 2
-startingBG = 3
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 

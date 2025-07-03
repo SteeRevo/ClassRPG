@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbw4y1q562ee8"]
+
+[ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_brur5"]
+[ext_resource type="PackedScene" uid="uid://bhys2r0vdx3q5" path="res://Environment/OverworldUnits/phyllis_overworld.tscn" id="2_x2m4q"]
+[ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_tri5r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0l2l"]
+sky_top_color = Color(0, 0.4, 0.94902, 1)
+sky_horizon_color = Color(0.501961, 0.639216, 1, 1)
+ground_bottom_color = Color(0.792605, 0.703028, 0.533635, 1)
+ground_horizon_color = Color(0.5, 0.636719, 0.996094, 1)
+
+[sub_resource type="Sky" id="Sky_jo6oc"]
+sky_material = SubResource("ProceduralSkyMaterial_j0l2l")
+
+[sub_resource type="Environment" id="Environment_8rwct"]
+background_mode = 2
+sky = SubResource("Sky_jo6oc")
+
+[node name="City" type="Node3D"]
+
+[node name="City_scene" parent="." instance=ExtResource("1_brur5")]
+transform = Transform3D(0.0377858, 0, 0, 0, 0.0377858, 0, 0, 0, 0.0377858, -0.977543, 0.00390086, -0.0109207)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8rwct")
+
+[node name="PhyllisOverworld" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_x2m4q")]
+transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, -0.260569, -0.19329, 4.61096)
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.127975, -0.486834, 0.864069, 0, 0.871233, 0.49087, -0.991777, -0.062819, 0.111496, 0.903311, 0.556406, 4.44019)
+current = true
+fov = 74.1499
+
+[node name="Filter" parent="." instance=ExtResource("3_tri5r")]
+transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -41.1564, -5.95425, -28.3115)
