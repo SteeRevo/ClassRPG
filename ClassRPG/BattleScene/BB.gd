@@ -5,7 +5,6 @@ extends "../Unit/Unit.gd"
 
 
 signal anim_finished
-signal tween_finished
 
 
 
@@ -15,7 +14,7 @@ func _ready():
 	var skill = Skill.new()
 	skill.skillname = "Smash"
 	skill.damage = 5
-	skill.cost = 1
+	skill.delay = 1
 	skill.inputs = PackedStringArray(["Up", "Up", "Left"])
 	
 	skillList.append(skill)
@@ -32,13 +31,6 @@ func _ready():
 
 	
 	set_skill_active("Smash")
-	
-
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	ap.play("Rotate")
-	unitTween.connect("finished", on_tween_finished)
-	unitTween.tween_property(self, "position", target_pos, 1)
 	
 
 func on_tween_finished():

@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chrp238rd8ipj"
-path.s3tc="res://.godot/imported/MaxHealth.png-c4145ecabea8cf475343a9f4eedecf45.s3tc.ctex"
+uid="uid://berm65kpa2fyj"
+path.s3tc="res://.godot/imported/monk_Monk.png-f0292770da5417c086f2312aa68fd956.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://UI/PlayerTurn/HealthMana/MaxHealth.png"
-dest_files=["res://.godot/imported/MaxHealth.png-c4145ecabea8cf475343a9f4eedecf45.s3tc.ctex"]
+source_file="res://Unit/Enemy/monk_Monk.png"
+dest_files=["res://.godot/imported/monk_Monk.png-f0292770da5417c086f2312aa68fd956.s3tc.ctex"]
 
 [params]
 

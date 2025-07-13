@@ -1,5 +1,7 @@
 extends States
 
+var isConfirming = false
+
 func enter(host):
 	print("Player inputs skills")
 	host.stateName.set_state_name("Inputting Skills")
@@ -11,11 +13,12 @@ func enter(host):
 	host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.update_sp(host.current_unit)
 	host.playerTurnUI.play_enter_health()
+	var isConfirming = false
 
 func handle_input(host, event):
-	
+
 	if host.skill_stack.size() == BattleSettings.inputs_allowed:
-		if event.is_action_pressed("Attack"):
+		if event.is_action_pressed("Confirm"):
 			print("moving to skills attacks")
 			return 'completeAction'
 		elif event.is_action_pressed("Cancel"):
@@ -23,6 +26,16 @@ func handle_input(host, event):
 			host.inputMoves.inputtedMoves.reset_arrow()
 			print(host.skill_stack)
 			
+	elif event.is_action_pressed("Confirm"):
+		if host.skill_stack.size() == 0:
+			print("No skills inputted")
+		elif !isConfirming:
+			print("Confirm?")
+			isConfirming = true
+		else:
+			print("moving to skills attacks")
+			return 'completeAction'
+	
 	elif event.is_action_pressed("Cancel"):
 		if host.skill_stack.is_empty():
 			return 'previous'

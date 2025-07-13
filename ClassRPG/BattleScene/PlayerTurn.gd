@@ -18,6 +18,7 @@ func enter(host):
 	print("Attack: " , host.current_unit.get_attack())
 	print("Defense: ", host.current_unit.get_defense())
 	print("Technique: ", host.current_unit.get_technique())
+	host.playerTurnUI.reset_names()
 	host.playerTurnUI.set_name_visible(host.current_unit.name)
 	host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.update_sp(host.current_unit)

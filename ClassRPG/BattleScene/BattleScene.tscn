@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
+[ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="16_wgm7h"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
@@ -394,6 +395,24 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
+
+[node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_wgm7h")]
+transform = Transform3D(-0.999533, 0, -0.0305559, 0, 1, 0, 0.0305559, 0, -0.999533, 1.46923, 0, 7.62417)
+max_health = 31
+current_health = 19
+attack = 2
+defense = 14
+speed = 4
+
+[node name="EnemyHealth" type="Sprite3D" parent="BattleManager/EnemyUnits/Enemy1"]
+transform = Transform3D(-0.999533, 0, 0.0305559, 0, 1, 0, -0.0305559, 0, -0.999533, -0.342925, 6.43626, -1.46607)
+billboard = 1
+texture = ExtResource("30_b4gh5")
+
+[node name="Sprite3D" type="Sprite3D" parent="BattleManager/EnemyUnits/Enemy1/EnemyHealth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.229878, -0.0472627, -0.0652924)
+billboard = 1
+texture = ExtResource("31_qdvtd")
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 

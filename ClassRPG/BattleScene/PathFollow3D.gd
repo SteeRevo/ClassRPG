@@ -1,8 +1,8 @@
 extends PathFollow3D
 
 var start_path = false
-@export var path_prog = 0
-var is_enemy = false
+@export var path_prog = 0.0
+@export var is_enemy = false
 
 func _ready():
 	progress = path_prog
@@ -14,10 +14,7 @@ func reset_progress():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if start_path:
-		if !is_enemy:
-			progress += 0.01
-		else:
-			progress -= 0.01
+		progress += 0.01
 		
 	
 func start():

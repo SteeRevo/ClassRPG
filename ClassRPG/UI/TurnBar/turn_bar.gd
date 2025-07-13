@@ -62,5 +62,5 @@ func remove_enemy_turn_tracker(unit):
 			tt.set_inactive()
 
 func delay_tt(delay):
-	current_tt.global_position.x = startPoint.global_position.x
+	current_tt.global_position.x -= delay * 50
 	

@@ -13,6 +13,10 @@ func enter(host):
 		if unit.is_guarding == false:
 			print(unit.name)
 			unit.play_idle()
+	for unit in host.enemy_units:
+		if unit.is_guarding == false:
+			print(unit.name)
+			unit.play_battle_idle()
 	host.start_turn_tracker()
 
 func start_battle(host):

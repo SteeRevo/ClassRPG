@@ -2,11 +2,12 @@ extends "res://Unit/Unit.gd"
 
 @export var height = 0
 signal anim_finished
-signal tween_finished
 
 func _ready():
 	_set_base_skills()
 	$CameraPath/PathFollow3D.is_enemy = true
+	play_battle_idle()
+	
 
 func get_enemy_action():
 	"""var decision = randi() % 2
@@ -18,20 +19,19 @@ func get_enemy_action():
 func get_attack_stack():
 	return ["Attack"]
 	
-
-	
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	ap.play("Rotate")
-	unitTween.connect("finished", on_tween_finished)
-	unitTween.tween_property(self, "position", target_pos, 1)
 	
 
 func on_tween_finished():
 	tween_finished.emit()
 	
 func _set_base_skills():
-	active_skills.append(Skill.new("Attack", 1, 1, [""]))
+	active_skills.append(Skill.new("Attack", 4, 1, [""]))
+	
+func get_skill(skill_name):
+	for skill in active_skills:
+		if skill.skillname == skill_name:
+			return skill
+	return "No move found"
 
 
 func _on_animation_player_animation_finished(anim_name):

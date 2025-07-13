@@ -4,7 +4,7 @@ extends "../Unit/Unit.gd"
 @onready var unit_cam = $UnitCam
 
 signal anim_finished
-signal tween_finished
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,25 +14,25 @@ func _ready():
 	var skill = Skill.new()
 	skill.skillname = "Rabbit: Bounce"
 	skill.damage = 5
-	skill.cost = 1
+	skill.delay = 1
 	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
 
 	var skill2 = Skill.new()
 	skill2.skillname = "Snake: Whip"
 	skill2.damage = "10"
-	skill2.cost = 5
+	skill2.delay = 5
 	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
 	
 	var skill3 = Skill.new()
 	skill3.skillname = "Rooster: Flame"
 	skill3.damage = 0
-	skill3.cost = 3 
+	skill3.delay = 3 
 	skill3.inputs = PackedStringArray(["Down", "Down", "Up"])
 	
 	var skill4 = Skill.new()
 	skill4.skillname = "Ox: Crush"
 	skill4.damage = "10"
-	skill4.cost = 5
+	skill4.delay = 5
 	skill4.inputs = PackedStringArray(["Left", "Left", "Right", "Right"])
 	
 	skillList.append(skill)
@@ -74,15 +74,10 @@ func _ready():
 	
 	
 	
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	ap.play("Rotate")
-	unitTween.connect("finished", on_tween_finished)
-	unitTween.tween_property(self, "position", target_pos, 1)
+
 	
 
-func on_tween_finished():
-	tween_finished.emit()
+
 	
 
 func get_skill_list():

@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbw4y1q562ee8"]
+[gd_scene load_steps=8 format=3 uid="uid://cbw4y1q562ee8"]
 
 [ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_brur5"]
+[ext_resource type="Texture2D" uid="uid://cbp6ix6s8sy2l" path="res://sabina-johnsen-skybox.jpg" id="2_e7gtv"]
 [ext_resource type="PackedScene" uid="uid://bhys2r0vdx3q5" path="res://Environment/OverworldUnits/phyllis_overworld.tscn" id="2_x2m4q"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_tri5r"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0l2l"]
-sky_top_color = Color(0, 0.4, 0.94902, 1)
-sky_horizon_color = Color(0.501961, 0.639216, 1, 1)
-ground_bottom_color = Color(0.792605, 0.703028, 0.533635, 1)
-ground_horizon_color = Color(0.5, 0.636719, 0.996094, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vxvw0"]
+panorama = ExtResource("2_e7gtv")
 
 [sub_resource type="Sky" id="Sky_jo6oc"]
-sky_material = SubResource("ProceduralSkyMaterial_j0l2l")
+sky_material = SubResource("PanoramaSkyMaterial_vxvw0")
 
 [sub_resource type="Environment" id="Environment_8rwct"]
 background_mode = 2

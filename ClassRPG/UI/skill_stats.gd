@@ -3,16 +3,16 @@ extends Resource
 class_name Skill
 
 @export var skillname: String
-@export var cost: int
+@export var delay: int
 @export var damage: int
 @export var inputs: PackedStringArray
 @export var is_active: bool
 @export var active_position: String
 @export var position_swap = []
 
-func _init(name = "skill", _cost = 0, _damage = 0, _inputs = [], _active_position = '', _position_swap = []):
+func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _active_position = '', _position_swap = []):
 	skillname = name;
-	cost = _cost
+	delay = _delay
 	damage = _damage
 	inputs = _inputs
 	is_active = false

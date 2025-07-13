@@ -4,7 +4,7 @@ extends "../Unit/Unit.gd"
 @onready var unit_cam = $UnitCam
 
 signal anim_finished
-signal tween_finished
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _ready():
 	var skill = Skill.new()
 	skill.skillname = "Absorb"
 	skill.damage = 3
-	skill.cost = 1
+	skill.delay = 1
 	skill.inputs = PackedStringArray(["Down", "Down", "Right"])
 	
 	skillList.append(skill)
@@ -31,14 +31,6 @@ func _ready():
 	
 	set_skill_active("Absorb")
 	
-	
-	
-	
-func move_towards(target_pos):
-	unitTween = get_tree().create_tween()
-	ap.play("Rotate")
-	unitTween.connect("finished", on_tween_finished)
-	unitTween.tween_property(self, "position", target_pos, 1)
 	
 
 func on_tween_finished():

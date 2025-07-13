@@ -76,6 +76,8 @@ var camera_list = []
 
 var skill_stack = []
 
+var total_delay = 0
+
 func _ready():
 	add_cameras()
 	get_battle_data()
@@ -168,6 +170,7 @@ func get_battle_data():
 		enemy_unit.startingBG = counter
 		print(counter)
 		counter += 1
+
 func set_player_turn_tracker():
 	for tt in turnBar.turnTrackers:
 		tt.set_active()
@@ -185,8 +188,9 @@ func update_turn():
 func start_turn_tracker():
 	turnBar.waiting = true
 
-func delay_turn_tracker(delay):
-	turnBar.delay_tt(delay)
+func delay_turn_tracker():
+	turnBar.delay_tt(total_delay)
+	total_delay = 0
 
 func _on_turn_bar_choose_turn(unit):
 	current_unit = unit
@@ -198,3 +202,9 @@ func _on_turn_bar_choose_enemy_turn(unit):
 
 func remove_enemy_tt(unit):
 	turnBar.remove_enemy_turn_tracker(unit)
+	
+func get_total_delay(input_arr):
+	for skill in input_arr:
+		var current_skill = current_unit.get_skill(skill)
+		total_delay += current_skill.delay
+	print("total delay = " + str(total_delay))
