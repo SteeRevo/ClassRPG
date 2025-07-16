@@ -13,6 +13,8 @@ func enter(host):
 	set_active_camera(host, host.mainBattleCamera)
 	host.enemySelector.visible = false
 	host.current_unit.get_BG().add_buffs()
+	host.current_unit.is_guarding = false
+	host.current_unit.play_idle()
 	print("Health: ", host.current_unit._get_health())
 	print("SP: ", host.current_unit.get_sp())
 	print("Attack: " , host.current_unit.get_attack())

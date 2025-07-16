@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=51 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -36,12 +36,13 @@
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
+[ext_resource type="Texture2D" uid="uid://wctvgm4t355v" path="res://BattleScene/Battleground/triangle.png" id="37_xcui1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lc0pf"]
-sky_top_color = Color(0.239216, 0.501961, 1, 1)
+sky_top_color = Color(0.0862745, 0.407843, 1, 1)
 sky_horizon_color = Color(0.305882, 0.513726, 0.988235, 1)
-ground_bottom_color = Color(0.384314, 0.572549, 0.992157, 1)
-ground_horizon_color = Color(0.717647, 0.811765, 0.996078, 1)
+ground_bottom_color = Color(0.235294, 0.45098, 0.980392, 1)
+ground_horizon_color = Color(0.992157, 0.996078, 1, 1)
 
 [sub_resource type="Sky" id="Sky_glpqg"]
 sky_material = SubResource("ProceduralSkyMaterial_lc0pf")
@@ -854,8 +855,9 @@ unit = NodePath("../../../PlayerUnits/Phyllis")
 [node name="Cameras" type="Node" parent="BattleManager"]
 
 [node name="MainBattleCamera" type="Camera3D" parent="BattleManager/Cameras"]
-transform = Transform3D(-0.0755113, 0.387049, -0.918962, 0.0292985, 0.922056, 0.385945, 0.996714, 0.00221901, -0.0809657, -18.6049, 9.94786, 3.5505)
+transform = Transform3D(-0.0871557, 0.384437, -0.919028, 0, 0.922538, 0.385906, 0.996194, 0.0336339, -0.0804045, -18.6049, 9.94786, 3.5505)
 current = true
+fov = 62.8717
 script = ExtResource("25_ofn88")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cameras/MainBattleCamera"]
@@ -875,25 +877,648 @@ transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 
 transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 0.999816, 0.00910126, -0.0169029, -15.2724, 14.8798, -6.1244)
 
 [node name="MainOverview" type="Node3D" parent="BattleManager/CameraPoints"]
-transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0.366294, 0.999634, 0.00139376, -0.0270238, -19.1747, 10.4416, 3.98326)
+transform = Transform3D(-0.0130686, 0.152109, -0.988278, 0, 0.988361, 0.152122, 0.999915, 0.00198802, -0.0129165, -20.1475, 8.44868, 3.35377)
 
 [node name="EnemyTimer" type="Timer" parent="BattleManager"]
 wait_time = 2.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(28.5225, 0, 0, 0, 135.82, 0, 0, 0, 28.5225, 192.315, 55.0641, -116.61)
+[node name="Background Buildings" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.54811, 0, 0, 0, 2.08261, 132.054, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 206.904, 18.1754, -158.596)
 mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(28.5225, 0, 0, 0, 90.961, 0, 0, 0, 28.5225, 209.695, 30.3527, -97.16)
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 206.904, 15.1642, -96.2005)
 mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(28.5225, 0, 0, 0, 130.979, 0, 0, 0, 28.5225, 208.094, 51.6715, -65.2273)
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 206.904, 13.6379, 36.5816)
 mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.6135, 0.494406, -0.119077, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 206.765, 30.249, -142.786)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.3368, -5.75932, -2.31074, 1.76943, 49.4614, -0.37733, 2.33882, 0.346865, 15.4382, 206.765, 28.532, 21.4745)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.6135, 0.494406, -0.119077, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 206.765, 28.532, 93.2074)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 206.765, 37.222, -111.648)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 206.765, 36.0773, 6.4438)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(14.5571, 7.71695, -5.20352, -1.56872, 63.9559, 1.1475, 5.29329, -2.2685, 14.6503, 206.765, 36.0773, 77.2228)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.6135, 0.711909, -0.119077, -0.155114, 71.7011, -0.0106563, 0.118966, 0.0543594, 15.6142, 206.954, 41.0574, -127.19)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(10.9466, 15.3589, -26.0158, -1.62396, 98.5021, 6.60524, 3.10004, -2.63368, 95.325, 211.146, 59.6979, -44.5836)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(15.886, 1.5837, -0.192826, -0.157821, 159.505, -0.017256, 0.121042, 0.120927, 25.2846, 206.954, 83.1703, 56.9108)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(43.0623, 2.91386, -0.181096, 0.322912, 3.77201, 23.7447, 0.431744, -293.45, 0.303417, 206.954, 14.3888, -18.3595)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Background Buildings"]
+transform = Transform3D(12.1653, 50.4781, -14.1581, -4.03371, 151.315, 4.77651, 9.38831, -0.396342, 20.3981, 222.824, 81.3534, 110.076)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="Background Buildings2" type="Node3D" parent="."]
+transform = Transform3D(-0.109734, 0, 0.993961, 0, 1, 0, -0.993961, 0, -0.109734, 21.0308, 0.0279465, -500.971)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 15.1642, -121.165)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 13.6379, 11.6174)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 30.249, -167.75)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.3368, -5.75932, -2.31074, 1.76943, 49.4614, -0.37733, 2.33882, 0.346865, 15.4382, 0, 28.532, -3.48965)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 28.532, 68.2432)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 37.222, -136.613)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 36.0773, -18.5204)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(14.5571, 7.71696, -5.20352, -1.56872, 63.9559, 1.1475, 5.29329, -2.2685, 14.6503, 0, 36.0773, 52.2586)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.6135, 0.711909, -0.119078, -0.155114, 71.7011, -0.0106563, 0.118966, 0.0543594, 15.6142, 0, 41.0574, -152.154)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(10.9466, 15.3589, -26.0158, -1.62396, 98.5021, 6.60524, 3.10004, -2.63368, 95.325, 3.05176e-05, 59.6979, -69.5478)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(15.886, 1.5837, -0.192826, -0.157821, 159.505, -0.017256, 0.121042, 0.120927, 25.2846, 0, 83.1703, 31.9466)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(43.0623, 2.91386, -0.181096, 0.322912, 3.77201, 23.7447, 0.431745, -293.45, 0.303417, 0, 14.3888, -43.3237)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Background Buildings2"]
+transform = Transform3D(12.1653, 50.4781, -14.1581, -4.03371, 151.315, 4.77651, 9.38831, -0.396343, 20.3981, 0, 81.3534, 85.1118)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="Background Buildings3" type="Node3D" parent="."]
+transform = Transform3D(-0.931698, 0, 0.363235, 0, 1, 0, -0.363235, 0, -0.931698, -310.725, -7.85213, -276.318)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 15.1642, -121.165)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 13.6379, 11.6174)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 30.249, -167.75)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.3368, -5.75932, -2.31074, 1.76943, 49.4614, -0.37733, 2.33882, 0.346865, 15.4382, 0, 28.532, -3.48965)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 28.532, 68.2432)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 37.222, -136.613)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 36.0773, -18.5204)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(14.5571, 7.71696, -5.20352, -1.56872, 63.9559, 1.1475, 5.29329, -2.2685, 14.6503, 0, 36.0773, 52.2586)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.6135, 0.711909, -0.119078, -0.155114, 71.7011, -0.0106563, 0.118966, 0.0543594, 15.6142, 0, 41.0574, -152.154)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(10.9466, 15.3589, -26.0158, -1.62396, 98.5021, 6.60524, 3.10004, -2.63368, 95.325, 0, 59.6979, -69.5478)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(15.886, 1.5837, -0.192826, -0.157821, 159.505, -0.017256, 0.121042, 0.120927, 25.2846, 0, 83.1703, 31.9466)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(43.0623, 2.91386, -0.181096, 0.322912, 3.77201, 23.7447, 0.431745, -293.45, 0.303417, 0, 14.3888, -43.3237)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Background Buildings3"]
+transform = Transform3D(12.1653, 50.4781, -14.1581, -4.03371, 151.315, 4.77651, 9.38831, -0.396343, 20.3981, 0, 81.3534, 85.1118)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="Background Buildings4" type="Node3D" parent="."]
+transform = Transform3D(-0.34538, 0, -0.938463, 0, 1, 0, 0.938463, 0, -0.34538, -192.515, -21.246, 363.166)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 15.1642, -121.165)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 13.6379, 11.6174)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 30.249, -167.75)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.3368, -5.75932, -2.31074, 1.76943, 49.4614, -0.37733, 2.33882, 0.346865, 15.4382, 0, 28.532, -3.48965)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.6135, 0.494406, -0.119078, -0.15569, 49.7936, -0.0864159, 0.118212, 0.279354, 15.614, 0, 28.532, 68.2432)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 37.222, -136.613)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.5676, 0.639986, -0.118883, -0.155233, 64.4555, -0.0862751, 0.117865, 0.361611, 15.5886, 0, 36.0773, -18.5204)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(14.5571, 7.71696, -5.20352, -1.56872, 63.9559, 1.1475, 5.29329, -2.2685, 14.6503, 0, 36.0773, 52.2586)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.6135, 0.711909, -0.119078, -0.155114, 71.7011, -0.0106563, 0.118966, 0.0543594, 15.6142, 0, 41.0574, -152.154)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(10.9466, 15.3589, -26.0158, -1.62396, 98.5021, 6.60524, 3.10004, -2.63368, 95.325, 0, 59.6979, -69.5478)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(15.886, 1.5837, -0.192826, -0.157821, 159.505, -0.017256, 0.121042, 0.120927, 25.2846, 0, 83.1703, 31.9466)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(43.0623, 2.91386, -0.181096, 0.322912, 3.77201, 23.7447, 0.431745, -293.45, 0.303417, 0, 14.3888, -43.3237)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Background Buildings4"]
+transform = Transform3D(12.1653, 50.4781, -14.1581, -4.03371, 151.315, 4.77651, 9.38831, -0.396343, 20.3981, 0, 81.3534, 85.1118)
+mesh = SubResource("BoxMesh_8u7ws")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="BackgroundSprites" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 77.2015, -2.50173, -110.799)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D2" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 77.3643, 5.34232, -111.319)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D3" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 147.952, 27.7778, -64.6835)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D4" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 148.115, 35.6218, -65.2036)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D5" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 80.2478, 51.2365, -83.153)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D6" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 80.4106, 59.0806, -83.6731)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D7" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -15.172, 51.2365, -118.493)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D8" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -15.0092, 59.0806, -119.013)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D9" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -45.5322, -2.50173, -52.6573)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D10" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -45.3694, 5.34232, -53.1774)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D11" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 25.218, 27.7778, -6.54231)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D12" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 25.3809, 35.6218, -7.06238)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D13" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -42.4859, 51.2365, -25.0118)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D14" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -42.323, 59.0806, -25.5318)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D15" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -137.906, 51.2365, -60.3519)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D16" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -137.743, 59.0806, -60.872)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D17" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -7.12363, -2.50173, 52.5877)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D18" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -6.96079, 5.34232, 52.0677)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D19" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 63.6266, 27.7778, 98.7027)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D20" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 63.7894, 35.6218, 98.1826)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D21" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -4.07732, 51.2365, 80.2332)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D22" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -3.91448, 59.0806, 79.7132)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D23" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -99.4971, 51.2365, 44.8931)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D24" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -99.3343, 59.0806, 44.373)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D25" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 101.212, -2.50173, 64.4443)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D26" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 101.375, 5.34232, 63.9242)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D27" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 171.962, 27.7778, 110.559)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D28" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 172.125, 35.6218, 110.039)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D29" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 104.258, 51.2365, 92.0898)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D30" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 104.421, 59.0806, 91.5698)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D31" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 8.83832, 51.2365, 56.7497)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D32" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 9.00116, 59.0806, 56.2296)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D33" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -41.0918, -2.50173, 122.748)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D34" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -40.9289, 5.34232, 122.228)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D35" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 29.6584, 27.7778, 168.863)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D36" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 29.8213, 35.6218, 168.343)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D37" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -38.0455, 51.2365, 150.394)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D38" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -37.8826, 59.0806, 149.874)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D39" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -133.465, 51.2365, 115.054)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D40" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -133.302, 59.0806, 114.534)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D41" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -142.542, -2.50174, -86.594)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D42" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -141.997, 5.34232, -86.5681)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D43" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -169.248, 27.7778, -6.4757)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D44" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -168.704, 35.6218, -6.44979)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D45" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -168.516, 51.2365, -76.6498)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D46" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -167.972, 59.0806, -76.6239)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D47" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -158.477, 51.2365, -177.907)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
+
+[node name="Sprite3D48" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -157.933, 59.0806, -177.881)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_xcui1")
 
 [connection signal="animation_finished" from="BattleManager/Control/PlayerTurnUI/AnimationPlayer" to="BattleManager/Control/PlayerTurnUI" method="_on_animation_player_animation_finished"]
 [connection signal="choose_enemy_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_enemy_turn"]
