@@ -10,10 +10,10 @@ size = Vector3(0.111673, 0.329715, 0.0996212)
 size = Vector3(1, 1.43574, 1)
 
 [node name="PhyllisOverworld" type="CharacterBody3D"]
-transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, 0.0160357, 0.0127517, -1.51237)
 script = ExtResource("1_q1ado")
+movementType = "Town"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PhyllisCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158132, 0)
 shape = SubResource("BoxShape3D_sj7c5")
 
@@ -27,4 +27,7 @@ transform = Transform3D(0.222032, 0, 0, 0, 0.222032, 0, 0, 0, 0.222032, 0, 0.158
 shape = SubResource("BoxShape3D_k0urq")
 
 [node name="Phyllis" parent="." instance=ExtResource("2_83ssp")]
-transform = Transform3D(0.0177851, 0, -0.00589114, 0, 0.0187354, 0, 0.00589114, 0, 0.0177851, -0.0157605, 0.00132309, 0.00116277)
+transform = Transform3D(0.0187354, 0, 0, 0, 0.0187354, 0, 0, 0, 0.0187354, -0.0157605, 0.00132309, 0.00116277)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147474, -0.00347519)

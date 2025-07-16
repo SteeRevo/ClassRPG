@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://4is4irc35h82"]
+
+[ext_resource type="Script" path="res://City/CameraController.gd" id="1_llpyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmkeh"]
+size = Vector3(1.70151, 1, 1.23586)
+
+[node name="CameraController" type="Node3D"]
+script = ExtResource("1_llpyc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.961459, 0, 0.274949, 0, 1, 0, -0.274949, 0, 0.961459, -0.0676618, 0.129562, 5.48221)
+current = true
+fov = 48.28
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.9995, 0, 0.0316196, 0, 1, 0, -0.0316196, 0, 0.9995, -0.32805, 0.129562, 4.62937)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_tmkeh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

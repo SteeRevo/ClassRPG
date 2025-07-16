@@ -63,4 +63,5 @@ func remove_enemy_turn_tracker(unit):
 
 func delay_tt(delay):
 	current_tt.global_position.x -= delay * 50
+	current_tt.global_position.x = max(current_tt.global_position.x,startPoint.global_position.x)
 	

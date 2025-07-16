@@ -1,6 +1,5 @@
-[gd_scene load_steps=49 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=50 format=3 uid="uid://bu3mr741gkvrq"]
 
-[ext_resource type="Texture2D" uid="uid://cpbb0i36uhgbq" path="res://KxPFmfhg.png" id="1_ybyfs"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
 [ext_resource type="Script" path="res://BattleScene/SelectEnemyBG.gd" id="4_kpmye"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
+[ext_resource type="Material" uid="uid://d3frj2ijy6g1b" path="res://BattleScene/Battleground/backgroundMat.tres" id="15_thxja"]
 [ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="16_wgm7h"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
@@ -37,11 +37,14 @@
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0blkr"]
-panorama = ExtResource("1_ybyfs")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lc0pf"]
+sky_top_color = Color(0.239216, 0.501961, 1, 1)
+sky_horizon_color = Color(0.305882, 0.513726, 0.988235, 1)
+ground_bottom_color = Color(0.384314, 0.572549, 0.992157, 1)
+ground_horizon_color = Color(0.717647, 0.811765, 0.996078, 1)
 
 [sub_resource type="Sky" id="Sky_glpqg"]
-sky_material = SubResource("PanoramaSkyMaterial_0blkr")
+sky_material = SubResource("ProceduralSkyMaterial_lc0pf")
 
 [sub_resource type="Environment" id="Environment_ccmnm"]
 background_mode = 2
@@ -279,6 +282,8 @@ _data = {
 "RESET": SubResource("Animation_orlei")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_8u7ws"]
+
 [node name="BattleScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -348,6 +353,7 @@ defense_boost = 3
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.103124, 0, 0.111186)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215351, 0, 1.91326)
@@ -362,6 +368,7 @@ attack_boost = 2
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.455935, 0, 1.14638)
@@ -373,9 +380,10 @@ bgType = 2
 attack_boost = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground3"]
-transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
+transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.00084877, 9.53674e-07, 0.032361)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266016, 0, 3.36389)
@@ -390,6 +398,7 @@ health_regen = 2
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
@@ -424,6 +433,7 @@ script = ExtResource("18_aducu")
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.0262227, 0, 0.111186)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187797, 0, -1.70611)
@@ -437,6 +447,7 @@ bgType = 1
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206414, 0, -1.70611)
@@ -450,6 +461,7 @@ bgType = 2
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25608, 0, -1.70611)
@@ -463,6 +475,7 @@ bgType = 3
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="AttackerPos" type="Node3D" parent="BattleManager/EnemyBGs/Battleground4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218322, 0, -1.70611)
@@ -849,6 +862,7 @@ script = ExtResource("25_ofn88")
 
 [node name="Filter" parent="BattleManager/Cameras/MainBattleCamera" instance=ExtResource("35_crou5")]
 transform = Transform3D(0.928111, 0.0387952, 0.370276, 0.10958, 0.922036, -0.371271, -0.355812, 0.385156, 0.8515, -17.3834, 74.8436, -179.282)
+visible = false
 
 [node name="UnitSelectedCamera" type="Camera3D" parent="BattleManager/Cameras"]
 
@@ -865,6 +879,21 @@ transform = Transform3D(-0.0256551, 0.366393, -0.930107, 0.00860499, 0.930459, 0
 
 [node name="EnemyTimer" type="Timer" parent="BattleManager"]
 wait_time = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(28.5225, 0, 0, 0, 135.82, 0, 0, 0, 28.5225, 192.315, 55.0641, -116.61)
+mesh = SubResource("BoxMesh_8u7ws")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(28.5225, 0, 0, 0, 90.961, 0, 0, 0, 28.5225, 209.695, 30.3527, -97.16)
+mesh = SubResource("BoxMesh_8u7ws")
+surface_material_override/0 = ExtResource("15_thxja")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(28.5225, 0, 0, 0, 130.979, 0, 0, 0, 28.5225, 208.094, 51.6715, -65.2273)
+mesh = SubResource("BoxMesh_8u7ws")
+surface_material_override/0 = ExtResource("15_thxja")
 
 [connection signal="animation_finished" from="BattleManager/Control/PlayerTurnUI/AnimationPlayer" to="BattleManager/Control/PlayerTurnUI" method="_on_animation_player_animation_finished"]
 [connection signal="choose_enemy_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_enemy_turn"]

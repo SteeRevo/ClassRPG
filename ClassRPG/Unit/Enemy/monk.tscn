@@ -1904,7 +1904,7 @@ transform = Transform3D(0.0334981, 0, -1.39415, 0, 1, 0, 1.3736, 0, 0.0339991, -
 curve = SubResource("Curve3D_8n30l")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(-0.00618595, -0.0533815, -0.99853, -0.669188, 0.742201, -0.035533, 0.743027, 0.667999, -0.0403149, -0.545975, 0.58995, -8.18432)
+transform = Transform3D(-0.00618595, -0.0533813, -0.99853, -0.669188, 0.742201, -0.0355329, 0.743027, 0.667999, -0.0403148, -0.545976, 0.58995, -8.18432)
 progress = 5.61204
 script = ExtResource("2_ephwc")
 path_prog = 0.25

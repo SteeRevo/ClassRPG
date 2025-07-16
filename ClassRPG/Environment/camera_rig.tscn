@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://rejbaoj450xt"]
+
+[ext_resource type="Script" path="res://City/CameraRig.gd" id="1_sak5h"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vfsht"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_l4wo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnx11"]
+albedo_color = Color(0.996078, 0, 0.0156863, 1)
+
+[node name="CameraRig" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280127, -0.125867, 4.57021)
+script = ExtResource("1_sak5h")
+stage_dimension = Vector2(1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.00449684, -0.6752, 0.737621, 0.00191378, 0.737633, 0.6752, -0.999988, -0.00162461, 0.0046092, 0.393949, 0.333159, -0.893526)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.10832, 0, 1.86265e-09, 0, 0.10832, 0, -1.86265e-09, 0, 0.10832, -1.19209e-07, 0, 0.018405)
+mesh = SubResource("SphereMesh_vfsht")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0810373, 0, 0, 0, 0.0810373, 0, 0, 0, 0.0810373, -0.000115156, 0.0680945, 0.127135)
+mesh = SubResource("SphereMesh_l4wo4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hnx11")
