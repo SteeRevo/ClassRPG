@@ -26,8 +26,8 @@ BattleSettings="*res://SceneManager/BattleSettings.gd"
 
 [display]
 
-window/size/window_width_override=1480
-window/size/window_height_override=833
+window/size/window_width_override=1728
+window/size/window_height_override=972
 window/stretch/mode="viewport"
 
 [input]

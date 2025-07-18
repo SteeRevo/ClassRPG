@@ -1,8 +1,10 @@
-extends Node2D
+extends PathFollow2D
+
 @export var unit : Unit
 @onready var sprite = $Sprite2D
 var speed
 var active = false
+var speed_ratio = 0.0002
 
 func set_active():
 	active = true
@@ -14,7 +16,7 @@ func set_inactive():
 	
 func take_step():
 	speed = calc_speed(unit.get_speed())
-	global_position.x += speed
+	progress_ratio += speed
 
 func calc_speed(speed):
-	return (speed * 0.05) + 0.1
+	return (speed * speed_ratio)

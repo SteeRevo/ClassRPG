@@ -191,6 +191,9 @@ func start_turn_tracker():
 func delay_turn_tracker():
 	turnBar.delay_tt(total_delay)
 	total_delay = 0
+	
+func reset_delay():
+	turnBar.reset_to_start()
 
 func _on_turn_bar_choose_turn(unit):
 	current_unit = unit
@@ -206,5 +209,6 @@ func remove_enemy_tt(unit):
 func get_total_delay(input_arr):
 	for skill in input_arr:
 		var current_skill = current_unit.get_skill(skill)
-		total_delay += current_skill.delay
+		if current_skill != null:
+			total_delay += current_skill.delay
 	print("total delay = " + str(total_delay))

@@ -91,7 +91,7 @@ func exit(host):
 		if host.current_selected_ally.anim_finished.is_connected(_on_animation_finished):
 			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
-	host.delay_turn_tracker()
+	#host.delay_turn_tracker()
 	host.BGR.reset_health_sp()
 	host.current_unit = null
 	host.current_action = null
@@ -157,7 +157,7 @@ func check_skill_inputs(host):
 	#calc attack damage here/go to attack animation
 	current_position = host.current_unit.global_position
 	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
-	host.get_total_delay(input_arr)
+	#host.get_total_delay(input_arr)
 	
 
 func check_enemy_death(enemy):
@@ -191,20 +191,20 @@ func play_animation(host):
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
+	#check if enemy or normal unit attacking
 	if host.current_unit.enemy_unit == false:
-		if uses_sp == false:
+		#checks if skill has been activated
+		var current_skill = host.current_unit.get_skill(skill)
+		if current_skill != null:
+			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 			host.skillDamage._add_skill_damage(damage)
 		else:
-			var current_skill = host.current_unit.get_skill(skill)
-			var useable = host.current_unit.use_sp(current_skill.delay)
-			if useable:
-				host.current_unit.play_skill(current_skill.skillname)
-				var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
-				host.skillDamage._add_skill_damage(damage)
-			else:
-				print("Not enough SP")
-				_on_animation_finished("Fail")
+			print("New skill unlocked")
+			current_skill = host.current_unit.set_skill_active(skill)
+			host.current_unit.play_skill(current_skill.skillname)
+			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+			host.skillDamage._add_skill_damage(damage)
 	else:
 		print(skill)
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)

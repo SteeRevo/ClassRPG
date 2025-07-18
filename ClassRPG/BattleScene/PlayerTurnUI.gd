@@ -1,19 +1,19 @@
 extends Control
 
-@onready var leftSam = $LeftArrow/LeftArrowSam
-@onready var rightSam = $RightArrow/RightArrowSam
-@onready var upSam = $UpArrow/UpArrowSam
-@onready var downSam = $DownArrow/DownArrowSam
+@onready var leftSam = $Arrows/LeftArrow/LeftArrowSam
+@onready var rightSam = $Arrows/RightArrow/RightArrowSam
+@onready var upSam = $Arrows/UpArrow/UpArrowSam
+@onready var downSam = $Arrows/DownArrow/DownArrowSam
 
-@onready var leftBB = $LeftArrow/LeftArrowBB
-@onready var rightBB = $RightArrow/RightArrowBB
-@onready var upBB = $UpArrow/UpArrowBB
-@onready var downBB = $DownArrow/DownArrowBB
+@onready var leftBB = $Arrows/LeftArrow/LeftArrowBB
+@onready var rightBB = $Arrows/RightArrow/RightArrowBB
+@onready var upBB = $Arrows/UpArrow/UpArrowBB
+@onready var downBB = $Arrows/DownArrow/DownArrowBB
  
-@onready var leftPhil = $LeftArrow/LeftArrowPhyliss
-@onready var rightPhil = $RightArrow/RightArrowPhyliss
-@onready var upPhil = $UpArrow/UpArrowPhyliss
-@onready var downPhil = $DownArrow/DownArrowPhyliss
+@onready var leftPhil = $Arrows/LeftArrow/LeftArrowPhyliss
+@onready var rightPhil = $Arrows/RightArrow/RightArrowPhyliss
+@onready var upPhil = $Arrows/UpArrow/UpArrowPhyliss
+@onready var downPhil = $Arrows/DownArrow/DownArrowPhyliss
 
 @onready var playerHealthbar = $Control/HealthBar
 @onready var playerSoulbar = $Control/SpBar

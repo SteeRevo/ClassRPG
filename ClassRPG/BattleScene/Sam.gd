@@ -71,14 +71,7 @@ func _ready():
 	
 	attach_spirit("Slasher")
 	print(attached_spirits)
-	
-	
-	
 
-	
-
-
-	
 
 func get_skill_list():
 	return skillList
@@ -125,21 +118,27 @@ func get_unit_cam():
 	return unit_cam
 	
 func play_skill(attack_name):
-	if attack_name == "Snake: Whip":
-		ap.play("SnakeWhip")
+	match attack_name:
+		"Left", "Right", "Up", "Down":
+			ap.play(attack_name)
+		"Snake: Whip":
+			ap.play("SnakeWhip")
+		_:
+			ap.play("Skill")
+	
 	
 func set_skill_active(name):
 	for skill in skillList:
 		if skill.skillname == name:
 			skill.is_active = true
 			active_skills.push_back(skill)
-			return
+			return skill
 
 func get_skill(skill_name):
 	for skill in active_skills:
 		if skill.skillname == skill_name:
 			return skill
-	return "No move found"
+	return null
 
 func _on_animation_player_animation_finished(anim_name):
 	print("anim signal emitted")

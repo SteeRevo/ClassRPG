@@ -1,32 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbw4y1q562ee8"]
+[gd_scene load_steps=8 format=3 uid="uid://cbw4y1q562ee8"]
 
 [ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_brur5"]
-[ext_resource type="Texture2D" uid="uid://cbp6ix6s8sy2l" path="res://sabina-johnsen-skybox.jpg" id="2_e7gtv"]
 [ext_resource type="PackedScene" uid="uid://bhys2r0vdx3q5" path="res://Environment/OverworldUnits/phyllis_overworld.tscn" id="2_x2m4q"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_tri5r"]
 [ext_resource type="PackedScene" uid="uid://rejbaoj450xt" path="res://Environment/camera_rig.tscn" id="5_vrlqp"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vxvw0"]
-panorama = ExtResource("2_e7gtv")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uqomm"]
+sky_top_color = Color(0.776471, 0.47451, 0, 1)
+sky_horizon_color = Color(0.921569, 0.568627, 0, 1)
+ground_bottom_color = Color(0.773438, 0.648438, 0.417969, 1)
+ground_horizon_color = Color(0.878431, 0.741176, 0.521569, 1)
 
 [sub_resource type="Sky" id="Sky_jo6oc"]
-sky_material = SubResource("PanoramaSkyMaterial_vxvw0")
+sky_material = SubResource("ProceduralSkyMaterial_uqomm")
 
 [sub_resource type="Environment" id="Environment_8rwct"]
 background_mode = 2
 sky = SubResource("Sky_jo6oc")
+sky_custom_fov = 76.3
+fog_enabled = true
+fog_light_color = Color(0.560784, 0.466667, 0.258824, 1)
+fog_density = 0.0
+fog_sky_affect = 0.924
 
 [node name="City" type="Node3D"]
 transform = Transform3D(0.993715, 0, -0.111937, 0, 1, 0, 0.111937, 0, 0.993715, 0, 0, 0)
 
 [node name="City_scene" parent="." instance=ExtResource("1_brur5")]
-transform = Transform3D(0.0375746, 0, 0.00398904, 0, 0.0377858, 0, -0.00398904, 0, 0.0375746, -0.977543, 0.00390086, -0.0109207)
+transform = Transform3D(0.0508162, 0, 0.00539481, 0, 0.0511019, 0, -0.00539481, 0, 0.0508162, -0.977543, 0.00390086, -0.0109207)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8rwct")
 
 [node name="PhyllisOverworld" parent="." node_paths=PackedStringArray("forwardDir", "camera") instance=ExtResource("2_x2m4q")]
-transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, -0.260569, -0.19329, 4.61096)
+transform = Transform3D(0.555033, 0, -0.831828, 0, 1, 0, 0.831828, 0, 0.555033, -0.260569, -0.294198, 4.61096)
 forwardDir = NodePath("../Node3D")
 camera = NodePath("../CameraRig/Camera3D")
 
@@ -38,27 +45,29 @@ visible = false
 transform = Transform3D(-0.0122518, 0, 0.999925, 0, 1, 0, -0.999925, 0, -0.0122518, -0.485015, -0.0590616, 4.44397)
 
 [node name="CameraRig" parent="." node_paths=PackedStringArray("player", "limit1", "limit2") instance=ExtResource("5_vrlqp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280127, 0.723188, 2.15781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206205, -0.142819, 4.5787)
 player = NodePath("../PhyllisOverworld")
 stage_dimension = Vector2(20, 20)
 limit1 = NodePath("../Limit1")
 limit2 = NodePath("../Limit2")
 
 [node name="Camera3D" parent="CameraRig" index="0"]
-transform = Transform3D(-0.0217679, -0.629176, 0.776958, 0, 0.777142, 0.629326, -0.999763, 0.0136991, -0.0169167, 0.767365, 0.354365, 0.542007)
+transform = Transform3D(-0.854683, -0.0998059, 0.509467, 0.0293391, 0.970492, 0.239341, -0.518321, 0.219508, -0.826535, 1.1282, 0.874376, -2.14948)
+fov = 39.0472
 
 [node name="MeshInstance3D" parent="CameraRig" index="1"]
+transform = Transform3D(0.10832, 0, 2.79397e-09, 0, 0.10832, 0, -2.79397e-09, 0, 0.10832, -1.19209e-07, 0, 0.243948)
 visible = false
 
 [node name="MeshInstance3D2" parent="CameraRig" index="2"]
-transform = Transform3D(0.0810373, 0, -3.72529e-09, 0, 0.0810373, 0, 3.72529e-09, 0, 0.0810373, -0.000115275, 0.0680945, 0.0175848)
+transform = Transform3D(0.0810373, 0, -6.51926e-09, 0, 0.0810373, 0, 6.51926e-09, 0, 0.0810373, -0.000115335, 0.0680945, 0.18632)
 visible = false
 
 [node name="Limit1" type="Node3D" parent="."]
-transform = Transform3D(0.991985, 0, 0.126355, 0, 1, 0, -0.126355, 0, 0.991985, -2.52528, -0.784507, -0.473402)
+transform = Transform3D(0.991984, 0, 0.126355, 0, 1, 0, -0.126355, 0, 0.991984, -3.76863, -2.24591, 0.10201)
 
 [node name="Limit2" type="Node3D" parent="."]
-transform = Transform3D(0.992205, 0, 0.124623, 0, 1, 0, -0.124623, 0, 0.992205, 1.06142, -0.0264523, 7.48862)
+transform = Transform3D(0.992205, 0, 0.124623, 0, 1, 0, -0.124623, 0, 0.992205, 0.455196, 2.9525, 4.47023)
 
 [editable path="PhyllisOverworld"]
 [editable path="CameraRig"]

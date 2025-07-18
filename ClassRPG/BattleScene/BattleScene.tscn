@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -21,13 +21,13 @@
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
 [ext_resource type="Script" path="res://BattleScene/CurrentState.gd" id="24_x633m"]
+[ext_resource type="Texture2D" uid="uid://ddxed61l238lx" path="res://UI/PlayerTurn/MoveCircle.png" id="25_f7psj"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
-[ext_resource type="Texture2D" uid="uid://ya0ievwryf4o" path="res://UI/PlayerTurn/Guard Arrow.png" id="25_tm7xu"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurnUI.gd" id="25_xyimm"]
-[ext_resource type="Texture2D" uid="uid://dmrk1w8i8kscv" path="res://UI/PlayerTurn/Guard Arrow Outline.png" id="26_2ww3c"]
-[ext_resource type="Texture2D" uid="uid://c8g43rdjg4h26" path="res://UI/PlayerTurn/Guard Arrow Outline(1).png" id="27_tr71w"]
-[ext_resource type="Texture2D" uid="uid://g4jmmsbs73mc" path="res://UI/PlayerTurn/Guard Arrow Outline(2).png" id="28_3psm6"]
+[ext_resource type="Texture2D" uid="uid://nf76bjd78xhb" path="res://UI/PlayerTurn/SamSelectionCircle.png" id="26_tq8f6"]
+[ext_resource type="Texture2D" uid="uid://devb4127aiuvo" path="res://UI/PlayerTurn/BBSelectionCircle.png" id="29_v5bq6"]
 [ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
+[ext_resource type="Texture2D" uid="uid://bxkr3irmrspc2" path="res://UI/PlayerTurn/PhyllisSelectionCircle.png" id="30_jqr0j"]
 [ext_resource type="Script" path="res://BattleScene/InputMoves.gd" id="31_brdih"]
 [ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
 [ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
@@ -36,7 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
-[ext_resource type="Texture2D" uid="uid://wctvgm4t355v" path="res://BattleScene/Battleground/triangle.png" id="37_xcui1"]
+[ext_resource type="Texture2D" uid="uid://djvqqxwggsqpk" path="res://BattleScene/Battleground/Ellipse 112.png" id="37_8mc0k"]
+[ext_resource type="Texture2D" uid="uid://wctvgm4t355v" path="res://BattleScene/Battleground/triangle.png" id="38_jlnf2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lc0pf"]
 sky_top_color = Color(0.0862745, 0.407843, 1, 1)
@@ -73,62 +74,26 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-132, 324), Vector2(100, 323)]
+"values": [Vector2(1235, 706), Vector2(988, 537)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UpArrow:position")
+tracks/1/path = NodePath("Arrows:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(572, -95), Vector2(572, 91)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightArrow:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1254, 283), Vector2(1035, 298)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DownArrow:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(564, 730), Vector2(577, 555)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1235, 706), Vector2(988, 537)]
+"values": [Vector2(-184, 525), Vector2(135, 508)]
 }
 
 [sub_resource type="Animation" id="Animation_f48nl"]
@@ -138,62 +103,26 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(100, 323), Vector2(-132, 324)]
+"values": [Vector2(988, 537), Vector2(1235, 706)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UpArrow:position")
+tracks/1/path = NodePath("Arrows:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(572, 91), Vector2(572, -95)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightArrow:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1035, 298), Vector2(1254, 283)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DownArrow:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(577, 555), Vector2(564, 730)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(988, 537), Vector2(1235, 706)]
+"values": [Vector2(135, 508), Vector2(-181, 509)]
 }
 
 [sub_resource type="Animation" id="Animation_52chm"]
@@ -217,62 +146,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftArrow:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(63, 259)]
+"values": [Vector2(1225, 707)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UpArrow:position")
+tracks/1/path = NodePath("Arrows:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(448, 59)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightArrow:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(819, 239)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DownArrow:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(455, 441)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1225, 707)]
+"values": [Vector2(-160, 524)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7deb"]
@@ -328,7 +221,7 @@ script = ExtResource("11_f76x8")
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
 current_health = 10
 current_sp = 10
-speed = 6
+speed = 5
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
@@ -535,159 +428,160 @@ offset_bottom = 646.0
 theme = SubResource("Theme_1ep3o")
 script = ExtResource("25_xyimm")
 
-[node name="LeftArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(63, 259)
+[node name="Arrows" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
+position = Vector2(-160, 524)
+
+[node name="LeftArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows"]
+texture_filter = 4
+position = Vector2(-77.75, -7.74982)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("25_tm7xu")
+texture = ExtResource("25_f7psj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
-offset_left = -43.3221
-offset_top = -24.0678
-offset_right = 264.678
-offset_bottom = 47.9322
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 33
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 28
-text = "guard"
-metadata/_edit_use_anchors_ = true
-
-[node name="LeftArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+[node name="LeftArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/LeftArrow"]
 visible = false
-z_index = -1
-texture = ExtResource("26_2ww3c")
+texture = ExtResource("26_tq8f6")
 
-[node name="LeftArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+[node name="LeftArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/LeftArrow"]
 visible = false
-z_index = -1
-texture = ExtResource("27_tr71w")
+texture = ExtResource("29_v5bq6")
 
-[node name="LeftArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/LeftArrow"]
+[node name="LeftArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/LeftArrow"]
 visible = false
-z_index = -1
-texture = ExtResource("28_3psm6")
+texture = ExtResource("30_jqr0j")
 
-[node name="RightArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(819, 239)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("25_tm7xu")
-flip_h = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Arrows/LeftArrow"]
 anchors_preset = -1
 anchor_left = -0.192227
 anchor_top = -0.10861
 anchor_right = 0.00026119
 anchor_bottom = -0.000851072
-offset_left = -65.4347
-offset_top = -25.0909
-offset_right = 242.565
-offset_bottom = 46.9091
+offset_left = -58.7794
+offset_top = -32.0907
+offset_right = 249.22
+offset_bottom = 39.9093
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
 theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 31
+text = " 
+ guard"
+metadata/_edit_use_anchors_ = true
+
+[node name="RightArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows"]
+texture_filter = 4
+position = Vector2(85.25, -9.74982)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_f7psj")
+flip_h = true
+
+[node name="RightArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/RightArrow"]
+visible = false
+texture = ExtResource("26_tq8f6")
+flip_h = true
+
+[node name="RightArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/RightArrow"]
+visible = false
+texture = ExtResource("29_v5bq6")
+flip_h = true
+
+[node name="RightArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/RightArrow"]
+visible = false
+texture = ExtResource("30_jqr0j")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Arrows/RightArrow"]
+anchors_preset = -1
+anchor_left = -0.192227
+anchor_top = -0.10861
+anchor_right = 0.00026119
+anchor_bottom = -0.000851072
+offset_left = -67.7794
+offset_top = -30.4237
+offset_right = 240.22
+offset_bottom = 41.5763
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
+theme_override_font_sizes/normal_font_size = 31
 text = " 
  attack"
 metadata/_edit_use_anchors_ = true
 
-[node name="RightArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("26_2ww3c")
-flip_h = true
-
-[node name="RightArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("27_tr71w")
-flip_h = true
-
-[node name="RightArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/RightArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("28_3psm6")
-flip_h = true
-
-[node name="UpArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(448, 59)
+[node name="UpArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows"]
+texture_filter = 4
+position = Vector2(1.25, -81.7498)
 rotation = 1.5708
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("25_tm7xu")
+texture = ExtResource("25_f7psj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
+[node name="UpArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/UpArrow"]
+visible = false
+texture = ExtResource("26_tq8f6")
+
+[node name="UpArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/UpArrow"]
+visible = false
+texture = ExtResource("29_v5bq6")
+
+[node name="UpArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/UpArrow"]
+visible = false
+texture = ExtResource("30_jqr0j")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Arrows/UpArrow"]
 anchors_preset = -1
 anchor_left = -0.192227
 anchor_top = -0.10861
 anchor_right = 0.00026119
 anchor_bottom = -0.000851072
-offset_left = 8.06348
-offset_top = 73.5515
-offset_right = 316.064
-offset_bottom = 145.552
+offset_left = -14.4459
+offset_top = 72.2432
+offset_right = 293.555
+offset_bottom = 144.243
 rotation = -1.5708
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
 theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 31
 text = "
  item"
 metadata/_edit_use_anchors_ = true
 
-[node name="UpArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("26_2ww3c")
-
-[node name="UpArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("27_tr71w")
-
-[node name="UpArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/UpArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("28_3psm6")
-
-[node name="DownArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI"]
-position = Vector2(455, 441)
+[node name="DownArrow" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows"]
+texture_filter = 4
+position = Vector2(-0.75, 64.2502)
 rotation = -1.5708
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("25_tm7xu")
+texture = ExtResource("25_f7psj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
+[node name="DownArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/DownArrow"]
+visible = false
+texture = ExtResource("26_tq8f6")
+
+[node name="DownArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/DownArrow"]
+visible = false
+texture = ExtResource("29_v5bq6")
+
+[node name="DownArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/Arrows/DownArrow"]
+visible = false
+texture = ExtResource("30_jqr0j")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Arrows/DownArrow"]
 anchors_preset = -1
 anchor_left = -0.192227
 anchor_top = -0.10861
 anchor_right = 0.00026119
 anchor_bottom = -0.000851072
-offset_left = 95.1011
-offset_top = -50.235
-offset_right = 403.101
-offset_bottom = 21.765
+offset_left = 64.221
+offset_top = -55.7569
+offset_right = 372.221
+offset_bottom = 16.2431
 rotation = 1.5708
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 33
 theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 31
 text = "
  shift"
 metadata/_edit_use_anchors_ = true
-
-[node name="DownArrowSam" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("26_2ww3c")
-
-[node name="DownArrowBB" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("27_tr71w")
-
-[node name="DownArrowPhyliss" type="Sprite2D" parent="BattleManager/Control/PlayerTurnUI/DownArrow"]
-visible = false
-z_index = -1
-texture = ExtResource("28_3psm6")
 
 [node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(1225, 707)
@@ -783,6 +677,7 @@ libraries = {
 }
 
 [node name="InputMoves" type="Control" parent="BattleManager/Control"]
+visible = false
 anchors_preset = 0
 offset_right = 1151.0
 offset_bottom = 646.0
@@ -840,22 +735,23 @@ alignment = 1
 script = ExtResource("33_iiblf")
 
 [node name="TurnBar" parent="BattleManager/Control" instance=ExtResource("34_g0q51")]
-position = Vector2(991, 82)
-scale = Vector2(0.313935, 0.313935)
+texture_filter = 1
+position = Vector2(906, 75)
+scale = Vector2(0.413798, 0.413798)
 
-[node name="SamTurnTracker" parent="BattleManager/Control/TurnBar" index="0" node_paths=PackedStringArray("unit")]
-unit = NodePath("../../../PlayerUnits/Sam")
+[node name="SamPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="0" node_paths=PackedStringArray("unit")]
+unit = NodePath("../../../../PlayerUnits/Sam")
 
-[node name="BBTurnTracker" parent="BattleManager/Control/TurnBar" index="1" node_paths=PackedStringArray("unit")]
-unit = NodePath("../../../PlayerUnits/BB")
+[node name="BBPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="1" node_paths=PackedStringArray("unit")]
+unit = NodePath("../../../../PlayerUnits/BB")
 
-[node name="PhilTurnTracker" parent="BattleManager/Control/TurnBar" index="2" node_paths=PackedStringArray("unit")]
-unit = NodePath("../../../PlayerUnits/Phyllis")
+[node name="PhilPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="2" node_paths=PackedStringArray("unit")]
+unit = NodePath("../../../../PlayerUnits/Phyllis")
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 
 [node name="MainBattleCamera" type="Camera3D" parent="BattleManager/Cameras"]
-transform = Transform3D(-0.0871557, 0.384437, -0.919028, 0, 0.922538, 0.385906, 0.996194, 0.0336339, -0.0804045, -18.6049, 9.94786, 3.5505)
+transform = Transform3D(-0.0871558, 0.384437, -0.919028, 0, 0.922538, 0.385906, 0.996195, 0.0336339, -0.0804045, -18.6049, 9.94786, 3.5505)
 current = true
 fov = 62.8717
 script = ExtResource("25_ofn88")
@@ -979,7 +875,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Background Buildings2"]
-transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 0, 15.1642, -121.165)
+transform = Transform3D(15.7602, 0.224277, -0.149854, -0.170144, 20.6633, 0.100373, 0.148407, -0.127298, 16.0289, 3.05176e-05, 15.1642, -121.165)
 mesh = SubResource("BoxMesh_8u7ws")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
@@ -1233,292 +1129,840 @@ surface_material_override/0 = ExtResource("15_thxja")
 [node name="BackgroundSprites" type="Node3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 77.2015, -2.50173, -110.799)
+transform = Transform3D(1.02358, -1.03525, -0.571612, 1.121, 1.09018, 0.0329375, 0.376626, -0.431249, 1.45546, 372.737, 116.168, -207.852)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
-
-[node name="Sprite3D2" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 77.3643, 5.34232, -111.319)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D3" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 147.952, 27.7778, -64.6835)
+transform = Transform3D(1.02358, -1.03525, -0.571612, 1.121, 1.09018, 0.0329375, 0.376626, -0.431249, 1.45546, 376.149, 110.787, -228.034)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D2" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(1.02358, -1.03525, -0.571612, 1.121, 1.09018, 0.0329375, 0.376626, -0.431249, 1.45546, 379.607, 122.894, -217.1)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D4" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 148.115, 35.6218, -65.2036)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.754, 178.989, -134.136)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D5" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 80.2478, 51.2365, -83.153)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 380.324, 176.441, -115.362)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D6" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 80.4106, 59.0806, -83.6731)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.969, 185.903, -124.573)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D7" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -15.172, 51.2365, -118.493)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.754, 135.961, 40.6497)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D8" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -15.0092, 59.0806, -119.013)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 380.324, 133.413, 59.4239)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D9" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -45.5322, -2.50173, -52.6573)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.969, 142.875, 50.2134)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D10" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -45.3694, 5.34232, -53.1774)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.754, 77.9118, 61.211)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D11" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 25.218, 27.7778, -6.54231)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 380.324, 75.364, 79.9852)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D12" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 25.3809, 35.6218, -7.06238)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.969, 84.8262, 70.7747)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D13" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -42.4859, 51.2365, -25.0118)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.754, 114.732, 173.257)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D14" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -42.323, 59.0806, -25.5318)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 380.324, 112.184, 192.032)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D15" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -137.906, 51.2365, -60.3519)
+transform = Transform3D(0.0459351, 2.45783e-09, -1.56336, 1.56053, 0.0940165, 0.045852, 0.0939662, -1.5612, 0.00276102, 376.969, 121.646, 182.821)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D16" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -137.743, 59.0806, -60.872)
+transform = Transform3D(-0.104483, 1.36961, 0.747955, 1.56053, 0.0940165, 0.045852, -0.00480387, 0.749344, -1.37283, 136.811, 85.6566, 362.598)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D17" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -7.12363, -2.50173, 52.5877)
+transform = Transform3D(-0.104483, 1.36961, 0.747955, 1.56053, 0.0940165, 0.045852, -0.00480387, 0.749344, -1.37283, 118.627, 83.1087, 356.719)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D18" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -6.96079, 5.34232, 52.0677)
+transform = Transform3D(-0.104483, 1.36961, 0.747955, 1.56053, 0.0940165, 0.045852, -0.00480387, 0.749344, -1.37283, 128.318, 92.5709, 358.197)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D19" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 63.6266, 27.7778, 98.7027)
+transform = Transform3D(-0.138293, 1.36493, -0.751028, -1.55686, -0.0935081, 0.116753, 0.056993, 0.75791, 1.36694, 113.364, 122.575, 352.467)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
-
-[node name="Sprite3D20" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 63.7894, 35.6218, 98.1826)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("37_xcui1")
-
-[node name="Sprite3D21" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -4.07732, 51.2365, 80.2332)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D22" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -3.91448, 59.0806, 79.7132)
+transform = Transform3D(-0.733438, 0.718529, 1.17982, 1.121, 1.09018, 0.0329375, -0.807231, 0.86106, -1.02622, 48.5326, 6.18204, 537.186)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D23" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -99.4971, 51.2365, 44.8931)
+transform = Transform3D(-0.733438, 0.718529, 1.17982, 1.121, 1.09018, 0.0329375, -0.807231, 0.86106, -1.02622, 36.1755, 0.80127, 553.503)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D24" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -99.3343, 59.0806, 44.373)
+transform = Transform3D(-0.733438, 0.718529, 1.17982, 1.121, 1.09018, 0.0329375, -0.807231, 0.86106, -1.02622, 38.1652, 12.908, 542.209)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D25" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 101.212, -2.50173, 64.4443)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -52.4857, 90.4933, 433.239)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D26" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 101.375, 5.34232, 63.9242)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -67.2556, 87.9455, 421.112)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D27" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 171.962, 27.7778, 110.559)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -58.7787, 97.4077, 426.035)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D28" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 172.125, 35.6218, 110.039)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -101.403, 47.4649, 374.618)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D29" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 104.258, 51.2365, 92.0898)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -116.173, 44.917, 362.491)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D30" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 104.421, 59.0806, 91.5698)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -107.696, 54.3793, 367.413)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D31" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 8.83832, 51.2365, 56.7497)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -161.687, 86.6901, 302.376)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D32" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 9.00116, 59.0806, 56.2296)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -176.457, 84.1423, 290.249)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D33" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -41.0918, -2.50173, 122.748)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -167.98, 93.6045, 295.172)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D34" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -40.9289, 5.34232, 122.228)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -214.208, 26.2361, 239.437)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D35" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 29.6584, 27.7778, 168.863)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -228.978, 23.6882, 227.31)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D36" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, 29.8213, 35.6218, 168.343)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -220.501, 33.1504, 232.233)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D37" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -38.0455, 51.2365, 150.394)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -1.30125, 26.2361, 494.577)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D38" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -37.8826, 59.0806, 149.874)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -16.0712, 23.6882, 482.45)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D39" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -133.465, 51.2365, 115.054)
+transform = Transform3D(-0.0954727, 1.00026, 1.19856, 1.56053, 0.0940165, 0.045852, -0.0427159, 1.19868, -1.00376, -7.59426, 33.1504, 487.372)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D40" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(0.048931, 3.92982e-10, -1.66532, 1.19411, 1.16128, 0.0350857, 1.16077, -1.19462, 0.0341062, -133.302, 59.0806, 114.534)
+transform = Transform3D(-0.149557, 0.992766, -1.19927, -1.55686, -0.0935081, 0.116753, 0.00241583, 1.20493, 0.997157, -19.4124, 63.1544, 476.566)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D41" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -142.542, -2.50174, -86.594)
+transform = Transform3D(0.260219, -0.313201, 1.51009, 1.121, 1.09018, 0.0329375, -1.05917, 1.07685, 0.405864, -322.68, 57.024, -15.4794)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D42" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -141.997, 5.34232, -86.5681)
+transform = Transform3D(0.260219, -0.313201, 1.51009, 1.121, 1.09018, 0.0329375, -1.05917, 1.07685, 0.405864, -343.116, 51.6432, -16.6216)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D43" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -169.248, 27.7778, -6.4757)
+transform = Transform3D(0.260219, -0.313201, 1.51009, 1.121, 1.09018, 0.0329375, -1.05917, 1.07685, 0.405864, -332.635, 63.75, -21.2766)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D44" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -168.704, 35.6218, -6.44979)
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -292.842, 141.335, -157.322)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D45" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -168.516, 51.2365, -76.6498)
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -291.027, 138.787, -176.346)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D46" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -167.972, 59.0806, -76.6239)
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -290.378, 148.25, -166.566)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D47" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -158.477, 51.2365, -177.907)
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -271.519, 98.3069, -230.635)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
 
 [node name="Sprite3D48" type="Sprite3D" parent="BackgroundSprites"]
-transform = Transform3D(-1.1106, 1.15573, -0.454488, 1.19411, 1.16128, 0.0350857, 0.341129, -0.302359, -1.60247, -157.933, 59.0806, -177.881)
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -269.704, 95.759, -249.659)
+pixel_size = 0.02
 billboard = 1
 texture_filter = 0
-texture = ExtResource("37_xcui1")
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D49" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -269.055, 105.221, -239.878)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D50" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -245.242, 137.532, -320.981)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D51" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -243.427, 134.984, -340.005)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D52" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -242.778, 144.447, -330.225)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D53" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -222.349, 77.078, -399.694)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D54" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -220.534, 74.5302, -418.718)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D55" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -219.885, 83.9924, -408.937)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D56" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -315.153, 77.078, -80.6125)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D57" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -313.338, 74.5302, -99.6367)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D58" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0178648, -0.436007, 1.50192, 1.56053, 0.0940165, 0.045852, -0.103056, 1.49908, 0.433957, -312.689, 83.9924, -89.8558)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D59" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.0855034, -0.445382, -1.49684, -1.55686, -0.0935081, 0.116753, -0.122729, 1.49636, -0.438228, -310.322, 113.996, -105.694)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D60" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(1.08925, -1.11662, -0.113398, 1.121, 1.09018, 0.0329375, 0.0555259, -0.104215, 1.55957, -223.03, 84.2989, -490.669)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D61" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(1.08925, -1.11662, -0.113398, 1.121, 1.09018, 0.0329375, 0.0555259, -0.104215, 1.55957, -225.768, 78.9182, -510.953)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D62" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(1.08925, -1.11662, -0.113398, 1.121, 1.09018, 0.0329375, 0.0555259, -0.104215, 1.55957, -219.217, 91.0249, -501.54)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D63" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -78.1047, 168.61, -488.153)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D64" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -59.08, 166.062, -489.963)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D65" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -68.5624, 175.525, -487.479)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D66" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -2.08459, 125.582, -481.058)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D67" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 16.9402, 123.034, -482.868)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D68" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 7.45778, 132.496, -480.384)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D69" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 91.5984, 164.807, -472.314)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D70" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 110.623, 162.259, -474.125)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D71" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 101.141, 171.721, -471.64)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D72" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 173.218, 104.353, -464.697)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D73" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 227.873, 143.566, -466.507)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D74" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, 182.76, 111.267, -464.023)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D75" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -157.647, 104.353, -495.577)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D76" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -138.623, 101.805, -497.387)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D77" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.0978283, -1.55445, -0.142529, 1.56053, 0.0940165, 0.045852, -0.0370043, -0.145078, 1.55685, -148.105, 111.267, -494.903)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D78" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(0.104374, -1.55354, 0.147684, -1.55686, -0.0935081, 0.116753, -0.107141, -0.154799, -1.55266, -132.105, 141.271, -495.569)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D20" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.138293, 1.36493, -0.751028, -1.55686, -0.0935081, 0.116753, 0.056993, 0.75791, 1.36694, 98.7253, 124.738, 340.108)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="Sprite3D21" type="Sprite3D" parent="BackgroundSprites"]
+transform = Transform3D(-0.138293, 1.36493, -0.751028, -1.55686, -0.0935081, 0.116753, 0.056993, 0.75791, 1.36694, 104.732, 115.676, 348.319)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("37_8mc0k")
+
+[node name="BackgroundSpritesWater" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.447, -72.0753, -78.3347)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D2" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.447, -62.8174, -77.6034)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D3" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.447, -72.0753, -12.613)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D4" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.447, -62.8174, -11.8817)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D5" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.468, -72.0753, 66.1011)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D6" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.468, -62.8174, 66.8323)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D7" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.468, -72.0753, -55.2637)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D8" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.468, -62.8174, -54.5325)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D9" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 96.7676, -91.7377, 162.725)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D10" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 96.5625, -82.4798, 163.427)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D11" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 78.3371, -91.7377, 225.81)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D12" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 78.132, -82.4798, 226.512)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D13" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 160.909, -91.7377, 331.938)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D14" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 160.704, -82.4798, 332.64)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D15" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 194.944, -91.7377, 215.443)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D16" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, 194.739, -82.4798, 216.145)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D17" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -134.939, -76.794, 154.27)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D18" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -135.45, -67.5362, 154.793)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D19" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -180.906, -76.794, 201.243)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D20" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -181.417, -67.5362, 201.765)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D21" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -158.04, -76.794, 333.751)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D22" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -158.552, -67.5362, 334.274)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D23" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -73.1562, -76.794, 247.01)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D24" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.714717, 0, -0.699414, 0, 1, 0, 0.699414, 0, 0.714717, -73.6676, -67.5362, 247.533)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D25" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -199.721, -76.794, -61.4944)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D26" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -200.183, -67.5362, -62.0611)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D27" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -241.252, -76.794, -112.431)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D28" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -241.714, -67.5362, -112.998)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D29" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -375.488, -76.794, -104.544)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D30" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -375.95, -67.5362, -105.111)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D31" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -298.795, -76.794, -10.4828)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D32" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -299.257, -67.5362, -11.0495)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D33" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, 43.8446, -76.794, -253.833)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D34" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, 43.3825, -67.5362, -254.4)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D35" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, 2.31367, -76.794, -304.77)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D36" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, 1.8516, -67.5362, -305.336)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D37" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -131.922, -76.794, -296.883)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D38" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -132.384, -67.5362, -297.45)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D39" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -55.229, -76.794, -202.822)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D40" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(-0.775033, 0, -0.631921, 0, 1, 0, 0.631921, 0, -0.775033, -55.691, -67.5362, -203.388)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D41" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -10.8651, -76.794, -67.7495)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D42" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -11.5034, -67.5362, -67.3927)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D43" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -68.2311, -76.794, -35.6796)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D44" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -68.8694, -67.5362, -35.3228)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D45" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -83.7394, -76.794, 97.8901)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D46" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, -84.3776, -67.5362, 98.2469)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D47" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, 22.1954, -76.794, 38.6683)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
+
+[node name="Sprite3D48" type="Sprite3D" parent="BackgroundSpritesWater"]
+transform = Transform3D(0.487966, 0, -0.872862, 0, 1, 0, 0.872862, 0, 0.487966, 21.5572, -67.5362, 39.025)
+pixel_size = 0.018
+billboard = 1
+texture = ExtResource("38_jlnf2")
 
 [connection signal="animation_finished" from="BattleManager/Control/PlayerTurnUI/AnimationPlayer" to="BattleManager/Control/PlayerTurnUI" method="_on_animation_player_animation_finished"]
 [connection signal="choose_enemy_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_enemy_turn"]
