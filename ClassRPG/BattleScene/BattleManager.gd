@@ -102,14 +102,6 @@ func _change_state(state_name):
 
 	emit_signal('state_changed', states_stack)
 	
-func insert_sort(lst, unit, action_weight):
-	unit.calc_turn_order(action_weight)
-	for i in range(len(lst)):
-		if lst[i]._get_turn_order() > unit._get_turn_order():
-			lst.insert(i, unit)
-			return lst
-	lst.append(unit)
-	return lst
 
 		
 func _input(event):
@@ -155,7 +147,6 @@ func update_skill_damage(damage):
 
 func _on_unit_turn_finished(action_weight):
 	player_units.erase(current_unit)
-	insert_sort(player_units, current_unit, action_weight)
 	battleState = BATTLESTATE.CHOOSE_TURN
 	#choose_turn()
 
