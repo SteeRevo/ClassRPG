@@ -7,12 +7,12 @@ signal cam_tween_finished
 func move_to(target_pos):
 	print(target_pos)
 	print(global_position)
-	camTween = get_tree().create_tween()
+	camTween = get_parent().create_tween()
 	camTween.connect("finished", on_tween_finished)
 	camTween.tween_property(self, "position", target_pos, 0.5)
 	
 func rotate_to(target_rot):
-	camTween = get_tree().create_tween()
+	camTween = get_parent().create_tween()
 	camTween.connect("finished", on_tween_finished)
 	camTween.tween_property(self, "rotation", target_rot, 0.5)
 

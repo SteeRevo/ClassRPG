@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbw4y1q562ee8"]
+[gd_scene load_steps=9 format=3 uid="uid://cbw4y1q562ee8"]
 
 [ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_brur5"]
 [ext_resource type="Script" path="res://City/city.gd" id="1_oynpq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_tri5r"]
 [ext_resource type="PackedScene" uid="uid://rejbaoj450xt" path="res://Environment/camera_rig.tscn" id="5_vrlqp"]
 [ext_resource type="PackedScene" uid="uid://3b2vsrfdfpsk" path="res://UI/MainMenu/main_menu.tscn" id="6_wgcrs"]
+[ext_resource type="Script" path="res://City/MenuCamera3D.gd" id="8_j3tgv"]
 
 [node name="City" type="Node3D"]
 transform = Transform3D(0.993715, 0, -0.111937, 0, 1, 0, 0.111937, 0, 0.993715, 0, 0, 0)
@@ -55,16 +56,16 @@ transform = Transform3D(0.991984, 0, 0.126355, 0, 1, 0, -0.126355, 0, 0.991984, 
 [node name="Limit2" type="Node3D" parent="."]
 transform = Transform3D(0.992205, 0, 0.124623, 0, 1, 0, -0.124623, 0, 0.992205, 0.455196, 2.9525, 4.47023)
 
-[node name="MainMenu" parent="." instance=ExtResource("6_wgcrs")]
+[node name="MainMenu" parent="." node_paths=PackedStringArray("current_environ") instance=ExtResource("6_wgcrs")]
+current_environMat = ExtResource("3_j3j0y")
+current_environ = NodePath("../WorldEnvironment")
 
 [node name="BBMenu" parent="MainMenu/MenuBackground" index="0"]
-transform = Transform3D(-0.185064, 0, -0.0756852, 0, 0.199942, 0, 0.0756852, 0, -0.185064, 1.97592, 0, 0.944292)
+transform = Transform3D(-0.185064, 0, -0.0756851, 0, 0.199942, 0, 0.0756851, 0, -0.185064, 1.97592, 0, 0.944292)
 
-[node name="PhyllisMenu" parent="MainMenu/MenuBackground" index="1"]
-transform = Transform3D(-0.189121, 0, 0.0203314, 0, 0.190211, 0, -0.0203314, 0, -0.189121, -0.463343, -0.308895, -1.60362)
-
-[node name="PathFollow3D" parent="MainMenu/MenuBackground/Path3D" index="0"]
-transform = Transform3D(0.180385, 0, -0.98358, 0, 1, 0, 0.98358, 0, 0.180385, -0.0235161, 0, 6.18167)
+[node name="Camera3D" parent="MainMenu/MenuBackground/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(0.930419, -0.00639645, -0.366442, 0, 0.999848, -0.0174529, 0.366498, 0.0162385, 0.930277, -0.688757, 2.35987, 6.11771)
+script = ExtResource("8_j3tgv")
 
 [editable path="PhyllisOverworld"]
 [editable path="CameraRig"]
