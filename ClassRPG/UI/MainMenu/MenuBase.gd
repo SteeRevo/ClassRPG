@@ -3,9 +3,12 @@ extends States
 func enter(host):
 	print("Main Menu")
 	play_menu_animation(host)
+	host.baseMenu.visible = true
+	host.current_unit = "BB"
+	host.current_option = 0
 	
 func exit(host):
-	return
+	host.baseMenu.visible = false
 	
 func handle_input(host, event):
 	if get_tree().paused == true:

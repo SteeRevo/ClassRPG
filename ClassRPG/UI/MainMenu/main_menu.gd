@@ -17,6 +17,7 @@ signal state_changed
 @onready var menuEnvir = $MenuBackground/SubViewportContainer/SubViewport/Camera3D/MenuWorldEnvironment
 @onready var menuCam = $MenuBackground/SubViewportContainer/SubViewport/Camera3D
 
+@onready var equipUnit = $Control/MarginContainer/EquipUnit
 @onready var equipMenu = $Control/MarginContainer/EquipSpiritContainer
 @onready var menuEnviron = preload("res://UI/MainMenu/main_menu_environment.tres")
 
@@ -30,13 +31,18 @@ var currentOption = null
 
 var menuOptions = []
 
+var current_unit = null
+var current_option = 0
+var sam_anim_noplay = false
+
 
 @export var current_environMat:Environment
 @export var current_environ:WorldEnvironment
 
 @onready var states_map = {
 	'base': $States/MenuBase,
-	'equip': $States/EquipSpirit
+	'equip': $States/EquipSpirit,
+	'equipUnit': $States/EquipUnit
 }
 
 
@@ -54,7 +60,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['equip']:
+	elif state_name in ['equip', 'equipUnit']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]

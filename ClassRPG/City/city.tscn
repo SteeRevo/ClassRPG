@@ -60,8 +60,14 @@ transform = Transform3D(0.992205, 0, 0.124623, 0, 1, 0, -0.124623, 0, 0.992205, 
 current_environMat = ExtResource("3_j3j0y")
 current_environ = NodePath("../WorldEnvironment")
 
+[node name="MenuBackground" parent="MainMenu" index="1"]
+visible = false
+
 [node name="BBMenu" parent="MainMenu/MenuBackground" index="0"]
 transform = Transform3D(-0.185064, 0, -0.0756851, 0, 0.199942, 0, 0.0756851, 0, -0.185064, 1.97592, 0, 0.944292)
+
+[node name="SamMenu" parent="MainMenu/MenuBackground" index="2"]
+transform = Transform3D(0.137716, 0, -0.163949, 0, 0.214114, 0, 0.163949, 0, 0.137716, 0.723041, 2.56329, 0.247768)
 
 [node name="Camera3D" parent="MainMenu/MenuBackground/SubViewportContainer/SubViewport" index="0"]
 transform = Transform3D(0.930419, -0.00639645, -0.366442, 0, 0.999848, -0.0174529, 0.366498, 0.0162385, 0.930277, -0.688757, 2.35987, 6.11771)

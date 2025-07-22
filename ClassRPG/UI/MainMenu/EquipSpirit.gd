@@ -1,34 +1,36 @@
-extends Node
+extends States
 
-var current_option = 0
+
 var EquipSelectMenu = ["BB", "Sam", "Phyllis"]
 var firstEnter = true
 
 func enter(host):
 	print("Equip Sprit")
-	
 	host.equipMenu.visible = true
-	host.baseMenu.visible = false
 	
-	host.equipMenu.set_option("BB")
-	play_menu_animation(host, "BB")
+	
+	host.equipMenu.set_option(host.current_unit)
+	play_menu_animation(host, host.current_unit)
+	host.sam_anim_noplay = false
 	
 func exit(host):
 	firstEnter = true
 	host.equipMenu.visible = false
-	host.baseMenu.visible = true
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Rotate"):
-		if(current_option < EquipSelectMenu.size() - 1):
-			current_option = min(EquipSelectMenu.size() - 1, current_option + 1)
-			host.equipMenu.set_option(EquipSelectMenu[current_option])
-			play_menu_animation(host, EquipSelectMenu[current_option])
+		if(host.current_option < EquipSelectMenu.size() - 1):
+			host.current_option = min(EquipSelectMenu.size() - 1, host.current_option + 1)
+			host.equipMenu.set_option(EquipSelectMenu[host.current_option])
+			play_menu_animation(host, EquipSelectMenu[host.current_option])
 	elif event.is_action_pressed("Item"):
-		if(current_option > 0):
-			current_option = max(0, current_option - 1)
-			host.equipMenu.set_option(EquipSelectMenu[current_option])
-			play_menu_animation(host, EquipSelectMenu[current_option])
+		if(host.current_option > 0):
+			host.current_option = max(0, host.current_option - 1)
+			host.equipMenu.set_option(EquipSelectMenu[host.current_option])
+			play_menu_animation(host, EquipSelectMenu[host.current_option])
+	elif event.is_action_pressed("Interact"):
+		host.current_unit = EquipSelectMenu[host.current_option]
+		return 'equipUnit'
 	elif event.is_action_pressed("Cancel"):
 		return "previous"
 	
@@ -41,7 +43,10 @@ func play_menu_animation(host, character):
 	match character:
 		"Sam":
 			host.Sam.stop()
-			host.Sam.play("EquipSpirit")
+			if !host.sam_anim_noplay:
+				host.Sam.play("EquipSpirit")
+			else:
+				host.Sam.play_backwards("EquipMiddleStart")
 			host.Sam.queue("EquipSelected")
 			host.menuCam.move_to(host.SamEquipCamera.global_position)
 			host.menuCam.rotate_to(host.SamEquipCamera.rotation)
