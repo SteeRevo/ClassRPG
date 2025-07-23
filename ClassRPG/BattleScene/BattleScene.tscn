@@ -222,6 +222,7 @@ script = ExtResource("11_f76x8")
 current_health = 10
 current_sp = 10
 speed = 5
+startingBG = 1
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
@@ -230,11 +231,16 @@ current_sp = 13
 speed = 4
 startingBG = 3
 
+[node name="PathFollow3D" parent="BattleManager/PlayerUnits/Phyllis/CameraPath" index="0"]
+transform = Transform3D(0.99989, -0.000441824, -0.012604, 1.45515e-11, 0.999351, -0.0350324, 0.0126116, 0.0350291, 0.999284, -4.24709, 0.569662, -4.6139)
+path_prog = 20.0
+
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.80816)
 current_health = 20
 current_sp = 6
 speed = 3
+startingBG = 0
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -1969,4 +1975,5 @@ texture = ExtResource("38_jlnf2")
 [connection signal="choose_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_turn"]
 [connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]
 
+[editable path="BattleManager/PlayerUnits/Phyllis"]
 [editable path="BattleManager/Control/TurnBar"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh1vk187xcurq"]
+
+[ext_resource type="Texture2D" uid="uid://ddxed61l238lx" path="res://UI/PlayerTurn/MoveCircle.png" id="1_000io"]
+[ext_resource type="Script" path="res://UI/MainMenu/menu_cursor.gd" id="2_1y4e3"]
+
+[node name="MenuCursor" type="TextureRect"]
+offset_right = 134.0
+offset_bottom = 92.0
+texture = ExtResource("1_000io")
+script = ExtResource("2_1y4e3")

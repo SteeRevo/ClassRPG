@@ -7,7 +7,7 @@ var firstEnter = true
 func enter(host):
 	print("Equip Sprit")
 	host.equipMenu.visible = true
-	
+	host.current_move = null
 	
 	host.equipMenu.set_option(host.current_unit)
 	play_menu_animation(host, host.current_unit)
@@ -64,7 +64,10 @@ func play_menu_animation(host, character):
 				firstEnter = false
 		"Phyllis":
 			host.Phyllis.stop()
-			host.Phyllis.play("EquipSpirit")
+			if !host.sam_anim_noplay:
+				host.Phyllis.play("EquipSpirit")
+			else:
+				host.Phyllis.play_backwards("EquipMiddleStart")
 			host.Phyllis.queue("EquipSelected")
 			host.menuCam.move_to(host.PhilEquipCamera.global_position)
 			host.menuCam.rotate_to(host.PhilEquipCamera.rotation)

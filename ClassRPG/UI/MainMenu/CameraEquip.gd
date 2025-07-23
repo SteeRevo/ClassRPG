@@ -3,7 +3,7 @@ extends Node
 
 func get_direction(direction):
 	match direction:
-		"Middle":
+		"Base":
 			return $Middle
 		"Right":
 			return $Right

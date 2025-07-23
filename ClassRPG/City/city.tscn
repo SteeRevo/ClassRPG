@@ -63,14 +63,13 @@ current_environ = NodePath("../WorldEnvironment")
 [node name="MenuBackground" parent="MainMenu" index="1"]
 visible = false
 
-[node name="BBMenu" parent="MainMenu/MenuBackground" index="0"]
-transform = Transform3D(-0.185064, 0, -0.0756851, 0, 0.199942, 0, 0.0756851, 0, -0.185064, 1.97592, 0, 0.944292)
-
 [node name="SamMenu" parent="MainMenu/MenuBackground" index="2"]
 transform = Transform3D(0.137716, 0, -0.163949, 0, 0.214114, 0, 0.163949, 0, 0.137716, 0.723041, 2.56329, 0.247768)
 
+[node name="BoneAttachment3D" parent="MainMenu/MenuBackground/SamMenu/metarig/Skeleton3D" index="7"]
+transform = Transform3D(-0.913785, -0.293866, -0.280395, 0.110798, -0.844508, 0.523962, -0.390766, 0.447737, 0.804251, -2.51661, 6.59261, 1.12021)
+
 [node name="Camera3D" parent="MainMenu/MenuBackground/SubViewportContainer/SubViewport" index="0"]
-transform = Transform3D(0.930419, -0.00639645, -0.366442, 0, 0.999848, -0.0174529, 0.366498, 0.0162385, 0.930277, -0.688757, 2.35987, 6.11771)
 script = ExtResource("8_j3tgv")
 
 [editable path="PhyllisOverworld"]
