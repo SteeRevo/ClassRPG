@@ -63,14 +63,27 @@ current_environ = NodePath("../WorldEnvironment")
 [node name="MenuBackground" parent="MainMenu" index="1"]
 visible = false
 
-[node name="SamMenu" parent="MainMenu/MenuBackground" index="2"]
-transform = Transform3D(0.137716, 0, -0.163949, 0, 0.214114, 0, 0.163949, 0, 0.137716, 0.723041, 2.56329, 0.247768)
+[node name="BBMenu" parent="MainMenu/MenuBackground" index="0"]
+transform = Transform3D(-0.185064, 0, -0.0756851, 0, 0.199942, 0, 0.0756851, 0, -0.185064, 1.97592, 0, 0.944292)
+
+[node name="BoneAttachment3D" parent="MainMenu/MenuBackground/BBMenu/metarig/Skeleton3D" index="9"]
+transform = Transform3D(0.0285915, 0.999422, -0.0183248, -0.945348, 0.0329923, 0.324385, 0.324803, 0.00804868, 0.945746, -0.142282, 1.41497, -0.340081)
+
+[node name="PhyllisMenu" parent="MainMenu/MenuBackground" index="1"]
+transform = Transform3D(-0.189121, 0, 0.0203313, 0, 0.190211, 0, -0.0203313, 0, -0.189121, -0.463343, -0.308895, -1.60362)
+
+[node name="BoneAttachment3D" parent="MainMenu/MenuBackground/PhyllisMenu/metarig/Skeleton3D" index="9"]
+transform = Transform3D(0.839014, -0.277229, 0.468174, -0.329082, 0.426693, 0.842388, -0.433309, -0.860876, 0.266754, 2.59797, 12.6976, -3.0475)
 
 [node name="BoneAttachment3D" parent="MainMenu/MenuBackground/SamMenu/metarig/Skeleton3D" index="7"]
-transform = Transform3D(-0.913785, -0.293866, -0.280395, 0.110798, -0.844508, 0.523962, -0.390766, 0.447737, 0.804251, -2.51661, 6.59261, 1.12021)
+transform = Transform3D(-0.913785, -0.293866, -0.280395, 0.110798, -0.844508, 0.523962, -0.390767, 0.447737, 0.804251, -2.51661, 6.59261, 1.12021)
 
 [node name="Camera3D" parent="MainMenu/MenuBackground/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(0.930419, -0.00639645, -0.366442, 0, 0.999848, -0.0174529, 0.366498, 0.0162385, 0.930277, -0.688757, 2.35987, 6.11771)
 script = ExtResource("8_j3tgv")
+
+[node name="PathFollow3D" parent="MainMenu/MenuBackground/Path3D" index="0"]
+transform = Transform3D(0.180385, 0, -0.983579, 0, 1, 0, 0.983579, 0, 0.180385, -0.0235161, 0, 6.18167)
 
 [editable path="PhyllisOverworld"]
 [editable path="CameraRig"]

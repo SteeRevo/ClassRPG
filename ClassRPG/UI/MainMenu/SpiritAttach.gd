@@ -3,7 +3,7 @@ extends States
 func enter(host):
 	print("Spirit Selection")
 	host.spiritAttach.visible = true
-
+	host.menuCursor.set_cursor_from_index(0)
 
 func handle_input(host, event):
 	if event.is_action_pressed("Rotate"):

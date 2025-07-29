@@ -9,6 +9,7 @@ var in_dialogue
 
 func _ready():
 	SignalBus.connect("in_dialogue", enter_dialogue)
+	
 
 func _physics_process(delta):
 	if movementType == "Town":
@@ -42,6 +43,12 @@ func _physics_process(delta):
 		
 	else:
 		print("No movement type selected")
+	
+func _input(event):
+	if event.is_action_pressed("Interact"):
+		print(BattleSettings.samStats.max_health)
+		print(BattleSettings.bbStats.max_health)
+		print(BattleSettings.philStats.max_health)
 	
 func play_idle():
 	$Phyllis/AnimationPlayer.play("OverworldIdle")

@@ -12,7 +12,6 @@ func enter(host):
 	host.inputMoves.set_active_unit_movelist_visible(host.current_unit)
 	host.playerTurnUI.set_name_visible(host.current_unit.name)
 	host.playerTurnUI.update_health(host.current_unit)
-	host.playerTurnUI.update_sp(host.current_unit)
 	host.playerTurnUI.play_enter_health()
 	var isConfirming = false
 

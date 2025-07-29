@@ -98,6 +98,7 @@ func _change_state(state_name):
 		states_stack[0] = new_state
 		
 	current_state = states_stack[0]
+	print(current_state)
 	current_state.enter(self)
 
 	emit_signal('state_changed', states_stack)
@@ -115,14 +116,6 @@ func _process(delta):
 
 func end_turn():	
 	print("changing turn")
-	"for unit in unit_list:
-		if unit.available == true:
-			_change_state('chooseturn')
-			#_change_state(current_turn)
-			return
-	for unit in unit_list:
-		unit.available = true
-		unit.is_guarding = false"
 	if len(enemy_units) == 0:
 		print_debug("Battle end")
 		SceneManager.change_to_previous()
@@ -153,11 +146,13 @@ func _on_unit_turn_finished(action_weight):
 func get_battle_data():
 	var counter = 0
 	for unit in player_units_path.get_children():
+		
 		if BattleSettings.current_player_units.find(unit.name) == -1:
 			player_units_path.remove_child(unit)
 	for enemy in BattleSettings.enemy_units:
 		var enemy_unit = enemy.instantiate()
 		enemy_units_path.add_child(enemy_unit)
+		enemy_unit.set_all_stats()
 		enemy_unit.startingBG = counter
 		print(counter)
 		counter += 1

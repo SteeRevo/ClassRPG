@@ -14,7 +14,7 @@ extends Sprite2D
 var enemyTurnTrackers = []
 signal choose_turn
 signal choose_enemy_turn
-var waiting = true
+@onready var waiting = false
 
 var turnTrackers = []
 

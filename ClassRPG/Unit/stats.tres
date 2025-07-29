@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="stats" load_steps=2 format=3 uid="uid://c640tbiebxccx"]
+
+[ext_resource type="Script" path="res://Unit/stats.gd" id="1_8k60a"]
+
+[resource]
+script = ExtResource("1_8k60a")
+health = 0
+max_health = 0
+defense = 0
+speed = 0

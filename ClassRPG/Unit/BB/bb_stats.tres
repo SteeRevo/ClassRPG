@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="stats" load_steps=2 format=3 uid="uid://b701xmmks3b15"]
+
+[ext_resource type="Script" path="res://Unit/stats.gd" id="1_it8sk"]
+
+[resource]
+script = ExtResource("1_it8sk")
+current_health = 12
+max_health = 12
+attack = 5
+defense = 8
+speed = 4
+technique = 2
+bg = 1
+is_enemy = false

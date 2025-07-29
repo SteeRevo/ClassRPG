@@ -6,17 +6,17 @@ var currentBattleGround : set = _set_BG, get = get_BG
 
 enum battleGrounds {F, TW, BW, B}
 
-@export var max_health = 1
-@export var current_health = 1
-@export var current_sp = 1
-@export var max_sp = 1
-@export var attack = 0
-@export var defense = 0
-@export var technique = 0
-@export var speed = 1
-@export var is_dead = false
-@export var enemy_unit = false
-@export var available = true
+@export var unit_stats: stats
+
+@onready var max_health
+@onready var current_health
+@onready var attack
+@onready var defense
+@onready var technique
+@onready var speed
+@onready var is_dead = false
+@onready var enemy_unit
+@onready var available = true
 @onready var camera_path = $CameraPath/PathFollow3D
 @onready var attack_cam = $AttackCam
 @onready var attack_cam_base_position = attack_cam.global_position
@@ -54,7 +54,7 @@ signal attack_finished
 signal rotate_finished
 signal attack_hit
 
-@export var startingBG : int = battleGrounds.F
+@onready var startingBG : int
 
 func _set_base_skills():
 	active_skills.append(Skill.new("Left", 1, 1, ["Left"]))
@@ -99,25 +99,18 @@ func _set_health(_health):
 		print("Unit is dead")
 		is_dead = true
 		
-func use_sp(cost):
-	if current_sp < cost:
-		return false
-	else:
-		current_sp -= cost
-		print("current sp: ", current_sp)
-		return true
 		
-func set_sp(_sp):
-	if(_sp <= max_sp):
-		current_sp = _sp
-	else:
-		current_sp = max_sp
-		
-func get_sp():
-	return current_sp
+func set_all_stats():
+	max_health = unit_stats.max_health
+	current_health = unit_stats.current_health
+	attack = unit_stats.attack
+	defense = unit_stats.defense
+	technique = unit_stats.technique
+	speed = unit_stats.speed
+	enemy_unit = unit_stats.is_enemy
+	if !enemy_unit:
+		startingBG = unit_stats.bg
 
-func get_max_sp():
-	return max_sp
 
 func _get_health():
 	return current_health
@@ -164,8 +157,6 @@ func set_bg_attack_buff(boost):
 func add_health(boost):
 	_set_health(current_health + boost)
 
-func add_sp(boost):
-	set_sp(current_sp + boost)
 	
 func reset_attack():
 	attack_bonus = 0

@@ -18,5 +18,5 @@ func take_step():
 	speed = calc_speed(unit.get_speed())
 	progress_ratio += speed
 
-func calc_speed(speed):
-	return (speed * speed_ratio)
+func calc_speed(_speed):
+	return (_speed * speed_ratio)

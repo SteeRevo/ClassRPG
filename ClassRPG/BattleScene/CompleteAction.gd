@@ -9,7 +9,6 @@ var current_enemy = null
 var current_ally = null
 var current_unit = null
 var tweened = 0
-var uses_sp = false
 var not_attack = ["Rotate", "0tpose", "Guard"]
 
 func enter(host):
@@ -176,18 +175,14 @@ func play_animation(host):
 	match move:
 		"Left":
 			host.current_unit.play_left()
-			uses_sp = false
 		"Right":
 			host.current_unit.play_right()
-			uses_sp = false
 		"Up":
 			host.current_unit.play_up()
-			uses_sp = false
 		"Down":
 			host.current_unit.play_down()
-			uses_sp = false
 		_:
-			uses_sp = true
+			pass
 	calc_damage(host, move)
 
 func calc_damage(host, skill):

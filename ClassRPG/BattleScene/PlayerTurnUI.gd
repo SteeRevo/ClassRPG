@@ -16,7 +16,6 @@ extends Control
 @onready var downPhil = $Arrows/DownArrow/DownArrowPhyliss
 
 @onready var playerHealthbar = $Control/HealthBar
-@onready var playerSoulbar = $Control/SpBar
 @onready var healthNumber = $Control/HealthNumber
 @onready var spNumber = $Control/SpNumber
 @onready var samName = $Control/SamName
@@ -41,13 +40,7 @@ func update_health(unit):
 	playerHealthbar.max_value = max_hp
 	playerHealthbar.value = current_hp
 	
-	
-func update_sp(unit):
-	var current_sp = unit.get_sp()
-	var max_sp = unit.get_max_sp()
-	spNumber.text = str(current_sp)
-	playerSoulbar.max_value = max_sp
-	playerSoulbar.value = current_sp
+
 
 func set_name_visible(name):
 	match name:

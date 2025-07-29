@@ -7,9 +7,10 @@ signal anim_finished
 
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	unit_stats = BattleSettings.samStats
 
 	var skill = Skill.new()
 	skill.skillname = "Rabbit: Bounce"

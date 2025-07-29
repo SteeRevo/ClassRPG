@@ -29,7 +29,6 @@ func add_move_container(mlc, skill):
 	var move_con = move_container.instantiate()
 	mlc.add_child(move_con)
 	move_con.set_move_name(skill.skillname)
-	move_con.set_sp_cost(skill.delay)
 	for input in skill.inputs:
 		move_con.add_arrow(input)
 

@@ -54,7 +54,10 @@ func play_menu_animation(host, character):
 			host.Phyllis.play_backwards("EquipSpirit")
 		"BB":
 			host.BB.stop()
-			host.BB.play("EquipSpirit")
+			if !host.sam_anim_noplay:
+				host.BB.play("EquipSpirit")
+			else:
+				host.BB.play_backwards("EquipMiddleStart")
 			host.BB.queue("EquipSelected")
 			host.menuCam.move_to(host.BBEquipCamera.global_position)
 			host.menuCam.rotate_to(host.BBEquipCamera.rotation)
