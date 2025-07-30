@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Spirit" load_steps=3 format=3 uid="uid://3yi5gwck1e2t"]
+
+[ext_resource type="Script" path="res://Spirits/Spirit.gd" id="1_jgiy0"]
+[ext_resource type="Texture2D" uid="uid://bnbgl6qhto3qv" path="res://Unit/Enemy/monk_icon.png" id="2_rrl4f"]
+
+[resource]
+script = ExtResource("1_jgiy0")
+spirit_name = "Monk"
+input_atk_bonus = 2
+input_tech_bonus = 0
+input_defense_bonus = 1
+bg_atk_bonus = 1
+bg_tech_bonus = 2
+bg_defense_bonus = 4
+texture = ExtResource("2_rrl4f")
+bgEffects = []
+inputEffect = []

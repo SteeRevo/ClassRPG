@@ -12,3 +12,10 @@ enum battleGrounds {F, TW, BW, B}
 @export var technique: int
 @export var bg: int
 @export var is_enemy: bool
+@export var spirits = {
+	"Base": null,
+	"Left": null,
+	"Right": null,
+	"Up": null,
+	"Down": null
+}

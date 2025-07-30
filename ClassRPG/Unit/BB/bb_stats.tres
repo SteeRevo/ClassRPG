@@ -12,3 +12,10 @@ speed = 4
 technique = 2
 bg = 1
 is_enemy = false
+spirits = {
+"Base": null,
+"Down": null,
+"Left": null,
+"Right": null,
+"Up": null
+}

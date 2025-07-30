@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfbq1ar6pf8qy"]
+[gd_scene load_steps=3 format=3 uid="uid://bfbq1ar6pf8qy"]
 
 [ext_resource type="Texture2D" uid="uid://d3f2p3q6ww6te" path="res://UI/MainMenu/spirit.png" id="1_5o0lk"]
+[ext_resource type="Script" path="res://UI/MainMenu/spirit_slot.gd" id="1_meqk2"]
 
 [node name="SpiritSlot" type="Panel"]
 custom_minimum_size = Vector2(100, 100)
@@ -11,6 +12,7 @@ offset_right = -1052.0
 offset_bottom = -548.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_meqk2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -30,6 +32,6 @@ horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(48.5, 50)
-scale = Vector2(5.9375, 6)
+position = Vector2(50.5, 51)
+scale = Vector2(6.1875, 6.125)
 texture = ExtResource("1_5o0lk")

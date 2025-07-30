@@ -6,6 +6,7 @@ extends Node3D
 @onready var worldMat = preload("res://City/city_environment.tres")
 
 func _ready():
+	
 	mainMenu.set_invisible()
 
 func _input(event):

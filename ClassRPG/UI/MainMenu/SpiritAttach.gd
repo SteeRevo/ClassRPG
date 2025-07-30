@@ -18,7 +18,10 @@ func handle_input(host, event):
 		return "previous"
 	
 	elif event.is_action_pressed("Interact"):
-		print("attaching spirit")
+		print(host.current_unit)
+		print(host.spiritAttach.get_spirit(host.menuCursor.cursor_index).spirit_name)
+		print(host.current_move)
+		
 
 func exit(host):
 	host.spiritAttach.visible = false

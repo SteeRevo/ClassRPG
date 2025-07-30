@@ -23,6 +23,7 @@ SkillEnums="*res://UI/SkillEnums.gd"
 Databases="*res://Spirits/Databases.gd"
 SceneManager="*res://SceneManager/SceneManager.gd"
 BattleSettings="*res://SceneManager/BattleSettings.gd"
+SpiritBank="*res://Spirits/SpiritBank.gd"
 
 [display]
 

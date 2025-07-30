@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://UI/MainMenu/EquipSpiritContainer.gd" id="10_4vnr4"]
 [ext_resource type="Script" path="res://UI/MainMenu/CameraEquip.gd" id="10_ut0a8"]
 [ext_resource type="Script" path="res://UI/MainMenu/EquipUnitMenu.gd" id="14_7dwrf"]
-[ext_resource type="PackedScene" uid="uid://bfbq1ar6pf8qy" path="res://UI/MainMenu/spirit_slot.tscn" id="15_wi8ao"]
+[ext_resource type="Script" path="res://City/SpiritMenuManager.gd" id="16_mgyw1"]
 [ext_resource type="PackedScene" uid="uid://bh1vk187xcurq" path="res://UI/MainMenu/menu_cursor.tscn" id="17_7n4mo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ph6oh"]
@@ -11550,6 +11550,7 @@ visible = false
 anchors_preset = 0
 offset_right = 539.0
 offset_bottom = 648.0
+script = ExtResource("16_mgyw1")
 
 [node name="ColorRect" type="ColorRect" parent="Control/SpiritAttach"]
 layout_mode = 1
@@ -11582,21 +11583,6 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 4
 
-[node name="SpiritSlot" parent="Control/SpiritAttach/ScrollContainer/GridContainer" instance=ExtResource("15_wi8ao")]
-layout_mode = 2
-
-[node name="SpiritSlot2" parent="Control/SpiritAttach/ScrollContainer/GridContainer" instance=ExtResource("15_wi8ao")]
-layout_mode = 2
-
-[node name="SpiritSlot3" parent="Control/SpiritAttach/ScrollContainer/GridContainer" instance=ExtResource("15_wi8ao")]
-layout_mode = 2
-
-[node name="SpiritSlot4" parent="Control/SpiritAttach/ScrollContainer/GridContainer" instance=ExtResource("15_wi8ao")]
-layout_mode = 2
-
-[node name="SpiritSlot5" parent="Control/SpiritAttach/ScrollContainer/GridContainer" instance=ExtResource("15_wi8ao")]
-layout_mode = 2
-
 [node name="EquippedSpirit" type="Panel" parent="Control/SpiritAttach"]
 layout_mode = 0
 offset_left = 866.0
@@ -11622,9 +11608,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuCursor" parent="Control/SpiritAttach" instance=ExtResource("17_7n4mo")]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 133.0
-offset_bottom = 124.0
+layout_mode = 2
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 157.0
+offset_bottom = 147.0
 menu_parent_path = NodePath("../ScrollContainer/GridContainer")

@@ -58,6 +58,9 @@ var current_move = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#set_invisible()
+	SpiritBank.add("Monk")
+	SpiritBank.add("Monk")
+	spiritAttach.set_current_spirit_bank()
 	menuOptions = [EquipPointerPos, JournalPointerPos, StatusPointerPos, PositionPointerPos]
 	currentOption = 0
 	set_menu_pointer_pos()

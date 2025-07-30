@@ -231,9 +231,8 @@ func move_towards(target_pos):
 func on_tween_finished():
 	tween_finished.emit()
 	
-func attach_spirit(spirit_name):
-	var new_spirit = Spirit.new(spirit_name)
-	attached_spirits["Left"] = new_spirit
+func attach_spirit(spirit):
+	attached_spirits["Left"] = spirit
 	print(attached_spirits)
 
 func get_move_time(target_pos):
