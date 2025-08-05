@@ -22,6 +22,8 @@ signal state_changed
 @onready var equipUnit = $Control/MarginContainer/EquipUnit
 @onready var equipMenu = $Control/MarginContainer/EquipSpiritContainer
 @onready var spiritAttach = $Control/SpiritAttach
+@onready var inputSpirit = $Control/SpiritAttach/EquippedSpirit
+@onready var battlegroundSpirit = $Control/SpiritAttach/BattlegroundSpirits
 
 @onready var menuCursor = $Control/SpiritAttach/MenuCursor
 
@@ -42,6 +44,7 @@ var current_option = 0
 var sam_anim_noplay = false
 
 var current_move = null
+var selected_spirit = null
 
 
 @export var current_environMat:Environment
@@ -51,14 +54,13 @@ var current_move = null
 	'base': $States/MenuBase,
 	'equip': $States/EquipSpirit,
 	'equipUnit': $States/EquipUnit,
-	'spiritAttach': $States/SpiritAttach
+	'spiritAttach': $States/SpiritAttach,
 }
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#set_invisible()
-	SpiritBank.add("Monk")
 	SpiritBank.add("Monk")
 	spiritAttach.set_current_spirit_bank()
 	menuOptions = [EquipPointerPos, JournalPointerPos, StatusPointerPos, PositionPointerPos]

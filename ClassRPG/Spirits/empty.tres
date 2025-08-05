@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Spirit" load_steps=2 format=3 uid="uid://h2d75achl412"]
+
+[ext_resource type="Script" path="res://Spirits/Spirit.gd" id="1_mw8n3"]
+
+[resource]
+script = ExtResource("1_mw8n3")
+spirit_name = "Empty"
+input_atk_bonus = 0
+input_tech_bonus = 0
+input_defense_bonus = 0
+bg_atk_bonus = 0
+bg_tech_bonus = 0
+bg_defense_bonus = 0
+bgEffects = []
+inputEffect = []

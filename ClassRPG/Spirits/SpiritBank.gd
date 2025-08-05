@@ -1,10 +1,12 @@
 extends Node
 
-@export var currentBank = []
+@export var currentBank = {}
 
 @export var allSpirits = {
-	"Monk" : "res://Spirits/monk.tres"
+	"Null" : null,
+	"Monk" : "res://Spirits/monk.tres",
+	
 }
 
 func add(name):
-	currentBank.append(allSpirits[name])
+	currentBank[name] = allSpirits[name]

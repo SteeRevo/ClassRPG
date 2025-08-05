@@ -17,4 +17,25 @@ func add_enemy(enemy_list):
 func remove_ally(ally):
 	current_player_units.erase(ally)
 
+func attach_spirit(unitName, spirit, move):
+	match unitName:
+		"Sam":
+			var spiritReturn = null
+			if samStats.spirits[move] != null:
+				spiritReturn = samStats.spirits[move]
+			samStats.spirits[move] = spirit
+			return spiritReturn
+		"BB":
+			var spiritReturn = null
+			if samStats.spirits[move] != null:
+				spiritReturn = samStats.spirits[move]
+			bbStats.spirits[move] = spirit
+			return spiritReturn
+		"Phyllis":
+			var spiritReturn = null
+			if samStats.spirits[move] != null:
+				spiritReturn = samStats.spirits[move]
+			philStats.spirits[move] = spirit
+			return spiritReturn
+
 
