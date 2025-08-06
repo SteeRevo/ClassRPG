@@ -4,6 +4,7 @@ extends Resource
 
 enum battleGrounds {F, TW, BW, B}
 
+
 @export var current_health: int
 @export var max_health: int
 @export var attack: int
@@ -13,7 +14,6 @@ enum battleGrounds {F, TW, BW, B}
 @export var bg: int
 @export var is_enemy: bool
 @export var spirits = {
-	"Base": null,
 	"Left": null,
 	"Right": null,
 	"Up": null,

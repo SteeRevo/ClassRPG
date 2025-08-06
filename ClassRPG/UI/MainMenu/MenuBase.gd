@@ -31,6 +31,8 @@ func select_current_option(host):
 	var option = host.menuOptions[host.currentOption].get_parent().name
 	if option == "EquipSpirit":
 		return "equip"
+	if option == "Status":
+		return "status"
 
 func play_menu_animation(host):
 	host.BB.play("MenuBase")

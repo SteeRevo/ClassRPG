@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="stats" load_steps=2 format=3 uid="uid://bs3ls7hu2mn86"]
+[gd_resource type="Resource" script_class="stats" load_steps=3 format=3 uid="uid://bs3ls7hu2mn86"]
 
 [ext_resource type="Script" path="res://Unit/stats.gd" id="1_0yksh"]
+[ext_resource type="Resource" uid="uid://h2d75achl412" path="res://Spirits/empty.tres" id="2_l3888"]
 
 [resource]
 script = ExtResource("1_0yksh")
@@ -13,9 +14,8 @@ technique = 2
 bg = 0
 is_enemy = false
 spirits = {
-"Base": null,
-"Down": null,
-"Left": null,
-"Right": null,
-"Up": null
+"Down": ExtResource("2_l3888"),
+"Left": ExtResource("2_l3888"),
+"Right": ExtResource("2_l3888"),
+"Up": ExtResource("2_l3888")
 }

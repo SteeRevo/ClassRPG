@@ -55,6 +55,7 @@ var selected_spirit = null
 	'equip': $States/EquipSpirit,
 	'equipUnit': $States/EquipUnit,
 	'spiritAttach': $States/SpiritAttach,
+	'status': $States/Status
 }
 
 
@@ -74,7 +75,7 @@ func _change_state(state_name):
 	current_state.exit(self)
 	if state_name == 'previous':
 		states_stack.pop_front()
-	elif state_name in ['equip', 'equipUnit', 'spiritAttach']:
+	elif state_name in ['equip', 'equipUnit', 'spiritAttach', 'status']:
 		states_stack.push_front(states_map[state_name])
 	else:
 		var new_state = states_map[state_name]

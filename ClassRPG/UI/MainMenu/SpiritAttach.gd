@@ -8,6 +8,7 @@ func enter(host):
 		host.inputSpirit.visible = true
 	host.spiritAttach.visible = true
 	host.menuCursor.set_cursor_from_index(0)
+	host.spiritAttach.set_equipped_spirit(host.current_unit, host.current_move)
 
 func handle_input(host, event):
 	if event.is_action_pressed("Rotate"):
@@ -26,11 +27,14 @@ func handle_input(host, event):
 		var currentSpirit = host.spiritAttach.get_spirit(host.menuCursor.cursor_index)
 		#print(host.current_move)
 		if host.current_move != "Base":
-			host.spiritAttach.remove_spirit(currentSpirit)
+			if currentSpirit.spirit_name != "Empty":
+				host.spiritAttach.remove_spirit(currentSpirit)
 			var returnSpirit = BattleSettings.attach_spirit(host.current_unit, currentSpirit, host.current_move)
-			if returnSpirit != null:
+			if returnSpirit != null and returnSpirit.spirit_name != 'Empty':
 				host.spiritAttach.add_spirit(returnSpirit)
 			host.spiritAttach.set_equipped_spirit(host.current_unit, host.current_move)
+			if host.menuCursor.cursor_index > 0:
+				host.menuCursor.set_cursor_from_index(host.menuCursor.cursor_index - 1)
 
 func exit(host):
 	host.spiritAttach.visible = false

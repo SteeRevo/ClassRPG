@@ -41,8 +41,9 @@ func handle_input(host, event):
 		host.equipUnit.set_mode("Base")
 		current_state = "Base"
 	elif event.is_action_pressed("Interact"):
-		host.current_move = current_state
-		return 'spiritAttach'
+		if current_state != "Base":
+			host.current_move = current_state
+			return 'spiritAttach'
 	
 func update(host, delta):
 	return

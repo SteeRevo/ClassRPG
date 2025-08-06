@@ -18,11 +18,11 @@ func set_current_spirit_bank():
 	spiritSlots = $ScrollContainer/GridContainer.get_children()
 	
 func add_spirit(spirit):
-	var newSpirit = load(spirit)
 	var new_spirit_slot = spiritSlot.instantiate()
-	new_spirit_slot.spirit = load(newSpirit)
+	new_spirit_slot.spirit = spirit
 	new_spirit_slot.set_sprite()
 	$ScrollContainer/GridContainer.add_child(new_spirit_slot)
+	spiritSlots = $ScrollContainer/GridContainer.get_children()
 	
 func remove_spirit(spirit):
 	for slot in spiritSlots:
