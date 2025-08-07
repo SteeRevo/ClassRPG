@@ -1,4 +1,4 @@
-extends "../Unit/Unit.gd"
+extends "../PlayerUnit.gd"
 
 
 @onready var unit_cam = $UnitCam
@@ -10,6 +10,7 @@ signal anim_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	unit_stats = BattleSettings.philStats
+	set_unit_spirits(unit_stats)
 	
 	_set_base_skills()
 	var skill = Skill.new()

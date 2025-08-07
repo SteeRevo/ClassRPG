@@ -5,7 +5,7 @@ extends Area3D
 
 func _on_body_entered(body):
 	if body.name == "PhyllisOverworld":
-		var current_scene = get_node("/root/Visual Novel Scene")
+		var current_scene = get_tree().current_scene
 		BattleSettings.add_enemy(enemy_arr)
 		SceneManager.change_scene(current_scene, new_scene)
 		set_deferred("monitoring", false)

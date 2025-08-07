@@ -6,12 +6,16 @@
 [resource]
 script = ExtResource("1_jgiy0")
 spirit_name = "Monk"
-input_atk_bonus = 2
+input_hp_bonus = 0
+input_atk_bonus = 5
 input_tech_bonus = 0
-input_defense_bonus = 1
+input_def_bonus = 2
+input_spd_bonus = 0
+bg_hp_bonus = 0
 bg_atk_bonus = 1
 bg_tech_bonus = 2
-bg_defense_bonus = 4
+bg_def_bonus = 4
+bg_spd_bonus = 0
 texture = ExtResource("2_rrl4f")
 bgEffects = []
 inputEffect = []

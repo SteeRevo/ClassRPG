@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bh0fcxntildja"]
 
-[ext_resource type="Script" path="res://BattleScene/BB.gd" id="1_df8cj"]
+[ext_resource type="Script" path="res://Unit/BB/BB.gd" id="1_df8cj"]
 [ext_resource type="Texture2D" uid="uid://dsint13ncqad" path="res://Unit/BB/BB_bb_tex.png" id="2_x8xlh"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_1r0ym"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="4_hh400"]

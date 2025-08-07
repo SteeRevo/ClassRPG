@@ -83,6 +83,10 @@ func _ready():
 	get_battle_data()
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
+	SceneTransitionManager.connect("transition_finished", Callable(self, "start_fight"))
+	
+	
+func start_fight():
 	_change_state('chooseturn')
 
 	

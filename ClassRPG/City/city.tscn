@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbw4y1q562ee8"]
+[gd_scene load_steps=11 format=3 uid="uid://cbw4y1q562ee8"]
 
 [ext_resource type="PackedScene" uid="uid://buwi3guijpex5" path="res://City/City_scene.glb" id="1_brur5"]
 [ext_resource type="Script" path="res://City/city.gd" id="1_oynpq"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="3_tri5r"]
 [ext_resource type="PackedScene" uid="uid://rejbaoj450xt" path="res://Environment/camera_rig.tscn" id="5_vrlqp"]
 [ext_resource type="PackedScene" uid="uid://3b2vsrfdfpsk" path="res://UI/MainMenu/main_menu.tscn" id="6_wgcrs"]
+[ext_resource type="PackedScene" uid="uid://cwfu2uph0jpq5" path="res://SceneManager/battle_changer.tscn" id="7_eby8s"]
 [ext_resource type="Script" path="res://City/MenuCamera3D.gd" id="8_j3tgv"]
+[ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="9_06u8o"]
 
 [node name="City" type="Node3D"]
 transform = Transform3D(0.993715, 0, -0.111937, 0, 1, 0, 0.111937, 0, 0.993715, 0, 0, 0)
@@ -56,6 +58,10 @@ transform = Transform3D(0.991984, 0, 0.126355, 0, 1, 0, -0.126355, 0, 0.991984, 
 [node name="Limit2" type="Node3D" parent="."]
 transform = Transform3D(0.992205, 0, 0.124623, 0, 1, 0, -0.124623, 0, 0.992205, 0.455196, 2.9525, 4.47023)
 
+[node name="BattleChanger" parent="." instance=ExtResource("7_eby8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.308597, 0)
+enemy_arr = Array[PackedScene]([ExtResource("9_06u8o")])
+
 [node name="MainMenu" parent="." node_paths=PackedStringArray("current_environ") instance=ExtResource("6_wgcrs")]
 current_environMat = ExtResource("3_j3j0y")
 current_environ = NodePath("../WorldEnvironment")
@@ -66,7 +72,23 @@ visible = false
 [node name="Camera3D" parent="MainMenu/MenuBackground/SubViewportContainer/SubViewport" index="0"]
 script = ExtResource("8_j3tgv")
 
+[node name="HPNum" parent="MainMenu/Control/StatusMenu/BaseStats" index="0"]
+horizontal_alignment = 1
+
+[node name="ATKNum" parent="MainMenu/Control/StatusMenu/BaseStats" index="1"]
+horizontal_alignment = 1
+
+[node name="DEFNum" parent="MainMenu/Control/StatusMenu/BaseStats" index="2"]
+horizontal_alignment = 1
+
+[node name="SPDNum" parent="MainMenu/Control/StatusMenu/BaseStats" index="3"]
+horizontal_alignment = 1
+
+[node name="TECNum" parent="MainMenu/Control/StatusMenu/BaseStats" index="4"]
+horizontal_alignment = 1
+
 [editable path="PhyllisOverworld"]
 [editable path="CameraRig"]
+[editable path="BattleChanger"]
 [editable path="MainMenu"]
 [editable path="MainMenu/Control/SpiritAttach/ScrollContainer/GridContainer/EmptySpiritSlot"]

@@ -75,7 +75,7 @@ func attack_unit(target_unit, skill):
 	if skill_stats == null:
 		printerr("skill not found")
 		return
-	if attached_spirits.find_key(skill_stats.skillname):
+	if skill_stats.skillname in attached_spirits:
 		spirit_bonus = attached_spirits[skill_stats.skillname].get_input_atk_bonus()
 	print(attack)
 	print(skill_stats.damage)
@@ -231,9 +231,6 @@ func move_towards(target_pos):
 func on_tween_finished():
 	tween_finished.emit()
 	
-func attach_spirit(spirit):
-	attached_spirits["Left"] = spirit
-	print(attached_spirits)
 
 func get_move_time(target_pos):
 	var distance = global_position.distance_to(target_pos)

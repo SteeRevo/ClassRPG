@@ -1,12 +1,16 @@
 extends Resource
 class_name Spirit
 @export var spirit_name: String
+@export var input_hp_bonus: int
 @export var input_atk_bonus: int
 @export var input_tech_bonus: int
-@export var input_defense_bonus: int
+@export var input_def_bonus: int
+@export var input_spd_bonus: int
+@export var bg_hp_bonus: int
 @export var bg_atk_bonus: int
 @export var bg_tech_bonus: int
-@export var bg_defense_bonus: int
+@export var bg_def_bonus: int
+@export var bg_spd_bonus: int
 @export var attached_unit: Unit
 @export var texture: Texture2D
 

@@ -7,8 +7,14 @@ script = ExtResource("1_b1a50")
 current_health = 20
 max_health = 20
 attack = 1
-defense = 14
+defense = 5
 speed = 3
 technique = 0
 bg = 0
 is_enemy = true
+spirits = {
+"Down": null,
+"Left": null,
+"Right": null,
+"Up": null
+}

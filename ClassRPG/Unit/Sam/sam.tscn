@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://c5k6qoafi2xk0"]
 
-[ext_resource type="Script" path="res://BattleScene/Sam.gd" id="1_x5loh"]
+[ext_resource type="Script" path="res://Unit/Sam/Sam.gd" id="1_x5loh"]
 [ext_resource type="Texture2D" uid="uid://cy4wsylgtavfy" path="res://Unit/Sam/Sam2_Sam2_texture.png" id="2_f4r2x"]
 [ext_resource type="Texture2D" uid="uid://b0fjigct840ee" path="res://Unit/BB/swingvfx.png" id="3_wdcf7"]
 [ext_resource type="AnimationLibrary" uid="uid://016oettpbbvc" path="res://Unit/Sam/sam_animation.res" id="4_56x08"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://c6utwxw5mbu1i"]
 
-[ext_resource type="Script" path="res://BattleScene/Phyllis.gd" id="1_bsgxl"]
+[ext_resource type="Script" path="res://Unit/Phyllis/Phyllis.gd" id="1_rnhxr"]
 [ext_resource type="Texture2D" uid="uid://drltfoosqwb13" path="res://Unit/Phyllis/Sophia_tex_char.png" id="2_u3cwx"]
 [ext_resource type="Texture2D" uid="uid://b0fjigct840ee" path="res://Unit/BB/swingvfx.png" id="3_t48aw"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="4_b7jng"]
@@ -3701,7 +3701,7 @@ point_count = 5
 
 [node name="Phyllis" type="Node3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -6.13227)
-script = ExtResource("1_bsgxl")
+script = ExtResource("1_rnhxr")
 
 [node name="Phyllis" type="Node3D" parent="."]
 transform = Transform3D(-0.999823, 0, -0.0188662, 0, 1, 0, 0.0188662, 0, -0.999823, 0, 0, 0)

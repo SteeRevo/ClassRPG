@@ -24,6 +24,7 @@ Databases="*res://Spirits/Databases.gd"
 SceneManager="*res://SceneManager/SceneManager.gd"
 BattleSettings="*res://SceneManager/BattleSettings.gd"
 SpiritBank="*res://Spirits/SpiritBank.gd"
+SceneTransitionManager="*res://UI/SceneTransitions/scene_transition_manager.tscn"
 
 [display]
 

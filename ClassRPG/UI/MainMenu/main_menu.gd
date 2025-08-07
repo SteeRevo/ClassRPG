@@ -24,6 +24,7 @@ signal state_changed
 @onready var spiritAttach = $Control/SpiritAttach
 @onready var inputSpirit = $Control/SpiritAttach/EquippedSpirit
 @onready var battlegroundSpirit = $Control/SpiritAttach/BattlegroundSpirits
+@onready var statusMenu = $Control/StatusMenu
 
 @onready var menuCursor = $Control/SpiritAttach/MenuCursor
 
@@ -33,6 +34,7 @@ signal state_changed
 @onready var BBEquipCamera = $MenuBackground/SubViewportContainer/SubViewport/BBEquipCameraPoint
 @onready var PhilEquipCamera = $MenuBackground/SubViewportContainer/SubViewport/PhilEquipCameraPoint
 @onready var MenuBaseCamera = $MenuBackground/SubViewportContainer/SubViewport/MenuBaseCameraPoint
+
 
 
 var currentOption = null
@@ -45,6 +47,8 @@ var sam_anim_noplay = false
 
 var current_move = null
 var selected_spirit = null
+
+var current_status = 0
 
 
 @export var current_environMat:Environment
