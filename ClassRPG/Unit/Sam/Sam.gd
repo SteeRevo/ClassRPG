@@ -5,14 +5,14 @@ extends "../PlayerUnit.gd"
 
 signal anim_finished
 
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super()
 	unit_stats = BattleSettings.samStats
 	
 	set_unit_spirits(unit_stats)
+	
+	var zodiac_array = []
 
 	var skill = Skill.new()
 	skill.skillname = "Rabbit: Bounce"
@@ -44,27 +44,9 @@ func _ready():
 	skillList.append(skill4)
 	
 #skill tree fixed later
-	skill_tree = TreeSkill.new()
-	skill_tree.move_name = "Root"
-	
-	#Left start
-	skill_tree.left = TreeSkill.new()
-	skill_tree.left.down = TreeSkill.new()
-	skill_tree.left.down.right = TreeSkill.new()
-	skill_tree.left.down.right.move_name = "Rabbit: Bounce"
-	
-	skill_tree.left.left = TreeSkill.new()
-	skill_tree.left.left.right = TreeSkill.new()
-	skill_tree.left.left.right.move_name = "Snake: Whip"
-	skill_tree.left.left.right.right = TreeSkill.new()
-	skill_tree.left.left.right.right.move_name = "Ox: Crush" 
-	
-	#Down Start
-	skill_tree.down = TreeSkill.new()
-	skill_tree.down.down = TreeSkill.new()
-	skill_tree.down.down.up = TreeSkill.new()
-	skill_tree.down.down.up.move_name = "Rooster: Flame"
-	
+	for _skill in skillList:
+		set_skill(_skill)
+		
 	set_skill_active("Rooster: Flame")
 	#set_skill_active("Rabbit: Bounce")
 	set_skill_active("Snake: Whip")

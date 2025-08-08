@@ -223,7 +223,7 @@ script = ExtResource("11_f76x8")
 transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
 
 [node name="PathFollow3D" parent="BattleManager/PlayerUnits/Phyllis/CameraPath" index="0"]
-transform = Transform3D(0.99989, -0.000441823, -0.012604, 1.45515e-11, 0.999348, -0.0350324, 0.0126117, 0.035029, 0.999284, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(0.99989, -0.000441822, -0.012604, 1.45515e-11, 0.999347, -0.0350324, 0.0126117, 0.035029, 0.999284, -4.24709, 0.569662, -4.6139)
 path_prog = 20.0
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]

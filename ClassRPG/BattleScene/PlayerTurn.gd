@@ -40,6 +40,7 @@ func handle_input(host, event):
 			print("confirm attack") #_on_attack_pressed()
 			return 'selectEBG'
 		else:
+			host.reset_delay()
 			host.playerTurnUI.set_arrow_outline(host.current_unit.name, "Right")
 			last_action = "Attack"
 	elif event.is_action_pressed("Rotate"):
@@ -51,6 +52,9 @@ func handle_input(host, event):
 		else:
 			host.playerTurnUI.set_arrow_outline(host.current_unit.name, "Down")
 			last_action = "Rotate"
+			host.reset_delay()
+			host.get_total_delay(['Rotate'])
+			host.delay_turn_tracker()
 	#	_on_rotate_pressed()
 	elif event.is_action_pressed("Guard"):
 		print("Guard")
@@ -60,6 +64,9 @@ func handle_input(host, event):
 		else:
 			host.playerTurnUI.set_arrow_outline(host.current_unit.name, "Left")
 			last_action = "Guard"
+			host.reset_delay()
+			host.get_total_delay(['Guard'])
+			host.delay_turn_tracker()
 	elif event.is_action_pressed("Item"):
 		print("Item")
 		if last_action == "Item":
@@ -68,6 +75,9 @@ func handle_input(host, event):
 		else:
 			host.playerTurnUI.set_arrow_outline(host.current_unit.name, "Up")
 			last_action = "Item"
+			host.reset_delay()
+			host.get_total_delay(['Item'])
+			host.delay_turn_tracker()
 	#	_on_skill_pressed()
 
 func exit(host):

@@ -9,6 +9,7 @@ signal anim_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super()
 	unit_stats = BattleSettings.philStats
 	set_unit_spirits(unit_stats)
 	
@@ -21,15 +22,8 @@ func _ready():
 	
 	skillList.append(skill)
 
-#skill tree fixed later
-	skill_tree = TreeSkill.new()
-	skill_tree.move_name = "Root"
-	
-	#Left start
-	skill_tree.down = TreeSkill.new()
-	skill_tree.down.down = TreeSkill.new()
-	skill_tree.down.down.right = TreeSkill.new()
-	skill_tree.down.down.right.move_name = "Absorb"
+	for _skill in skillList:
+		set_skill(_skill)
 
 	
 	set_skill_active("Absorb")

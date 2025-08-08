@@ -63,6 +63,7 @@ var current_unit
 	'skillInputs': $States/SkillInputs,
 	'end_fight': $States/EndFight
 }
+@export var autostart: bool = false
 
 var states_stack = []
 var current_state = null
@@ -83,13 +84,52 @@ func _ready():
 	get_battle_data()
 	states_stack.push_front($States/ChooseTurn)
 	current_state = states_stack[0]
+	start_battle()
 	SceneTransitionManager.connect("transition_finished", Callable(self, "start_fight"))
+	if autostart:
+		SceneTransitionManager.play_battle_exit()
 	
-	
+
+func start_battle():
+	get_all_units()
+	set_all_units_position()
+	current_selected_enemy = null
+	for unit in player_units:
+		if unit.is_guarding == false:
+			print(unit.name)
+			unit.play_idle()
+
+func get_all_units():
+	set_player_turn_tracker()
+	for unit in player_units_path.get_children():
+		player_units.append(unit)
+		unit_list.append(unit)
+		inputMoves.add_all_active_skills(unit)
+		unit.set_all_stats()
+	for unit in enemy_units_path.get_children():
+		enemy_units.append(unit)
+		unit_list.append(unit)
+		set_enemy_turn_tracker(unit)
+		unit.set_all_stats()
+
+func set_all_units_position():
+	for bg in battleGrounds.get_children():
+		bgs.append(bg)
+	for bg in enemybattleGrounds.get_children():
+		enemy_bgs.append(bg)
+	for unit in player_units_path.get_children():
+		print(unit.name)
+		print(unit.startingBG)
+		bgs[unit.startingBG]._set_current_unit(unit)
+		bgs[unit.startingBG].set_current_unit_position()
+		unit._set_BG(bgs[unit.startingBG])
+	for unit in enemy_units_path.get_children():
+		enemy_bgs[unit.startingBG]._set_current_unit(unit)
+		enemy_bgs[unit.startingBG].set_current_unit_position()
+		unit._set_BG(enemy_bgs[unit.startingBG])
+
 func start_fight():
 	_change_state('chooseturn')
-
-	
 
 func _change_state(state_name):
 	current_state.exit(self)
@@ -106,9 +146,7 @@ func _change_state(state_name):
 	current_state.enter(self)
 
 	emit_signal('state_changed', states_stack)
-	
 
-		
 func _input(event):
 	
 	var new_state = current_state.handle_input(self, event)
@@ -118,7 +156,7 @@ func _input(event):
 func _process(delta):
 	current_state.update(self, delta)
 
-func end_turn():	
+func end_turn():
 	print("changing turn")
 	if len(enemy_units) == 0:
 		print_debug("Battle end")
@@ -133,24 +171,20 @@ func complete_enemy_action():
 func add_cameras():
 	camera_list.append(mainBattleCamera)
 	active_camera = mainBattleCamera
-		
-
 
 func update_skill_name(skill):
 	skillNameDisplay.set_skill_name(skill.skillname) 
-	
+
 func update_skill_damage(damage):
 	pass
 
 func _on_unit_turn_finished(action_weight):
 	player_units.erase(current_unit)
 	battleState = BATTLESTATE.CHOOSE_TURN
-	#choose_turn()
 
 func get_battle_data():
 	var counter = 0
 	for unit in player_units_path.get_children():
-		
 		if BattleSettings.current_player_units.find(unit.name) == -1:
 			player_units_path.remove_child(unit)
 	for enemy in BattleSettings.enemy_units:
@@ -197,8 +231,17 @@ func remove_enemy_tt(unit):
 	turnBar.remove_enemy_turn_tracker(unit)
 	
 func get_total_delay(input_arr):
-	for skill in input_arr:
-		var current_skill = current_unit.get_skill(skill)
-		if current_skill != null:
-			total_delay += current_skill.delay
-	print("total delay = " + str(total_delay))
+	if len(input_arr) > 0:
+		match input_arr[0]:
+			"Guard":
+				total_delay += 2
+			"Rotate":
+				total_delay += 2
+			"Item":
+				total_delay += 3
+			_:
+				for skill in input_arr:
+					var current_skill = current_unit.get_skill(skill)
+					if current_skill != null:
+						total_delay += current_skill.delay
+		print("total delay = " + str(total_delay))
