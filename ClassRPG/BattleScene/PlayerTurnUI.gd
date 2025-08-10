@@ -42,8 +42,8 @@ func update_health(unit):
 	
 
 
-func set_name_visible(name):
-	match name:
+func set_name_visible(unit_name):
+	match unit_name:
 		"Sam":
 			samName.visible = true
 		"BB":
@@ -57,9 +57,9 @@ func reset_names():
 	philName.visible = false
 
 
-func set_arrow_outline(name, arrow):
+func set_arrow_outline(unit_name, arrow):
 	clear_all_arrows()
-	match name:
+	match unit_name:
 		"Sam":
 			match arrow:
 				"Left":

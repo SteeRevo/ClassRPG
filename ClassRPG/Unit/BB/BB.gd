@@ -85,9 +85,9 @@ func get_unit_cam():
 
 
 	
-func set_skill_active(name):
+func set_skill_active(skill_name):
 	for skill in skillList:
-		if skill.skillname == name:
+		if skill.skillname == skill_name:
 			skill.is_active = true
 			active_skills.push_back(skill)
 			return

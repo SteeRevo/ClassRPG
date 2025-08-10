@@ -71,6 +71,7 @@ func _on_tween_finished():
 		moved_to_enemy = true
 		play_animation(host_ref)
 	elif current_action == "Attack" and moved_to_enemy:
+		host_ref.baseballField.batter_run()
 		host_ref.end_turn()
 		
 func _on_attack_hit():

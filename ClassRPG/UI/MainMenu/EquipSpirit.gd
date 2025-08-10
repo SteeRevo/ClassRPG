@@ -74,7 +74,8 @@ func play_menu_animation(host, character):
 			host.Phyllis.queue("EquipSelected")
 			host.menuCam.move_to(host.PhilEquipCamera.global_position)
 			host.menuCam.rotate_to(host.PhilEquipCamera.rotation)
-			host.Sam.play_backwards("EquipSpirit")
+			if host.Sam.current_animation != "MenuBase":
+				host.Sam.play_backwards("EquipSpirit")
 	host.BB.queue("MenuBase")
 	host.Sam.queue("MenuBase")
 	host.Phyllis.queue("MenuBase")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
 [ext_resource type="Script" path="res://BattleScene/InputtedMoves.gd" id="33_iiblf"]
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
+[ext_resource type="PackedScene" uid="uid://c4o2w5w1metci" path="res://UI/Baseball/baseball_field.tscn" id="34_algih"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
 [ext_resource type="Texture2D" uid="uid://djvqqxwggsqpk" path="res://BattleScene/Battleground/Ellipse 112.png" id="37_8mc0k"]
@@ -185,6 +186,7 @@ environment = SubResource("Environment_ccmnm")
 [node name="BattleManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_p4ijo")
+autostart = true
 
 [node name="States" type="Node" parent="BattleManager"]
 
@@ -222,8 +224,14 @@ script = ExtResource("11_f76x8")
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
 
+[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Phyllis/Phyllis/metarig/Skeleton3D" index="9"]
+transform = Transform3D(0.154086, 0.987039, 0.0456141, 0.987999, -0.154375, 0.00281047, 0.00981454, 0.0446325, -0.998922, 5.80483, 13.7445, 0.656026)
+
+[node name="AttackCam" parent="BattleManager/PlayerUnits/Phyllis" index="2"]
+transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321423, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
+
 [node name="PathFollow3D" parent="BattleManager/PlayerUnits/Phyllis/CameraPath" index="0"]
-transform = Transform3D(0.99989, -0.000441822, -0.012604, 1.45515e-11, 0.999347, -0.0350324, 0.0126117, 0.035029, 0.999284, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(0.99989, -0.000441822, -0.012604, 1.45515e-11, 0.999346, -0.0350324, 0.0126117, 0.035029, 0.999284, -4.24709, 0.569662, -4.6139)
 path_prog = 20.0
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
@@ -721,6 +729,18 @@ unit = NodePath("../../../../PlayerUnits/BB")
 
 [node name="PhilPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="2" node_paths=PackedStringArray("unit")]
 unit = NodePath("../../../../PlayerUnits/Phyllis")
+
+[node name="BaseballField" parent="BattleManager/Control" instance=ExtResource("34_algih")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1150.0
+offset_bottom = 640.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 

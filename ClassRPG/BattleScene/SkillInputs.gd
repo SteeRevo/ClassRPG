@@ -13,7 +13,7 @@ func enter(host):
 	host.playerTurnUI.set_name_visible(host.current_unit.name)
 	host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.play_enter_health()
-	var isConfirming = false
+	isConfirming = false
 
 func handle_input(host, event):
 

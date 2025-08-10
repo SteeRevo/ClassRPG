@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4o2w5w1metci"]
+
+[ext_resource type="Texture2D" uid="uid://niys2g7yl3x" path="res://UI/Baseball/BaseballField(1).png" id="1_1e345"]
+[ext_resource type="Script" path="res://UI/Baseball/baseball_field.gd" id="1_xo7bt"]
+[ext_resource type="Texture2D" uid="uid://brdov4q2t4lfh" path="res://UI/Baseball/Batter.png" id="2_pvk16"]
+[ext_resource type="Texture2D" uid="uid://hdi11u2qplfq" path="res://UI/Baseball/Score(1).png" id="3_tqiwq"]
+[ext_resource type="Script" path="res://Scoreboard.gd" id="4_0pkab"]
+[ext_resource type="Texture2D" uid="uid://cdkvi6f8csvgq" path="res://UI/Baseball/Ellipse 125.png" id="5_7c7ad"]
+[ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="6_b3o2h"]
+
+[node name="BaseballField" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 14.0
+offset_right = -1.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xo7bt")
+current_base = 0
+
+[node name="BaseballFieldBG" type="Sprite2D" parent="."]
+position = Vector2(95, 61)
+scale = Vector2(0.0706183, 0.0706183)
+texture = ExtResource("1_1e345")
+
+[node name="Batter" type="Sprite2D" parent="."]
+position = Vector2(96, 91)
+scale = Vector2(0.0860866, 0.0860866)
+texture = ExtResource("2_pvk16")
+offset = Vector2(0, -104.546)
+
+[node name="Scoreboard" type="Sprite2D" parent="."]
+position = Vector2(243, 53)
+scale = Vector2(0.148387, 0.148387)
+texture = ExtResource("3_tqiwq")
+script = ExtResource("4_0pkab")
+
+[node name="StrikePoint1" type="Sprite2D" parent="Scoreboard"]
+visible = false
+position = Vector2(29.1346, -78.6917)
+scale = Vector2(1.18369, 1.18369)
+texture = ExtResource("5_7c7ad")
+
+[node name="StrikePoint2" type="Sprite2D" parent="Scoreboard"]
+visible = false
+position = Vector2(165.951, -78.3426)
+scale = Vector2(1.19339, 1.19339)
+texture = ExtResource("5_7c7ad")
+
+[node name="Out1" type="Sprite2D" parent="Scoreboard"]
+visible = false
+position = Vector2(30.3261, 66.2898)
+scale = Vector2(1.21679, 1.15694)
+texture = ExtResource("5_7c7ad")
+
+[node name="Out2" type="Sprite2D" parent="Scoreboard"]
+visible = false
+position = Vector2(164.53, 60.6519)
+scale = Vector2(1.23287, 1.12319)
+texture = ExtResource("5_7c7ad")
+
+[node name="Score" type="Label" parent="Scoreboard"]
+anchors_preset = -1
+anchor_right = 0.0218121
+anchor_bottom = 0.0548387
+offset_left = -1037.83
+offset_top = -13.4784
+offset_right = -830.826
+offset_bottom = 208.522
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 120
+theme_override_fonts/font = ExtResource("6_b3o2h")
+theme_override_font_sizes/font_size = 115
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="HomeBase" type="Marker2D" parent="."]
+position = Vector2(96, 91)
+
+[node name="FirstBase" type="Marker2D" parent="."]
+position = Vector2(161, 59)
+
+[node name="SecondBase" type="Marker2D" parent="."]
+position = Vector2(96, 30)
+
+[node name="ThirdBase" type="Marker2D" parent="."]
+position = Vector2(29, 59)
