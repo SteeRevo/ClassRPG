@@ -11,7 +11,7 @@ attack = 5
 defense = 8
 speed = 4
 technique = 2
-bg = 1
+bg = 2
 is_enemy = false
 spirits = {
 "Down": ExtResource("2_dy0sv"),

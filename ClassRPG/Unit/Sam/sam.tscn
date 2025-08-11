@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c5k6qoafi2xk0"]
 
 [ext_resource type="Script" path="res://Unit/Sam/Sam.gd" id="1_x5loh"]
-[ext_resource type="Texture2D" uid="uid://cy4wsylgtavfy" path="res://Unit/Sam/Sam2_Sam2_texture.png" id="2_f4r2x"]
+[ext_resource type="Texture2D" uid="uid://cbplgklq75tmo" path="res://Unit/Sam/Sam2_texture.png" id="2_npeka"]
 [ext_resource type="Texture2D" uid="uid://b0fjigct840ee" path="res://Unit/BB/swingvfx.png" id="3_wdcf7"]
 [ext_resource type="AnimationLibrary" uid="uid://016oettpbbvc" path="res://Unit/Sam/sam_animation.res" id="4_56x08"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="4_57eq3"]
@@ -14,7 +14,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("2_f4r2x")
+emission_texture = ExtResource("2_npeka")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j1g1h"]
 resource_name = "Sam2_Cube_005"
@@ -279,13 +279,6 @@ point_count = 5
 [node name="Sam" type="Node3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.58088, -0.0559146, 0)
 script = ExtResource("1_x5loh")
-max_health = 10
-current_health = 7
-current_sp = 7
-max_sp = 10
-attack = 10
-defense = 3
-technique = 10
 
 [node name="Sam2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01171, 0)

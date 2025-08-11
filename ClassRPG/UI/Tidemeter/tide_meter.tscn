@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://c00ewvvxvdbjc"]
+
+[ext_resource type="Script" path="res://TideMeter.gd" id="1_7gj04"]
+[ext_resource type="Texture2D" uid="uid://bgqnqnaufk0ve" path="res://UI/Tidemeter/LowTide.png" id="2_3tkew"]
+[ext_resource type="Texture2D" uid="uid://cyrl1dxwb84sv" path="res://UI/Tidemeter/HighTide.png" id="3_1bm53"]
+[ext_resource type="Shader" path="res://wave.gdshader" id="4_shtco"]
+
+[sub_resource type="Gradient" id="Gradient_0p72d"]
+colors = PackedColorArray(0, 0, 0, 1, 0.570313, 0.0117188, 0.9375, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y5f7q"]
+gradient = SubResource("Gradient_0p72d")
+fill_from = Vector2(1, 0.34188)
+fill_to = Vector2(0.67094, 0.316239)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6prh"]
+shader = ExtResource("4_shtco")
+shader_parameter/progress = 0.5
+shader_parameter/background_color = Color(0.501961, 0.501961, 0.501961, 0)
+shader_parameter/wave_amplitude = 0.046
+shader_parameter/wave_frequency = 4.715
+shader_parameter/wave_speed = 3.627
+shader_parameter/particle_speed = 0.05
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.01
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0)
+shader_parameter/particle_start_scale = Vector2(0.02, 0.02)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.5
+shader_parameter/particle_amount = 0
+shader_parameter/color_gradient = SubResource("GradientTexture2D_y5f7q")
+
+[node name="TideMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7gj04")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 130.0
+offset_right = 134.0
+offset_bottom = 2033.0
+scale = Vector2(0.15, 0.15)
+max_value = 95.0
+value = 95.0
+fill_mode = 3
+texture_under = ExtResource("2_3tkew")
+texture_progress = ExtResource("3_1bm53")
+texture_progress_offset = Vector2(-4.075, 29.325)
+
+[node name="ColorRect" type="ColorRect" parent="TextureProgressBar"]
+material = SubResource("ShaderMaterial_w6prh")
+layout_mode = 0
+offset_top = 200.0
+offset_right = 288.0
+offset_bottom = 318.0
+rotation = -1.56463
+scale = Vector2(1.02, 1.02)
+color = Color(0.570313, 0.0117188, 0.9375, 1)
+
+[connection signal="changed" from="TextureProgressBar" to="." method="_on_texture_progress_bar_changed"]
+[connection signal="value_changed" from="TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

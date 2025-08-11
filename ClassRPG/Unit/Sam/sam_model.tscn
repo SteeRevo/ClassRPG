@@ -1,15 +1,16 @@
 [gd_scene load_steps=24 format=3 uid="uid://ngqqjj8gq5qa"]
 
-[ext_resource type="Texture2D" uid="uid://cy4wsylgtavfy" path="res://Unit/Sam/Sam2_Sam2_texture.png" id="1_5eogx"]
+[ext_resource type="Texture2D" uid="uid://cbplgklq75tmo" path="res://Unit/Sam/Sam2_texture.png" id="1_wfbr7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy3st"]
 resource_name = "mat_sam"
 cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_wfbr7")
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("1_5eogx")
+emission_texture = ExtResource("1_wfbr7")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j1g1h"]
 resource_name = "Sam2_Cube_005"

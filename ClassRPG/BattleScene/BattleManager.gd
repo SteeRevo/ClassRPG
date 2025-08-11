@@ -52,6 +52,7 @@ var current_unit
 
 @onready var turnBar = $Control/TurnBar
 @onready var baseballField = $Control/BaseballField
+@onready var tidemeter = $Control/TideMeter
 
 @onready var states_map = {
 	'playerturn': $States/PlayerTurn,
@@ -87,7 +88,7 @@ func _ready():
 	current_state = states_stack[0]
 	start_battle()
 	SceneTransitionManager.connect("transition_finished", Callable(self, "start_fight"))
-	baseballField.connect("batter_finished", Callable())
+	#baseballField.connect("batter_finished", Callable())
 	if autostart:
 		SceneTransitionManager.play_battle_exit()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=54 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
 [ext_resource type="Material" uid="uid://d3frj2ijy6g1b" path="res://BattleScene/Battleground/backgroundMat.tres" id="15_thxja"]
+[ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="16_6k5cg"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="18_ytc6m"]
 [ext_resource type="Script" path="res://BattleScene/SkillDamage.gd" id="21_2hxki"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 [ext_resource type="PackedScene" uid="uid://c4o2w5w1metci" path="res://UI/Baseball/baseball_field.tscn" id="34_algih"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
+[ext_resource type="PackedScene" uid="uid://c00ewvvxvdbjc" path="res://UI/Tidemeter/tide_meter.tscn" id="35_1wgjm"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="35_crou5"]
 [ext_resource type="Texture2D" uid="uid://djvqqxwggsqpk" path="res://BattleScene/Battleground/Ellipse 112.png" id="37_8mc0k"]
 [ext_resource type="Texture2D" uid="uid://wctvgm4t355v" path="res://BattleScene/Battleground/triangle.png" id="38_jlnf2"]
@@ -231,7 +233,7 @@ transform = Transform3D(0.154086, 0.987039, 0.0456141, 0.987999, -0.154375, 0.00
 transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321423, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
 
 [node name="PathFollow3D" parent="BattleManager/PlayerUnits/Phyllis/CameraPath" index="0"]
-transform = Transform3D(0.99989, -0.000441822, -0.012604, 1.45515e-11, 0.999346, -0.0350324, 0.0126117, 0.035029, 0.999284, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(0.99989, -0.000441821, -0.012604, 1.45515e-11, 0.999345, -0.0350324, 0.0126117, 0.0350289, 0.999284, -4.24709, 0.569662, -4.6139)
 path_prog = 20.0
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
@@ -298,6 +300,8 @@ surface_material_override/0 = ExtResource("15_thxja")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
+
+[node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_6k5cg")]
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 
@@ -741,6 +745,14 @@ offset_right = 1150.0
 offset_bottom = 640.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="TideMeter" parent="BattleManager/Control" instance=ExtResource("35_1wgjm")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.267
+anchor_bottom = 1.256
+offset_right = 0.228882
+offset_bottom = 0.18396
 
 [node name="Cameras" type="Node" parent="BattleManager"]
 

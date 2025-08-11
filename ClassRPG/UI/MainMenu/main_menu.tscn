@@ -2,17 +2,17 @@
 
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="1_8uxdx"]
 [ext_resource type="Script" path="res://UI/MainMenu/main_menu.gd" id="1_jtvc2"]
-[ext_resource type="Texture2D" uid="uid://dsint13ncqad" path="res://Unit/BB/BB_bb_tex.png" id="1_vftul"]
 [ext_resource type="Script" path="res://UI/MainMenu/MenuBase.gd" id="2_d557c"]
 [ext_resource type="Texture2D" uid="uid://drltfoosqwb13" path="res://Unit/Phyllis/Sophia_tex_char.png" id="2_debv6"]
-[ext_resource type="Texture2D" uid="uid://cy4wsylgtavfy" path="res://Unit/Sam/Sam2_Sam2_texture.png" id="3_aicgt"]
 [ext_resource type="Script" path="res://UI/MainMenu/EquipSpirit.gd" id="3_vxgku"]
 [ext_resource type="Script" path="res://UI/MainMenu/EquipUnit.gd" id="4_u6vmc"]
 [ext_resource type="Script" path="res://UI/MainMenu/SpiritAttach.gd" id="5_c7el5"]
 [ext_resource type="Environment" uid="uid://b34liytj0udcl" path="res://UI/MainMenu/main_menu_environment.tres" id="6_8x3yo"]
 [ext_resource type="Script" path="res://UI/MainMenu/Status.gd" id="6_koqaa"]
+[ext_resource type="Texture2D" uid="uid://dlho3cs3cwv3m" path="res://Unit/BB/bb_tex.png" id="7_jlliv"]
 [ext_resource type="Texture2D" uid="uid://ddxed61l238lx" path="res://UI/PlayerTurn/MoveCircle.png" id="7_ttlqe"]
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="7_urfvy"]
+[ext_resource type="Texture2D" uid="uid://cbplgklq75tmo" path="res://Unit/Sam/Sam2_texture.png" id="9_l7awa"]
 [ext_resource type="Script" path="res://UI/MainMenu/EquipSpiritContainer.gd" id="10_4vnr4"]
 [ext_resource type="Script" path="res://UI/MainMenu/CameraEquip.gd" id="10_ut0a8"]
 [ext_resource type="Script" path="res://UI/MainMenu/EquipUnitMenu.gd" id="14_7dwrf"]
@@ -28,9 +28,10 @@ resource_name = "m_char"
 cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("7_jlliv")
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("1_vftul")
+emission_texture = ExtResource("7_jlliv")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p3s8j"]
 resource_name = "BB_Cube_005"
@@ -6873,7 +6874,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("3_aicgt")
+emission_texture = ExtResource("9_l7awa")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j1g1h"]
 resource_name = "Sam2_Cube_005"

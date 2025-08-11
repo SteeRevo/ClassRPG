@@ -10,11 +10,13 @@ var current_ally = null
 var current_unit = null
 var tweened = 0
 var not_attack = ["Rotate", "0tpose", "Guard"]
+var total_damage = 0
 
 func enter(host):
 	host.enemySelector.visible = false
 	host.stateName.set_state_name("completing action")
 	current_unit = host.current_unit
+	total_damage = 0
 	host.current_unit.available = false
 	host.current_unit.anim_finished.connect(_on_animation_finished)
 	host.current_unit.tween_finished.connect(_on_tween_finished)
@@ -71,7 +73,10 @@ func _on_tween_finished():
 		moved_to_enemy = true
 		play_animation(host_ref)
 	elif current_action == "Attack" and moved_to_enemy:
-		host_ref.baseballField.batter_run()
+		if host_ref.current_unit.enemy_unit == false:
+			host_ref.baseballField.batter_run()
+		elif host_ref.current_unit.enemy_unit:
+			host_ref.tidemeter.update_tide(total_damage * 10)
 		host_ref.end_turn()
 		
 func _on_attack_hit():
@@ -173,17 +178,6 @@ func check_enemy_death(enemy):
 
 func play_animation(host):
 	var move = input_arr.pop_front()
-	match move:
-		"Left":
-			host.current_unit.play_left()
-		"Right":
-			host.current_unit.play_right()
-		"Up":
-			host.current_unit.play_up()
-		"Down":
-			host.current_unit.play_down()
-		_:
-			pass
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
@@ -195,6 +189,7 @@ func calc_damage(host, skill):
 			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 			host.skillDamage._add_skill_damage(damage)
+			total_damage += damage
 		else:
 			print("New skill unlocked")
 			current_skill = host.current_unit.set_skill_active(skill)
@@ -204,6 +199,7 @@ func calc_damage(host, skill):
 	else:
 		print(skill)
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+		total_damage = damage
 		host.current_unit.play_skill(skill)
 	
 func set_active_camera(host, camera):
