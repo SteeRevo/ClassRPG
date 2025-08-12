@@ -88,6 +88,7 @@ func _ready():
 	current_state = states_stack[0]
 	start_battle()
 	SceneTransitionManager.connect("transition_finished", Callable(self, "start_fight"))
+	playerTurnUI.play_enter_health()
 	#baseballField.connect("batter_finished", Callable())
 	if autostart:
 		SceneTransitionManager.play_battle_exit()

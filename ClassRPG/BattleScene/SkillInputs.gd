@@ -10,9 +10,7 @@ func enter(host):
 	host.enemySelector.visible = false
 	host.inputMoves.visible = true
 	host.inputMoves.set_active_unit_movelist_visible(host.current_unit)
-	host.playerTurnUI.set_name_visible(host.current_unit.name)
-	host.playerTurnUI.update_health(host.current_unit)
-	host.playerTurnUI.play_enter_health()
+	
 	isConfirming = false
 
 func handle_input(host, event):
@@ -137,5 +135,4 @@ func check_skill_inputs(host):
 
 func exit(host):
 	host.inputMoves.visible = false
-	host.playerTurnUI.play_exit_health()
 	host.inputMoves.inputtedMoves.clear_all_arrows()

@@ -19,7 +19,6 @@ func update(host, delta):
 func set_active_camera(host, camera):
 	current_cam = camera
 	camera.move_to(host.current_unit.get_camera_path().global_position)
-	host.current_unit.get_camera_path().start()
 
 
 func _on_enemy_timer_timeout():

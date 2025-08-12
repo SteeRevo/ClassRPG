@@ -5,6 +5,7 @@ extends "../PlayerUnit.gd"
 
 signal anim_finished
 
+@onready var attack_cam_pos = $AttackCamPosition
 
 
 # Called when the node enters the scene tree for the first time.

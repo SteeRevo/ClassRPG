@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c00ewvvxvdbjc"]
 
 [ext_resource type="Script" path="res://TideMeter.gd" id="1_7gj04"]
-[ext_resource type="Texture2D" uid="uid://bgqnqnaufk0ve" path="res://UI/Tidemeter/LowTide.png" id="2_3tkew"]
+[ext_resource type="Texture2D" uid="uid://c5gwnf8qdc4yd" path="res://UI/Tidemeter/LowTide(1).png" id="2_0du80"]
 [ext_resource type="Texture2D" uid="uid://cyrl1dxwb84sv" path="res://UI/Tidemeter/HighTide.png" id="3_1bm53"]
 [ext_resource type="Shader" path="res://wave.gdshader" id="4_shtco"]
 
@@ -50,16 +50,17 @@ scale = Vector2(0.15, 0.15)
 max_value = 95.0
 value = 95.0
 fill_mode = 3
-texture_under = ExtResource("2_3tkew")
+texture_under = ExtResource("2_0du80")
 texture_progress = ExtResource("3_1bm53")
-texture_progress_offset = Vector2(-4.075, 29.325)
+texture_progress_offset = Vector2(23.315, 61.73)
 
 [node name="ColorRect" type="ColorRect" parent="TextureProgressBar"]
 material = SubResource("ShaderMaterial_w6prh")
 layout_mode = 0
-offset_top = 200.0
-offset_right = 288.0
-offset_bottom = 318.0
+offset_left = 26.6667
+offset_top = 220.0
+offset_right = 314.667
+offset_bottom = 338.0
 rotation = -1.56463
 scale = Vector2(1.02, 1.02)
 color = Color(0.570313, 0.0117188, 0.9375, 1)

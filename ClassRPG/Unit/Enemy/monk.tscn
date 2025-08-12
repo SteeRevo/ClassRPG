@@ -1908,7 +1908,6 @@ curve = SubResource("Curve3D_8n30l")
 transform = Transform3D(-0.00618595, -0.0533813, -0.998531, -0.669188, 0.742201, -0.0355329, 0.743027, 0.667999, -0.0403149, -0.545976, 0.58995, -8.18432)
 progress = 5.61204
 script = ExtResource("2_ephwc")
-path_prog = 0.25
 is_enemy = true
 
 [node name="AttackCam" type="Camera3D" parent="."]
@@ -2134,5 +2133,8 @@ skin = SubResource("Skin_2jrea")
 [node name="Sphere" type="MeshInstance3D" parent="monk/metarig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_unejo")
 skin = SubResource("Skin_2jrea")
+
+[node name="AttackCamPosition" type="Marker3D" parent="."]
+transform = Transform3D(-12.0451, 4.05536, -9.71958, 0, 14.7662, 6.16101, 10.5317, 4.63812, -11.1163, 4.80976, 5.64544, 2.6338)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

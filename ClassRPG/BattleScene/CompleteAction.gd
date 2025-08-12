@@ -11,6 +11,8 @@ var current_unit = null
 var tweened = 0
 var not_attack = ["Rotate", "0tpose", "Guard"]
 var total_damage = 0
+var current_cam = null
+var skill_cam = false
 
 func enter(host):
 	host.enemySelector.visible = false
@@ -80,8 +82,16 @@ func _on_tween_finished():
 		host_ref.end_turn()
 		
 func _on_attack_hit():
+	host_ref.skillDamage.visible = true
 	current_enemy.play_getting_hit()
+	host_ref.skillDamage.update_text()
+	for unit in host_ref.player_units:
+		host_ref.playerTurnUI.update_health(unit)
 	print(current_enemy.name)
+	
+func update(host, delta):
+	host.active_camera.move_to(current_cam.global_position, 0.1)
+	host.active_camera.rotate_to(current_cam.rotation, 0.1)
 	
 func exit(host):
 	if host.current_unit.tween_finished.is_connected(_on_tween_finished):
@@ -104,6 +114,7 @@ func exit(host):
 	host.current_selected_ally = null
 	host.skill_stack = []
 	host.skillDamage._reset_damage()
+	host_ref.skillDamage.visible = false
 	moved_to_enemy = false
 	current_unit = null
 	tweened = 0
@@ -188,24 +199,30 @@ func calc_damage(host, skill):
 		if current_skill != null:
 			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
-			host.skillDamage._add_skill_damage(damage)
+			host_ref.skillDamage._add_skill_damage(damage)
+			host_ref.skillDamage.set_skill_name(skill)
 			total_damage += damage
 		else:
 			print("New skill unlocked")
 			current_skill = host.current_unit.set_skill_active(skill)
 			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
-			host.skillDamage._add_skill_damage(damage)
 	else:
 		print(skill)
 		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 		total_damage = damage
 		host.current_unit.play_skill(skill)
+		host_ref.skillDamage._add_skill_damage(damage)
+		host_ref.skillDamage.set_skill_name(skill)
 	
 func set_active_camera(host, camera):
-	host.active_camera.current = false
-	camera.current = true
-	host.active_camera = camera
+	#host.active_camera.current = false
+	#camera.current = true
+	#host.active_camera = camera
+	current_cam = camera
+	
+
+	
 	
 func guard(host):
 	host.current_unit.set_guard()

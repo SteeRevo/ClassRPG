@@ -19,14 +19,12 @@ func enter(host):
 	print("Attack: " , host.current_unit.get_attack())
 	print("Defense: ", host.current_unit.get_defense())
 	print("Technique: ", host.current_unit.get_technique())
-	host.playerTurnUI.reset_names()
-	host.playerTurnUI.set_name_visible(host.current_unit.name)
 	host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.play_enter_anim()
 	
 	
 func update(host, delta):
-	current_cam.move_to(host.current_unit.get_camera_path().global_position)
+	current_cam.move_to(host.current_unit.get_camera_path().global_position, 0.5)
 	if host.current_unit.name == "Sam":
 		current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
 	else:
@@ -90,7 +88,8 @@ func exit(host):
 func set_active_camera(host, camera):
 	
 	current_cam = camera
+	host.current_unit.get_camera_path().reset_progress()
 	camera.move_to(host.current_unit.get_camera_path().global_position)
-	host.current_unit.get_camera_path().start()
+	
 	
 	

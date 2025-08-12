@@ -26,6 +26,7 @@ func _ready():
 	skill2.delay = 5
 	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
 	
+
 	var skill3 = Skill.new()
 	skill3.skillname = "Rooster: Flame"
 	skill3.damage = 0

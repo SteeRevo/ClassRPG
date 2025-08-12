@@ -26,7 +26,7 @@ func _physics_process(delta):
 			if direction:
 				velocity.x = direction.x * SPEED
 				velocity.z = direction.z * SPEED
-				$Phyllis.look_at(global_position + direction, Vector3.UP)
+				$Phyllis.look_at(global_position - direction, Vector3.UP)
 				play_walk()
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)

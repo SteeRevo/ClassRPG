@@ -3704,7 +3704,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.62273, 0.117663, -
 script = ExtResource("1_rnhxr")
 
 [node name="Phyllis" type="Node3D" parent="."]
-transform = Transform3D(-0.999823, 0, -0.0188662, 0, 1, 0, 0.0188662, 0, -0.999823, 0, 0, 0)
+transform = Transform3D(0.996435, 0, 0.0843739, 0, 1, 0, -0.0843739, 0, 0.996435, 0, 0, 0)
 
 [node name="metarig" type="Node3D" parent="Phyllis"]
 transform = Transform3D(-0.999493, 0, -0.0318403, 0, 1, 0, 0.0318403, 0, -0.999493, 0.07761, -0.359205, 0.164728)
@@ -3969,13 +3969,13 @@ modulate = Color(0.682353, 0.643137, 0.831373, 1)
 texture = ExtResource("3_t48aw")
 
 [node name="UnitCam" type="Node3D" parent="."]
-transform = Transform3D(0.810625, 0, -0.585566, 0, 1, 0, 0.585566, 0, 0.810625, 6.22548, 15.5384, -11.0963)
+transform = Transform3D(3.48644, 0.512375, -1.89267, 0, 3.86102, 1.04524, 1.9608, -0.911038, 3.3653, -3.7264, 14.858, 7.65834)
 
 [node name="Filter" parent="UnitCam" instance=ExtResource("4_b7jng")]
 visible = false
 
 [node name="AttackCam" type="Camera3D" parent="."]
-transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321423, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
+transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321422, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
 fov = 58.0
 
 [node name="Filter" parent="AttackCam" instance=ExtResource("4_b7jng")]
@@ -3992,7 +3992,12 @@ transform = Transform3D(0.0869581, -0.0479371, -3.56576, 0.0011687, 3.56682, -0.
 curve = SubResource("Curve3D_fb1y4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(0.99989, -0.000441824, -0.012604, 1.45515e-11, 0.999352, -0.0350324, 0.0126117, 0.0350292, 0.999284, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(-0.74754, -0.354363, 0.56173, -0.434368, 0.900636, -0.00988379, -0.502429, -0.251392, -0.827226, 2.96077, 0.41971, -2.11953)
+progress = 15.4736
 script = ExtResource("4_x1g17")
+path_prog = 15
+
+[node name="AttackCamPosition" type="Marker3D" parent="."]
+transform = Transform3D(13.2875, 1.49375, -8.78698, 0, 15.7737, 2.68147, 8.91304, -2.22687, 13.0996, -7.20176, 14.6277, 14.0538)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

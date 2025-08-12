@@ -15,12 +15,10 @@ extends Control
 @onready var upPhil = $Arrows/UpArrow/UpArrowPhyliss
 @onready var downPhil = $Arrows/DownArrow/DownArrowPhyliss
 
-@onready var playerHealthbar = $Control/HealthBar
-@onready var healthNumber = $Control/HealthNumber
-@onready var spNumber = $Control/SpNumber
-@onready var samName = $Control/SamName
-@onready var bbName = $Control/BBName
-@onready var philName = $Control/PhylissName
+@onready var philHealthbar = $Control/HealthBarPhil
+@onready var samHealthbar = $Control/HealthBarSam
+@onready var bbHealthbar = $Control/HealthBarBB
+
 
 var samArrows
 var bbArrows
@@ -30,31 +28,22 @@ func _ready():
 	samArrows = [leftSam, rightSam, upSam, downSam]
 	bbArrows = [leftBB, rightBB, upBB, downBB]
 	philArrows = [leftPhil, rightPhil, upPhil, downPhil]
-	visible = false
-	play_exit_anim()
+	#play_exit_anim()
 	
 func update_health(unit):
 	var current_hp = unit._get_health()
 	var max_hp = unit.get_max_health()
-	healthNumber.text = str(current_hp)
-	playerHealthbar.max_value = max_hp
-	playerHealthbar.value = current_hp
-	
-
-
-func set_name_visible(unit_name):
-	match unit_name:
-		"Sam":
-			samName.visible = true
-		"BB":
-			bbName.visible = true
+	match unit.name:
 		"Phyllis":
-			philName.visible = true
-			
-func reset_names():
-	samName.visible = false
-	bbName.visible = false
-	philName.visible = false
+			philHealthbar.max_value = max_hp
+			philHealthbar.value = current_hp
+		"Sam":
+			samHealthbar.max_value = max_hp
+			samHealthbar.value = current_hp
+		"BB":
+			bbHealthbar.max_value = max_hp
+			bbHealthbar.value = current_hp
+	
 
 
 func set_arrow_outline(unit_name, arrow):
@@ -108,12 +97,9 @@ func play_exit_anim():
 	$AnimationPlayer.play("Exit")
 	
 	
-func play_exit_health():
-	$AnimationPlayer.play_backwards("Health_enter")
 	
 func play_enter_health():
 	$AnimationPlayer.play("Health_enter")
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "Exit":
-		reset_names()
+	pass

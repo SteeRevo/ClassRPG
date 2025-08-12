@@ -5,6 +5,7 @@ var waiting = true
 
 func enter(host):
 	host.stateName.set_state_name("Choose turn")
+	
 	set_active_camera(host, host.mainBattleCamera)
 	host.current_unit = null
 	for unit in host.player_units:
@@ -16,7 +17,7 @@ func enter(host):
 			print(unit.name)
 			unit.play_battle_idle()
 	host.start_turn_tracker()
-
+	
 
 func choose_turn(host):
 	if len(host.enemy_units) == 0:

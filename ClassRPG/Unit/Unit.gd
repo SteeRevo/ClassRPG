@@ -18,7 +18,7 @@ enum battleGrounds {F, TW, BW, B}
 @onready var enemy_unit
 @onready var available = true
 @onready var camera_path = $CameraPath/PathFollow3D
-@onready var attack_cam = $AttackCam
+@onready var attack_cam = $AttackCamPosition
 @onready var attack_cam_base_position = attack_cam.global_position
 @onready var attack_cam_base_rotation = attack_cam.rotation
 @onready var moveSpeed = 15

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -31,9 +31,7 @@
 [ext_resource type="Script" path="res://BattleScene/InputMoves.gd" id="31_brdih"]
 [ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
 [ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
-[ext_resource type="Texture2D" uid="uid://ci3p8yi1ywe73" path="res://UI/PlayerTurn/HealthMana/MaxSoul.png" id="32_wf06l"]
 [ext_resource type="Script" path="res://BattleScene/InputtedMoves.gd" id="33_iiblf"]
-[ext_resource type="Texture2D" uid="uid://cgt4f5t3xwgov" path="res://UI/PlayerTurn/HealthMana/CurrentSoul.png" id="33_uef4v"]
 [ext_resource type="PackedScene" uid="uid://c4o2w5w1metci" path="res://UI/Baseball/baseball_field.tscn" id="34_algih"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
 [ext_resource type="PackedScene" uid="uid://c00ewvvxvdbjc" path="res://UI/Tidemeter/tide_meter.tscn" id="35_1wgjm"]
@@ -76,22 +74,10 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
+tracks/0/path = NodePath("Arrows:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1235, 706), Vector2(988, 537)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arrows:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -105,22 +91,10 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
+tracks/0/path = NodePath("Arrows:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(988, 537), Vector2(1235, 706)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arrows:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -224,20 +198,10 @@ script = ExtResource("11_f76x8")
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
-transform = Transform3D(-0.24724, 0, 0.037043, 0, 0.25, 0, -0.037043, 0, -0.24724, 1.61929, 0.117663, -11.4939)
-
-[node name="BoneAttachment3D" parent="BattleManager/PlayerUnits/Phyllis/Phyllis/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.154086, 0.987039, 0.0456141, 0.987999, -0.154375, 0.00281047, 0.00981454, 0.0446325, -0.998922, 5.80483, 13.7445, 0.656026)
-
-[node name="AttackCam" parent="BattleManager/PlayerUnits/Phyllis" index="2"]
-transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321423, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
-
-[node name="PathFollow3D" parent="BattleManager/PlayerUnits/Phyllis/CameraPath" index="0"]
-transform = Transform3D(0.99989, -0.000441821, -0.012604, 1.45515e-11, 0.999345, -0.0350324, 0.0126117, 0.0350289, 0.999284, -4.24709, 0.569662, -4.6139)
-path_prog = 20.0
+transform = Transform3D(0.248882, 0, 0.0236138, 0, 0.25, 0, -0.0236138, 0, 0.248882, 1.61929, 0.117663, -11.4939)
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
-transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -5.78837, 0.136662, -5.80816)
+transform = Transform3D(0.247517, 0, 0.0351476, 0, 0.25, 0, -0.0351476, 0, 0.247517, -5.78837, 0.136662, -5.80816)
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -374,16 +338,32 @@ offset_top = 1.0
 offset_right = 913.0
 offset_bottom = 512.0
 
-[node name="SkillDamage" type="TextEdit" parent="BattleManager/Control"]
+[node name="SkillDamage" type="Label" parent="BattleManager/Control"]
 visible = false
 layout_mode = 0
-offset_left = 8.0
-offset_top = 47.0
-offset_right = 137.0
-offset_bottom = 88.0
+offset_left = 298.0
+offset_top = 62.0
+offset_right = 746.0
+offset_bottom = 117.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
 theme_override_fonts/font = ExtResource("18_ytc6m")
-text = "Damage: "
+theme_override_font_sizes/font_size = 51
+text = "0"
+horizontal_alignment = 1
 script = ExtResource("21_2hxki")
+
+[node name="Label" type="Label" parent="BattleManager/Control/SkillDamage"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = -33.0
+offset_right = 301.0
+offset_bottom = 3.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 35
+theme_override_fonts/font = ExtResource("18_ytc6m")
+text = "total Damage"
+horizontal_alignment = 1
 
 [node name="Skillname" type="TextEdit" parent="BattleManager/Control"]
 visible = false
@@ -572,83 +552,36 @@ metadata/_edit_use_anchors_ = true
 [node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(1225, 707)
 rotation = -0.785397
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.395, 0.395)
 
-[node name="HealthBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -194.0
-offset_top = -264.0
-offset_right = 217.0
-offset_bottom = 147.0
+[node name="HealthBarPhil" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -493.713
+offset_top = -430.001
+offset_right = -82.7134
+offset_bottom = -19.001
 max_value = 10.0
 value = 10.0
 texture_under = ExtResource("30_b4gh5")
 texture_progress = ExtResource("31_qdvtd")
 texture_progress_offset = Vector2(61.505, 189.025)
 
-[node name="SpBar" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -169.706
-offset_top = -167.348
-offset_right = 229.294
-offset_bottom = 232.652
-max_value = 10.0
-value = 10.0
-texture_under = ExtResource("32_wf06l")
-texture_progress = ExtResource("33_uef4v")
-texture_progress_offset = Vector2(35.46, 168.21)
-
-[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -113.137
-offset_top = -103.709
-offset_right = -32.1373
-offset_bottom = -63.7087
+[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarPhil"]
+layout_mode = 0
+offset_left = 76.6097
+offset_top = 145.369
+offset_right = 157.609
+offset_bottom = 185.369
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 40
 text = "10"
 
-[node name="SpNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = 9.42801
-offset_top = 44.7834
-offset_right = 90.428
-offset_bottom = 84.7834
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 40
-text = "10"
-
-[node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
-visible = false
-offset_left = -100.174
-offset_top = -50.6758
-offset_right = 177.826
-offset_bottom = 32.3242
-theme_override_colors/default_color = Color(0.843137, 0.996078, 0.0980392, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 80
-text = "sam"
-
-[node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
-visible = false
-offset_left = -51.8546
-offset_top = -44.7833
-offset_right = 226.145
-offset_bottom = 38.2167
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 80
-text = "BB
-"
-
-[node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control"]
-visible = false
-offset_left = -111.959
-offset_top = -36.5337
-offset_right = 407.041
-offset_bottom = 46.4663
+[node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarPhil"]
+layout_mode = 0
+offset_left = 83.7704
+offset_top = 231.295
+offset_right = 602.77
+offset_bottom = 314.295
 theme_override_colors/default_color = Color(0.605469, 0.0898438, 0.996094, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
@@ -657,29 +590,99 @@ theme_override_font_sizes/normal_font_size = 50
 text = "phyliss
 "
 
+[node name="HealthBarSam" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -316.489
+offset_top = -227.715
+offset_right = 94.511
+offset_bottom = 183.285
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("30_b4gh5")
+texture_progress = ExtResource("31_qdvtd")
+texture_progress_offset = Vector2(61.505, 189.025)
+
+[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarSam"]
+layout_mode = 0
+offset_left = 66.5328
+offset_top = 155.168
+offset_right = 147.533
+offset_bottom = 195.168
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
+theme_override_font_sizes/normal_font_size = 40
+text = "10"
+
+[node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarSam"]
+layout_mode = 0
+offset_left = 96.3013
+offset_top = 222.345
+offset_right = 374.301
+offset_bottom = 305.345
+theme_override_colors/default_color = Color(0.843137, 0.996078, 0.0980392, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
+theme_override_font_sizes/normal_font_size = 80
+text = "sam"
+
+[node name="HealthBarBB" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
+offset_left = -98.0912
+offset_top = -9.31787
+offset_right = 312.909
+offset_bottom = 401.682
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("30_b4gh5")
+texture_progress = ExtResource("31_qdvtd")
+texture_progress_offset = Vector2(61.505, 189.025)
+
+[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarBB"]
+layout_mode = 0
+offset_left = 74.8195
+offset_top = 154.319
+offset_right = 155.819
+offset_bottom = 194.32
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
+theme_override_font_sizes/normal_font_size = 40
+text = "10"
+
+[node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarBB"]
+layout_mode = 0
+offset_left = 124.944
+offset_top = 233.086
+offset_right = 402.943
+offset_bottom = 316.086
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/normal_font = ExtResource("18_ytc6m")
+theme_override_font_sizes/normal_font_size = 80
+text = "BB
+"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Control/PlayerTurnUI"]
 libraries = {
 "": SubResource("AnimationLibrary_p7deb")
 }
 
 [node name="InputMoves" type="Control" parent="BattleManager/Control"]
-visible = false
 anchors_preset = 0
 offset_right = 1151.0
 offset_bottom = 646.0
 script = ExtResource("31_brdih")
 
 [node name="Menu" type="Sprite2D" parent="BattleManager/Control/InputMoves"]
-position = Vector2(204.938, 262.518)
-scale = Vector2(0.848626, 0.848626)
+position = Vector2(283.584, 327.75)
+scale = Vector2(0.894876, 0.728261)
 texture = ExtResource("31_egs4q")
 
 [node name="MoveListContainerSam" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 100.0
-offset_right = 387.0
-offset_bottom = 491.0
+offset_left = 94.1684
+offset_top = 193.0
+offset_right = 466.168
+offset_bottom = 524.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerSam"]
 layout_mode = 2
@@ -688,10 +691,10 @@ size_flags_vertical = 3
 
 [node name="MoveListContainerBB" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 100.0
-offset_right = 387.0
-offset_bottom = 491.0
+offset_left = 98.1684
+offset_top = 195.0
+offset_right = 460.168
+offset_bottom = 525.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerBB"]
 layout_mode = 2
@@ -700,10 +703,10 @@ size_flags_vertical = 3
 
 [node name="MoveListContainerPhyllis" type="ScrollContainer" parent="BattleManager/Control/InputMoves"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 100.0
-offset_right = 387.0
-offset_bottom = 491.0
+offset_left = 110.168
+offset_top = 193.0
+offset_right = 446.168
+offset_bottom = 519.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleManager/Control/InputMoves/MoveListContainerPhyllis"]
 layout_mode = 2
@@ -1975,5 +1978,4 @@ texture = ExtResource("38_jlnf2")
 [connection signal="choose_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_turn"]
 [connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]
 
-[editable path="BattleManager/PlayerUnits/Phyllis"]
 [editable path="BattleManager/Control/TurnBar"]

@@ -3207,11 +3207,11 @@ _data = {
 point_count = 5
 
 [node name="BB" type="Node3D"]
-transform = Transform3D(-0.249918, 0, -0.00641339, 0, 0.25, 0, 0.00641339, 0, -0.249918, -0.0627446, 0.136662, 0.0607114)
+transform = Transform3D(0.249572, 0, 0.0146262, 0, 0.25, 0, -0.0146262, 0, 0.249572, -0.0627446, 0.136662, 0.0607114)
 script = ExtResource("1_df8cj")
 
 [node name="BB" type="Node3D" parent="."]
-transform = Transform3D(0.999927, 0, -0.0120775, 0, 1, 0, 0.0120775, 0, 0.999927, 0, 0, 0)
+transform = Transform3D(-0.997336, 0, 0.0729424, 0, 1, 0, -0.0729424, 0, -0.997336, 0, 0, 0)
 
 [node name="metarig" type="Node3D" parent="BB"]
 
@@ -3469,10 +3469,12 @@ mesh = SubResource("ArrayMesh_g4qr1")
 skeleton = NodePath("")
 
 [node name="UnitCam" type="Node3D" parent="."]
-transform = Transform3D(0.944782, 0, -0.327696, 0, 1, 0, 0.327696, 0, 0.944782, 6.65664, 10.0157, -11.134)
+transform = Transform3D(165.942, 77.4084, -178.905, 0, 234.95, 101.658, 194.933, -65.8959, 152.297, -13.5136, 16.6717, 10.9487)
 
 [node name="Filter" parent="UnitCam" instance=ExtResource("3_1r0ym")]
 visible = false
+
+[node name="Camera3D" type="Camera3D" parent="UnitCam"]
 
 [node name="AttackCam" type="Camera3D" parent="."]
 transform = Transform3D(-1.21613, -0.378472, 3.7918, 0, 3.98022, 0.397278, -3.81064, 0.120786, -1.21012, 27.7551, 15.6409, -17.8665)
@@ -3493,7 +3495,12 @@ transform = Transform3D(0.086966, 0, -3.56608, 0, 3.56714, 0, 3.56608, 0, 0.0869
 curve = SubResource("Curve3D_q3x2q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(0.999889, -0.000441823, -0.012604, 1.45515e-11, 0.99935, -0.0350323, 0.0126116, 0.0350291, 0.999283, -4.24709, 0.569662, -4.6139)
+transform = Transform3D(-0.843087, -0.406686, 0.351776, -0.433558, 0.90108, 0.00265782, -0.31807, -0.150277, -0.936052, 3.34828, 0.416396, -2.86657)
+progress = 14.63
 script = ExtResource("4_hh400")
+path_prog = 15
+
+[node name="AttackCamPosition" type="Marker3D" parent="."]
+transform = Transform3D(2886.3, 1437.6, -2525.79, 0, 3559.78, 2026.11, 2906.26, -1427.73, 2508.45, -12.0393, 17.7211, 11.6391)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

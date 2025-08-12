@@ -1,14 +1,16 @@
-extends TextEdit
+extends Label
 
 var base_damage = 0
 
 func _add_skill_damage(damage):
 	base_damage += damage
-	_update_text()
 	
 func _reset_damage():
 	base_damage = 0
-	_update_text()
+	update_text()
 
-func _update_text():
-	text = "Damage: " + str(base_damage)
+func update_text():
+	text = str(base_damage)
+	
+func set_skill_name(skillname):
+	$Label.text = skillname
