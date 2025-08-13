@@ -7,10 +7,10 @@ class_name Skill
 @export var damage: int
 @export var inputs: PackedStringArray
 @export var is_active: bool
-@export var active_position: String
+@export var active_position: PackedStringArray
 @export var position_swap = []
 
-func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _active_position = '', _position_swap = []):
+func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _active_position = [], _position_swap = []):
 	skillname = name;
 	delay = _delay
 	damage = _damage

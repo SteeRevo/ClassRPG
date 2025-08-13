@@ -16,16 +16,16 @@ func handle_input(host, event):
 		return 'previous'
 	
 	elif event.is_action_pressed("Attack"):
-		if host.BGF != host.current_unit.get_BG():
-			if host.current_unit.get_BG() != host.BGR:
+		if host.BGV != host.current_unit.get_BG():
+			if host.current_unit.get_BG() != host.BGS:
 				if last_action == "Attack":
 					print("rotating")
 					return "completeAction"
 				else:
 					host.enemySelector.visible = true
-					host.current_selected_BG = host.BGF
+					host.current_selected_BG = host.BGV
 					print("selected " + host.current_selected_BG.name)
-					host.enemySelector.set_BG_position(host.BGF)
+					host.enemySelector.set_BG_position(host.BGV)
 					print("double tap to select")
 					last_action = "Attack"
 			else:
@@ -50,16 +50,16 @@ func handle_input(host, event):
 		else:
 			print("no enemy here")
 	elif event.is_action_pressed("Guard"):
-		if host.BGR != host.current_unit.get_BG():
-			if host.current_unit.get_BG() != host.BGF:
+		if host.BGS != host.current_unit.get_BG():
+			if host.current_unit.get_BG() != host.BGV:
 				if last_action == "Guard":
 					print("rotating")
 					return "completeAction"
 				else:
 					host.enemySelector.visible = true
-					host.current_selected_BG = host.BGR
+					host.current_selected_BG = host.BGS
 					print("selected " + host.current_selected_BG.name)
-					host.enemySelector.set_BG_position(host.BGR)
+					host.enemySelector.set_BG_position(host.BGS)
 					print("double tap to select")
 					last_action = "Guard"
 			else:

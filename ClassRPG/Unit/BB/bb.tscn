@@ -3495,12 +3495,12 @@ transform = Transform3D(0.086966, 0, -3.56608, 0, 3.56714, 0, 3.56608, 0, 0.0869
 curve = SubResource("Curve3D_q3x2q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(-0.843087, -0.406686, 0.351776, -0.433558, 0.90108, 0.00265782, -0.31807, -0.150277, -0.936052, 3.34828, 0.416396, -2.86657)
+transform = Transform3D(-0.843089, -0.406687, 0.351769, -0.433558, 0.90108, 0.00265826, -0.318064, -0.150274, -0.936055, 3.34829, 0.416396, -2.8666)
 progress = 14.63
 script = ExtResource("4_hh400")
 path_prog = 15
 
 [node name="AttackCamPosition" type="Marker3D" parent="."]
-transform = Transform3D(2886.3, 1437.6, -2525.79, 0, 3559.78, 2026.11, 2906.26, -1427.73, 2508.45, -12.0393, 17.7211, 11.6391)
+transform = Transform3D(41510.9, 27729.1, -42460.1, 0, 54871.2, 35834.3, 50712.6, -22697.7, 34755.9, -15.5951, 23.7619, 14.3228)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

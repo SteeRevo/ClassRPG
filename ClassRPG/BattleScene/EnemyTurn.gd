@@ -28,7 +28,7 @@ func _on_enemy_timer_timeout():
 	print(host_ref.current_action)
 	if host_ref.current_action == "Attack":
 		host_ref.skill_stack = host_ref.current_unit.get_attack_stack()
-		host_ref.current_selected_enemy = host_ref.BGF._get_current_unit()
+		host_ref.current_selected_enemy = host_ref.BGV._get_current_unit()
 	host_ref.get_total_delay(host_ref.skill_stack)
 	host_ref.delay_turn_tracker()
 	host_ref.complete_enemy_action()

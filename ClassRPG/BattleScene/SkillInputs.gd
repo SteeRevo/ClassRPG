@@ -1,7 +1,6 @@
 extends States
 
 var isConfirming = false
-var skillInputs = []
 
 func enter(host):
 	print("Player inputs skills")
@@ -10,7 +9,7 @@ func enter(host):
 	host.enemySelector.visible = false
 	host.inputMoves.visible = true
 	host.inputMoves.set_active_unit_movelist_visible(host.current_unit)
-	
+	host.skill_sequence.clear()
 	isConfirming = false
 
 func handle_input(host, event):
@@ -23,10 +22,10 @@ func handle_input(host, event):
 			host.skill_stack.pop_back()
 			host.inputMoves.inputtedMoves.reset_arrow()
 			print(host.skill_stack)
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 			
 	elif event.is_action_pressed("Confirm"):
@@ -47,47 +46,47 @@ func handle_input(host, event):
 			host.skill_stack.pop_back()
 			print(host.skill_stack)
 			host.inputMoves.inputtedMoves.reset_arrow()
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 	
 	elif host.skill_stack.size() < BattleSettings.inputs_allowed: 
 		if event.is_action_pressed("Attack"):
 			host.skill_stack.append("Right")
 			host.inputMoves.inputtedMoves.set_arrow_direction("Right")
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 			
 		elif event.is_action_pressed("Rotate"):
 			host.skill_stack.append("Down")
 			host.inputMoves.inputtedMoves.set_arrow_direction("Down")
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 			
 		elif event.is_action_pressed("Guard"):
 			host.skill_stack.append("Left")
 			host.inputMoves.inputtedMoves.set_arrow_direction("Left")
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 			
 		elif event.is_action_pressed("Item"):
 			host.skill_stack.append("Up")
 			host.inputMoves.inputtedMoves.set_arrow_direction("Up")
-			skillInputs = check_skill_inputs(host)
-			print(skillInputs)
+			host.skill_sequence = check_skill_inputs(host)
+			print(host.skill_sequence)
 			host.reset_delay()
-			host.get_total_delay(skillInputs)
+			host.get_total_delay(host.skill_sequence)
 			host.delay_turn_tracker()
 		
 		if host.skill_stack.size() == BattleSettings.inputs_allowed:
@@ -103,6 +102,7 @@ func check_skill_inputs(host):
 	var final_skill = []
 	var latest_skill
 	var counter = 0
+	var only_skills = []
 	for input in host.skill_stack:
 		counter += 1
 		input_arr.push_back(input)
@@ -127,10 +127,15 @@ func check_skill_inputs(host):
 			
 		if (skill_name == null or skill_name == "") and latest_skill != null:
 			input_arr.insert(len(input_arr) - 1, latest_skill)
+			only_skills.append(latest_skill)
 			latest_skill = null
 	if latest_skill != null:
 		input_arr.append(latest_skill)
+		only_skills.append(latest_skill)
 		latest_skill = null
+	if host.current_unit.get_BG().name == "Battleground4":
+		print(only_skills)
+		return only_skills
 	return input_arr
 
 func exit(host):

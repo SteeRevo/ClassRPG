@@ -19,6 +19,7 @@ func _ready():
 	skill.damage = 5
 	skill.delay = 1
 	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
+	skill.active_position = ["BattlegroundTopWing"]
 
 	var skill2 = Skill.new()
 	skill2.skillname = "Snake: Whip"

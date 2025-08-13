@@ -198,74 +198,75 @@ script = ExtResource("11_f76x8")
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
-transform = Transform3D(0.248882, 0, 0.0236138, 0, 0.25, 0, -0.0236138, 0, 0.248882, 1.61929, 0.117663, -11.4939)
+transform = Transform3D(0.248264, 0, -0.0294104, 0, 0.25, 0, 0.0294104, 0, 0.248264, 1.82904, 0.117663, -12.1691)
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(0.247517, 0, 0.0351476, 0, 0.25, 0, -0.0351476, 0, 0.247517, -5.78837, 0.136662, -5.80816)
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
-[node name="Battleground" type="Node3D" parent="BattleManager/Battlegrounds"]
+[node name="BattlegroundVanguard" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36123, 0, 0)
 script = ExtResource("18_aducu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/BattlegroundVanguard"]
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.103124, 0, 0.111186)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground"]
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/BattlegroundVanguard"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215351, 0, 1.91326)
 
-[node name="Battleground2" type="Node3D" parent="BattleManager/Battlegrounds"]
+[node name="BattlegroundTopWing" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48942, 0, -5.44311)
 script = ExtResource("18_aducu")
 bgType = 1
 attack_boost = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/BattlegroundTopWing"]
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground2"]
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/BattlegroundTopWing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.455935, 0, 1.14638)
 
-[node name="Battleground3" type="Node3D" parent="BattleManager/Battlegrounds"]
+[node name="BattlegroundBottomWing" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42787, 0, -5.95517)
 script = ExtResource("18_aducu")
 bgType = 2
 attack_boost = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/BattlegroundBottomWing"]
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0.00084877, 9.53674e-07, 0.032361)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground3"]
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/BattlegroundBottomWing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266016, 0, 3.36389)
 
-[node name="Battleground4" type="Node3D" parent="BattleManager/Battlegrounds"]
+[node name="BattlegroundSupport" type="Node3D" parent="BattleManager/Battlegrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75759, 0, -12.5466)
 script = ExtResource("18_aducu")
 bgType = 3
 health_regen = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/Battleground4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleManager/Battlegrounds/BattlegroundSupport"]
 transform = Transform3D(2.48962, 0, 0, 0, 1, 0, 0, 0, 2.52378, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ae5g0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_thxja")
 
-[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/Battleground4"]
+[node name="AttackerPos" type="Node3D" parent="BattleManager/Battlegrounds/BattlegroundSupport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
 
 [node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_6k5cg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.44588, 0, 7.85197)
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 

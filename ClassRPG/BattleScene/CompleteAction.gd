@@ -1,7 +1,7 @@
 extends States
 
 @onready var host_ref = %BattleManager
-var input_arr = []
+
 var current_action
 var moved_to_enemy = false
 var current_position
@@ -10,9 +10,11 @@ var current_ally = null
 var current_unit = null
 var tweened = 0
 var not_attack = ["Rotate", "0tpose", "Guard"]
+var basic = ["Left", "Right", "Up", "Down"]
 var total_damage = 0
 var current_cam = null
 var skill_cam = false
+var usingSkill = false
 
 func enter(host):
 	host.enemySelector.visible = false
@@ -55,13 +57,19 @@ func _on_animation_finished(anim_name):
 	if anim_name == "Guard":
 		host_ref.end_turn()
 	if !not_attack.has(anim_name):
-		if input_arr.size() > 0:
+		usingSkill = false
+		change_attack_cam(host_ref, host_ref.mainBattleCamera)
+		if host_ref.skill_sequence.size() > 0:
 			play_animation(host_ref)
 			pass
 		else:
 			check_enemy_death(current_enemy)
 			if len(host_ref.enemy_units) != 0:
+				if host_ref.current_unit.get_BG().name == "Battleground4":
+					host_ref.end_turn()
+					return
 				host_ref.current_unit.move_towards(current_position)
+			
 					
 
 func _on_tween_finished():
@@ -90,8 +98,9 @@ func _on_attack_hit():
 	print(current_enemy.name)
 	
 func update(host, delta):
-	host.active_camera.move_to(current_cam.global_position, 0.1)
-	host.active_camera.rotate_to(current_cam.rotation, 0.1)
+	if !usingSkill:
+		host.active_camera.move_to(current_cam.global_position, 0.1)
+		host.active_camera.rotate_to(current_cam.rotation, 0.1)
 	
 func exit(host):
 	if host.current_unit.tween_finished.is_connected(_on_tween_finished):
@@ -107,7 +116,7 @@ func exit(host):
 			host.current_selected_ally.anim_finished.disconnect(_on_animation_finished)
 	set_active_camera(host, host.mainBattleCamera)
 	#host.delay_turn_tracker()
-	host.BGR.reset_health_sp()
+	host.BGS.reset_health_sp()
 	host.current_unit = null
 	host.current_action = null
 	host.current_selected_BG = null
@@ -118,6 +127,7 @@ func exit(host):
 	moved_to_enemy = false
 	current_unit = null
 	tweened = 0
+	usingSkill = false
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):
@@ -135,44 +145,14 @@ func set_BG_unit_position(unit, bg):
 	bg._set_current_unit(unit)
 	
 func check_skill_inputs(host):
-	input_arr = []
-	var possible_skills = []
-	var final_skill = []
-	var latest_skill
-	var counter = 0
-	for input in host.skill_stack:
-		counter += 1
-		input_arr.push_back(input)
-		print(input_arr)
-		print(len(input_arr))
-		var skill_name
-		if len(input_arr) >= 3:
-			var sub_arr = input_arr
-			while len(sub_arr) >= 3:
-				skill_name = host.current_unit.check_skill(sub_arr, host.current_unit.skill_tree)
-				if skill_name != null and skill_name != "" and skill_name != latest_skill:
-					break
-				sub_arr = sub_arr.slice(1)
-				print(sub_arr)
-		else:
-			skill_name = host.current_unit.check_skill(input_arr, host.current_unit.skill_tree)
-		print(skill_name)
-		
-		if skill_name != null and skill_name != "":
-			latest_skill = skill_name
-			print("latest_skill set")
-			
-		if (skill_name == null or skill_name == "") and latest_skill != null:
-			input_arr.insert(len(input_arr) - 1, latest_skill)
-			latest_skill = null
-	if latest_skill != null:
-		input_arr.append(latest_skill)
-		latest_skill = null
-	print(input_arr)
+	
 	
 	#calc attack damage here/go to attack animation
 	current_position = host.current_unit.global_position
-	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
+	if !(host.current_unit.get_BG().name == "Battleground4") and !host.current_unit.enemy_unit:
+		host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
+	else:
+		play_animation(host)
 	#host.get_total_delay(input_arr)
 	
 
@@ -188,7 +168,7 @@ func check_enemy_death(enemy):
 		host_ref.end_turn()
 
 func play_animation(host):
-	var move = input_arr.pop_front()
+	var move = host.skill_sequence.pop_front()
 	calc_damage(host, move)
 
 func calc_damage(host, skill):
@@ -197,6 +177,9 @@ func calc_damage(host, skill):
 		#checks if skill has been activated
 		var current_skill = host.current_unit.get_skill(skill)
 		if current_skill != null:
+			if current_skill.skillname not in basic:
+				usingSkill = true
+				change_attack_cam(host, host.current_unit.get_skill_cam())
 			host.current_unit.play_skill(current_skill.skillname)
 			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 			host_ref.skillDamage._add_skill_damage(damage)
@@ -221,8 +204,10 @@ func set_active_camera(host, camera):
 	#host.active_camera = camera
 	current_cam = camera
 	
-
-	
+func change_attack_cam(host, camera):
+	host.active_camera.current = false
+	camera.current = true
+	host.active_camera = camera
 	
 func guard(host):
 	host.current_unit.set_guard()
@@ -230,5 +215,5 @@ func guard(host):
 func play_enemy_attack(host):
 	current_position = host.current_unit.global_position
 	host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
-	input_arr = host.skill_stack
-	host.get_total_delay(input_arr)
+	host.skill_sequence = host.skill_stack
+	host.get_total_delay(host.skill_sequence)

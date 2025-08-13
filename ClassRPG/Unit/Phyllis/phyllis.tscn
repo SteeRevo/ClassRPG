@@ -3975,7 +3975,7 @@ transform = Transform3D(3.48644, 0.512375, -1.89267, 0, 3.86102, 1.04524, 1.9608
 visible = false
 
 [node name="AttackCam" type="Camera3D" parent="."]
-transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321422, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
+transform = Transform3D(3.98707, 0.0319236, -0.319833, -3.70541e-08, 3.98022, 0.397279, 0.321423, -0.395994, 3.96735, -0.763172, 17.0737, 10.2296)
 fov = 58.0
 
 [node name="Filter" parent="AttackCam" instance=ExtResource("4_b7jng")]
@@ -3992,12 +3992,12 @@ transform = Transform3D(0.0869581, -0.0479371, -3.56576, 0.0011687, 3.56682, -0.
 curve = SubResource("Curve3D_fb1y4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(-0.74754, -0.354363, 0.56173, -0.434368, 0.900636, -0.00988379, -0.502429, -0.251392, -0.827226, 2.96077, 0.41971, -2.11953)
+transform = Transform3D(-0.747536, -0.354361, 0.561737, -0.434368, 0.900636, -0.00988419, -0.502435, -0.251395, -0.827221, 2.96075, 0.41971, -2.11951)
 progress = 15.4736
 script = ExtResource("4_x1g17")
 path_prog = 15
 
 [node name="AttackCamPosition" type="Marker3D" parent="."]
-transform = Transform3D(13.2875, 1.49375, -8.78698, 0, 15.7737, 2.68147, 8.91304, -2.22687, 13.0996, -7.20176, 14.6277, 14.0538)
+transform = Transform3D(184.602, 80.9289, -157.825, 0, 227.797, 116.809, 177.365, -84.231, 164.265, -15.1332, 24.1532, 19.7066)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

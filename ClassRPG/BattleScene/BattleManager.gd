@@ -25,10 +25,10 @@ signal state_changed
 
 var current_unit
 @onready var battleGrounds = $Battlegrounds
-@onready var BGF = $Battlegrounds/Battleground
-@onready var BGT = $Battlegrounds/Battleground2
-@onready var BGB = $Battlegrounds/Battleground3
-@onready var BGR = $Battlegrounds/Battleground4
+@onready var BGV = $Battlegrounds/BattlegroundVanguard
+@onready var BGT = $Battlegrounds/BattlegroundTopWing
+@onready var BGB = $Battlegrounds/BattlegroundBottomWing
+@onready var BGS = $Battlegrounds/BattlegroundSupport
 
 @onready var enemybattleGrounds = $EnemyBGs
 @onready var EBGF = $EnemyBGs/Battleground
@@ -80,6 +80,8 @@ var camera_list = []
 var skill_stack = []
 
 var total_delay = 0
+
+var skill_sequence = []
 
 func _ready():
 	add_cameras()

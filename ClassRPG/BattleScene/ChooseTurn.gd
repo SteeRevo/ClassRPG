@@ -5,7 +5,7 @@ var current_selected_enemy
 func enter(host):
 	print(host.name)
 	set_all_units_position(host)
-	print(host.BGF._get_current_unit())
+	print(host.BGV._get_current_unit())
 	current_selected_enemy = null
 	host.get_all_units()
 	print(host.player_units)

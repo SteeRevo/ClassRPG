@@ -19,6 +19,7 @@ enum battleGrounds {F, TW, BW, B}
 @onready var available = true
 @onready var camera_path = $CameraPath/PathFollow3D
 @onready var attack_cam = $AttackCamPosition
+@onready var skill_cam = $AttackCam
 @onready var attack_cam_base_position = attack_cam.global_position
 @onready var attack_cam_base_rotation = attack_cam.rotation
 @onready var moveSpeed = 15
@@ -215,6 +216,9 @@ func get_attack_cam():
 func play_skill(attack_name):
 	ap.play(attack_name)
 	
+func get_skill_cam():
+	return skill_cam
+	
 func play_battle_idle():
 	ap.play("BattleIdle")
 	
@@ -230,6 +234,7 @@ func move_towards(target_pos):
 	
 func on_tween_finished():
 	tween_finished.emit()
+	
 	
 
 func get_move_time(target_pos):
