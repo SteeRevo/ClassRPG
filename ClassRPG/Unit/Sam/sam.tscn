@@ -570,6 +570,6 @@ script = ExtResource("4_57eq3")
 path_prog = 15
 
 [node name="AttackCamPosition" type="Marker3D" parent="."]
-transform = Transform3D(165.076, 121.531, -153.35, 0, 200.634, 159.003, 195.668, -102.53, 129.374, -14.8626, 23.1618, 16.3643)
+transform = Transform3D(604.077, 250.659, -787.932, 0, 975.814, 310.429, 826.84, -183.127, 575.65, -15.1636, 12.0664, 12.6186)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

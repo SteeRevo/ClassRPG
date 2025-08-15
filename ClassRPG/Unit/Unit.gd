@@ -38,7 +38,8 @@ var bg_speed_bonus  = 0
 var temp_health = 0
 var unitTween
 var skill_tree
-var skillList = []
+@export var preSkillList: Array[Skill] = []
+var skillList:Array = []
 var active_skills = []
 var base_skills = []
 var attached_spirits = {
@@ -202,7 +203,6 @@ func end_guard():
 	
 func play_getting_hit():
 	ap.play("getting_hit")
-	ap.queue("BattleIdle")
 	
 func attack_hits():
 	attack_hit.emit()

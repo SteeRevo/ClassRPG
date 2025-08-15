@@ -15,9 +15,9 @@ extends Control
 @onready var upPhil = $Arrows/UpArrow/UpArrowPhyliss
 @onready var downPhil = $Arrows/DownArrow/DownArrowPhyliss
 
-@onready var philHealthbar = $Control/HealthBarPhil
-@onready var samHealthbar = $Control/HealthBarSam
-@onready var bbHealthbar = $Control/HealthBarBB
+@onready var philHealthbar = $Control/PhilHealthBar
+@onready var samHealthbar = $Control/SamHealthBar
+@onready var bbHealthbar = $Control/BBHealthBar
 
 
 var samArrows
@@ -28,21 +28,32 @@ func _ready():
 	samArrows = [leftSam, rightSam, upSam, downSam]
 	bbArrows = [leftBB, rightBB, upBB, downBB]
 	philArrows = [leftPhil, rightPhil, upPhil, downPhil]
-	#play_exit_anim()
+
+func init_healthbars(unit):
+	var current_hp = unit._get_health()
+	var max_hp = unit.get_max_health()
+	match unit.name:
+		"Phyllis":
+			philHealthbar.init_health(current_hp, max_hp)
+		"Sam":
+			samHealthbar.init_health(current_hp, max_hp)
+		"BB":
+			bbHealthbar.init_health(current_hp, max_hp)
+
 	
 func update_health(unit):
 	var current_hp = unit._get_health()
 	var max_hp = unit.get_max_health()
 	match unit.name:
 		"Phyllis":
-			philHealthbar.max_value = max_hp
-			philHealthbar.value = current_hp
+			philHealthbar.health = current_hp
+			philHealthbar.max_health = max_hp
 		"Sam":
-			samHealthbar.max_value = max_hp
-			samHealthbar.value = current_hp
+			samHealthbar.health = current_hp
+			samHealthbar.max_health = max_hp
 		"BB":
-			bbHealthbar.max_value = max_hp
-			bbHealthbar.value = current_hp
+			bbHealthbar.health = current_hp
+			bbHealthbar.max_health = max_hp
 	
 
 

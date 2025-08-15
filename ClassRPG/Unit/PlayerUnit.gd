@@ -1,8 +1,23 @@
 extends 'Unit.gd'
 
+
 func _ready():
 	skill_tree = TreeSkill.new()
 	skill_tree.move_name = "Root"
+	
+	for _skill in preSkillList:
+		var new_skill = Skill.new()
+		new_skill.skillname = _skill.skillname
+		new_skill.damage = _skill.damage
+		new_skill.delay = _skill.delay
+		new_skill.inputs = _skill.inputs
+		new_skill.active_positions = _skill.active_positions
+		new_skill.is_active = _skill.is_active
+		skillList.append(new_skill)
+		if new_skill.is_active:
+			print("adding to active skills")
+			set_skill_active(new_skill)
+		set_skill(new_skill)
 
 func set_unit_spirits(unit_stats):
 	for move in attached_spirits:
@@ -29,3 +44,7 @@ func set_skill(skill: Skill):
 					curr.down = TreeSkill.new()
 				curr = curr.down
 	curr.move_name = skill.skillname
+
+func set_skill_active(skill):
+	skill.is_active = true
+	active_skills.push_back(skill)

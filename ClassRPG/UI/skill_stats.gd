@@ -2,21 +2,21 @@ extends Resource
 
 class_name Skill
 
+enum BG {BattlegroundVanguard, BattlegroundTopwing, BattlegroundBottomWing, BattlegroundSupport}
 @export var skillname: String
 @export var delay: int
 @export var damage: int
 @export var inputs: PackedStringArray
 @export var is_active: bool
-@export var active_position: PackedStringArray
+@export var active_positions: Array[BG]
 @export var position_swap = []
 
-func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _active_position = [], _position_swap = []):
+func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _position_swap = []):
 	skillname = name;
 	delay = _delay
 	damage = _damage
 	inputs = _inputs
 	is_active = false
-	active_position = _active_position
 	position_swap = _position_swap
 	
 	

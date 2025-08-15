@@ -14,7 +14,7 @@ func enter(host):
 
 func handle_input(host, event):
 
-	if host.skill_stack.size() == BattleSettings.inputs_allowed:
+	if host.skill_stack.size() == BattleSettings.inputs_allowed and host.skill_sequence.size() > 0:
 		if event.is_action_pressed("Confirm"):
 			print("moving to skills attacks")
 			return 'completeAction'
@@ -29,7 +29,7 @@ func handle_input(host, event):
 			host.delay_turn_tracker()
 			
 	elif event.is_action_pressed("Confirm"):
-		if host.skill_stack.size() == 0:
+		if host.skill_sequence.size() == 0:
 			print("No skills inputted")
 		elif !isConfirming:
 			print("Confirm?")
@@ -122,8 +122,9 @@ func check_skill_inputs(host):
 		print(skill_name)
 		
 		if skill_name != null and skill_name != "":
-			latest_skill = skill_name
-			print("latest_skill set")
+			if host.current_unit.get_BG().bgType in host.current_unit.get_skill(skill_name).active_positions:
+				latest_skill = skill_name
+				print("latest_skill set")
 			
 		if (skill_name == null or skill_name == "") and latest_skill != null:
 			input_arr.insert(len(input_arr) - 1, latest_skill)
@@ -133,7 +134,7 @@ func check_skill_inputs(host):
 		input_arr.append(latest_skill)
 		only_skills.append(latest_skill)
 		latest_skill = null
-	if host.current_unit.get_BG().name == "Battleground4":
+	if host.current_unit.get_BG() == host.BGS:
 		print(only_skills)
 		return only_skills
 	return input_arr

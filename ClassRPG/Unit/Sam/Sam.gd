@@ -14,18 +14,19 @@ func _ready():
 	
 	var zodiac_array = []
 
-	var skill = Skill.new()
+	"""var skill = Skill.new()
 	skill.skillname = "Rabbit: Bounce"
 	skill.damage = 5
 	skill.delay = 1
 	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
-	skill.active_position = ["BattlegroundTopWing"]
+	skill.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
 
 	var skill2 = Skill.new()
 	skill2.skillname = "Snake: Whip"
 	skill2.damage = "10"
 	skill2.delay = 5
 	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
+	skill2.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
 	
 
 	var skill3 = Skill.new()
@@ -33,6 +34,7 @@ func _ready():
 	skill3.damage = 0
 	skill3.delay = 3 
 	skill3.inputs = PackedStringArray(["Down", "Down", "Up"])
+	skill3.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
 	
 	var skill4 = Skill.new()
 	skill4.skillname = "Ox: Crush"
@@ -43,15 +45,14 @@ func _ready():
 	skillList.append(skill)
 	skillList.append(skill2)
 	skillList.append(skill3)
-	skillList.append(skill4)
+	skillList.append(skill4)"""
 	
 #skill tree fixed later
-	for _skill in skillList:
-		set_skill(_skill)
+	
 		
-	set_skill_active("Rooster: Flame")
+	#set_skill_active("Rooster: Flame")
 	#set_skill_active("Rabbit: Bounce")
-	set_skill_active("Snake: Whip")
+	#set_skill_active("Snake: Whip")
 	#set_skill_active("Ox: Crush")
 	
 	_set_base_skills()
@@ -112,12 +113,7 @@ func play_skill(attack_name):
 			ap.play("Skill")
 	
 	
-func set_skill_active(skill_name):
-	for skill in skillList:
-		if skill.skillname == skill_name:
-			skill.is_active = true
-			active_skills.push_back(skill)
-			return skill
+
 
 func get_skill(skill_name):
 	for skill in active_skills:

@@ -1,9 +1,9 @@
 extends Node3D
 
-enum BG {F, TW, BW, B}
+enum BG {V, TW, BW, S}
 
 var current_unit = null : set = _set_current_unit, get = _get_current_unit
-@export var bgType = BG.F
+@export var bgType = BG.V
 
 @onready var attackerPos = $AttackerPos
 @export var attack_boost = 0

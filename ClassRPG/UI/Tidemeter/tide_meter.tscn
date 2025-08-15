@@ -52,14 +52,14 @@ value = 95.0
 fill_mode = 3
 texture_under = ExtResource("2_0du80")
 texture_progress = ExtResource("3_1bm53")
-texture_progress_offset = Vector2(23.315, 61.73)
+texture_progress_offset = Vector2(21.72, 61.73)
 
 [node name="ColorRect" type="ColorRect" parent="TextureProgressBar"]
 material = SubResource("ShaderMaterial_w6prh")
 layout_mode = 0
-offset_left = 26.6667
+offset_left = 25.677
 offset_top = 220.0
-offset_right = 314.667
+offset_right = 313.677
 offset_bottom = 338.0
 rotation = -1.56463
 scale = Vector2(1.02, 1.02)

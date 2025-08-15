@@ -15,19 +15,19 @@ func _ready():
 	set_unit_spirits(unit_stats)
 	
 	_set_base_skills()
-	var skill = Skill.new()
+	"""var skill = Skill.new()
 	skill.skillname = "Absorb"
 	skill.damage = 3
 	skill.delay = 1
 	skill.inputs = PackedStringArray(["Down", "Down", "Right"])
-	
+	skill.active_positions = ["BattlegroundTopWing", "BattlegroundBottomWing"]
 	skillList.append(skill)
 
 	for _skill in skillList:
 		set_skill(_skill)
 
 	
-	set_skill_active("Absorb")
+	set_skill_active("Absorb")"""
 	
 	
 
@@ -81,12 +81,6 @@ func set_guard():
 	is_guarding = true
 	ap.play("Guard")
 	
-func set_skill_active(name):
-	for skill in skillList:
-		if skill.skillname == name:
-			skill.is_active = true
-			active_skills.push_back(skill)
-			return
 
 func get_skill(skill_name):
 	for skill in active_skills:

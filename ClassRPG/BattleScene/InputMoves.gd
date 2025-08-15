@@ -15,8 +15,16 @@ func _ready():
 	add_arrow_holders()
 
 func add_all_active_skills(unit):
+	for child in mlc_bb.get_children():
+		child.queue_free()
+	for child in mlc_phyllis.get_children():
+		child.queue_free()
+	for child in mlc_sam.get_children():
+		child.queue_free()
 	for skill in unit.active_skills:
-		if !basic_skills.has(skill.skillname):
+		print(skill.skillname)
+		print(skill.active_positions)
+		if !basic_skills.has(skill.skillname) and unit.get_BG().bgType in skill.active_positions:
 			if unit.name == "Sam":
 				add_move_container(mlc_sam, skill)
 			elif unit.name == "BB":

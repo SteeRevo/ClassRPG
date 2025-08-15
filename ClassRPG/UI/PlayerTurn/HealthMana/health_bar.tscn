@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2utjxakodud3"]
+
+[ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="1_yqwcf"]
+[ext_resource type="Script" path="res://UI/PlayerTurn/HealthMana/health_bar.gd" id="2_4kt54"]
+[ext_resource type="Texture2D" uid="uid://t1slwrtu4iso" path="res://UI/PlayerTurn/HealthMana/LostHealth.png" id="2_dnuv6"]
+[ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="3_xfg5n"]
+[ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="4_3g8i7"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+offset_left = -493.713
+offset_top = -430.001
+offset_right = -82.7134
+offset_bottom = -19.001
+max_value = 10.0
+value = 10.0
+texture_progress = ExtResource("3_xfg5n")
+texture_progress_offset = Vector2(62.06, 189.455)
+script = ExtResource("2_4kt54")
+
+[node name="DamageBar" type="TextureProgressBar" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -0.286987
+offset_top = 5.00101
+offset_right = 410.713
+offset_bottom = 416.001
+value = 100.0
+texture_under = ExtResource("1_yqwcf")
+texture_progress = ExtResource("2_dnuv6")
+texture_progress_offset = Vector2(61.855, 183.775)
+
+[node name="HealthNumber" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 76.6097
+offset_top = 145.369
+offset_right = 157.609
+offset_bottom = 185.369
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_3g8i7")
+theme_override_font_sizes/normal_font_size = 40
+text = "10"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://clmplml6fo3pa"]
+
+[ext_resource type="Script" path="res://UI/skill_stats.gd" id="1_5ekfx"]
+
+[resource]
+script = ExtResource("1_5ekfx")
+skillname = "Absorb"
+delay = 1
+damage = 5
+inputs = PackedStringArray("Up", "Up", "Left")
+is_active = true
+active_positions = Array[int]([1, 2])
+position_swap = []

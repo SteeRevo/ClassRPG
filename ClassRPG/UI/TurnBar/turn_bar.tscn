@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://owkx60nb2md7"]
+[gd_scene load_steps=8 format=3 uid="uid://owkx60nb2md7"]
 
 [ext_resource type="Texture2D" uid="uid://sh3whcphkvnr" path="res://UI/TurnBar/turnBar.png" id="1_8cbb5"]
 [ext_resource type="Script" path="res://UI/TurnBar/turn_bar.gd" id="2_cwox8"]
@@ -7,17 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://tei0u0plftgp" path="res://UI/TurnBar/BB_turn_tracker.PNG" id="5_c2s8t"]
 [ext_resource type="Texture2D" uid="uid://cm02h5xs5in0y" path="res://UI/TurnBar/Phil_turn_tracker.PNG" id="6_e12w8"]
 
-[sub_resource type="Curve2D" id="Curve2D_pm8y4"]
+[sub_resource type="Curve2D" id="Curve2D_2fi85"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -500.104, -63.7075, 0, 0, 0, 0, -468.25, -28.6684, 0, 0, 0, 0, -436.396, -3.18536, 0, 0, 0, 0, -388.615, 3.18536, 0, 0, 0, 0, -328.094, 3.18536, 0, 0, 0, 0, -261.201, 3.18536, 0, 0, 0, 0, 414.098, 3.18536, 0, 0, 0, 0, 442.767, -12.7415, 0, 0, 0, 0, 468.25, -38.2245, 0, 0, 0, 0, 496.918, -70.0782)
+"points": PackedVector2Array(0, 0, 0, 0, -494, -70, 0, 0, 0, 0, -468, -30, 0, 0, 0, 0, -436, -5, 0, 0, 0, 0, -398, 3, 0, 0, 0, 0, -76, -4, 0, 0, 0, 0, 405, 1, 0, 0, 0, 0, 440, -10, 0, 0, 0, 0, 469, -37, 0, 0, 0, 0, 498, -63)
 }
-point_count = 10
-
-[sub_resource type="Curve2D" id="Curve2D_fh1tp"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -493.63, 67.6293, 0, 0, 0, 0, -459.63, 29.6293, 0, 0, 0, 0, -424.63, 2.62927, 0, 0, 0, 0, -395.63, -6.37073, 0, 0, 0, 0, 426.37, -4.37073, 0, 0, 0, 0, 441.37, 5.62927, 0, 0, 0, 0, 458.37, 18.6293, 0, 0, 0, 0, 500.37, 59.6293)
-}
-point_count = 8
+point_count = 9
 
 [node name="TurnBar" type="Sprite2D"]
 position = Vector2(517, 317)
@@ -25,10 +19,11 @@ texture = ExtResource("1_8cbb5")
 script = ExtResource("2_cwox8")
 
 [node name="PlayerPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_pm8y4")
+position = Vector2(-1, 4)
+curve = SubResource("Curve2D_2fi85")
 
 [node name="SamPathFollow2D" type="PathFollow2D" parent="PlayerPath"]
-position = Vector2(-500.104, -63.7075)
+position = Vector2(-494, -70)
 rotation = 0.832985
 rotates = false
 loop = false
@@ -41,8 +36,9 @@ scale = Vector2(0.252212, 0.252212)
 texture = ExtResource("3_w1d5g")
 
 [node name="BBPathFollow2D" type="PathFollow2D" parent="PlayerPath"]
-position = Vector2(-500.104, -63.7075)
+position = Vector2(498, -63)
 rotation = 0.832985
+progress = 1045.51
 rotates = false
 loop = false
 script = ExtResource("4_t0np8")
@@ -54,7 +50,7 @@ scale = Vector2(0.252212, 0.252212)
 texture = ExtResource("5_c2s8t")
 
 [node name="PhilPathFollow2D" type="PathFollow2D" parent="PlayerPath"]
-position = Vector2(-500.104, -63.7075)
+position = Vector2(-494, -70)
 rotation = 0.832985
 rotates = false
 loop = false
@@ -67,39 +63,41 @@ scale = Vector2(0.252212, 0.252212)
 texture = ExtResource("6_e12w8")
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2(-6.37012, 6.37073)
-curve = SubResource("Curve2D_fh1tp")
+position = Vector2(-1, 4)
+scale = Vector2(1, -1)
+curve = SubResource("Curve2D_2fi85")
 
 [node name="EnemyPathFollow2D" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(-493.63, 67.6293)
+position = Vector2(498, -63)
 rotation = 0.832985
+progress = 1045.51
 rotates = false
 loop = false
 script = ExtResource("4_t0np8")
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyPath/EnemyPathFollow2D"]
-position = Vector2(52.8722, 39.9565)
+position = Vector2(-46.6286, -39.8264)
 rotation = -0.832985
-scale = Vector2(0.252212, 0.252212)
+scale = Vector2(0.252, -0.252)
 texture = ExtResource("3_w1d5g")
 
 [node name="EnemyPathFollow2D2" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(-493.63, 67.6293)
+visible = false
+position = Vector2(-494, -70)
 rotation = 0.832985
 rotates = false
 loop = false
 script = ExtResource("4_t0np8")
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyPath/EnemyPathFollow2D2"]
-visible = false
 position = Vector2(-46.6286, -39.8264)
 rotation = -0.832985
-scale = Vector2(0.252212, 0.252212)
+scale = Vector2(0.252, -0.252)
 texture = ExtResource("3_w1d5g")
 
 [node name="EnemyPathFollow2D3" type="PathFollow2D" parent="EnemyPath"]
 visible = false
-position = Vector2(-493.63, 67.6293)
+position = Vector2(-494, -70)
 rotation = 0.832985
 rotates = false
 loop = false
@@ -108,12 +106,12 @@ script = ExtResource("4_t0np8")
 [node name="Sprite2D" type="Sprite2D" parent="EnemyPath/EnemyPathFollow2D3"]
 position = Vector2(-46.6286, -39.8264)
 rotation = -0.832985
-scale = Vector2(0.252212, 0.252212)
+scale = Vector2(0.252, -0.252)
 texture = ExtResource("3_w1d5g")
 
 [node name="EnemyPathFollow2D4" type="PathFollow2D" parent="EnemyPath"]
 visible = false
-position = Vector2(-493.63, 67.6293)
+position = Vector2(-494, -70)
 rotation = 0.832985
 rotates = false
 loop = false
@@ -122,5 +120,5 @@ script = ExtResource("4_t0np8")
 [node name="Sprite2D" type="Sprite2D" parent="EnemyPath/EnemyPathFollow2D4"]
 position = Vector2(-46.6286, -39.8264)
 rotation = -0.832985
-scale = Vector2(0.252212, 0.252212)
+scale = Vector2(0.252, -0.252)
 texture = ExtResource("3_w1d5g")

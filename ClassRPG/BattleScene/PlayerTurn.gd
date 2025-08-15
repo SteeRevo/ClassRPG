@@ -19,8 +19,9 @@ func enter(host):
 	print("Attack: " , host.current_unit.get_attack())
 	print("Defense: ", host.current_unit.get_defense())
 	print("Technique: ", host.current_unit.get_technique())
-	host.playerTurnUI.update_health(host.current_unit)
+	#host.playerTurnUI.update_health(host.current_unit)
 	host.playerTurnUI.play_enter_anim()
+	host.inputMoves.add_all_active_skills(host.current_unit)
 	
 	
 func update(host, delta):

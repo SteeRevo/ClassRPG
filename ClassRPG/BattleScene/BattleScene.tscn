@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=54 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -12,9 +12,12 @@
 [ext_resource type="Script" path="res://BattleScene/SelectAlly.gd" id="8_ejyrp"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/EndFight.gd" id="11_f76x8"]
+[ext_resource type="Resource" uid="uid://benie1umj0clj" path="res://Unit/Sam/Skills/SnakeWhip.tres" id="12_suuam"]
 [ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
+[ext_resource type="Resource" uid="uid://clmplml6fo3pa" path="res://Unit/Phyllis/Skills/Absorb.tres" id="14_i7u1i"]
+[ext_resource type="Resource" uid="uid://cub53c2cmt4wh" path="res://Unit/BB/Skills/Smash.tres" id="15_0r7n1"]
 [ext_resource type="Material" uid="uid://d3frj2ijy6g1b" path="res://BattleScene/Battleground/backgroundMat.tres" id="15_thxja"]
 [ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="16_6k5cg"]
 [ext_resource type="Script" path="res://BattleScene/Battleground/Battleground.gd" id="18_aducu"]
@@ -25,12 +28,11 @@
 [ext_resource type="Script" path="res://BattleScene/MainBattleCamera.gd" id="25_ofn88"]
 [ext_resource type="Script" path="res://BattleScene/PlayerTurnUI.gd" id="25_xyimm"]
 [ext_resource type="Texture2D" uid="uid://nf76bjd78xhb" path="res://UI/PlayerTurn/SamSelectionCircle.png" id="26_tq8f6"]
+[ext_resource type="PackedScene" uid="uid://c2utjxakodud3" path="res://UI/PlayerTurn/HealthMana/health_bar.tscn" id="27_qoav5"]
 [ext_resource type="Texture2D" uid="uid://devb4127aiuvo" path="res://UI/PlayerTurn/BBSelectionCircle.png" id="29_v5bq6"]
-[ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="30_b4gh5"]
 [ext_resource type="Texture2D" uid="uid://bxkr3irmrspc2" path="res://UI/PlayerTurn/PhyllisSelectionCircle.png" id="30_jqr0j"]
 [ext_resource type="Script" path="res://BattleScene/InputMoves.gd" id="31_brdih"]
 [ext_resource type="Texture2D" uid="uid://cvb45jw5cye3m" path="res://UI/InputMoves/Menu.png" id="31_egs4q"]
-[ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="31_qdvtd"]
 [ext_resource type="Script" path="res://BattleScene/InputtedMoves.gd" id="33_iiblf"]
 [ext_resource type="PackedScene" uid="uid://c4o2w5w1metci" path="res://UI/Baseball/baseball_field.tscn" id="34_algih"]
 [ext_resource type="PackedScene" uid="uid://owkx60nb2md7" path="res://UI/TurnBar/turn_bar.tscn" id="34_g0q51"]
@@ -196,12 +198,15 @@ script = ExtResource("11_f76x8")
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
+preSkillList = Array[Resource("res://UI/skill_stats.gd")]([ExtResource("12_suuam")])
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(0.248264, 0, -0.0294104, 0, 0.25, 0, 0.0294104, 0, 0.248264, 1.82904, 0.117663, -12.1691)
+preSkillList = Array[Resource("res://UI/skill_stats.gd")]([ExtResource("14_i7u1i")])
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(0.247517, 0, 0.0351476, 0, 0.25, 0, -0.0351476, 0, 0.247517, -5.78837, 0.136662, -5.80816)
+preSkillList = Array[Resource("res://UI/skill_stats.gd")]([ExtResource("15_0r7n1")])
 
 [node name="Battlegrounds" type="Node" parent="BattleManager"]
 
@@ -266,7 +271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
 
 [node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_6k5cg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.44588, 0, 7.85197)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.44588, 0.5168, 7.85197)
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 
@@ -555,29 +560,14 @@ position = Vector2(1225, 707)
 rotation = -0.785397
 scale = Vector2(0.395, 0.395)
 
-[node name="HealthBarPhil" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -493.713
-offset_top = -430.001
-offset_right = -82.7134
-offset_bottom = -19.001
-max_value = 10.0
-value = 10.0
-texture_under = ExtResource("30_b4gh5")
-texture_progress = ExtResource("31_qdvtd")
-texture_progress_offset = Vector2(61.505, 189.025)
+[node name="PhilHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
+offset_left = 64.4446
+offset_top = -322.226
+offset_right = 475.444
+offset_bottom = 88.7742
 
-[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarPhil"]
-layout_mode = 0
-offset_left = 76.6097
-offset_top = 145.369
-offset_right = 157.609
-offset_bottom = 185.369
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 40
-text = "10"
-
-[node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarPhil"]
+[node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/PhilHealthBar"]
+z_index = 1
 layout_mode = 0
 offset_left = 83.7704
 offset_top = 231.295
@@ -591,34 +581,18 @@ theme_override_font_sizes/normal_font_size = 50
 text = "phyliss
 "
 
-[node name="HealthBarSam" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -316.489
-offset_top = -227.715
-offset_right = 94.511
-offset_bottom = 183.285
-max_value = 10.0
-value = 10.0
-texture_under = ExtResource("30_b4gh5")
-texture_progress = ExtResource("31_qdvtd")
-texture_progress_offset = Vector2(61.505, 189.025)
+[node name="SamHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
+offset_left = -64.0781
+offset_top = -168.641
+offset_right = 346.921
+offset_bottom = 242.359
 
-[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarSam"]
+[node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/SamHealthBar"]
 layout_mode = 0
-offset_left = 66.5328
-offset_top = 155.168
-offset_right = 147.533
-offset_bottom = 195.168
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 40
-text = "10"
-
-[node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarSam"]
-layout_mode = 0
-offset_left = 96.3013
-offset_top = 222.345
-offset_right = 374.301
-offset_bottom = 305.345
+offset_left = 102.038
+offset_top = 213.027
+offset_right = 380.038
+offset_bottom = 296.027
 theme_override_colors/default_color = Color(0.843137, 0.996078, 0.0980392, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
@@ -626,34 +600,18 @@ theme_override_fonts/normal_font = ExtResource("18_ytc6m")
 theme_override_font_sizes/normal_font_size = 80
 text = "sam"
 
-[node name="HealthBarBB" type="TextureProgressBar" parent="BattleManager/Control/PlayerTurnUI/Control"]
-offset_left = -98.0912
-offset_top = -9.31787
-offset_right = 312.909
-offset_bottom = 401.682
-max_value = 10.0
-value = 10.0
-texture_under = ExtResource("30_b4gh5")
-texture_progress = ExtResource("31_qdvtd")
-texture_progress_offset = Vector2(61.505, 189.025)
+[node name="BBHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
+offset_left = -177.224
+offset_top = -19.6914
+offset_right = 233.776
+offset_bottom = 391.308
 
-[node name="HealthNumber" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarBB"]
+[node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/BBHealthBar"]
 layout_mode = 0
-offset_left = 74.8195
-offset_top = 154.319
-offset_right = 155.819
-offset_bottom = 194.32
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 40
-text = "10"
-
-[node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/HealthBarBB"]
-layout_mode = 0
-offset_left = 124.944
-offset_top = 233.086
-offset_right = 402.943
-offset_bottom = 316.086
+offset_left = 127.101
+offset_top = 230.929
+offset_right = 405.1
+offset_bottom = 313.929
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 32
@@ -789,7 +747,7 @@ transform = Transform3D(-0.0130686, 0.152109, -0.988278, 0, 0.988361, 0.152122, 
 wait_time = 2.0
 
 [node name="Background Buildings" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.54811, 0, 0, 0, 2.08261, 132.054, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.54811, 0, 0, 0, 2.08261, 132.054, -41.4497, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings"]
 transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 206.904, 18.1754, -158.596)
@@ -876,7 +834,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="Background Buildings2" type="Node3D" parent="."]
-transform = Transform3D(-0.109734, 0, 0.993961, 0, 1, 0, -0.993961, 0, -0.109734, 21.0308, 0.0279465, -500.971)
+transform = Transform3D(-0.109734, 0, 0.993961, 0, 1, 0, -0.993961, 0, -0.109734, 21.0308, -41.4218, -500.971)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings2"]
 transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
@@ -963,7 +921,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="Background Buildings3" type="Node3D" parent="."]
-transform = Transform3D(-0.931698, 0, 0.363235, 0, 1, 0, -0.363235, 0, -0.931698, -310.725, -7.85213, -276.318)
+transform = Transform3D(-0.931698, 0, 0.363235, 0, 1, 0, -0.363235, 0, -0.931698, -310.725, -49.3018, -276.318)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings3"]
 transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
@@ -1050,7 +1008,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="Background Buildings4" type="Node3D" parent="."]
-transform = Transform3D(-0.34538, 0, -0.938463, 0, 1, 0, 0.938463, 0, -0.34538, -192.515, -21.246, 363.166)
+transform = Transform3D(-0.34538, 0, -0.938463, 0, 1, 0, 0.938463, 0, -0.34538, -192.515, -62.6957, 363.166)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Background Buildings4"]
 transform = Transform3D(15.7106, 0.316881, -0.150128, -0.169609, 29.1952, 0.100557, 0.14794, -0.17986, 16.0583, 0, 18.1754, -183.56)
@@ -1137,6 +1095,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("15_thxja")
 
 [node name="BackgroundSprites" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.4497, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="BackgroundSprites"]
 transform = Transform3D(1.02358, -1.03525, -0.571612, 1.121, 1.09018, 0.0329375, 0.376626, -0.431249, 1.45546, 372.737, 116.168, -207.852)

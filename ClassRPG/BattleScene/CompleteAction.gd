@@ -65,7 +65,7 @@ func _on_animation_finished(anim_name):
 		else:
 			check_enemy_death(current_enemy)
 			if len(host_ref.enemy_units) != 0:
-				if host_ref.current_unit.get_BG().name == "Battleground4":
+				if host_ref.current_unit.get_BG() == host_ref.BGS:
 					host_ref.end_turn()
 					return
 				host_ref.current_unit.move_towards(current_position)
@@ -98,7 +98,7 @@ func _on_attack_hit():
 	print(current_enemy.name)
 	
 func update(host, delta):
-	if !usingSkill:
+	if !usingSkill and host.current_action == "Attack":
 		host.active_camera.move_to(current_cam.global_position, 0.1)
 		host.active_camera.rotate_to(current_cam.rotation, 0.1)
 	
@@ -124,6 +124,7 @@ func exit(host):
 	host.skill_stack = []
 	host.skillDamage._reset_damage()
 	host_ref.skillDamage.visible = false
+	host.skill_sequence.clear()
 	moved_to_enemy = false
 	current_unit = null
 	tweened = 0
@@ -149,7 +150,7 @@ func check_skill_inputs(host):
 	
 	#calc attack damage here/go to attack animation
 	current_position = host.current_unit.global_position
-	if !(host.current_unit.get_BG().name == "Battleground4") and !host.current_unit.enemy_unit:
+	if host.current_unit.get_BG() != host.BGS and !host.current_unit.enemy_unit:
 		host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
 	else:
 		play_animation(host)

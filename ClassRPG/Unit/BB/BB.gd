@@ -15,7 +15,7 @@ func _ready():
 	set_unit_spirits(unit_stats)
 	
 	_set_base_skills()
-	var skill = Skill.new()
+	"""var skill = Skill.new()
 	skill.skillname = "Smash"
 	skill.damage = 5
 	skill.delay = 1
@@ -29,7 +29,7 @@ func _ready():
 		set_skill(_skill)
 
 	
-	set_skill_active("Smash")
+	set_skill_active("Smash")"""
 	
 
 func on_tween_finished():
@@ -84,13 +84,6 @@ func get_unit_cam():
 	return unit_cam
 
 
-	
-func set_skill_active(skill_name):
-	for skill in skillList:
-		if skill.skillname == skill_name:
-			skill.is_active = true
-			active_skills.push_back(skill)
-			return
 
 func get_skill(skill_name):
 	for skill in active_skills:

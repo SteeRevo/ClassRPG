@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://benie1umj0clj"]
+
+[ext_resource type="Script" path="res://UI/skill_stats.gd" id="1_djxqi"]
+
+[resource]
+script = ExtResource("1_djxqi")
+skillname = "Snake: Whip"
+delay = 5
+damage = 10
+inputs = PackedStringArray("Left", "Left", "Right")
+is_active = true
+active_positions = Array[int]([1, 2])
+position_swap = []

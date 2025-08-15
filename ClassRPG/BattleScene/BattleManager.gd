@@ -91,6 +91,8 @@ func _ready():
 	start_battle()
 	SceneTransitionManager.connect("transition_finished", Callable(self, "start_fight"))
 	playerTurnUI.play_enter_health()
+	for unit in player_units:
+		playerTurnUI.init_healthbars(unit)
 	#baseballField.connect("batter_finished", Callable())
 	if autostart:
 		SceneTransitionManager.play_battle_exit()
@@ -99,6 +101,7 @@ func _ready():
 func start_battle():
 	get_all_units()
 	set_all_units_position()
+
 	current_selected_enemy = null
 	for unit in player_units:
 		if unit.is_guarding == false:
@@ -110,7 +113,6 @@ func get_all_units():
 	for unit in player_units_path.get_children():
 		player_units.append(unit)
 		unit_list.append(unit)
-		inputMoves.add_all_active_skills(unit)
 		unit.set_all_stats()
 	for unit in enemy_units_path.get_children():
 		enemy_units.append(unit)
@@ -129,6 +131,7 @@ func set_all_units_position():
 		bgs[unit.startingBG]._set_current_unit(unit)
 		bgs[unit.startingBG].set_current_unit_position()
 		unit._set_BG(bgs[unit.startingBG])
+		
 	for unit in enemy_units_path.get_children():
 		enemy_bgs[unit.startingBG]._set_current_unit(unit)
 		enemy_bgs[unit.startingBG].set_current_unit_position()

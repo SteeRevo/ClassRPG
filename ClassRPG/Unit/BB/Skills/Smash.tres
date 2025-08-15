@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cub53c2cmt4wh"]
+
+[ext_resource type="Script" path="res://UI/skill_stats.gd" id="1_7xxct"]
+
+[resource]
+script = ExtResource("1_7xxct")
+skillname = "Smash"
+delay = 5
+damage = 1
+inputs = PackedStringArray("Up", "Up", "Left")
+is_active = true
+active_positions = Array[int]([0])
+position_swap = []
