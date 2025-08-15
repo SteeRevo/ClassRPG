@@ -1,10 +1,11 @@
 extends States
 
 var last_action = null
-
+var cam_look_at = false
 var current_cam
 
 func enter(host):
+	cam_look_at = false
 	host.stateName.set_state_name("Player Turn")
 	host.playerTurnUI.visible = true
 	print("=====player turn=========")
@@ -23,13 +24,17 @@ func enter(host):
 	host.playerTurnUI.play_enter_anim()
 	host.inputMoves.add_all_active_skills(host.current_unit)
 	
+	host.mainBattleCamera.rotate_tween_finished.connect(enable_cam_look_at)
+	
 	
 func update(host, delta):
-	current_cam.move_to(host.current_unit.get_camera_path().global_position, 0.5)
-	if host.current_unit.name == "Sam":
-		current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
-	else:
-		current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
+	
+	if cam_look_at:
+		current_cam.move_to(host.current_unit.get_camera_path().global_position, 0.5)
+		if host.current_unit.name == "Sam":
+			current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
+		else:
+			current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Attack"):
@@ -80,10 +85,12 @@ func handle_input(host, event):
 	#	_on_skill_pressed()
 
 func exit(host):
+	host.mainBattleCamera.rotate_tween_finished.disconnect(enable_cam_look_at)
 	host.playerTurnUI.clear_all_arrows()
 	host.current_unit.camera_path.reset_progress()
 	host.playerTurnUI.play_exit_anim()
 	last_action = null
+	cam_look_at = false
 	
 	
 func set_active_camera(host, camera):
@@ -91,6 +98,8 @@ func set_active_camera(host, camera):
 	current_cam = camera
 	host.current_unit.get_camera_path().reset_progress()
 	camera.move_to(host.current_unit.get_camera_path().global_position)
+	current_cam.rotate_to(host.current_unit.playerTurnCam.global_rotation)
 	
 	
-	
+func enable_cam_look_at():
+	cam_look_at = true

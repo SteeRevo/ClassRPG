@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://c6utwxw5mbu1i"]
+[gd_scene load_steps=36 format=3 uid="uid://c6utwxw5mbu1i"]
 
 [ext_resource type="Script" path="res://Unit/Phyllis/Phyllis.gd" id="1_rnhxr"]
 [ext_resource type="Texture2D" uid="uid://drltfoosqwb13" path="res://Unit/Phyllis/Sophia_tex_char.png" id="2_u3cwx"]
 [ext_resource type="Texture2D" uid="uid://b0fjigct840ee" path="res://Unit/BB/swingvfx.png" id="3_t48aw"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="4_b7jng"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="4_x1g17"]
+[ext_resource type="Script" path="res://Unit/Sam/CameraPath.gd" id="5_821ox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbfti"]
 resource_name = "m_char"
@@ -3987,15 +3988,20 @@ libraries = {
 "": SubResource("AnimationLibrary_nmlu2")
 }
 
-[node name="CameraPath" type="Path3D" parent="."]
+[node name="CameraPath" type="Path3D" parent="." node_paths=PackedStringArray("unit")]
 transform = Transform3D(0.0869581, -0.0479371, -3.56576, 0.0011687, 3.56682, -0.0479229, 3.56608, -8.25521e-10, 0.086966, -15.4099, 9.71401, 0.96884)
 curve = SubResource("Curve3D_fb1y4")
+script = ExtResource("5_821ox")
+unit = NodePath("..")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" node_paths=PackedStringArray("unit")]
 transform = Transform3D(-0.747536, -0.354361, 0.561737, -0.434368, 0.900636, -0.00988419, -0.502435, -0.251396, -0.827221, 2.96075, 0.41971, -2.11951)
 progress = 15.4736
 script = ExtResource("4_x1g17")
 path_prog = 15
+unit = NodePath("../..")
+
+[node name="TurnCamPosition" type="Node3D" parent="CameraPath"]
 
 [node name="AttackCamPosition" type="Marker3D" parent="."]
 transform = Transform3D(184.602, 80.9289, -157.825, 0, 227.797, 116.809, 177.365, -84.231, 164.265, -15.1332, 24.1532, 19.7066)

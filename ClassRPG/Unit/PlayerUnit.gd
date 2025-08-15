@@ -1,7 +1,9 @@
 extends 'Unit.gd'
 
+@onready var playerTurnCam = $CameraPath/TurnCamPosition
 
 func _ready():
+
 	skill_tree = TreeSkill.new()
 	skill_tree.move_name = "Root"
 	

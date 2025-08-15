@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk1j3cspfpd7p"]
+[gd_scene load_steps=19 format=3 uid="uid://dk1j3cspfpd7p"]
 
 [ext_resource type="Script" path="res://Unit/Enemy/Monk.gd" id="1_3ang7"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="2_ephwc"]
 [ext_resource type="Resource" uid="uid://cykgmixkcuspj" path="res://Unit/Enemy/monk_stats.tres" id="2_gh318"]
 [ext_resource type="Texture2D" uid="uid://berm65kpa2fyj" path="res://Unit/Enemy/monk_Monk.png" id="2_qcwe0"]
+[ext_resource type="Script" path="res://Unit/Sam/CameraPath.gd" id="3_f58bi"]
 
 [sub_resource type="Animation" id="Animation_a1go5"]
 resource_name = "Attack"
@@ -1894,23 +1895,27 @@ blend_shape_mode = 0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.161744, 0, 0.0393367)
 script = ExtResource("1_3ang7")
 unit_stats = ExtResource("2_gh318")
-skillList = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ydpis")
 }
 
-[node name="CameraPath" type="Path3D" parent="."]
+[node name="CameraPath" type="Path3D" parent="." node_paths=PackedStringArray("unit")]
 transform = Transform3D(0.0334981, 0, -1.39415, 0, 1, 0, 1.3736, 0, 0.0339991, -5.64185, 3.29741, 0.949266)
 curve = SubResource("Curve3D_8n30l")
+script = ExtResource("3_f58bi")
+unit = NodePath("..")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" node_paths=PackedStringArray("unit")]
 transform = Transform3D(-0.553816, -0.460715, -0.693521, -0.666077, 0.744917, 0.0370396, 0.499565, 0.482462, -0.719448, 1.81977, 0.597414, -7.35481)
 progress = 8.18236
 script = ExtResource("2_ephwc")
 path_prog = 8
 is_enemy = true
+unit = NodePath("../..")
+
+[node name="TurnCamPosition" type="Node3D" parent="CameraPath"]
 
 [node name="AttackCam" type="Camera3D" parent="."]
 transform = Transform3D(-0.0312014, -0.0871132, 0.99571, -4.44089e-16, 0.996195, 0.0871557, -0.999513, 0.00271938, -0.0310827, 9.3098, 3.38571, -0.0374283)

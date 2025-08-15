@@ -15,19 +15,6 @@ func _ready():
 	set_unit_spirits(unit_stats)
 	
 	_set_base_skills()
-	"""var skill = Skill.new()
-	skill.skillname = "Absorb"
-	skill.damage = 3
-	skill.delay = 1
-	skill.inputs = PackedStringArray(["Down", "Down", "Right"])
-	skill.active_positions = ["BattlegroundTopWing", "BattlegroundBottomWing"]
-	skillList.append(skill)
-
-	for _skill in skillList:
-		set_skill(_skill)
-
-	
-	set_skill_active("Absorb")"""
 	
 	
 

@@ -2,24 +2,33 @@ extends States
 
 var current_cam
 var timer
+var cam_look_at = false
 @onready var host_ref = %BattleManager
 
 func enter(host):
+	cam_look_at = false
 	host.stateName.set_state_name("Enemy Turn")
 	print("============Enemy turn=============")
 	print(host.current_unit)
 	set_active_camera(host, host.mainBattleCamera)
 	timer = host.enemy_timer
 	timer.start()
+	host.mainBattleCamera.rotate_tween_finished.connect(enable_cam_look_at)
 	
 func update(host, delta):
-	current_cam.move_to(host.current_unit.get_camera_path().global_position)
-	current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
+	if cam_look_at:
+		current_cam.move_to(host.current_unit.turn_cam.global_position)
+		current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
 
 func set_active_camera(host, camera):
 	current_cam = camera
-	camera.move_to(host.current_unit.get_camera_path().global_position)
+	host.current_unit.get_camera_path().reset_progress()
+	current_cam.move_to(host.current_unit.turn_cam.global_position)
+	current_cam.rotate_to(host.current_unit.turn_cam.global_rotation)
 
+func exit(host):
+	cam_look_at = false
+	host.mainBattleCamera.rotate_tween_finished.disconnect(enable_cam_look_at)
 
 func _on_enemy_timer_timeout():
 	print("getting enemy action")
@@ -32,3 +41,6 @@ func _on_enemy_timer_timeout():
 	host_ref.get_total_delay(host_ref.skill_stack)
 	host_ref.delay_turn_tracker()
 	host_ref.complete_enemy_action()
+
+func enable_cam_look_at():
+	cam_look_at = true

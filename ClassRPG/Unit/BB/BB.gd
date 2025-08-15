@@ -15,21 +15,6 @@ func _ready():
 	set_unit_spirits(unit_stats)
 	
 	_set_base_skills()
-	"""var skill = Skill.new()
-	skill.skillname = "Smash"
-	skill.damage = 5
-	skill.delay = 1
-	skill.inputs = PackedStringArray(["Up", "Up", "Left"])
-	
-	skillList.append(skill)
-
-#skill tree fixed later
-
-	for _skill in skillList:
-		set_skill(_skill)
-
-	
-	set_skill_active("Smash")"""
 	
 
 func on_tween_finished():

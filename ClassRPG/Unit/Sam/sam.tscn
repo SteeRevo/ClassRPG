@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5k6qoafi2xk0"]
+[gd_scene load_steps=20 format=3 uid="uid://c5k6qoafi2xk0"]
 
 [ext_resource type="Script" path="res://Unit/Sam/Sam.gd" id="1_x5loh"]
 [ext_resource type="Texture2D" uid="uid://cbplgklq75tmo" path="res://Unit/Sam/Sam2_texture.png" id="2_npeka"]
@@ -6,6 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://016oettpbbvc" path="res://Unit/Sam/sam_animation.res" id="4_56x08"]
 [ext_resource type="Script" path="res://BattleScene/PathFollow3D.gd" id="4_57eq3"]
 [ext_resource type="PackedScene" uid="uid://cv25xab3f20tr" path="res://Environment/ps1Filter.tscn" id="4_nxx70"]
+[ext_resource type="Script" path="res://Unit/Sam/CameraPath.gd" id="6_tgd15"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy3st"]
 resource_name = "mat_sam"
@@ -559,15 +560,20 @@ libraries = {
 "": ExtResource("4_56x08")
 }
 
-[node name="CameraPath" type="Path3D" parent="."]
+[node name="CameraPath" type="Path3D" parent="." node_paths=PackedStringArray("unit")]
 transform = Transform3D(0.086966, 0, -3.56608, 0, 3.56714, 0, 3.56608, 0, 0.086966, -17.3554, 7.82689, 0.968839)
 curve = SubResource("Curve3D_03my7")
+script = ExtResource("6_tgd15")
+unit = NodePath("..")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
-transform = Transform3D(-0.803197, -0.384639, 0.454815, -0.433614, 0.901048, -0.00373202, -0.408388, -0.200217, -0.890544, 3.18741, 0.416633, -2.50228)
-progress = 15.0285
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" node_paths=PackedStringArray("unit")]
+transform = Transform3D(-0.875641, -0.425172, -0.2289, -0.444837, 0.894675, 0.0398708, 0.187846, 0.13674, -0.972598, 3.41488, 0.486307, -5.66105)
+progress = 11.7941
 script = ExtResource("4_57eq3")
 path_prog = 15
+unit = NodePath("../..")
+
+[node name="TurnCamPosition" type="Node3D" parent="CameraPath"]
 
 [node name="AttackCamPosition" type="Marker3D" parent="."]
 transform = Transform3D(604.077, 250.659, -787.932, 0, 975.814, 310.429, 826.84, -183.127, 575.65, -15.1636, 12.0664, 12.6186)

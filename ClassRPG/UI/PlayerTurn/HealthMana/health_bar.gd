@@ -2,6 +2,7 @@ extends TextureProgressBar
 
 @onready var timer = $Timer
 @onready var damageBar = $DamageBar
+@onready var healthNumber = $HealthNumber
 
 var health = 0 : set = _set_health
 var max_health = 0
@@ -10,6 +11,7 @@ func _set_health(new_health):
 	var prev_health = health
 	health = min(max_value, new_health)
 	value = health
+	$HealthNumber.text = str(health)
 	
 	if health < prev_health:
 		timer.start()
@@ -22,6 +24,7 @@ func init_health(curr_health, max_health):
 	value = health
 	damageBar.max_value = max_health * 10
 	damageBar.value = health * 10
+	$HealthNumber.text = str(health)
 	
 
 

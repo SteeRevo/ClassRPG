@@ -14,46 +14,6 @@ func _ready():
 	
 	var zodiac_array = []
 
-	"""var skill = Skill.new()
-	skill.skillname = "Rabbit: Bounce"
-	skill.damage = 5
-	skill.delay = 1
-	skill.inputs = PackedStringArray(["Left", "Down", "Right"])
-	skill.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
-
-	var skill2 = Skill.new()
-	skill2.skillname = "Snake: Whip"
-	skill2.damage = "10"
-	skill2.delay = 5
-	skill2.inputs = PackedStringArray(["Left", "Left", "Right"])
-	skill2.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
-	
-
-	var skill3 = Skill.new()
-	skill3.skillname = "Rooster: Flame"
-	skill3.damage = 0
-	skill3.delay = 3 
-	skill3.inputs = PackedStringArray(["Down", "Down", "Up"])
-	skill3.active_positions = PackedStringArray(["BattlegroundTopWing", "BattlegroundBottomWing"])
-	
-	var skill4 = Skill.new()
-	skill4.skillname = "Ox: Crush"
-	skill4.damage = "10"
-	skill4.delay = 5
-	skill4.inputs = PackedStringArray(["Left", "Left", "Right", "Right"])
-	
-	skillList.append(skill)
-	skillList.append(skill2)
-	skillList.append(skill3)
-	skillList.append(skill4)"""
-	
-#skill tree fixed later
-	
-		
-	#set_skill_active("Rooster: Flame")
-	#set_skill_active("Rabbit: Bounce")
-	#set_skill_active("Snake: Whip")
-	#set_skill_active("Ox: Crush")
 	
 	_set_base_skills()
 	
