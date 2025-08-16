@@ -39,9 +39,10 @@ func update(host, delta):
 			host.choose_turn()"""
 	pass
 
+
 func set_active_camera(host, camera):
-	host.active_camera.current = false
-	camera.current = true
+	#host.active_camera.current = false
+	#camera.current = true
 	host.active_camera = camera
-	camera.move_to(host.mainOverviewCam.global_position)
+	camera.move_to_once(host.mainOverviewCam.global_position)
 	camera.rotate_to(host.mainOverviewCam.rotation)

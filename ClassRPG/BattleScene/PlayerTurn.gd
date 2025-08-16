@@ -1,16 +1,19 @@
 extends States
 
 var last_action = null
-var cam_look_at = false
+var cam_look_at = 0
 var current_cam
 
 func enter(host):
-	cam_look_at = false
+	host.mainBattleCamera.kill_tween()
+	cam_look_at = 0
 	host.stateName.set_state_name("Player Turn")
 	host.playerTurnUI.visible = true
 	print("=====player turn=========")
 	print("Current Unit is: " + host.current_unit.name)
 	print("Press D to attack, A to Guard, W for Item, S for Rotate.")
+	host.mainBattleCamera.rotate_tween_finished.connect(enable_cam_look_at)
+	host.mainBattleCamera.one_time_finished.connect(enable_cam_look_at)
 	set_active_camera(host, host.mainBattleCamera)
 	host.enemySelector.visible = false
 	host.current_unit.get_BG().add_buffs()
@@ -24,13 +27,12 @@ func enter(host):
 	host.playerTurnUI.play_enter_anim()
 	host.inputMoves.add_all_active_skills(host.current_unit)
 	
-	host.mainBattleCamera.rotate_tween_finished.connect(enable_cam_look_at)
+	
 	
 	
 func update(host, delta):
-	
-	if cam_look_at:
-		current_cam.move_to(host.current_unit.get_camera_path().global_position, 0.5)
+	if cam_look_at >= 2:
+		current_cam.move_to_loop(host.current_unit.playerTurnCam.global_position, 0.5)
 		if host.current_unit.name == "Sam":
 			current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
 		else:
@@ -86,20 +88,26 @@ func handle_input(host, event):
 
 func exit(host):
 	host.mainBattleCamera.rotate_tween_finished.disconnect(enable_cam_look_at)
+	host.mainBattleCamera.cam_tween_finished.disconnect(enable_cam_look_at)
 	host.playerTurnUI.clear_all_arrows()
 	host.current_unit.camera_path.reset_progress()
 	host.playerTurnUI.play_exit_anim()
 	last_action = null
-	cam_look_at = false
+	cam_look_at = 0
 	
 	
 func set_active_camera(host, camera):
-	
+	print(host.active_camera.name)
 	current_cam = camera
 	host.current_unit.get_camera_path().reset_progress()
-	camera.move_to(host.current_unit.get_camera_path().global_position)
-	current_cam.rotate_to(host.current_unit.playerTurnCam.global_rotation)
+
+	camera.move_to_once(host.current_unit.playerTurnCam.global_position)
+	camera.rotate_to_once(host.current_unit.playerTurnCam.global_rotation)
 	
-	
+
+
+
 func enable_cam_look_at():
-	cam_look_at = true
+	print("cam tween finished")
+	cam_look_at += 1
+	print(cam_look_at)

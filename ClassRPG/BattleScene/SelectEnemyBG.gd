@@ -3,6 +3,7 @@ extends States
 var last_action = null
 
 func enter(host):
+	host.mainBattleCamera.kill_tween()
 	host.stateName.set_state_name("Select enemy")
 	print("Player selects unit to attack")
 	for unit in host.enemy_units:
@@ -83,6 +84,8 @@ func handle_input(host, event):
 func set_active_camera(host, camera):
 	camera.move_to(host.selectEBGcam.global_position)
 	camera.rotate_to(host.selectEBGcam.rotation)
+	#camera.global_position = host.selectEBGcam.global_position
+	#camera.global_rotation = host.selectEBGcam.global_rotation
 			
 
 func exit(host):

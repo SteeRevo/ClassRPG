@@ -271,7 +271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124178, 0, 1.51697)
 [node name="EnemyUnits" type="Node" parent="BattleManager"]
 
 [node name="Enemy1" parent="BattleManager/EnemyUnits" instance=ExtResource("16_6k5cg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.44588, 0.5168, 7.85197)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.16174, 0, 8.03934)
 
 [node name="EnemyBGs" type="Node" parent="BattleManager"]
 

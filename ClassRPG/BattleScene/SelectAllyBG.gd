@@ -90,3 +90,4 @@ func set_active_camera(host, camera):
 
 func exit(host):
 	last_action = null
+	host.mainBattleCamera.kill_tween()

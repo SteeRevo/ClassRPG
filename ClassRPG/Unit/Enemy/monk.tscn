@@ -1728,6 +1728,8 @@ albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
 emission_texture = ExtResource("2_qcwe0")
+distance_fade_mode = 2
+distance_fade_max_distance = 5.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kossf"]
 resource_name = "monk_Cube_004"

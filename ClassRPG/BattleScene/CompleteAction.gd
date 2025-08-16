@@ -130,6 +130,7 @@ func exit(host):
 	current_unit = null
 	tweened = 0
 	usingSkill = false
+	host.active_camera.kill_tween()
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):

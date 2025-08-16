@@ -49,6 +49,7 @@ func update_all():
 						current_tt.z_index = 0
 					current_tt = tt
 					current_tt.z_index = 1
+					return
 				else:
 					tt.take_step()
 		for tt in enemyTurnTrackers:
@@ -57,6 +58,7 @@ func update_all():
 					emit_signal("choose_enemy_turn", tt.unit)
 					waiting = false
 					current_tt = tt
+					return
 				else:
 					tt.take_step()
 

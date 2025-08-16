@@ -567,7 +567,7 @@ script = ExtResource("6_tgd15")
 unit = NodePath("..")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" node_paths=PackedStringArray("unit")]
-transform = Transform3D(-0.875641, -0.425172, -0.2289, -0.444837, 0.894675, 0.0398708, 0.187846, 0.13674, -0.972598, 3.41488, 0.486307, -5.66105)
+transform = Transform3D(-0.875642, -0.425173, -0.228895, -0.444836, 0.894675, 0.0398706, 0.187841, 0.136738, -0.972599, 3.41489, 0.486305, -5.66102)
 progress = 11.7941
 script = ExtResource("4_57eq3")
 path_prog = 15

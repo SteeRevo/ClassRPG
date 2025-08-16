@@ -171,8 +171,9 @@ func end_turn():
 		print_debug("Battle end")
 		SceneManager.change_to_previous()
 		return
-	start_turn_tracker()
 	_change_state('chooseturn')
+	start_turn_tracker()
+	
 
 func complete_enemy_action():
 	_change_state('completeAction')
