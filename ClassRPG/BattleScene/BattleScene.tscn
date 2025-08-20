@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -12,11 +12,9 @@
 [ext_resource type="Script" path="res://BattleScene/SelectAlly.gd" id="8_ejyrp"]
 [ext_resource type="Script" path="res://BattleScene/SkillInputs.gd" id="9_icg8r"]
 [ext_resource type="Script" path="res://BattleScene/EndFight.gd" id="11_f76x8"]
-[ext_resource type="Resource" uid="uid://benie1umj0clj" path="res://Unit/Sam/Skills/SnakeWhip.tres" id="12_suuam"]
 [ext_resource type="PackedScene" uid="uid://c5k6qoafi2xk0" path="res://Unit/Sam/sam.tscn" id="12_ut382"]
 [ext_resource type="PackedScene" uid="uid://c6utwxw5mbu1i" path="res://Unit/Phyllis/phyllis.tscn" id="13_hdh7v"]
 [ext_resource type="PackedScene" uid="uid://bh0fcxntildja" path="res://Unit/BB/bb.tscn" id="14_epfdn"]
-[ext_resource type="Resource" uid="uid://clmplml6fo3pa" path="res://Unit/Phyllis/Skills/Absorb.tres" id="14_i7u1i"]
 [ext_resource type="Resource" uid="uid://cub53c2cmt4wh" path="res://Unit/BB/Skills/Smash.tres" id="15_0r7n1"]
 [ext_resource type="Material" uid="uid://d3frj2ijy6g1b" path="res://BattleScene/Battleground/backgroundMat.tres" id="15_thxja"]
 [ext_resource type="PackedScene" uid="uid://dk1j3cspfpd7p" path="res://Unit/Enemy/monk.tscn" id="16_6k5cg"]
@@ -198,11 +196,9 @@ script = ExtResource("11_f76x8")
 [node name="PlayerUnits" type="Node" parent="BattleManager"]
 
 [node name="Sam" parent="BattleManager/PlayerUnits" instance=ExtResource("12_ut382")]
-preSkillList = Array[Resource("res://UI/skill_stats.gd")]([ExtResource("12_suuam")])
 
 [node name="Phyllis" parent="BattleManager/PlayerUnits" instance=ExtResource("13_hdh7v")]
 transform = Transform3D(0.248264, 0, -0.0294104, 0, 0.25, 0, 0.0294104, 0, 0.248264, 1.82904, 0.117663, -12.1691)
-preSkillList = Array[Resource("res://UI/skill_stats.gd")]([ExtResource("14_i7u1i")])
 
 [node name="BB" parent="BattleManager/PlayerUnits" instance=ExtResource("14_epfdn")]
 transform = Transform3D(0.247517, 0, 0.0351476, 0, 0.25, 0, -0.0351476, 0, 0.247517, -5.78837, 0.136662, -5.80816)
@@ -719,7 +715,7 @@ offset_bottom = 0.18396
 [node name="Cameras" type="Node" parent="BattleManager"]
 
 [node name="MainBattleCamera" type="Camera3D" parent="BattleManager/Cameras"]
-transform = Transform3D(-0.0871558, 0.384437, -0.919028, 0, 0.922538, 0.385906, 0.996195, 0.0336339, -0.0804045, -18.6049, 9.94786, 3.5505)
+transform = Transform3D(-0.0174779, 0.211367, -0.977251, 0, 0.977399, 0.211399, 0.999848, 0.00369482, -0.0170829, -19.5252, 8.29787, 3.61224)
 current = true
 fov = 62.8717
 script = ExtResource("25_ofn88")
@@ -741,7 +737,7 @@ transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 
 transform = Transform3D(-0.0191974, 0.474001, -0.880315, 0, 0.880477, 0.474088, 0.999816, 0.00910126, -0.0169029, -15.2724, 14.8798, -6.1244)
 
 [node name="MainOverview" type="Node3D" parent="BattleManager/CameraPoints"]
-transform = Transform3D(-0.0130686, 0.152109, -0.988278, 0, 0.988361, 0.152122, 0.999915, 0.00198802, -0.0129165, -20.1475, 8.44868, 3.35377)
+transform = Transform3D(-0.0174779, 0.211367, -0.977251, 0, 0.977399, 0.2114, 0.999848, 0.00369481, -0.0170829, -19.5252, 8.29787, 3.61224)
 
 [node name="EnemyTimer" type="Timer" parent="BattleManager"]
 wait_time = 2.0

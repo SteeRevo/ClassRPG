@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://cwbrpx6olhkma"]
+
+[ext_resource type="Script" path="res://UI/skill_stats.gd" id="1_exqlb"]
+[ext_resource type="Script" path="res://BattleScene/Effects/Attack.gd" id="1_il52t"]
+
+[sub_resource type="Resource" id="Resource_75gba"]
+script = ExtResource("1_il52t")
+
+[resource]
+script = ExtResource("1_exqlb")
+skillname = "Rabbit: Rapid"
+delay = 2
+damage = 5
+inputs = PackedStringArray("Left", "Down", "Right")
+is_active = true
+active_positions = Array[int]([1, 2])
+position_swap = []
+effect = SubResource("Resource_75gba")

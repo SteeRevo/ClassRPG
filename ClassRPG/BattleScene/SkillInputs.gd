@@ -93,8 +93,8 @@ func handle_input(host, event):
 			print("Confirm?")
 		
 func set_active_camera(host, camera):
-	camera.move_to(host.current_unit.get_unit_cam().global_position)
-	camera.rotate_to(host.current_unit.get_unit_cam().rotation)
+	camera.move_to_once(host.current_unit.get_unit_cam().global_position)
+	camera.rotate_to_once(host.current_unit.get_unit_cam().rotation)
 	
 func check_skill_inputs(host):
 	var input_arr = []

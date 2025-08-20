@@ -15,6 +15,7 @@ var total_damage = 0
 var current_cam = null
 var skill_cam = false
 var usingSkill = false
+var current_allies: Array[Unit] = []
 
 func enter(host):
 	host.enemySelector.visible = false
@@ -27,6 +28,9 @@ func enter(host):
 	host.current_unit.attack_hit.connect(_on_attack_hit)
 	current_action = host.current_action
 	current_enemy = host.current_selected_enemy
+	for unit in host.player_units:
+		if unit != host.current_unit:
+			current_allies.append(unit)
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
 		if host.current_unit.enemy_unit:
@@ -69,8 +73,6 @@ func _on_animation_finished(anim_name):
 					host_ref.end_turn()
 					return
 				host_ref.current_unit.move_towards(current_position)
-			
-					
 
 func _on_tween_finished():
 	print("tweened")
@@ -92,7 +94,8 @@ func _on_tween_finished():
 		
 func _on_attack_hit():
 	host_ref.skillDamage.visible = true
-	current_enemy.play_getting_hit()
+	if !current_enemy.is_guarding:
+		current_enemy.play_getting_hit()
 	host_ref.skillDamage.update_text()
 	for unit in host_ref.player_units:
 		host_ref.playerTurnUI.update_health(unit)
@@ -131,6 +134,7 @@ func exit(host):
 	tweened = 0
 	usingSkill = false
 	host.active_camera.kill_tween()
+	current_allies.clear()
 	return
 
 func rotate_units(unit1, unit2, BG1, BG2):
@@ -148,15 +152,11 @@ func set_BG_unit_position(unit, bg):
 	bg._set_current_unit(unit)
 	
 func check_skill_inputs(host):
-	
-	
-	#calc attack damage here/go to attack animation
 	current_position = host.current_unit.global_position
 	if host.current_unit.get_BG() != host.BGS and !host.current_unit.enemy_unit:
 		host.current_unit.move_towards(host.current_selected_enemy.get_BG_attacker_pos())
 	else:
 		play_animation(host)
-	#host.get_total_delay(input_arr)
 	
 
 func check_enemy_death(enemy):
@@ -184,7 +184,7 @@ func calc_damage(host, skill):
 				usingSkill = true
 				change_attack_cam(host, host.current_unit.get_skill_cam())
 			host.current_unit.play_skill(current_skill.skillname)
-			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+			var damage = host.current_unit.do_skill_effect(host.current_selected_enemy, current_skill, current_allies)
 			host_ref.skillDamage._add_skill_damage(damage)
 			host_ref.skillDamage.set_skill_name(skill)
 			total_damage += damage

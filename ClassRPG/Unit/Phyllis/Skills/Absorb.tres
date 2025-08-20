@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://clmplml6fo3pa"]
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://clmplml6fo3pa"]
 
 [ext_resource type="Script" path="res://UI/skill_stats.gd" id="1_5ekfx"]
+[ext_resource type="Script" path="res://BattleScene/Effects/Lifesteal.gd" id="1_6ym5k"]
+
+[sub_resource type="Resource" id="Resource_hbhag"]
+script = ExtResource("1_6ym5k")
 
 [resource]
 script = ExtResource("1_5ekfx")
@@ -11,3 +15,4 @@ inputs = PackedStringArray("Up", "Up", "Left")
 is_active = true
 active_positions = Array[int]([1, 2])
 position_swap = []
+effect = SubResource("Resource_hbhag")

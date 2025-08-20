@@ -3,10 +3,13 @@ extends States
 var last_action = null
 var cam_look_at = 0
 var current_cam
+var camera_spin = false
 
 func enter(host):
 	host.mainBattleCamera.kill_tween()
+	host.total_delay = 0
 	cam_look_at = 0
+	camera_spin = false
 	host.stateName.set_state_name("Player Turn")
 	host.playerTurnUI.visible = true
 	print("=====player turn=========")
@@ -30,13 +33,18 @@ func enter(host):
 	
 	
 	
+	
 func update(host, delta):
 	if cam_look_at >= 2:
 		current_cam.move_to_loop(host.current_unit.playerTurnCam.global_position, 0.5)
+	if Input.is_action_pressed("ScrollLeft") or Input.is_action_pressed("ScrollRight") or camera_spin:
+		if !camera_spin:
+			camera_spin = true
 		if host.current_unit.name == "Sam":
 			current_cam.look_at(host.current_unit.global_position + Vector3(0, 2, 0), Vector3(0, 1, 0))
 		else:
 			current_cam.look_at(host.current_unit.global_position + Vector3(0, 3, 0), Vector3(0, 1, 0))
+		
 	
 func handle_input(host, event):
 	if event.is_action_pressed("Attack"):
@@ -84,11 +92,13 @@ func handle_input(host, event):
 			host.reset_delay()
 			host.get_total_delay(['Item'])
 			host.delay_turn_tracker()
-	#	_on_skill_pressed()
+	
 
 func exit(host):
-	host.mainBattleCamera.rotate_tween_finished.disconnect(enable_cam_look_at)
-	host.mainBattleCamera.cam_tween_finished.disconnect(enable_cam_look_at)
+	if host.mainBattleCamera.rotate_tween_finished.is_connected(enable_cam_look_at):
+		host.mainBattleCamera.rotate_tween_finished.disconnect(enable_cam_look_at)
+	if host.mainBattleCamera.one_time_finished.is_connected(enable_cam_look_at):
+		host.mainBattleCamera.one_time_finished.disconnect(enable_cam_look_at)
 	host.playerTurnUI.clear_all_arrows()
 	host.current_unit.camera_path.reset_progress()
 	host.playerTurnUI.play_exit_anim()

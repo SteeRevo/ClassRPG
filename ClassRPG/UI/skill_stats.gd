@@ -10,14 +10,17 @@ enum BG {BattlegroundVanguard, BattlegroundTopwing, BattlegroundBottomWing, Batt
 @export var is_active: bool
 @export var active_positions: Array[BG]
 @export var position_swap = []
+@export var effect: Effect
 
-func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _position_swap = []):
+func _init(name = "skill", _delay = 0, _damage = 0, _inputs = [], _position_swap = [], _effect = Attack.new()):
 	skillname = name;
 	delay = _delay
 	damage = _damage
 	inputs = _inputs
 	is_active = false
 	position_swap = _position_swap
+	effect = _effect
+	
 	
 	
 	

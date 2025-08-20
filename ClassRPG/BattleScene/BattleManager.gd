@@ -244,11 +244,11 @@ func get_total_delay(input_arr):
 	if len(input_arr) > 0:
 		match input_arr[0]:
 			"Guard":
-				total_delay += 2
+				total_delay = 2
 			"Rotate":
-				total_delay += 2
+				total_delay = 2
 			"Item":
-				total_delay += 3
+				total_delay = 3
 			_:
 				for skill in input_arr:
 					var current_skill = current_unit.get_skill(skill)

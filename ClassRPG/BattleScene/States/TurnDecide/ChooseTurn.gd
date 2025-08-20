@@ -45,4 +45,4 @@ func set_active_camera(host, camera):
 	#camera.current = true
 	host.active_camera = camera
 	camera.move_to_once(host.mainOverviewCam.global_position)
-	camera.rotate_to(host.mainOverviewCam.rotation)
+	camera.rotate_to_once(host.mainOverviewCam.rotation)

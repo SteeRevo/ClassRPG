@@ -69,9 +69,10 @@ func play_skill(attack_name):
 			ap.play(attack_name)
 		"Snake: Whip":
 			ap.play("SnakeWhip")
+		"Rabbit: Rapid":
+			ap.play("RabbitRapid")
 		_:
 			ap.play("Skill")
-	
 	
 
 

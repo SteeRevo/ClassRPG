@@ -23,7 +23,7 @@ enum battleGrounds {F, TW, BW, B}
 @onready var skill_cam = $AttackCam
 @onready var attack_cam_base_position = attack_cam.global_position
 @onready var attack_cam_base_rotation = attack_cam.rotation
-@onready var moveSpeed = 15
+@onready var moveSpeed = 10
 
 signal tween_finished
 
@@ -68,6 +68,10 @@ func _set_base_skills():
 
 #func move_towards(target_pos):
 #	unitTween = get_tree().create_tween().tween_property(self, "position", target_pos, 1)
+#current_unit: Unit, allies: Array[Unit], enemy: Unit, skill: Skill
+
+func do_skill_effect(target_unit, skill, allies):
+	return skill.effect.do_effect(self, allies, target_unit, skill)
 
 func attack_unit(target_unit, skill):
 	var skill_stats = null
@@ -206,6 +210,7 @@ func play_getting_hit():
 	ap.play("getting_hit")
 	
 func attack_hits():
+	hitstop()
 	attack_hit.emit()
 	
 func get_camera_path():
@@ -231,12 +236,18 @@ func move_towards(target_pos):
 	unitTween = get_tree().create_tween()
 	ap.play("Rotate")
 	unitTween.connect("finished", on_tween_finished)
-	unitTween.tween_property(self, "position", target_pos, get_move_time(target_pos))
+	unitTween.tween_property(self, "position", target_pos, get_move_time(target_pos)).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	
 func on_tween_finished():
 	tween_finished.emit()
 	
-	
+func hitstop():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	var timer = get_tree().create_timer(0.1, true, false, true)
+	timer.timeout.connect(end_hitstop)
+
+func end_hitstop():
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func get_move_time(target_pos):
 	var distance = global_position.distance_to(target_pos)

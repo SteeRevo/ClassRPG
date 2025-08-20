@@ -47,6 +47,14 @@ func check_skill(skill_arr, root):
 func play_idle():
 	ap.play("BattleIdle")
 
+func play_skill(attack_name):
+	match attack_name:
+		"H-Heal!":
+			ap.play("Heal")
+		"Absorb":
+			ap.play("Absorb")
+		_:
+			ap.play(attack_name)
 
 func play_left():
 	ap.play("Left")
