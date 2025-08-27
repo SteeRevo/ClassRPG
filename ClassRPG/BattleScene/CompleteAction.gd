@@ -28,9 +28,10 @@ func enter(host):
 	host.current_unit.attack_hit.connect(_on_attack_hit)
 	current_action = host.current_action
 	current_enemy = host.current_selected_enemy
-	for unit in host.player_units:
-		if unit != host.current_unit:
-			current_allies.append(unit)
+	if current_unit.enemy_unit == false:
+		for unit in host.player_units:
+			if unit != host.current_unit:
+				current_allies.append(unit)
 	#host.current_unit.unitTween.connect("finished", _on_tween_finished)
 	if host.current_action == "Attack":
 		if host.current_unit.enemy_unit:
@@ -192,10 +193,11 @@ func calc_damage(host, skill):
 			print("New skill unlocked")
 			current_skill = host.current_unit.set_skill_active(skill)
 			host.current_unit.play_skill(current_skill.skillname)
-			var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+			#var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
 	else:
 		print(skill)
-		var damage = host.current_unit.attack_unit(host.current_selected_enemy, skill)
+		var current_skill = host.current_unit.get_skill(skill)
+		var damage = host.current_unit.do_skill_effect(host.current_selected_enemy, current_skill, current_allies)
 		total_damage = damage
 		host.current_unit.play_skill(skill)
 		host_ref.skillDamage._add_skill_damage(damage)

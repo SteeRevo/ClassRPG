@@ -44,16 +44,20 @@ func init_healthbars(unit):
 func update_health(unit):
 	var current_hp = unit._get_health()
 	var max_hp = unit.get_max_health()
+	var overhealth = unit.overhealth
 	match unit.name:
 		"Phyllis":
 			philHealthbar.health = current_hp
 			philHealthbar.max_health = max_hp
+			philHealthbar.overhealth = overhealth
 		"Sam":
 			samHealthbar.health = current_hp
 			samHealthbar.max_health = max_hp
+			samHealthbar.overhealth = overhealth
 		"BB":
 			bbHealthbar.health = current_hp
 			bbHealthbar.max_health = max_hp
+			bbHealthbar.overhealth = overhealth
 	
 
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2utjxakodud3"]
+[gd_scene load_steps=5 format=3 uid="uid://c2utjxakodud3"]
 
-[ext_resource type="Texture2D" uid="uid://chrp238rd8ipj" path="res://UI/PlayerTurn/HealthMana/MaxHealth.png" id="1_yqwcf"]
+[ext_resource type="Texture2D" uid="uid://capdx327hhxnk" path="res://UI/PlayerTurn/HealthMana/Progress.png" id="1_bbgu1"]
 [ext_resource type="Script" path="res://UI/PlayerTurn/HealthMana/health_bar.gd" id="2_4kt54"]
-[ext_resource type="Texture2D" uid="uid://t1slwrtu4iso" path="res://UI/PlayerTurn/HealthMana/LostHealth.png" id="2_dnuv6"]
-[ext_resource type="Texture2D" uid="uid://dhl2u7qg4ujso" path="res://UI/PlayerTurn/HealthMana/CurrentHealth.png" id="3_xfg5n"]
+[ext_resource type="Texture2D" uid="uid://dd7h56347p62u" path="res://UI/PlayerTurn/HealthMana/Under.png" id="3_kk7as"]
 [ext_resource type="FontFile" uid="uid://cmt2y2ujfu4h2" path="res://UI/fonts/AudioNugget.ttf" id="4_3g8i7"]
 
 [node name="HealthBar" type="TextureProgressBar"]
@@ -13,8 +12,9 @@ offset_right = -82.7134
 offset_bottom = -19.001
 max_value = 10.0
 value = 10.0
-texture_progress = ExtResource("3_xfg5n")
-texture_progress_offset = Vector2(62.06, 189.455)
+texture_progress = ExtResource("1_bbgu1")
+texture_progress_offset = Vector2(34.025, 60.22)
+tint_progress = Color(0.717647, 0.631373, 1, 1)
 script = ExtResource("2_4kt54")
 
 [node name="DamageBar" type="TextureProgressBar" parent="."]
@@ -25,20 +25,33 @@ offset_top = 5.00101
 offset_right = 410.713
 offset_bottom = 416.001
 value = 100.0
-texture_under = ExtResource("1_yqwcf")
-texture_progress = ExtResource("2_dnuv6")
-texture_progress_offset = Vector2(61.855, 183.775)
+texture_under = ExtResource("3_kk7as")
+texture_progress = ExtResource("1_bbgu1")
+texture_progress_offset = Vector2(34.215, 54.81)
 
 [node name="HealthNumber" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 76.6097
-offset_top = 145.369
-offset_right = 157.609
-offset_bottom = 185.369
+offset_left = 12.713
+offset_top = 101.001
+offset_right = 213.713
+offset_bottom = 223.001
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/normal_font = ExtResource("4_3g8i7")
-theme_override_font_sizes/normal_font_size = 40
-text = "10"
+theme_override_font_sizes/normal_font_size = 70
+text = " 10"
+
+[node name="OverhealthBar" type="TextureProgressBar" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = -34.287
+offset_top = 90.001
+offset_right = 763.713
+offset_bottom = 343.001
+scale = Vector2(1.11, 1.11)
+texture_under = ExtResource("1_bbgu1")
+texture_progress = ExtResource("1_bbgu1")
+tint_progress = Color(0.714844, 0.628906, 0.996094, 1)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

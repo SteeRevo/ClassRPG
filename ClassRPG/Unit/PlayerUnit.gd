@@ -15,6 +15,7 @@ func _ready():
 		new_skill.inputs = _skill.inputs
 		new_skill.active_positions = _skill.active_positions
 		new_skill.is_active = _skill.is_active
+		new_skill.effect = _skill.effect
 		skillList.append(new_skill)
 		if new_skill.is_active:
 			print("adding to active skills")

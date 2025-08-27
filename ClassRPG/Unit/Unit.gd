@@ -10,6 +10,7 @@ enum battleGrounds {F, TW, BW, B}
 
 @onready var max_health
 @onready var current_health
+@onready var overhealth
 @onready var attack
 @onready var defense
 @onready var technique
@@ -100,16 +101,21 @@ func attack_unit(target_unit, skill):
 func _set_health(_health):
 	if(_health <= max_health):
 		current_health = _health
-	else:
-		current_health = max_health
 	if current_health <= 0:
 		print("Unit is dead")
 		is_dead = true
+		
+func set_overhealth(new_overhealth):
+	overhealth += new_overhealth
+	if overhealth < 0:
+		overhealth = 0
+	
 		
 		
 func set_all_stats():
 	max_health = unit_stats.max_health
 	current_health = unit_stats.current_health
+	overhealth = 0
 	attack = unit_stats.attack
 	defense = unit_stats.defense
 	technique = unit_stats.technique

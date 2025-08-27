@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bu3mr741gkvrq"]
+[gd_scene load_steps=53 format=3 uid="uid://bu3mr741gkvrq"]
 
 [ext_resource type="Script" path="res://BattleScene/PlayerTurn.gd" id="3_cretm"]
 [ext_resource type="Script" path="res://BattleScene/EnemyTurn.gd" id="4_dhb6o"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://BattleScene/PlayerTurnUI.gd" id="25_xyimm"]
 [ext_resource type="Texture2D" uid="uid://nf76bjd78xhb" path="res://UI/PlayerTurn/SamSelectionCircle.png" id="26_tq8f6"]
 [ext_resource type="PackedScene" uid="uid://c2utjxakodud3" path="res://UI/PlayerTurn/HealthMana/health_bar.tscn" id="27_qoav5"]
+[ext_resource type="Texture2D" uid="uid://8cm758x8n20i" path="res://UI/PlayerTurn/HealthMana/UnderBB.png" id="29_df5e7"]
 [ext_resource type="Texture2D" uid="uid://devb4127aiuvo" path="res://UI/PlayerTurn/BBSelectionCircle.png" id="29_v5bq6"]
 [ext_resource type="Texture2D" uid="uid://bxkr3irmrspc2" path="res://UI/PlayerTurn/PhyllisSelectionCircle.png" id="30_jqr0j"]
 [ext_resource type="Script" path="res://BattleScene/InputMoves.gd" id="31_brdih"]
@@ -553,42 +554,50 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Node2D" parent="BattleManager/Control/PlayerTurnUI"]
 position = Vector2(1225, 707)
-rotation = -0.785397
-scale = Vector2(0.395, 0.395)
+rotation = -0.226893
+scale = Vector2(0.22, 0.22)
 
 [node name="PhilHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
-offset_left = 64.4446
-offset_top = -322.226
-offset_right = 475.444
-offset_bottom = 88.7742
+offset_left = -38.0571
+offset_top = -1067.75
+offset_right = 735.943
+offset_bottom = -656.746
+rotation = 0.15708
+tint_progress = Color(0.601563, 0.0898438, 0.992188, 1)
 
 [node name="PhylissName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/PhilHealthBar"]
 z_index = 1
 layout_mode = 0
-offset_left = 83.7704
-offset_top = 231.295
-offset_right = 602.77
-offset_bottom = 314.295
+offset_left = 180.202
+offset_top = 94.6193
+offset_right = 699.201
+offset_bottom = 177.619
+rotation = -0.18675
+scale = Vector2(1.44, 1.44)
 theme_override_colors/default_color = Color(0.605469, 0.0898438, 0.996094, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
 theme_override_fonts/normal_font = ExtResource("18_ytc6m")
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 70
 text = "phyliss
 "
 
 [node name="SamHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
-offset_left = -64.0781
-offset_top = -168.641
-offset_right = 346.921
-offset_bottom = 242.359
+offset_left = -93.9678
+offset_top = -684.127
+offset_right = 680.032
+offset_bottom = -273.127
+rotation = 0.174533
+tint_progress = Color(0.839844, 0.992188, 0.0976563, 1)
 
 [node name="SamName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/SamHealthBar"]
 layout_mode = 0
-offset_left = 102.038
-offset_top = 213.027
-offset_right = 380.038
-offset_bottom = 296.027
+offset_left = 224.866
+offset_top = 98.8409
+offset_right = 502.866
+offset_bottom = 181.841
+rotation = -0.219911
+scale = Vector2(1.35, 1.35)
 theme_override_colors/default_color = Color(0.843137, 0.996078, 0.0980392, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
@@ -597,17 +606,28 @@ theme_override_font_sizes/normal_font_size = 80
 text = "sam"
 
 [node name="BBHealthBar" parent="BattleManager/Control/PlayerTurnUI/Control" instance=ExtResource("27_qoav5")]
-offset_left = -177.224
-offset_top = -19.6914
-offset_right = 233.776
-offset_bottom = 391.308
+offset_left = -170.323
+offset_top = -272.573
+offset_right = 603.677
+offset_bottom = 138.427
+rotation = 0.178024
+tint_progress = Color(0, 0, 0, 1)
+
+[node name="DamageBar" parent="BattleManager/Control/PlayerTurnUI/Control/BBHealthBar" index="0"]
+texture_under = ExtResource("29_df5e7")
+tint_progress = Color(0.835938, 0.988281, 0.0976563, 1)
+
+[node name="OverhealthBar" parent="BattleManager/Control/PlayerTurnUI/Control/BBHealthBar" index="2"]
+tint_under = Color(0, 0, 0, 1)
 
 [node name="BBName" type="RichTextLabel" parent="BattleManager/Control/PlayerTurnUI/Control/BBHealthBar"]
 layout_mode = 0
-offset_left = 127.101
-offset_top = 230.929
-offset_right = 405.1
-offset_bottom = 313.929
+offset_left = 264.087
+offset_top = 90.2805
+offset_right = 542.086
+offset_bottom = 173.281
+rotation = -0.174533
+scale = Vector2(1.365, 1.365)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 32
@@ -687,10 +707,14 @@ scale = Vector2(0.413798, 0.413798)
 unit = NodePath("../../../../PlayerUnits/Sam")
 
 [node name="BBPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="1" node_paths=PackedStringArray("unit")]
+position = Vector2(498, -63)
 unit = NodePath("../../../../PlayerUnits/BB")
 
 [node name="PhilPathFollow2D" parent="BattleManager/Control/TurnBar/PlayerPath" index="2" node_paths=PackedStringArray("unit")]
 unit = NodePath("../../../../PlayerUnits/Phyllis")
+
+[node name="EnemyPathFollow2D" parent="BattleManager/Control/TurnBar/EnemyPath" index="0"]
+position = Vector2(498, -63)
 
 [node name="BaseballField" parent="BattleManager/Control" instance=ExtResource("34_algih")]
 layout_mode = 1
@@ -1934,4 +1958,6 @@ texture = ExtResource("38_jlnf2")
 [connection signal="choose_turn" from="BattleManager/Control/TurnBar" to="BattleManager" method="_on_turn_bar_choose_turn"]
 [connection signal="timeout" from="BattleManager/EnemyTimer" to="BattleManager/States/EnemyTurn" method="_on_enemy_timer_timeout"]
 
+[editable path="BattleManager/Control/PlayerTurnUI/Control/PhilHealthBar"]
+[editable path="BattleManager/Control/PlayerTurnUI/Control/BBHealthBar"]
 [editable path="BattleManager/Control/TurnBar"]
