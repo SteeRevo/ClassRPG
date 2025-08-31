@@ -25,7 +25,7 @@ func on_tween_finished():
 	tween_finished.emit()
 	
 func _set_base_skills():
-	active_skills.append(Skill.new("Attack", 4, 1, [""]))
+	active_skills.append(Skill.new("Attack", 4, 5, [""]))
 	
 func get_skill(skill_name):
 	for skill in active_skills:

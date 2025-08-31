@@ -23,7 +23,6 @@ func _set_health(new_health):
 func _set_overhealth(overhealth):
 	if overhealth > max_value:
 		overhealth = max_value
-		return
 	overhealthbar.value = overhealth
 
 

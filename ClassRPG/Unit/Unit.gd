@@ -101,6 +101,8 @@ func attack_unit(target_unit, skill):
 func _set_health(_health):
 	if(_health <= max_health):
 		current_health = _health
+	elif(_health > max_health):
+		current_health = max_health
 	if current_health <= 0:
 		print("Unit is dead")
 		is_dead = true
